@@ -1,0 +1,381 @@
+.vn {
+  display: grid;
+  gap: var(--space-3);
+}
+
+/* Stage: backdrop with characters standing at the bottom and the bubble over them. */
+.vn__stage {
+  min-height: clamp(20rem, 62vw, 27rem);
+}
+
+.vn__stage .backdrop__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: inherit;
+  padding: var(--space-3);
+}
+
+.vn__cast {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 4%;
+  pointer-events: none;
+}
+
+.vn__actor {
+  display: flex;
+  align-items: flex-end;
+}
+
+.vn__actor--left {
+  order: 0;
+  margin-right: auto;
+}
+
+.vn__actor--right {
+  order: 1;
+  margin-left: auto;
+}
+
+/* Speech bubble — light paper so English stays easy to read over the art. */
+.vn__bubble {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  padding-right: 3.25rem;
+  background: rgba(249, 244, 252, 0.96);
+  color: var(--color-text);
+  box-shadow: 0 8px 28px rgba(20, 11, 35, 0.45), 0 0 18px rgba(255, 122, 184, 0.25);
+  --color-focus: var(--pink-600);
+}
+
+.vn__bubble--left {
+  align-self: flex-start;
+}
+
+.vn__bubble--right {
+  align-self: flex-end;
+}
+
+.vn__bubble--narration {
+  align-self: center;
+  border-color: var(--color-hud-border);
+  background: rgba(34, 21, 57, 0.92);
+  color: var(--color-text-on-dark);
+  --color-focus: var(--glow-500);
+}
+
+.vn__bubble--screen {
+  align-self: center;
+  border: 1px solid var(--pink-400);
+  background: rgba(20, 11, 35, 0.92);
+  color: var(--pink-100);
+  box-shadow: 0 0 18px var(--color-glow);
+  --color-focus: var(--glow-500);
+}
+
+.vn__name {
+  position: absolute;
+  top: -0.85rem;
+  left: var(--space-3);
+  margin: 0;
+  border-radius: var(--radius-pill);
+  padding: 0 var(--space-3);
+  background: linear-gradient(135deg, var(--pink-600), #6d4bb8);
+  color: var(--white);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.vn__name--screen {
+  background: var(--night-700);
+}
+
+.vn__en {
+  margin: var(--space-1) 0 0;
+  font-size: var(--fs-lg);
+  line-height: 1.45;
+}
+
+.vn__bubble--narration .vn__en {
+  font-style: italic;
+}
+
+.vn__th {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+}
+
+.vn__bubble--narration .vn__th,
+.vn__bubble--screen .vn__th,
+.vn__bubble--narration .vn__hint,
+.vn__bubble--screen .vn__hint,
+.vn__bubble--narration .vn__listening,
+.vn__bubble--screen .vn__listening {
+  color: var(--color-text-muted-on-dark);
+}
+
+.vn__hint,
+.vn__listening {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+}
+
+.vn__listening {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.vn__wave {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 1.4rem;
+}
+
+.vn__wave i {
+  width: 4px;
+  height: 30%;
+  border-radius: 2px;
+  background: var(--pink-500);
+}
+
+.vn__wave--on i {
+  animation: vn-wave 0.9s ease-in-out infinite;
+}
+
+.vn__wave--on i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.vn__wave--on i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.vn__wave--on i:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+.vn__wave--on i:nth-child(5) {
+  animation-delay: 0.6s;
+}
+
+@keyframes vn-wave {
+  50% {
+    height: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vn__wave--on i {
+    animation: none;
+    height: 70%;
+  }
+}
+
+.vn__line-listen {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  display: grid;
+  place-items: center;
+  width: var(--tap-min);
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--pink-600);
+}
+
+.vn__bubble--narration .vn__line-listen,
+.vn__bubble--screen .vn__line-listen {
+  color: var(--pink-100);
+}
+
+.vn__line-listen svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Line progress dots */
+.vn__progress {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.vn__progress span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--night-700);
+}
+
+.vn__progress .is-done {
+  background: var(--pink-600);
+}
+
+.vn__progress .is-current {
+  width: 22px;
+  border-radius: var(--radius-pill);
+  background: var(--pink-400);
+  box-shadow: 0 0 8px var(--color-glow);
+}
+
+.vn__status {
+  margin: 0;
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted-on-dark);
+}
+
+.vn__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.vn__controls .btn {
+  gap: var(--space-2);
+}
+
+.vn__controls .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.vn__prev {
+  width: var(--tap-min);
+  padding: 0;
+}
+
+.vn__main {
+  min-width: 12rem;
+}
+
+.vn__auto[aria-pressed="true"] {
+  border-color: var(--pink-400);
+  box-shadow: 0 0 12px var(--color-glow);
+}
+
+.vn__skip,
+.vn__transcript-toggle {
+  border: 0;
+  padding: 0 var(--space-2);
+  background: none;
+  color: var(--pink-100);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.vn__transcript-toggle {
+  justify-self: start;
+}
+
+/* Bottom panel: key vocabulary + translation / listen-again (mockup screen 2). */
+.vn__panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  border: 1px solid var(--color-hud-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(160deg, rgba(58, 39, 88, 0.55), rgba(34, 21, 57, 0.85));
+}
+
+.vn__panel-h {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--pink-100);
+}
+
+.vn__panel-h svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.vn__vocab ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vn__vocab li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.vn__word {
+  min-height: 36px;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--color-text-on-dark);
+  font-weight: 700;
+  text-decoration: underline dotted var(--pink-400);
+  text-underline-offset: 4px;
+}
+
+.vn__word-th {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted-on-dark);
+}
+
+.vn__panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.vn__all summary {
+  cursor: pointer;
+  min-height: var(--tap-min);
+  color: var(--pink-100);
+}
+
+/* Phones: smaller characters so the bubble keeps room. */
+@media (max-width: 40rem) {
+  .vn__actor .sprite--stage {
+    width: 38vw;
+  }
+
+  .vn__bubble {
+    max-width: none;
+  }
+
+  .vn__main {
+    min-width: 0;
+    flex: 1;
+  }
+}
+
+.vn__controls .btn {
+  white-space: nowrap;
+}

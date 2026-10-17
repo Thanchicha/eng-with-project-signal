@@ -125,9 +125,9 @@ def progress_with(**overrides) -> dict:
 
 
 def listen(page: Page):
-    """Play the scene once and wait until the stubbed audio finishes."""
-    page.locator(".scene-audio__main").click()
-    page.wait_for_function("document.querySelector('.scene-audio__now')?.textContent.startsWith('ฟังแล้ว')", timeout=10000)
+    """Play the whole scene with auto-play and wait until every line has been heard."""
+    page.locator(".vn__auto").click()
+    page.wait_for_function("document.querySelector('.vn__status')?.textContent.startsWith('ฟังครบแล้ว')", timeout=10000)
 
 
 def answer_check(page: Page) -> bool:
@@ -162,8 +162,8 @@ def t_start(browser: Browser):
     hints = page.locator(".intro__hints .chip").all_inner_texts()
     button(page, "เริ่มตอนนี้").click()
     page.wait_for_url("**/#/ep/ep01/play")
-    play = page.locator(".scene-audio__main").inner_text()
-    record("1 start without account", fields == 0 and before and len(hints) in (2, 3) and "ฟังฉากนี้" in play,
+    play = page.locator(".vn__main").inner_text()
+    record("1 start without account", fields == 0 and before and len(hints) in (2, 3) and "เริ่มฟัง" in play,
            f"no login/key fields; intro 'ก่อนฟัง' with hint words {hints}; scene opens on '{play.strip()}'")
     page.context.close()
 
@@ -180,11 +180,11 @@ def t_full(browser: Browser):
         lines = page.evaluate("window.__utterances.length")
         listen(page)
         played = page.evaluate("window.__utterances.length") - lines
-        hidden_after_listen = page.locator(".dialogue").count() == 0
+        hidden_after_listen = page.locator(".dialogue").count() == 0 and page.locator(".vn__en").count() == 0
         has_check = answer_check(page)
         if transcript_before == 0 and hidden_after_listen and has_check and page.locator(".dialogue").count() == 1:
             hidden_ok += 1
-        speakers = set(page.locator(".line__name").all_inner_texts())
+        speakers = set(t.strip() for t in page.locator(".dialogue .line__name").all_text_contents())
         if not {"Kuro", "Miyu"} <= {s.replace(" (กำลังพูด)", "") for s in speakers}:
             leads_missing.append(f"scene {scenes}")
         if played == page.locator(".dialogue .line").count():
@@ -298,12 +298,12 @@ def t_keyboard(browser: Browser):
     fresh(page, "#/ep/ep01/play")
     # Keep the scene "playing" (no end event) so the stop state can be checked.
     page.evaluate("() => { window.speechSynthesis.speak = function (u) { window.__utterances.push({ text: u.text, rate: u.rate }); }; }")
-    page.locator(".scene-audio__main").focus()
+    page.locator(".vn__main").focus()
     page.keyboard.press("Enter")
-    stop_label = page.locator(".scene-audio__main").inner_text()
-    status = page.locator(".scene-audio__now").inner_text()
+    stop_label = page.locator(".vn__main").inner_text()
+    status = page.locator(".vn__status").inner_text()
     page.keyboard.press("Enter")
-    after_stop = page.locator(".scene-audio__main").inner_text()
+    after_stop = page.locator(".vn__main").inner_text()
     unlabeled = []
     for r in ["#/", "#/career", "#/missions", "#/ep/ep01", "#/ep/ep01/play", "#/ep/ep01/learn/patterns", "#/ep/ep01/learn/shadow", "#/ep/ep01/learn/speak",
               "#/ep/ep01/learn/case", "#/notebook", "#/settings"]:
@@ -326,7 +326,7 @@ def t_keyboard(browser: Browser):
 def t_vocab(browser: Browser):
     page = new_page(browser)
     fresh(page, "#/ep/ep01/play", progress_with(settings=progress_with()["settings"] | {"alwaysShowTranscript": True}))
-    page.locator(".vocab-word").first.click()
+    page.locator(".vn__bubble .vocab-word, .vn__word").first.click()
     word = page.locator(".vocab-pop__word").inner_text()
     th = page.locator(".vocab-pop__th").inner_text()
     page.keyboard.press("Escape")
@@ -381,7 +381,7 @@ def t_refresh(browser: Browser):
     fresh(page, "#/ep/ep01/play")
     listen(page)
     answer_check(page)
-    page.locator(".vocab-word").first.click()
+    page.locator(".vn__word").first.click()
     button(page, "บันทึกลงสมุดคำศัพท์").click()
     button(page, "ปิด").click()
     button(page, "พิมพ์ตอบแทน").click()
@@ -395,7 +395,7 @@ def t_refresh(browser: Browser):
     raw = page.evaluate(f"localStorage.getItem('{KEY}')")
     page.goto(f"{BASE}/#/notebook")
     saved = page.get_by_role("button", name=re.compile("บันทึกไว้ทบทวน")).inner_text()
-    record("12 refresh / no voice stored", scene == "ฉาก 2" and "(1)" in saved and "xyzzy" not in raw,
+    record("12 refresh / no voice stored", "ฉาก 2 จาก" in scene and "(1)" in saved and "xyzzy" not in raw,
            f"after reload story resumes at '{scene}', notebook '{saved}'; typed/spoken text absent from storage (only ids)")
     page.context.close()
 

@@ -48,3 +48,9 @@
   z-index: 1;
   height: 100%;
 }
+
+/* The skyline sits along the bottom; the moon glow comes from the gradient above. */
+.backdrop__city {
+  top: auto;
+  height: 55%;
+}

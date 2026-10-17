@@ -127,7 +127,7 @@
   margin-left: var(--space-4);
 }
 
-/* Line being played by the AudioScenePlayer. */
+/* Line being played (VNStage transcript). */
 .line--active {
   margin: calc(var(--space-1) * -1) calc(var(--space-2) * -1);
   border-radius: var(--radius-sm);

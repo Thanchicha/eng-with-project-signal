@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { navigate } from "../app/router";
-import AudioScenePlayer from "../components/AudioScenePlayer";
+import VNStage from "../components/VNStage";
 import ChoiceList from "../components/ChoiceList";
 import FeedbackCard from "../components/FeedbackCard";
 import ListeningCheck from "../components/ListeningCheck";
@@ -8,6 +8,7 @@ import QuestPanel from "../components/QuestPanel";
 import SpeakResponse from "../components/SpeakResponse";
 import VocabularyPopover from "../components/VocabularyPopover";
 import { episodeContent } from "../content";
+import { careerById } from "../content/careers";
 import type { Episode, Scene } from "../content/types";
 import { addOnce, countReplay, isUnlocked, type Progress } from "../features/progress/progressStorage";
 import "./StoryScreen.css";
@@ -88,7 +89,9 @@ export default function StoryScreen({ episodeId, progress, update }: Props) {
       </div>
 
       <h1 ref={sceneHeading} tabIndex={-1} className="story__title">
-        <span className="story__scene-num">ฉาก {sceneIndex + 1}</span>
+        <span className="story__scene-num">
+          {careerById(progress.career)?.nameEn ?? "Team 2-A"} <span aria-hidden="true">|</span> Episode {ep.number}, ฉาก {sceneIndex + 1} จาก {ep.scenes.length}
+        </span>
         <span lang="en">{scene.title}</span>
       </h1>
 
@@ -199,8 +202,10 @@ function SceneFlow({ episode, scene, isLast, progress, update, onVocab, onNext }
         </p>
       )}
 
-      <AudioScenePlayer
+      <VNStage
         lines={scene.dialogue}
+        background={scene.background}
+        vocabulary={episode.vocabulary}
         rate={settings.audioRate}
         onRateChange={(rate) => update((p) => ({ ...p, settings: { ...p.settings, audioRate: rate } }))}
         revealTranscript={settings.alwaysShowTranscript || (check ? checked : heard)}

@@ -91,7 +91,7 @@ export function SpeakerBadge({ line }: { line: Pick<DialogueLine, "speakerId" | 
 }
 
 /** Wraps each vocabulary reference (in order) in a button that opens the popover. */
-function renderWithVocab(line: DialogueLine, onVocab?: (id: string) => void): ReactNode {
+export function renderWithVocab(line: DialogueLine, onVocab?: (id: string) => void): ReactNode {
   const refs = line.vocabularyRefs ?? [];
   if (!refs.length || !onVocab) return line.textEn;
   const out: ReactNode[] = [];
