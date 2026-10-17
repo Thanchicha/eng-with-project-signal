@@ -19,10 +19,16 @@ export const ep03: Episode = {
     "เขียนคำถามที่ไม่ชี้นำ",
     "ใช้รูปประโยค Most of the responses came from… / This survey does not show… / Would you mind…?"
   ],
-  "format": 1,
+  "format": 2,
+  "listeningMissionTh": "ฟังความเห็นจากนักเรียนหลายกลุ่มและหาเสียงที่ขาด",
+  "speakingMissionTh": "อธิบายว่า survey อาจไม่แทนนักเรียนทั้งหมด และขออนุญาตสัมภาษณ์",
   "contextTh": "ทีมส่งแบบสอบถามออนไลน์เรื่องปัญหาในโรงเรียน ได้คำตอบเยอะกว่าที่คิด Chief อยากสรุปผลเร็ว ๆ แต่ Lena สังเกตว่าคำตอบมาจากนักเรียนแค่บางกลุ่ม",
-  "goalTh": "หาว่าเสียงของใครหายไปจากข้อมูล, ปรับแบบสอบถามให้ทุกคนตอบได้, และพูดถึงข้อจำกัดของผลสำรวจอย่างชัดเจน",
-  "hintWords": [],
+  "goalTh": "ฟังว่าเสียงของนักเรียนกลุ่มไหนหายไปจากข้อมูล และอะไรทำให้พวกเขาตอบไม่ได้",
+  "hintWords": [
+    "survey",
+    "first-years",
+    "phone"
+  ],
   "vocabulary": [
     {
       "id": "survey",
@@ -162,6 +168,57 @@ export const ep03: Episode = {
           "textTh": "เธอไม่ได้บอก ฉันว่าเราควรถามเธอ"
         }
       ],
+      "listenForTh": "ฟังว่าคำตอบมาจากนักเรียนกลุ่มไหนบ้าง",
+      "listeningCheck": {
+        "id": "ep03_s1_listen",
+        "promptTh": "คำตอบจากนักเรียนปีหนึ่งมีกี่ชุด?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "เก้าชุด"
+          },
+          {
+            "id": "b",
+            "labelTh": "ร้อยเก้าสิบสองชุด"
+          },
+          {
+            "id": "c",
+            "labelTh": "เก้าสิบแปดชุด"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Rei พูดว่า \"Only nine came from first-years.\" ส่วน 192 คือจำนวนคำตอบทั้งหมด"
+      },
+      "speakingPrompt": {
+        "id": "ep03_s1_speak",
+        "situationTh": "Chief อยากเขียนสรุปวันนี้ พูดอธิบายว่าผลสำรวจยังไม่แทนนักเรียนทั้งหมด",
+        "promptEn": "Explain why the survey does not represent every student yet.",
+        "goal": "clarify",
+        "phraseFrames": [
+          "Most of the responses came from ___.",
+          "Our sample doesn't represent ___ yet. Can we ___?"
+        ],
+        "modelResponses": [
+          "Most of the responses came from older students. Can we get more answers from first-years first?",
+          "Our sample doesn't represent all students yet. Can we wait two days?"
+        ],
+        "acceptedIntentsTh": [
+          "บอกว่าคำตอบส่วนใหญ่มาจากกลุ่มไหน",
+          "บอกว่ายังขาดกลุ่มไหน",
+          "เสนอเวลาหรือวิธีเก็บเพิ่ม"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณบอกข้อจำกัดของกลุ่มตัวอย่าง และเสนอทางไปต่อ Chief จึงตัดสินใจได้ง่าย",
+          "naturalOption": "Most of the responses came from older students. Can we get more answers from first-years first?",
+          "improvementTh": "ปิดท้ายด้วยข้อเสนอที่มีเวลาชัดเจน เช่น two more days คนฟังจะไม่รู้สึกว่างานถูกหยุดโดยไม่มีแผน"
+        },
+        "askedBy": {
+          "speakerId": "chief",
+          "textEn": "Can we write the summary today?",
+          "textTh": "เราเขียนสรุปวันนี้ได้ไหม?"
+        }
+      },
       "interaction": {
         "promptEn": "Chief wants to write the summary today. What should you say?",
         "promptTh": "Chief อยากเขียนสรุปวันนี้ คุณควรพูดว่าอะไร?",
@@ -268,6 +325,57 @@ export const ep03: Episode = {
           "textTh": "ดีขึ้น และเราควรขออนุญาตก่อนที่จะดูเธอใช้งาน"
         }
       ],
+      "listenForTh": "ฟังว่า Kuro เห็นปัญหาอะไรในคำถามของ Miyu",
+      "listeningCheck": {
+        "id": "ep03_s2_listen",
+        "promptTh": "Kuro บอกว่าคำถามของ Miyu มีปัญหาอะไร?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "ฟังเหมือนรู้คำตอบอยู่แล้ว (ชี้นำ)"
+          },
+          {
+            "id": "b",
+            "labelTh": "ยาวเกินไป"
+          },
+          {
+            "id": "c",
+            "labelTh": "ใช้ศัพท์ยากเกินไป"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Kuro พูดว่า \"That sounds like you already know the answer.\" และ Miyu ยอมรับว่าเป็น leading question"
+      },
+      "speakingPrompt": {
+        "id": "ep03_s2_speak",
+        "situationTh": "Lena ถามว่าจะขอ Mei อย่างไร พูดขออนุญาตดูเธอใช้แบบฟอร์มอย่างสุภาพ",
+        "promptEn": "Ask Mei for permission to watch her use the form.",
+        "goal": "ask",
+        "phraseFrames": [
+          "Would you mind ___?",
+          "Could you tell me what happened when ___?"
+        ],
+        "modelResponses": [
+          "Would you mind showing me how you usually fill in a form?",
+          "Could you tell me what happened when you tried the survey?"
+        ],
+        "acceptedIntentsTh": [
+          "ขออนุญาตอย่างสุภาพ",
+          "ให้ผู้ใช้เล่าหรือแสดงเอง",
+          "ไม่เดาสาเหตุแทนผู้ใช้"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณขออนุญาตและเปิดให้ผู้ใช้แสดงประสบการณ์เอง ไม่ชี้นำว่าปัญหาคืออะไร",
+          "naturalOption": "Would you mind showing me how you usually fill in a form?",
+          "improvementTh": "หลัง Would you mind ใช้กริยา -ing เช่น showing หรือ telling จะถูกรูปและฟังสุภาพ"
+        },
+        "askedBy": {
+          "speakerId": "lena",
+          "textEn": "How will you ask Mei?",
+          "textTh": "จะถาม Mei ว่ายังไง?"
+        }
+      },
       "interaction": {
         "promptEn": "Lena will meet Mei. What is the best first question?",
         "promptTh": "Lena จะไปพบ Mei คำถามแรกที่ดีที่สุดคืออะไร?",
@@ -387,6 +495,57 @@ export const ep03: Episode = {
           "speakerLabel": "Mei"
         }
       ],
+      "listenForTh": "ฟังว่าอะไรทำให้ Mei ส่งแบบสอบถามไม่ได้",
+      "listeningCheck": {
+        "id": "ep03_s3_listen",
+        "promptTh": "ทำไม Mei ส่งแบบสอบถามไม่ได้?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "ข้อเจ็ดเป็นแผนที่ที่โปรแกรมอ่านหน้าจออ่านไม่ได้ และข้ามไม่ได้"
+          },
+          {
+            "id": "b",
+            "labelTh": "อินเทอร์เน็ตหลุด"
+          },
+          {
+            "id": "c",
+            "labelTh": "เธอลืมรหัสผ่าน"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Mei บอกว่าโปรแกรมอ่านแค่ว่า \"image\" และ \"I can't skip it. It's required.\""
+      },
+      "speakingPrompt": {
+        "id": "ep03_s3_speak",
+        "situationTh": "Kuro ถามว่าปัญหาคืออะไรกันแน่ พูดรายงานบั๊กให้เขาทำซ้ำได้",
+        "promptEn": "Report the bug so Kuro can reproduce it.",
+        "goal": "report",
+        "phraseFrames": [
+          "Steps: ___. Expected: ___. Actual: ___.",
+          "___ blocks ___. It is ___, but ___ can't ___."
+        ],
+        "modelResponses": [
+          "Steps: open the survey with a screen reader and go to question seven. Expected: I can answer or skip. Actual: I'm stuck.",
+          "Question seven blocks some users. It is required, but screen readers can't read the map."
+        ],
+        "acceptedIntentsTh": [
+          "บอกว่าเกิดที่คำถามไหน",
+          "บอกว่าใครได้รับผลกระทบ",
+          "บอกสิ่งที่ควรเกิดกับสิ่งที่เกิดจริง"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณให้ข้อมูลพอที่ Kuro จะเห็นปัญหาเองและทดสอบได้ว่าแก้แล้ว โดยไม่โทษผู้ใช้",
+          "naturalOption": "Question seven blocks some users. It is required, but screen readers can't read the map.",
+          "improvementTh": "บอก Expected กับ Actual แยกกัน ทีมพัฒนาจะรู้ทันทีว่าต้องแก้ให้เป็นแบบไหน"
+        },
+        "askedBy": {
+          "speakerId": "kuro",
+          "textEn": "What exactly is the problem?",
+          "textTh": "ปัญหาคืออะไรกันแน่?"
+        }
+      },
       "interaction": {
         "promptEn": "How should Shion report this problem to the team?",
         "promptTh": "Shion ควรรายงานปัญหานี้ให้ทีมอย่างไร?",
@@ -502,6 +661,57 @@ export const ep03: Episode = {
           "textTh": "งั้นเขียนสิ่งที่เรารู้ และสิ่งที่เรายังไม่รู้"
         }
       ],
+      "listenForTh": "ฟังว่าไฟล์จาก Vesper High ขาดอะไร",
+      "listeningCheck": {
+        "id": "ep03_s4_listen",
+        "promptTh": "ไฟล์ export จาก Vesper High ขาดอะไร?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "รหัสโรงเรียน"
+          },
+          {
+            "id": "b",
+            "labelTh": "ชื่อนักเรียน"
+          },
+          {
+            "id": "c",
+            "labelTh": "วันที่ส่งคำตอบ"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Rei พูดว่า \"the export has no school code. I can't tell which answers are theirs.\""
+      },
+      "speakingPrompt": {
+        "id": "ep03_s4_speak",
+        "situationTh": "Chief ถามว่าควรเขียนอะไรในสรุป พูดบอกข้อจำกัดของแบบสอบถาม",
+        "promptEn": "Say the survey's limitations.",
+        "goal": "summarize",
+        "phraseFrames": [
+          "This survey does not show ___.",
+          "One limitation is that ___."
+        ],
+        "modelResponses": [
+          "This survey does not show which school each answer came from.",
+          "One limitation is that some groups answered less."
+        ],
+        "acceptedIntentsTh": [
+          "บอกสิ่งที่แบบสอบถามบอกไม่ได้",
+          "ไม่กล่าวหาโรงเรียนพันธมิตร",
+          "บอกข้อจำกัดอย่างน้อยหนึ่งข้อ"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณบอกข้อจำกัดของข้อมูลอย่างตรงไปตรงมา ทำให้คนอ่านใช้ผลสำรวจได้ถูกต้อง",
+          "naturalOption": "This survey does not show which school each answer came from.",
+          "improvementTh": "ถ้ามีข้อจำกัดหลายข้อ ใช้ One limitation is… และ Another is… คนฟังจะนับได้ว่ามีกี่ข้อ"
+        },
+        "askedBy": {
+          "speakerId": "chief",
+          "textEn": "What should we write in the summary?",
+          "textTh": "เราควรเขียนอะไรในสรุป?"
+        }
+      },
       "interaction": {
         "promptEn": "Which sentence should go in the survey summary?",
         "promptTh": "ประโยคไหนควรอยู่ในสรุปผลแบบสอบถาม?",
@@ -647,6 +857,58 @@ export const ep03: Episode = {
           "textTh": "มันคือข้อมูล"
         }
       ],
+      "listenForTh": "ฟังว่าครู Hayashi ชอบอะไรในการนำเสนอของทีม",
+      "listeningCheck": {
+        "id": "ep03_s5_listen",
+        "promptTh": "ครู Hayashi ขอบคุณทีมเรื่องอะไร?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "ทีมบอกข้อจำกัดของข้อมูล"
+          },
+          {
+            "id": "b",
+            "labelTh": "ทีมได้คำตอบมากที่สุด"
+          },
+          {
+            "id": "c",
+            "labelTh": "ทีมทำแอปเสร็จแล้ว"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "ครูพูดว่า \"Thank you for telling me the limitations. Many teams only show the good parts.\""
+      },
+      "speakingPrompt": {
+        "id": "ep03_s5_speak",
+        "situationTh": "ครู Hayashi ถามว่าควรทำอะไรต่อ พูดเสนอขั้นต่อไปหนึ่งถึงสองประโยค",
+        "promptEn": "Suggest the next step to Ms. Hayashi.",
+        "goal": "suggest",
+        "phraseFrames": [
+          "Next, we'd like to ___ and ___.",
+          "We know ___, but we don't know ___ yet."
+        ],
+        "modelResponses": [
+          "Next, we'd like to fix the school code issue with Vesper High and hear from more first-years.",
+          "We know the old form blocked some students, but we don't know every group's needs yet."
+        ],
+        "acceptedIntentsTh": [
+          "เสนอสิ่งที่จะทำต่อ",
+          "ตอบข้อจำกัดที่เพิ่งนำเสนอ",
+          "ไม่กล่าวหาโรงเรียนพันธมิตร"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณเสนอขั้นต่อไปที่ตอบข้อจำกัดโดยตรง ครูจึงเห็นว่าทีมมีแผน",
+          "naturalOption": "Next, we'd like to fix the school code issue with Vesper High and hear from more first-years.",
+          "improvementTh": "ใช้ we'd like to… แทน we must… จะฟังสุภาพเมื่อพูดกับครูหรือผู้ตัดสินใจ"
+        },
+        "askedBy": {
+          "speakerId": "teacher",
+          "textEn": "So what should we do next?",
+          "textTh": "แล้วเราควรทำอะไรต่อ?",
+          "speakerLabel": "Teacher"
+        }
+      },
       "interaction": {
         "promptEn": "Ms. Hayashi asks, \"So what should we do next?\" What is the best answer?",
         "promptTh": "ครู Hayashi ถามว่า \"แล้วเราควรทำอะไรต่อ?\" คำตอบไหนดีที่สุด?",
@@ -746,7 +1008,64 @@ export const ep03: Episode = {
       ]
     }
   ],
-  "shadowItems": [],
+  "shadowItems": [
+    {
+      "id": "ep03_sh1",
+      "mode": "shadow",
+      "promptTh": "ฟังแล้วพูดตาม ฝึกบอกว่าคำตอบมาจากใคร",
+      "modelPhrase": "Most of the responses came from second-year students.",
+      "substitutions": [],
+      "hint": "เน้นคำว่า Most และ second-year",
+      "examples": [
+        "Most of the responses came from second-year students."
+      ]
+    },
+    {
+      "id": "ep03_sh2",
+      "mode": "substitute",
+      "promptTh": "ใช้รูปเดิม เปลี่ยนกลุ่มคน",
+      "modelPhrase": "Most of the responses came from second-year students.",
+      "substitutions": [
+        "club members",
+        "students with new phones",
+        "one class"
+      ],
+      "hint": "แทนเฉพาะกลุ่มคนท้ายประโยค",
+      "examples": [
+        "Most of the responses came from club members.",
+        "Most of the responses came from one class."
+      ],
+      "frame": "Most of the responses came from ___."
+    },
+    {
+      "id": "ep03_sh3",
+      "mode": "substitute",
+      "promptTh": "ขออนุญาตอย่างสุภาพด้วย Would you mind",
+      "modelPhrase": "Would you mind showing me how you use the form?",
+      "substitutions": [
+        "trying the new form",
+        "answering a few questions",
+        "telling me what happened"
+      ],
+      "hint": "หลัง Would you mind ใช้กริยาเติม -ing",
+      "examples": [
+        "Would you mind trying the new form?",
+        "Would you mind answering a few questions?"
+      ],
+      "frame": "Would you mind ___?"
+    },
+    {
+      "id": "ep03_sh4",
+      "mode": "shadow",
+      "promptTh": "ฟังแล้วพูดตาม ฝึกบอกข้อจำกัด",
+      "modelPhrase": "This survey does not show which school each answer came from.",
+      "substitutions": [],
+      "hint": "หยุดสั้น ๆ หลังคำว่า show",
+      "examples": [
+        "This survey does not show which school each answer came from."
+      ]
+    }
+  ],
   "drills": [
     {
       "id": "ep03_d1",
@@ -816,7 +1135,7 @@ export const ep03: Episode = {
       },
       {
         "kind": "intern",
-        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "promptTh": "พูดบอกว่าคำตอบส่วนใหญ่เป็นบวก แต่มาจากผู้ใช้เว็บไซต์",
         "model": "Most of the responses were positive. But most of them came from our website users."
       },
       {
@@ -830,7 +1149,7 @@ export const ep03: Episode = {
       },
       {
         "kind": "intern",
-        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "promptTh": "พูดอธิบายว่าแบบสอบถามไม่ได้บอกความเห็นของผู้ใช้แอป",
         "model": "This survey does not show what app users think. Only a few of them answered."
       },
       {
@@ -844,7 +1163,7 @@ export const ep03: Episode = {
       },
       {
         "kind": "intern",
-        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "promptTh": "พูดว่ายังไม่รู้สาเหตุ และเดาอย่างระวัง",
         "model": "We don't know yet. The survey link may not work well in the app."
       },
       {
@@ -858,7 +1177,7 @@ export const ep03: Episode = {
       },
       {
         "kind": "intern",
-        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "promptTh": "พูดเสนอขั้นต่อไปอย่างสุภาพ",
         "model": "Would you mind if I test the link in the app and send it again?"
       },
       {
@@ -956,7 +1275,13 @@ export const ep03: Episode = {
       2,
       3
     ],
-    "stakeholderLabelTh": "ครูที่ปรึกษาบอกว่า",
+    "briefing": {
+      "speakerId": "teacher",
+      "textEn": "First-years answered the least, so their problems are not important.",
+      "textTh": "เด็กปีหนึ่งตอบน้อยที่สุด เพราะฉะนั้นปัญหาของพวกเขาไม่สำคัญ",
+      "speakerLabel": "Teacher"
+    },
+    "stakeholderLabelTh": "Teacher พูดว่า",
     "stakeholderQuote": "First-years answered the least, so their problems are not important.",
     "questions": [
       "What percentage of each group answered in the first round?",
@@ -993,6 +1318,7 @@ export const ep03: Episode = {
       "This survey does not show…",
       "Would you mind…?"
     ],
-    "nextTeaserTh": "นักเรียนสองคนจากสองโรงเรียนมี ID เดียวกัน — และระบบนับพวกเขาเป็นคนเดียว"
+    "nextTeaserTh": "นักเรียนสองคนจากสองโรงเรียนมี ID เดียวกัน — และระบบนับพวกเขาเป็นคนเดียว",
+    "voiceMissionTh": "ฟังหาเสียงที่หายไป, พูดบอกข้อจำกัดของ survey, และขออนุญาตก่อนสัมภาษณ์หรือสังเกต"
   }
 };

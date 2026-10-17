@@ -1,6 +1,8 @@
 # Acceptance QA
 
-Playwright checks for every item in `docs/spec/14-acceptance.md`, run against the production build.
+Playwright checks for every item in `docs/spec/14-acceptance.md` (listening/speaking version), run against the production build.
+Speech is stubbed with an init script: `speechSynthesis` finishes each line after a few ms and records text/rate, and
+`SpeechRecognition` returns a fixed phrase and counts starts. Real voices and a real microphone still need a manual check in a browser.
 
 ## One-time setup (Windows, from the project root)
 

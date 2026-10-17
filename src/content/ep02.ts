@@ -18,10 +18,16 @@ export const ep02: Episode = {
     "เขียน requirement ง่าย ๆ ที่ตรวจสอบได้",
     "ใช้รูปประโยค Could you give me an example? / What happens when…? / So the requirement is…"
   ],
-  "format": 1,
+  "format": 2,
+  "listeningMissionTh": "ฟังนักเรียนบรรยายเหตุการณ์คิวล่าสุดและจับเวลา/จุดที่ติด",
+  "speakingMissionTh": "ถามคำถามปลายเปิดและทวนความเข้าใจให้ผู้ใช้ยืนยัน",
   "contextTh": "หลังจากคุยกับนักเรียนหลายคน ปัญหาคิวโรงอาหารถูกพูดถึงบ่อยมาก แต่รายงานของโรงเรียนบอกว่าเวลารอเฉลี่ยสั้นมาก Miyu อยากเห็นด้วยตาตัวเอง ส่วน Kuro ยังรอคำตอบจาก IT เรื่องไฟล์ลึกลับ",
-  "goalTh": "สัมภาษณ์และสังเกตผู้ใช้จริง, หาว่าปัญหาจริงคืออะไร, และเทียบข้อมูลสังเกตกับรายงาน",
-  "hintWords": [],
+  "goalTh": "ฟังว่านักเรียนติดปัญหาตรงไหนในโรงอาหาร แล้วเทียบสิ่งที่ได้ยินกับตัวเลขในรายงาน",
+  "hintWords": [
+    "line",
+    "wait",
+    "minutes"
+  ],
   "vocabulary": [
     {
       "id": "interview",
@@ -160,6 +166,57 @@ export const ep02: Episode = {
           "textTh": "ดี งั้นเราโฟกัสที่โรงอาหาร"
         }
       ],
+      "listenForTh": "ฟังว่ารายงานกับนักเรียนพูดเรื่องเวลารอต่างกันอย่างไร",
+      "listeningCheck": {
+        "id": "ep02_s1_listen",
+        "promptTh": "รายงานของโรงเรียนบอกว่าเวลารอเฉลี่ยกี่นาที?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "สองนาที"
+          },
+          {
+            "id": "b",
+            "labelTh": "สิบห้านาที"
+          },
+          {
+            "id": "c",
+            "labelTh": "สี่นาที"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Rei พูดว่า \"the average waiting time is two minutes.\" ส่วนสิบห้านาทีคือสิ่งที่นักเรียนบอก Lena"
+      },
+      "speakingPrompt": {
+        "id": "ep02_s1_speak",
+        "situationTh": "Chief ถามว่าจะหาคำตอบยังไง พูดบอกความต่างของข้อมูลและเสนอวิธีตรวจ",
+        "promptEn": "Explain the difference and suggest how to check it.",
+        "goal": "suggest",
+        "phraseFrames": [
+          "The report says ___, but students say ___.",
+          "Let's ___ before we decide."
+        ],
+        "modelResponses": [
+          "The report says two minutes, but students say fifteen. Let's observe the line ourselves.",
+          "Let's watch the line at lunch before we decide."
+        ],
+        "acceptedIntentsTh": [
+          "บอกว่าข้อมูลสองแหล่งไม่ตรงกัน",
+          "เสนอให้ไปสังเกตเอง",
+          "ไม่สรุปว่าฝั่งไหนผิด"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณบอกว่าข้อมูลสองแหล่งขัดกัน และเสนอหาหลักฐานใหม่แทนการเชื่อฝั่งใดฝั่งหนึ่ง",
+          "naturalOption": "The report says two minutes, but students say fifteen. Let's observe the line ourselves.",
+          "improvementTh": "ใส่ตัวเลขจากทั้งสองฝั่ง (two minutes, fifteen) คนฟังจะเห็นทันทีว่าต่างกันมากแค่ไหน"
+        },
+        "askedBy": {
+          "speakerId": "chief",
+          "textEn": "So how do we find out?",
+          "textTh": "แล้วเราจะหาคำตอบยังไง?"
+        }
+      },
       "interaction": {
         "promptEn": "The report and the students disagree. What should the team say?",
         "promptTh": "รายงานกับนักเรียนพูดไม่ตรงกัน ทีมควรพูดว่าอะไร?",
@@ -284,6 +341,58 @@ export const ep02: Episode = {
           "speakerLabel": "Sora"
         }
       ],
+      "listenForTh": "ฟังว่า Sora ติดปัญหาตรงไหนเมื่อมาถึงโรงอาหาร",
+      "listeningCheck": {
+        "id": "ep02_s2_listen",
+        "promptTh": "ทำไม Sora ต้องไปต่อท้ายแถวใหม่?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "เธอต่อผิดแถว เพราะเป็นแถวของครู"
+          },
+          {
+            "id": "b",
+            "labelTh": "อาหารในแถวแรกหมด"
+          },
+          {
+            "id": "c",
+            "labelTh": "เพื่อนแซงคิว"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Sora เล่าว่า \"Then I found out it was the teachers' line.\" และบอกว่าไม่มีป้ายบอก ทุกคนเดาเอา"
+      },
+      "speakingPrompt": {
+        "id": "ep02_s2_speak",
+        "situationTh": "ทวนสิ่งที่ Sora เล่าให้เธอยืนยันว่าเข้าใจถูก",
+        "promptEn": "Check your understanding with Sora.",
+        "goal": "clarify",
+        "phraseFrames": [
+          "Let me check if I understand. ___",
+          "So you ___ because ___?"
+        ],
+        "modelResponses": [
+          "Let me check if I understand. You joined the teachers' line because there are no signs.",
+          "So you waited twice because you didn't know which line to join?"
+        ],
+        "acceptedIntentsTh": [
+          "ทวนว่า Sora ต่อผิดแถว",
+          "ทวนสาเหตุว่าไม่มีป้าย",
+          "ขอให้ผู้ใช้ยืนยัน"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณทวนทั้งเหตุการณ์และสาเหตุ ทำให้ผู้ใช้แก้ได้ถ้าเข้าใจผิด และทีมได้ requirement ที่ถูกต้อง",
+          "naturalOption": "Let me check if I understand. You joined the teachers' line because there are no signs.",
+          "improvementTh": "ต่อท้ายด้วย Is that right? ให้ผู้ใช้มีโอกาสยืนยันหรือแก้ไข"
+        },
+        "askedBy": {
+          "speakerId": "sora",
+          "textEn": "Does that make sense?",
+          "textTh": "เข้าใจที่ฉันเล่าไหม?",
+          "speakerLabel": "Sora"
+        }
+      },
       "interaction": {
         "promptEn": "Sora says \"The line is so slow.\" What should Miyu ask next?",
         "promptTh": "Sora บอกว่า \"คิวช้ามาก\" Miyu ควรถามอะไรต่อ?",
@@ -416,6 +525,57 @@ export const ep02: Episode = {
           "textTh": "และตัวเลขของนายก็ยืนยันว่ามันจริง"
         }
       ],
+      "listenForTh": "ฟังตัวเลขที่ Kuro อ่านจากตัวจับเวลา",
+      "listeningCheck": {
+        "id": "ep02_s3_listen",
+        "promptTh": "ระหว่างสังเกต 20 นาที มีนักเรียนเปลี่ยนแถวกี่คน?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "สิบเอ็ดคน"
+          },
+          {
+            "id": "b",
+            "labelTh": "สี่คน"
+          },
+          {
+            "id": "c",
+            "labelTh": "สองคน"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Kuro พูดว่า \"eleven students changed lines.\" ส่วน \"four minutes\" คือเวลาเฉลี่ยในแถว"
+      },
+      "speakingPrompt": {
+        "id": "ep02_s3_speak",
+        "situationTh": "Miyu ถามว่าความต้องการจริงคืออะไร พูดสรุปเป็น requirement หนึ่งประโยค",
+        "promptEn": "Say the requirement in one sentence.",
+        "goal": "summarize",
+        "phraseFrames": [
+          "So the requirement is that students can ___.",
+          "Students need to ___ before they ___."
+        ],
+        "modelResponses": [
+          "So the requirement is that students can see which line serves which food.",
+          "Students need to know which line to join before they wait."
+        ],
+        "acceptedIntentsTh": [
+          "บอกสิ่งที่ผู้ใช้ต้องทำได้",
+          "ไม่ระบุว่าต้องเป็นแอป",
+          "ตรวจสอบได้ว่าทำสำเร็จหรือไม่"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณสรุปความต้องการจากมุมของผู้ใช้ โดยยังไม่ผูกกับวิธีแก้แบบใดแบบหนึ่ง",
+          "naturalOption": "So the requirement is that students can see which line serves which food.",
+          "improvementTh": "ขึ้นต้นด้วย Students can… แทน We should build… จะเป็น requirement ไม่ใช่ solution"
+        },
+        "askedBy": {
+          "speakerId": "miyu",
+          "textEn": "So, what is the real need?",
+          "textTh": "แล้วความต้องการจริงคืออะไร?"
+        }
+      },
       "interaction": {
         "promptEn": "How should the team write the requirement?",
         "promptTh": "ทีมควรเขียน requirement อย่างไร?",
@@ -536,6 +696,57 @@ export const ep02: Episode = {
           "textTh": "งั้นเรามีคำถามที่สองแล้ว แต่รายงานสิ่งที่เรารู้ก่อน"
         }
       ],
+      "listenForTh": "ฟังว่า Rei เจออะไรแปลกในรายงาน",
+      "listeningCheck": {
+        "id": "ep02_s4_listen",
+        "promptTh": "Rei พบอะไรแปลกในรายงานของโรงเรียน?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "มีรายการในช่วงที่โรงอาหารปิด"
+          },
+          {
+            "id": "b",
+            "labelTh": "รายงานไม่มีวันที่"
+          },
+          {
+            "id": "c",
+            "labelTh": "มีชื่อนักเรียนซ้ำกัน"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Rei ชี้ timestamp 6:40 a.m. และบอกว่ามี \"two hundred records from closed hours.\" ทั้งที่โรงอาหารเปิด 11:30"
+      },
+      "speakingPrompt": {
+        "id": "ep02_s4_speak",
+        "situationTh": "Chief ถามว่าจะอธิบายให้ครูฟังยังไง พูดรายงานโดยไม่กล่าวหาใคร",
+        "promptEn": "Report the finding to the teacher without blaming anyone.",
+        "goal": "report",
+        "phraseFrames": [
+          "The report includes ___, so the average may be ___.",
+          "Some records are from ___. We don't know why yet."
+        ],
+        "modelResponses": [
+          "The report includes 200 records from closed hours, so the average may be too low.",
+          "Some records are from closed hours. We don't know why yet."
+        ],
+        "acceptedIntentsTh": [
+          "บอกข้อเท็จจริงพร้อมตัวเลข",
+          "บอกผลกระทบอย่างระวัง (may)",
+          "ไม่กล่าวหาว่ามีคนปลอมข้อมูล"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณรายงานสิ่งที่พบพร้อมผลกระทบ โดยใช้คำว่า may และไม่ชี้ว่าใครทำผิด",
+          "naturalOption": "The report includes 200 records from closed hours, so the average may be too low.",
+          "improvementTh": "ใช้ may หรือ might เมื่อยังไม่มีหลักฐานครบ ประโยคจะฟังรอบคอบและน่าเชื่อถือขึ้น"
+        },
+        "askedBy": {
+          "speakerId": "chief",
+          "textEn": "How do we explain this to the teacher?",
+          "textTh": "เราจะอธิบายเรื่องนี้ให้ครูฟังยังไง?"
+        }
+      },
       "interaction": {
         "promptEn": "How should the team explain this to the teacher?",
         "promptTh": "ทีมควรอธิบายเรื่องนี้ให้ครูฟังอย่างไร?",
@@ -672,6 +883,57 @@ export const ep02: Episode = {
           "textTh": "ข้างหลังพวกเขา Rei ยังคงจ้องรายการเวลา 6:40 น. อยู่"
         }
       ],
+      "listenForTh": "ฟังผลการทดลองป้ายกระดาษ",
+      "listeningCheck": {
+        "id": "ep02_s5_listen",
+        "promptTh": "หลังติดป้าย มีนักเรียนเปลี่ยนแถวกี่คน?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "สองคน"
+          },
+          {
+            "id": "b",
+            "labelTh": "สิบเอ็ดคน"
+          },
+          {
+            "id": "c",
+            "labelTh": "ไม่มีเลย"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Kuro พูดว่า \"Changed lines: two students. Yesterday it was eleven.\""
+      },
+      "speakingPrompt": {
+        "id": "ep02_s5_speak",
+        "situationTh": "Chief ถามว่าการทดลองเป็นยังไง พูดรายงานผลพร้อมข้อจำกัด",
+        "promptEn": "Report the test result and its limitation.",
+        "goal": "report",
+        "phraseFrames": [
+          "After we ___, ___ dropped from ___ to ___.",
+          "It's only ___, so we will ___."
+        ],
+        "modelResponses": [
+          "After we added signs, changed lines dropped from eleven to two. It's only one day, so we will test for a week.",
+          "The signs helped, but we need more days to be sure."
+        ],
+        "acceptedIntentsTh": [
+          "บอกตัวเลขก่อนและหลัง",
+          "บอกข้อจำกัดของการทดลอง",
+          "เสนอขั้นต่อไป"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณให้ทั้งผลลัพธ์และความไม่แน่นอน ทีมจึงตัดสินใจขั้นต่อไปได้ถูก",
+          "naturalOption": "After we added signs, changed lines dropped from eleven to two. It's only one day, so we will test for a week.",
+          "improvementTh": "แยกเป็นสองประโยค ประโยคแรกคือผล ประโยคที่สองคือข้อจำกัด คนฟังจะจำได้ง่ายกว่า"
+        },
+        "askedBy": {
+          "speakerId": "chief",
+          "textEn": "How did the test go?",
+          "textTh": "ทดลองแล้วเป็นยังไงบ้าง?"
+        }
+      },
       "interaction": {
         "promptEn": "How should Kuro report the test result to the team?",
         "promptTh": "Kuro ควรรายงานผลการทดลองให้ทีมอย่างไร?",
@@ -770,7 +1032,63 @@ export const ep02: Episode = {
       ]
     }
   ],
-  "shadowItems": [],
+  "shadowItems": [
+    {
+      "id": "ep02_sh1",
+      "mode": "shadow",
+      "promptTh": "ฟังแล้วพูดตาม ฝึกขอตัวอย่างจากผู้ใช้",
+      "modelPhrase": "Could you give me an example from today?",
+      "substitutions": [],
+      "hint": "เน้นคำว่า example และ today",
+      "examples": [
+        "Could you give me an example from today?"
+      ]
+    },
+    {
+      "id": "ep02_sh2",
+      "mode": "substitute",
+      "promptTh": "ฟังต้นแบบ แล้วเปลี่ยนเป็นขั้นตอนอื่นในโรงอาหาร",
+      "modelPhrase": "What happens when you arrive at the cafeteria?",
+      "substitutions": [
+        "order your food",
+        "pay",
+        "can't find a seat"
+      ],
+      "hint": "คงส่วน What happens when you ไว้ แล้วเปลี่ยนกริยาท้ายประโยค",
+      "examples": [
+        "What happens when you order your food?",
+        "What happens when you can't find a seat?"
+      ],
+      "frame": "What happens when you ___?"
+    },
+    {
+      "id": "ep02_sh3",
+      "mode": "substitute",
+      "promptTh": "พูด requirement ใหม่ด้วยรูปเดิม",
+      "modelPhrase": "So the requirement is that students can see which line serves which food.",
+      "substitutions": [
+        "find the right line",
+        "read the menu before they join"
+      ],
+      "hint": "ส่วนที่เติมคือสิ่งที่ผู้ใช้ต้องทำได้",
+      "examples": [
+        "So the requirement is that students can find the right line.",
+        "So the requirement is that students can read the menu before they join."
+      ],
+      "frame": "So the requirement is that students can ___."
+    },
+    {
+      "id": "ep02_sh4",
+      "mode": "shadow",
+      "promptTh": "ฟังแล้วพูดตาม ฝึกรายงานผลพร้อมข้อจำกัด",
+      "modelPhrase": "The signs helped on the first day, but we need more days to be sure.",
+      "substitutions": [],
+      "hint": "หยุดสั้น ๆ ก่อนคำว่า but",
+      "examples": [
+        "The signs helped on the first day, but we need more days to be sure."
+      ]
+    }
+  ],
   "drills": [
     {
       "id": "ep02_d1",
@@ -831,7 +1149,7 @@ export const ep02: Episode = {
       },
       {
         "kind": "intern",
-        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "promptTh": "พูดรับงานแล้วขอตัวอย่างว่าระบบช้าตอนไหน",
         "model": "Sure. Could you give me an example of when it was slow?"
       },
       {
@@ -845,7 +1163,7 @@ export const ep02: Episode = {
       },
       {
         "kind": "intern",
-        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "promptTh": "พูดถามว่าเกิดอะไรขึ้นระหว่างห้านาทีนั้น",
         "model": "What happened during those five minutes?"
       },
       {
@@ -859,7 +1177,7 @@ export const ep02: Episode = {
       },
       {
         "kind": "intern",
-        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "promptTh": "พูดทวนว่าปัญหาอาจไม่ใช่ความเร็ว",
         "model": "So the problem may not be speed. It may be the design."
       },
       {
@@ -873,7 +1191,7 @@ export const ep02: Episode = {
       },
       {
         "kind": "intern",
-        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "promptTh": "พูดขอสังเกตผู้ใช้จริงสองสามคน",
         "model": "Could I watch two or three users send the form?"
       }
     ],
@@ -956,7 +1274,13 @@ export const ep02: Episode = {
       1,
       2
     ],
-    "stakeholderLabelTh": "เจ้าหน้าที่บอกว่า",
+    "briefing": {
+      "speakerId": "cafeteria-staff",
+      "textEn": "The average is about two minutes, so there is no problem.",
+      "textTh": "ค่าเฉลี่ยประมาณสองนาที เพราะฉะนั้นไม่มีปัญหาอะไร",
+      "speakerLabel": "Cafeteria Staff"
+    },
+    "stakeholderLabelTh": "Cafeteria Staff พูดว่า",
     "stakeholderQuote": "The average is about two minutes, so there is no problem.",
     "questions": [
       "Which records should we check first?",
@@ -992,6 +1316,7 @@ export const ep02: Episode = {
       "What happens when…?",
       "So the requirement is…"
     ],
-    "nextTeaserTh": "แบบสอบถามของทีมได้คำตอบเยอะ — แต่ทำไมแทบไม่มีคำตอบจากนักเรียนปีหนึ่งเลย?"
+    "nextTeaserTh": "แบบสอบถามของทีมได้คำตอบเยอะ — แต่ทำไมแทบไม่มีคำตอบจากนักเรียนปีหนึ่งเลย?",
+    "voiceMissionTh": "ฟังผู้ใช้เล่าเหตุการณ์จริง, ถามคำถามปลายเปิด, และทวนความเข้าใจให้ผู้ใช้ยืนยัน"
   }
 };
