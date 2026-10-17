@@ -5,15 +5,17 @@
 }
 
 .shell__header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  flex-wrap: wrap;
-  max-width: var(--content-max);
+  gap: var(--space-4);
   width: 100%;
-  margin: 0 auto;
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--color-hud-border);
+  background: rgba(20, 11, 35, 0.86);
+  backdrop-filter: blur(8px);
 }
 
 .shell__brand {
@@ -24,32 +26,121 @@
   color: var(--color-text-on-dark);
   font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .shell__mark {
   width: 1.5rem;
   height: 1.5rem;
-  color: var(--color-primary);
+  color: var(--pink-400);
+  filter: drop-shadow(0 0 4px var(--color-glow));
 }
 
-.shell__nav {
+/* Tabs: across the top on wide screens, a bottom bar on phones. */
+.shell__tabs {
   display: flex;
+}
+
+.shell__tabs--top {
+  flex: 1;
+  justify-content: center;
   gap: var(--space-1);
 }
 
-.shell__navlink {
-  border: 0;
-  border-radius: var(--radius-pill);
-  padding: 0 var(--space-4);
-  background: transparent;
+.shell__tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-min);
+  padding: 0 var(--space-3);
   color: var(--color-text-muted-on-dark);
   font-size: var(--fs-sm);
+  text-decoration: none;
 }
 
-.shell__navlink:hover,
-.shell__navlink[aria-current="page"] {
-  background: var(--night-700);
+.shell__tab-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.shell__tab:hover {
   color: var(--color-text-on-dark);
+}
+
+.shell__tab[aria-current="page"] {
+  color: var(--color-text-on-dark);
+}
+
+.shell__tabs--top .shell__tab[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--pink-400);
+  box-shadow: 0 0 8px var(--color-glow);
+}
+
+.shell__profile {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+  color: var(--color-text-on-dark);
+  text-decoration: none;
+}
+
+.shell__profile .sprite--portrait {
+  width: 2.5rem;
+  border-radius: 50%;
+}
+
+.shell__profile-empty {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px dashed var(--color-hud-border);
+  border-radius: 50%;
+  color: var(--color-text-muted-on-dark);
+}
+
+.shell__profile-text {
+  display: grid;
+  gap: 2px;
+  min-width: 7rem;
+}
+
+.shell__level {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.shell__xpbar {
+  height: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--night-700);
+  overflow: hidden;
+}
+
+.shell__xpbar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink-500), #b48cff);
+  box-shadow: 0 0 6px var(--color-glow);
+}
+
+.shell__xp {
+  font-size: 0.75rem;
+  color: var(--color-text-muted-on-dark);
 }
 
 .shell__main {
@@ -58,4 +149,55 @@
   max-width: var(--content-max);
   margin: 0 auto;
   padding: var(--space-4) var(--space-4) var(--space-8);
+}
+
+.shell__tabs--bottom {
+  display: none;
+}
+
+@media (max-width: 56rem) {
+  .shell__tabs--top {
+    display: none;
+  }
+
+  .shell__tabs--bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 1px solid var(--color-hud-border);
+    padding-bottom: env(safe-area-inset-bottom);
+    background: rgba(20, 11, 35, 0.94);
+    backdrop-filter: blur(8px);
+  }
+
+  .shell__tabs--bottom .shell__tab {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    min-height: 3.5rem;
+    padding: 0;
+    font-size: 0.75rem;
+  }
+
+  .shell__tabs--bottom .shell__tab[aria-current="page"] {
+    color: var(--pink-400);
+  }
+
+  .shell__main {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+
+  .shell__profile-text {
+    min-width: 5.5rem;
+  }
+}
+
+/* Dashboard-style pages use the full width like the mockup; reading pages stay narrow. */
+.shell__main--home,
+.shell__main--career {
+  max-width: 72rem;
 }

@@ -1,0 +1,130 @@
+.career__head {
+  padding: var(--space-4) 0 var(--space-6);
+}
+
+.career__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 9vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 0 18px rgba(255, 122, 184, 0.6), 0 0 2px rgba(255, 198, 230, 0.9);
+}
+
+.career__sub {
+  margin: var(--space-2) 0 var(--space-1);
+  color: var(--pink-100);
+}
+
+.career__lead {
+  max-width: 38rem;
+  color: var(--color-text-muted-on-dark);
+}
+
+.career__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each card: illustration on top, role text on a dark glass panel — like the mockup cards. */
+.career__card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-hud-border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(170deg, rgba(58, 39, 88, 0.6), rgba(20, 11, 35, 0.95));
+  box-shadow: 0 6px 24px rgba(255, 122, 184, 0.08);
+}
+
+.career__card--current {
+  border-color: var(--pink-400);
+  box-shadow: 0 0 0 1px var(--pink-400), 0 0 24px var(--color-glow);
+}
+
+.career__art {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6) 0;
+  background: radial-gradient(circle at 50% 30%, rgba(255, 122, 184, 0.25), transparent 70%);
+}
+
+.career__art .sprite--card {
+  width: 70%;
+}
+
+.career__body {
+  display: grid;
+  gap: 2px;
+  padding: var(--space-3) var(--space-4) var(--space-4);
+}
+
+.career__body p {
+  margin: 0;
+}
+
+.career__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  line-height: 1.1;
+}
+
+.career__name-th {
+  color: var(--pink-100);
+  font-weight: 500;
+}
+
+.career__body .career__tag {
+  margin-top: var(--space-2);
+  font-size: var(--fs-sm);
+}
+
+.career__tag-th,
+.career__with {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted-on-dark);
+}
+
+.career__start {
+  margin-top: var(--space-3);
+}
+
+.career__skip {
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+.career__skip-btn {
+  border: 0;
+  background: none;
+  color: var(--pink-100);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Phones: image beside the text so all six roles fit without long scrolling. */
+@media (max-width: 40rem) {
+  .career__card {
+    flex-direction: row;
+  }
+
+  .career__art {
+    flex: none;
+    align-items: flex-end;
+    width: 6.5rem;
+    padding: var(--space-3) var(--space-2) 0;
+  }
+
+  .career__art .sprite--card {
+    width: 100%;
+  }
+
+  .career__body {
+    padding: var(--space-3);
+  }
+}

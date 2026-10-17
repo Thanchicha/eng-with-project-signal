@@ -230,3 +230,10 @@
   font-size: clamp(2.1rem, 8vw, 3.1rem);
   text-shadow: 0 0 14px rgba(255, 122, 184, 0.45);
 }
+
+/* Keep the begin button above the phone tab bar. */
+@media (max-width: 56rem) {
+  .intro__cta {
+    bottom: calc(3.5rem + env(safe-area-inset-bottom));
+  }
+}

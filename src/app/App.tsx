@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import AppShell from "../components/AppShell";
 import { useProgress } from "../features/progress/progressStorage";
+import CareerScreen from "../screens/CareerScreen";
 import EpisodeIntroScreen from "../screens/EpisodeIntroScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LearnScreen from "../screens/LearnScreen";
+import MissionsScreen from "../screens/MissionsScreen";
 import NotebookScreen from "../screens/NotebookScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import StoryScreen from "../screens/StoryScreen";
@@ -41,9 +43,20 @@ export default function App() {
     case "settings":
       screen = <SettingsScreen progress={progress} update={update} />;
       break;
+    case "career":
+      screen = <CareerScreen progress={progress} update={update} />;
+      break;
+    case "missions":
+      screen = <MissionsScreen progress={progress} />;
+      break;
     default:
-      screen = <HomeScreen progress={progress} />;
+      // First visit: offer "Choose your path" once (it can be skipped).
+      screen = progress.careerPrompted ? <HomeScreen progress={progress} /> : <CareerScreen progress={progress} update={update} />;
   }
 
-  return <AppShell route={route}>{screen}</AppShell>;
+  return (
+    <AppShell route={route} progress={progress}>
+      {screen}
+    </AppShell>
+  );
 }

@@ -7,6 +7,8 @@ export type Route =
   | { name: "play"; episodeId: string }
   | { name: "learn"; episodeId: string; step?: string }
   | { name: "notebook" }
+  | { name: "career" }
+  | { name: "missions" }
   | { name: "settings" };
 
 export function parseHash(hash: string): Route {
@@ -17,6 +19,8 @@ export function parseHash(hash: string): Route {
     return { name: "intro", episodeId: parts[1] };
   }
   if (parts[0] === "notebook") return { name: "notebook" };
+  if (parts[0] === "career") return { name: "career" };
+  if (parts[0] === "missions") return { name: "missions" };
   if (parts[0] === "settings") return { name: "settings" };
   return { name: "home" };
 }
@@ -31,6 +35,10 @@ export function routeToHash(route: Route): string {
       return `#/ep/${route.episodeId}/learn${route.step ? `/${route.step}` : ""}`;
     case "notebook":
       return "#/notebook";
+    case "career":
+      return "#/career";
+    case "missions":
+      return "#/missions";
     case "settings":
       return "#/settings";
     default:

@@ -98,8 +98,8 @@ def new_page(browser: Browser, *, recognition=True, **ctx) -> Page:
 def fresh(page: Page, route: str = "#/", progress: dict | None = None):
     page.goto(f"{BASE}/")
     page.evaluate(f"localStorage.removeItem('{KEY}')")
-    if progress is not None:
-        page.evaluate("([k, v]) => localStorage.setItem(k, JSON.stringify(v))", [KEY, progress])
+    # Skip the first-visit "Choose your path" screen unless a test passes its own progress.
+    page.evaluate("([k, v]) => localStorage.setItem(k, JSON.stringify(v))", [KEY, progress if progress is not None else progress_with()])
     # Leave the app before loading the route: a hash-only navigation would let the running app
     # save its in-memory progress over what we just stored.
     page.goto("about:blank")
@@ -118,7 +118,7 @@ def stored(page: Page) -> dict:
 def progress_with(**overrides) -> dict:
     base = {
         "completedEpisodes": [], "savedVocabulary": [], "triedDrills": [], "practicedPatterns": [], "viewedChoices": [],
-        "triedChecks": [], "replays": {}, "spokenIds": [],
+        "triedChecks": [], "replays": {}, "spokenIds": [], "careerPrompted": True,
         "settings": {"thaiHints": False, "textSize": "normal", "alwaysShowTranscript": False, "audioRate": 1, "textOnly": False, "micConsent": "unset"},
     }
     return base | overrides
@@ -305,7 +305,7 @@ def t_keyboard(browser: Browser):
     page.keyboard.press("Enter")
     after_stop = page.locator(".scene-audio__main").inner_text()
     unlabeled = []
-    for r in ["#/", "#/ep/ep01", "#/ep/ep01/play", "#/ep/ep01/learn/patterns", "#/ep/ep01/learn/shadow", "#/ep/ep01/learn/speak",
+    for r in ["#/", "#/career", "#/missions", "#/ep/ep01", "#/ep/ep01/play", "#/ep/ep01/learn/patterns", "#/ep/ep01/learn/shadow", "#/ep/ep01/learn/speak",
               "#/ep/ep01/learn/case", "#/notebook", "#/settings"]:
         page.goto(f"{BASE}/{r}")
         page.wait_for_timeout(150)
@@ -317,7 +317,7 @@ def t_keyboard(browser: Browser):
                .map(el => el.outerHTML.slice(0, 80))"""
         )
     record("7 labels / stop / keyboard", "หยุด" in stop_label and "กำลังเล่น" in status and "ฟัง" in after_stop and not unlabeled,
-           f"Enter on play → '{stop_label.strip()}' with status '{status[:30]}…'; Enter again stops; unlabelled controls on 9 screens: {unlabeled or 'none'}")
+           f"Enter on play → '{stop_label.strip()}' with status '{status[:30]}…'; Enter again stops; unlabelled controls on 11 screens: {unlabeled or 'none'}")
     page.context.close()
 
 
@@ -404,7 +404,7 @@ def t_refresh(browser: Browser):
 @check("13 locked previews")
 def t_locked(browser: Browser):
     page = new_page(browser)
-    fresh(page)
+    fresh(page, "#/missions")
     cards = page.locator(".ep-node")
     total, complete = cards.count(), 0
     for i in range(1, total):
@@ -422,7 +422,7 @@ def t_locked(browser: Browser):
 # 14 ─ phone layout
 @check("14 mobile layout")
 def t_mobile(browser: Browser):
-    routes = ["#/", "#/ep/ep01", "#/ep/ep01/play", "#/ep/ep01/learn/note", "#/ep/ep01/learn/patterns", "#/ep/ep01/learn/shadow",
+    routes = ["#/", "#/career", "#/missions", "#/ep/ep01", "#/ep/ep01/play", "#/ep/ep01/learn/note", "#/ep/ep01/learn/patterns", "#/ep/ep01/learn/shadow",
               "#/ep/ep01/learn/speak", "#/ep/ep01/learn/case", "#/ep/ep01/learn/write", "#/ep/ep01/learn/recap", "#/notebook", "#/settings"]
     problems = []
     for width in (375, 320):
