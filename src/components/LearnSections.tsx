@@ -1,5 +1,9 @@
-import type { Episode } from "../content/types";
-import { canSpeak, speak } from "../features/speech/speak";
+import { useState } from "react";
+import type { Episode, SentencePattern } from "../content/types";
+import type { Settings } from "../features/progress/progressStorage";
+import { audioPlayer } from "../features/speech/audioPlayer";
+import { canSpeak } from "../features/speech/speak";
+import "./PhraseBank.css"; // shared text-button style
 import "./LearnSections.css";
 
 /** "Label: text" → bold label + text, so known / assumption / next-question read at a glance. */
@@ -59,30 +63,58 @@ export function LessonPanel({ episode }: { episode: Episode }) {
   );
 }
 
-export function PatternsPanel({ episode }: { episode: Episode }) {
+/** Spec 06 E: the player hears each model phrase before reading the pattern. */
+export function PatternsPanel({ episode, settings }: { episode: Episode; settings: Settings }) {
+  const canPlay = canSpeak() && !settings.textOnly;
   return (
-    <ol className="patterns">
-      {episode.sentencePatterns.map((p) => (
-        <li key={p.pattern} className="paper pattern">
+    <>
+      {canPlay && <p className="paper__lead patterns__lead">กดฟังตัวอย่างก่อน แล้วรูปประโยคจะแสดงขึ้นมา ลองพูดตามทันทีหลังฟัง</p>}
+      <ol className="patterns">
+        {episode.sentencePatterns.map((p, i) => (
+          <PatternCard key={p.pattern} pattern={p} index={i + 1} canPlay={canPlay} rate={settings.audioRate} />
+        ))}
+      </ol>
+    </>
+  );
+}
+
+function PatternCard({ pattern: p, index, canPlay, rate }: { pattern: SentencePattern; index: number; canPlay: boolean; rate: number }) {
+  const [shown, setShown] = useState(!canPlay);
+  const play = () => {
+    audioPlayer.playLines([{ speakerId: "narrator", textEn: p.example }], { rate });
+    setShown(true);
+  };
+  return (
+    <li className="paper pattern">
+      <p className="pattern__num">รูปประโยค {index}</p>
+      {canPlay && (
+        <div className="pattern__actions">
+          <button type="button" className="btn btn--primary" onClick={play}>
+            <span aria-hidden="true">▶</span> {shown ? "ฟังอีกครั้ง" : "ฟังตัวอย่าง"}
+          </button>
+          {!shown && (
+            <button type="button" className="phrases__hint-toggle" onClick={() => setShown(true)}>
+              แสดงรูปประโยคเลย
+            </button>
+          )}
+        </div>
+      )}
+      {shown && (
+        <>
+          <p className="pattern__example" lang="en">
+            {p.example}
+          </p>
           <p className="pattern__frame" lang="en">
             {p.pattern}
           </p>
-          <p className="pattern__example" lang="en">
-            {p.example}
-            {canSpeak() && (
-              <button type="button" className="listen" onClick={() => speak(p.example)}>
-                ฟัง
-              </button>
-            )}
-          </p>
-          <p className="pattern__subs-label">แทนคำได้</p>
+          <p className="pattern__subs-label">แทนคำแล้วพูดออกเสียง</p>
           <ul className="pattern__subs" lang="en">
             {p.substitutions.map((s) => (
               <li key={s}>{s}</li>
             ))}
           </ul>
-        </li>
-      ))}
-    </ol>
+        </>
+      )}
+    </li>
   );
 }

@@ -89,3 +89,28 @@
   color: var(--color-primary-strong);
   font-size: var(--fs-sm);
 }
+
+.patterns__lead {
+  margin-bottom: var(--space-3);
+  background: none;
+  color: var(--color-text-muted-on-dark);
+}
+
+.pattern__num {
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-primary-strong);
+}
+
+.pattern__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.pattern__actions .btn {
+  gap: var(--space-2);
+}

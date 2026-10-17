@@ -1,23 +1,34 @@
-import { useId, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { MiniCase } from "../content/types";
-import "./PatternExercise.css"; // shares input, tile and result styles
+import type { Settings } from "../features/progress/progressStorage";
+import { audioPlayer } from "../features/speech/audioPlayer";
+import { canSpeak } from "../features/speech/speak";
+import AnswerControls, { type AnswerMode } from "./AnswerControls";
+import { SpeakerBadge, speakerName } from "./DialoguePanel";
+import PhraseBank from "./PhraseBank";
+import "./LearnSections.css";
 import "./MiniCasePanel.css";
 
-/** Small data case: read the table, question the claim, write a short summary. No AI needed. */
-export default function MiniCasePanel({ miniCase }: { miniCase: MiniCase }) {
-  const answerId = useId();
-  const [answer, setAnswer] = useState("");
-  const [showSample, setShowSample] = useState(false);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
+interface Props {
+  miniCase: MiniCase;
+  settings: Settings;
+  onConsent: (value: "granted" | "declined") => void;
+  onAttempt?: (mode: AnswerMode) => void;
+}
+
+/**
+ * Mini Case (spec 06 F): look at a small table, play the spoken briefing, then say your
+ * questions or a 1–3 sentence summary. The sample answer opens only after an attempt. No AI.
+ */
+export default function MiniCasePanel({ miniCase, settings, onConsent, onAttempt }: Props) {
+  const canPlay = canSpeak() && !settings.textOnly;
   const numeric = new Set(miniCase.numericColumns ?? []);
+  const briefing = miniCase.briefing;
+  const [briefingShown, setBriefingShown] = useState(!canPlay || !briefing);
+  const [answer, setAnswer] = useState<{ text?: string }>();
 
-  const insertTemplate = (t: string) => {
-    setAnswer((a) => (a.trim() ? `${a.trimEnd()} ${t}` : t));
-    inputRef.current?.focus();
-  };
-
-  const tried = answer.trim().split(/\s+/).length >= 5;
-  const usedTemplates = miniCase.templates.filter((t) => answer.includes(t.split("___")[0].trim())).length;
+  useEffect(() => () => audioPlayer.stop(), []);
+  const play = (textEn: string, speakerId = "narrator") => audioPlayer.playLines([{ speakerId, textEn }], { rate: settings.audioRate });
 
   return (
     <div className="minicase">
@@ -54,67 +65,100 @@ export default function MiniCasePanel({ miniCase }: { miniCase: MiniCase }) {
         </div>
         {miniCase.noteTh && <p className="minicase__note">{miniCase.noteTh}</p>}
 
-        <blockquote className="minicase__quote">
-          <p className="minicase__quote-who">{miniCase.stakeholderLabelTh}</p>
-          <p lang="en">“{miniCase.stakeholderQuote}”</p>
-        </blockquote>
+        <div className="minicase__briefing">
+          {briefing && <SpeakerBadge line={briefing} />}
+          <div>
+            <p className="minicase__quote-who">{briefing ? `Briefing จาก ${speakerName(briefing)}` : miniCase.stakeholderLabelTh}</p>
+            {briefingShown ? (
+              <>
+                <p lang="en" className="minicase__quote-en">
+                  “{miniCase.stakeholderQuote}”
+                </p>
+                {briefing?.textTh && <p className="minicase__note">{briefing.textTh}</p>}
+              </>
+            ) : (
+              <p className="minicase__note">กดฟัง briefing ก่อน แล้วข้อความจะแสดง</p>
+            )}
+            <div className="pattern__actions">
+              {canPlay && briefing && (
+                <button
+                  type="button"
+                  className="btn btn--primary"
+                  onClick={() => {
+                    play(briefing.textEn, briefing.speakerId);
+                    setBriefingShown(true);
+                  }}
+                >
+                  <span aria-hidden="true">▶</span> {briefingShown ? "ฟัง briefing อีกครั้ง" : "ฟัง briefing"}
+                </button>
+              )}
+              {!briefingShown && (
+                <button type="button" className="phrases__hint-toggle" onClick={() => setBriefingShown(true)}>
+                  แสดงข้อความ
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
 
-        <h3 className="minicase__h">ลองตั้งคำถามกับข้อมูลนี้</h3>
+        <h3 className="minicase__h">ลองตั้งคำถามกับข้อมูลนี้ (พูดออกเสียง)</h3>
         <ul className="minicase__questions" lang="en">
           {miniCase.questions.map((q) => (
-            <li key={q}>{q}</li>
+            <li key={q}>
+              {q}
+              {canPlay && (
+                <button type="button" className="listen" aria-label={`ฟังคำถาม ${q}`} onClick={() => play(q)}>
+                  ฟัง
+                </button>
+              )}
+            </li>
           ))}
         </ul>
       </div>
 
       <div className="paper minicase__answer">
-        <label htmlFor={answerId} className="minicase__h">
-          เขียนสรุปสั้น ๆ เป็นภาษาอังกฤษ
-        </label>
-        <p className="minicase__hint">แตะแม่แบบเพื่อเพิ่มลงในคำตอบ แล้วเติมช่องว่าง</p>
-        <div className="minicase__templates">
-          {miniCase.templates.map((t) => (
-            <button key={t} type="button" className="tile" lang="en" onClick={() => insertTemplate(t)}>
-              {t}
-            </button>
-          ))}
-        </div>
-        <textarea
-          id={answerId}
-          ref={inputRef}
-          className="drill__input"
-          lang="en"
-          rows={5}
-          value={answer}
-          onChange={(e) => setAnswer(e.target.value)}
+        <h3 className="minicase__h">พูดสรุป 1–3 ประโยคเป็นภาษาอังกฤษ</h3>
+        <PhraseBank
+          frames={miniCase.templates}
+          intentsTh={["บอกว่าข้อมูลแสดงอะไร", "บอกสิ่งที่ยังไม่รู้", "บอกว่าควรทำอะไรก่อนตัดสินใจ"]}
+          rate={settings.audioRate}
+          canPlay={canPlay}
         />
-        {answer.includes("___") && <p className="minicase__hint">ยังมีช่องว่าง ___ ที่ยังไม่ได้เติม</p>}
-        <div className="drill__actions">
-          <button
-            type="button"
-            className="btn btn--primary"
-            disabled={!tried}
-            aria-expanded={showSample}
-            onClick={() => setShowSample((v) => !v)}
-          >
-            {showSample ? "ซ่อนคำตอบตัวอย่าง" : "ดูคำตอบตัวอย่าง"}
-          </button>
-          {!tried && <span className="minicase__hint">เขียนอย่างน้อยหนึ่งประโยคก่อน แล้วจะเปิดดูคำตอบตัวอย่างได้</span>}
-        </div>
-        <div aria-live="polite">
-          {showSample && (
-            <>
-              <p className="drill__result">
-                {usedTemplates === miniCase.templates.length
-                  ? "คุณบอกครบทั้งสิ่งที่ข้อมูลแสดง สิ่งที่ยังไม่รู้ และสิ่งที่ควรทำต่อ ลองเทียบกับตัวอย่างดู"
-                  : "ลองเทียบกับตัวอย่าง: คำตอบที่ดีบอกว่าข้อมูลแสดงอะไร ยังไม่รู้อะไร และควรทำอะไรต่อ"}
+        {!answer ? (
+          <AnswerControls
+            settings={settings}
+            onConsent={onConsent}
+            howTh="พูดสรุปออกเสียงโดยใช้แม่แบบด้านบนได้ แล้วเลือกวิธีบันทึก คำตอบตัวอย่างจะเปิดหลังคุณลองแล้ว"
+            onSubmit={(mode, text) => {
+              setAnswer({ text });
+              onAttempt?.(mode);
+            }}
+          />
+        ) : (
+          <div className="minicase__result" aria-live="polite">
+            {answer.text && (
+              <p className="speak-resp__yours">
+                คุณพูด: <span lang="en">“{answer.text}”</span>
               </p>
-              <p className="minicase__sample" lang="en">
-                {miniCase.sampleAnswer}
-              </p>
-            </>
-          )}
-        </div>
+            )}
+            <p className="drill__result">
+              เทียบกับตัวอย่าง: คำตอบที่ดีบอกว่าข้อมูลแสดงอะไร ยังไม่รู้อะไร และควรทำอะไรต่อ คำตอบของคุณไม่จำเป็นต้องเหมือนทุกคำ
+            </p>
+            <p className="minicase__sample" lang="en">
+              {miniCase.sampleAnswer}
+            </p>
+            <div className="speak-resp__buttons">
+              {canPlay && (
+                <button type="button" className="btn btn--soft" onClick={() => play(miniCase.sampleAnswer)}>
+                  ▶ ฟังคำตอบตัวอย่าง
+                </button>
+              )}
+              <button type="button" className="btn btn--soft" onClick={() => setAnswer(undefined)}>
+                พูดอีกครั้ง
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

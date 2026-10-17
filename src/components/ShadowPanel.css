@@ -1,0 +1,74 @@
+.shadow {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.shadow__nav ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shadow__nav button {
+  width: var(--tap-min);
+  border: 2px solid var(--navy-700);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text-on-dark);
+  font-weight: 700;
+}
+
+.shadow__nav button.is-done {
+  border-color: var(--color-primary-strong);
+  background: var(--color-primary-strong);
+}
+
+.shadow__nav button[aria-current="step"] {
+  border-color: var(--color-highlight);
+}
+
+.shadow__card {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.shadow__card > p {
+  margin: 0;
+}
+
+.shadow__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.shadow__title {
+  margin: 0;
+  font-size: var(--fs-lg);
+}
+
+.shadow__title:focus {
+  outline: none;
+}
+
+.shadow__frame .pattern__subs-label:first-child {
+  margin-top: 0;
+}
+
+.shadow__result {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.shadow__result > p {
+  margin: 0;
+}
+
+.shadow__tip {
+  font-size: var(--fs-sm);
+}

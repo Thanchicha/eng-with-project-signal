@@ -42,25 +42,13 @@
   color: var(--color-text-muted);
 }
 
-.minicase__quote {
-  margin: var(--space-4) 0;
-  border-left: 3px solid var(--color-accent);
-  padding-left: var(--space-3);
-}
 
-.minicase__quote p {
-  margin: 0;
-}
 
-.minicase__quote p[lang="en"] {
-  font-size: var(--fs-lg);
-  color: var(--navy-800);
-}
 
 .minicase__quote-who {
   font-size: var(--fs-sm);
   font-weight: 700;
-  color: var(--coral-500);
+  color: #b4412b; /* coral darkened for 4.5:1 on cream */
 }
 
 .minicase__h {
@@ -80,15 +68,45 @@
   color: var(--color-text-muted);
 }
 
-.minicase__templates {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-3);
-}
 
 .minicase__sample {
   margin-top: var(--space-2);
   border-left: 3px solid var(--color-highlight);
   padding-left: var(--space-3);
+}
+
+.minicase__briefing {
+  display: flex;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--space-3);
+}
+
+.minicase__briefing p {
+  margin: 0 0 var(--space-1);
+}
+
+.minicase__quote-en {
+  font-size: var(--fs-lg);
+  color: var(--navy-800);
+}
+
+.minicase__questions li {
+  margin-bottom: var(--space-1);
+}
+
+.minicase__questions .listen {
+  margin-left: var(--space-2);
+}
+
+.minicase__answer,
+.minicase__result {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.minicase__answer > .minicase__h,
+.minicase__result > p {
+  margin: 0;
 }
