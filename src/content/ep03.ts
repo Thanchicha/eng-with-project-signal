@@ -19,8 +19,10 @@ export const ep03: Episode = {
     "เขียนคำถามที่ไม่ชี้นำ",
     "ใช้รูปประโยค Most of the responses came from… / This survey does not show… / Would you mind…?"
   ],
+  "format": 1,
   "contextTh": "ทีมส่งแบบสอบถามออนไลน์เรื่องปัญหาในโรงเรียน ได้คำตอบเยอะกว่าที่คิด Chief อยากสรุปผลเร็ว ๆ แต่ Lena สังเกตว่าคำตอบมาจากนักเรียนแค่บางกลุ่ม",
   "goalTh": "หาว่าเสียงของใครหายไปจากข้อมูล, ปรับแบบสอบถามให้ทุกคนตอบได้, และพูดถึงข้อจำกัดของผลสำรวจอย่างชัดเจน",
+  "hintWords": [],
   "vocabulary": [
     {
       "id": "survey",
@@ -744,6 +746,7 @@ export const ep03: Episode = {
       ]
     }
   ],
+  "shadowItems": [],
   "drills": [
     {
       "id": "ep03_d1",
@@ -801,6 +804,73 @@ export const ep03: Episode = {
   ],
   "speakPractice": {
     "situationTh": "คุณนำเสนอผลแบบสอบถามลูกค้า และหัวหน้าอยากสรุปว่า \"ทุกคนชอบฟีเจอร์ใหม่\"",
+    "turns": [
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "manager",
+          "textEn": "Great survey. So all customers love the new feature?",
+          "textTh": "แบบสอบถามดีมาก งั้นลูกค้าทุกคนชอบฟีเจอร์ใหม่ใช่ไหม?",
+          "speakerLabel": "Manager"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "model": "Most of the responses were positive. But most of them came from our website users."
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "manager",
+          "textEn": "Is that a problem?",
+          "textTh": "นั่นเป็นปัญหาเหรอ?",
+          "speakerLabel": "Manager"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "model": "This survey does not show what app users think. Only a few of them answered."
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "manager",
+          "textEn": "Why so few?",
+          "textTh": "ทำไมน้อยจัง?",
+          "speakerLabel": "Manager"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "model": "We don't know yet. The survey link may not work well in the app."
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "manager",
+          "textEn": "What do you suggest?",
+          "textTh": "แล้วคุณแนะนำอะไร?",
+          "speakerLabel": "Manager"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "model": "Would you mind if I test the link in the app and send it again?"
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "manager",
+          "textEn": "Go ahead.",
+          "textTh": "เอาเลย",
+          "speakerLabel": "Manager"
+        }
+      }
+    ],
     "lines": [
       {
         "speakerId": "manager",
@@ -810,9 +880,8 @@ export const ep03: Episode = {
       },
       {
         "speakerId": "intern",
-        "textEn": "Most of the responses were positive. But most of them came from our website users.",
-        "textTh": "คำตอบส่วนใหญ่เป็นบวกครับ/ค่ะ แต่ส่วนใหญ่มาจากผู้ใช้เว็บไซต์",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "Most of the responses were positive. But most of them came from our website users."
       },
       {
         "speakerId": "manager",
@@ -822,9 +891,8 @@ export const ep03: Episode = {
       },
       {
         "speakerId": "intern",
-        "textEn": "This survey does not show what app users think. Only a few of them answered.",
-        "textTh": "แบบสอบถามนี้ไม่ได้บอกว่าผู้ใช้แอปคิดอย่างไร มีตอบแค่ไม่กี่คน",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "This survey does not show what app users think. Only a few of them answered."
       },
       {
         "speakerId": "manager",
@@ -834,9 +902,8 @@ export const ep03: Episode = {
       },
       {
         "speakerId": "intern",
-        "textEn": "We don't know yet. The survey link may not work well in the app.",
-        "textTh": "ยังไม่ทราบครับ/ค่ะ ลิงก์แบบสอบถามอาจใช้ในแอปได้ไม่ดี",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "We don't know yet. The survey link may not work well in the app."
       },
       {
         "speakerId": "manager",
@@ -846,9 +913,8 @@ export const ep03: Episode = {
       },
       {
         "speakerId": "intern",
-        "textEn": "Would you mind if I test the link in the app and send it again?",
-        "textTh": "ขอทดสอบลิงก์ในแอปแล้วส่งใหม่อีกรอบได้ไหมครับ/คะ?",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "Would you mind if I test the link in the app and send it again?"
       },
       {
         "speakerId": "manager",

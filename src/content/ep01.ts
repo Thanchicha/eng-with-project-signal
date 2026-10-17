@@ -13,13 +13,21 @@ export const ep01: Episode = {
   ],
   "summaryTh": "โรงเรียน CAGE ประกาศการแข่งขัน Future School Project ด้วยโจทย์สั้นแค่ประโยคเดียว ทีม 2-A ที่เพิ่งรู้จักกันต้องตัดสินใจว่าจะเริ่มจากตรงไหน\nKuro อยากสร้างแอปทันที ส่วน Miyu อยากรู้ก่อนว่าปัญหาจริงคืออะไร\nระหว่างเตรียมแผน ทั้งคู่พบไฟล์ข้อมูลที่ไม่มีแหล่งที่มา พร้อมโน้ตลึกลับ",
   "learningGoals": [
-    "ถามเพื่อทำความเข้าใจโจทย์และผู้ใช้ก่อนเสนอวิธีแก้",
-    "ขอให้คู่สนทนายกตัวอย่างหรืออธิบายเพิ่มอย่างสุภาพ",
-    "พูดว่า \"ยังไม่รู้\" อย่างมืออาชีพ และแยก evidence ออกจาก assumption",
-    "ใช้รูปประโยค We need to… / We don't know whether… / Before we…, we should…"
+    "ฟังโจทย์และบทสนทนาทีมแล้วจับได้ว่าอะไรยังไม่ชัด",
+    "พูดถามเพื่อทำความเข้าใจโจทย์และผู้ใช้ก่อนเสนอวิธีแก้",
+    "พูดขอตัวอย่างและทวนความเข้าใจอย่างสุภาพ",
+    "พูดสรุปโดยแยก fact ออกจากสิ่งที่ยังไม่รู้"
   ],
+  "format": 2,
+  "listeningMissionTh": "ฟังโจทย์และบทสนทนาทีมเพื่อระบุสิ่งที่ยังไม่ชัด",
+  "speakingMissionTh": "ถาม Chief, ขอ example จากผู้ใช้, สรุป fact และ unknown",
   "contextTh": "CAGE School เข้าร่วมการแข่งขันนวัตกรรมระหว่างโรงเรียน ทีม 2-A ต้องใช้ข้อมูลช่วยปรับปรุงชีวิตนักเรียน แต่โจทย์ยังไม่บอกว่าควรแก้ปัญหาอะไร สมาชิกทีมเพิ่งมาเจอกันครั้งแรก และยังไม่รู้ว่าแต่ละคนคิดอย่างไร",
-  "goalTh": "เข้าใจโจทย์, ถามว่าใครคือผู้ใช้, และไม่รีบสร้างวิธีแก้ก่อนรู้ปัญหา",
+  "goalTh": "ฟังให้เข้าใจโจทย์ ถามว่าใครคือผู้ใช้ และไม่รีบสร้างวิธีแก้ก่อนรู้ปัญหา",
+  "hintWords": [
+    "project",
+    "problem",
+    "improve"
+  ],
   "vocabulary": [
     {
       "id": "project",
@@ -155,6 +163,57 @@ export const ep01: Episode = {
           "textTh": "อาจจะได้ แต่ก่อนอื่นเราต้องรู้ว่าเรากำลังช่วยใคร"
         }
       ],
+      "listenForTh": "ฟังว่าโจทย์ของโรงเรียนยังขาดอะไร",
+      "listeningCheck": {
+        "id": "ep01_s1_listen",
+        "promptTh": "ส่วนใดขาดไปจากโจทย์ของโรงเรียน?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "ผู้ใช้และปัญหาที่ต้องการแก้"
+          },
+          {
+            "id": "b",
+            "labelTh": "สีของหน้าจอ"
+          },
+          {
+            "id": "c",
+            "labelTh": "ชื่อโปรแกรมที่จะใช้"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Kuro พูดว่าโจทย์ \"does not define the users or the result\" คือยังไม่บอกว่าใครเป็นผู้ใช้และต้องได้ผลอะไร ส่วนสีหน้าจอกับโปรแกรมยังไม่มีใครพูดถึง"
+      },
+      "speakingPrompt": {
+        "id": "ep01_s1_speak",
+        "situationTh": "พูดถาม Chief ให้ชี้แจงโจทย์ด้วยหนึ่งประโยค",
+        "promptEn": "Ask Chief to clarify the brief.",
+        "goal": "clarify",
+        "phraseFrames": [
+          "What problem are we trying to solve?",
+          "Who are the users for ___?"
+        ],
+        "modelResponses": [
+          "Could you clarify the main problem?",
+          "Who are the users for this project?"
+        ],
+        "acceptedIntentsTh": [
+          "ถามว่าปัญหาหลักคืออะไร",
+          "ถามว่าใครคือผู้ใช้",
+          "ถามว่าผลลัพธ์ที่ต้องการคืออะไร"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณขอให้ชี้แจงสิ่งที่โจทย์ยังไม่บอก ซึ่งช่วยให้ทีมกำหนดผู้ใช้และปัญหาก่อนเลือก solution",
+          "naturalOption": "Could you clarify the main problem and who the users are?",
+          "improvementTh": "ขึ้นต้นด้วย Could you… หรือ Who… แทนการพูดคำเดียว จะฟังเป็นคำถามที่สุภาพและชัดขึ้น"
+        },
+        "askedBy": {
+          "speakerId": "chief",
+          "textEn": "So, what should we ask the school first?",
+          "textTh": "แล้วเราควรถามโรงเรียนเรื่องอะไรก่อน?"
+        }
+      },
       "interaction": {
         "promptEn": "What should the team clarify first?",
         "promptTh": "ทีมควรถามให้ชัดเรื่องอะไรก่อน?",
@@ -279,6 +338,56 @@ export const ep01: Episode = {
           "textTh": "ครับ Chief"
         }
       ],
+      "listenForTh": "ฟังว่าใครรับหน้าที่อะไรในทีม",
+      "listeningCheck": {
+        "id": "ep01_s2_listen",
+        "promptTh": "ใครรับหน้าที่ตรวจข้อมูลเดิมของโรงเรียน?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "Lena"
+          },
+          {
+            "id": "b",
+            "labelTh": "Rei"
+          },
+          {
+            "id": "c",
+            "labelTh": "Shion"
+          }
+        ],
+        "answerId": "b",
+        "feedbackTh": "Rei พูดว่า \"I can check what data the school already has.\" ส่วน Lena นัดสัมภาษณ์นักเรียน และ Shion หาความเสี่ยง"
+      },
+      "speakingPrompt": {
+        "id": "ep01_s2_speak",
+        "situationTh": "พูดถาม Chief เรื่องกำหนดส่งหรือผู้อนุมัติ โดยใช้หนึ่งประโยค",
+        "promptEn": "Ask Chief about the deadline or who approves the project.",
+        "goal": "ask",
+        "phraseFrames": [
+          "What is our deadline?",
+          "Who will approve the final ___?"
+        ],
+        "modelResponses": [
+          "Could you confirm the deadline for our first prototype?",
+          "Who will approve the final project?"
+        ],
+        "acceptedIntentsTh": [
+          "ถามเรื่องกำหนดส่ง",
+          "ถามว่าใครเป็นผู้อนุมัติหรือตัดสินใจ"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณถามเรื่องเวลาหรือผู้ตัดสินใจ ซึ่งช่วยให้ PM วางแผนงานและรู้ว่าต้องเตรียมหลักฐานให้ใคร",
+          "naturalOption": "Could you confirm the deadline for our first prototype?",
+          "improvementTh": "เติมสิ่งที่ต้องการรู้ให้เจาะจง เช่น for our first prototype หรือ the final project แทนการถามว่า When? เฉย ๆ"
+        },
+        "askedBy": {
+          "speakerId": "chief",
+          "textEn": "Any questions before we start?",
+          "textTh": "มีคำถามอะไรก่อนเริ่มไหม?"
+        }
+      },
       "interaction": {
         "promptEn": "You can ask Chief one useful question. Which one?",
         "promptTh": "คุณถาม Chief ได้หนึ่งคำถามที่มีประโยชน์ จะถามข้อไหน?",
@@ -404,6 +513,56 @@ export const ep01: Episode = {
           "textTh": "งั้นมากับฉันสิ เราจะไปหามา"
         }
       ],
+      "listenForTh": "ฟังว่า Kuro กับ Miyu เห็นต่างกันเรื่องอะไร",
+      "listeningCheck": {
+        "id": "ep01_s3_listen",
+        "promptTh": "Miyu กังวลอะไรเกี่ยวกับการเริ่มสร้างแอปทันที?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "แอปจะใช้เวลาสร้างนานเกินไป"
+          },
+          {
+            "id": "b",
+            "labelTh": "ทีมอาจสร้างผิดของเพราะยังไม่รู้ปัญหา"
+          },
+          {
+            "id": "c",
+            "labelTh": "ครูอาจไม่อนุญาตให้ทำแอป"
+          }
+        ],
+        "answerId": "b",
+        "feedbackTh": "Miyu พูดว่า \"If we decide later, we may build the wrong thing.\" และ \"We don't have a problem yet.\" เธอกังวลว่าทีมยังไม่รู้ปัญหาจริง"
+      },
+      "speakingPrompt": {
+        "id": "ep01_s3_speak",
+        "situationTh": "ฝึกก่อนไปสัมภาษณ์ Miyu ให้คุณลองพูดขอตัวอย่างเหตุการณ์จริงจากนักเรียน",
+        "promptEn": "Ask a student for a real, recent example.",
+        "goal": "ask",
+        "phraseFrames": [
+          "Could you tell me more about ___?",
+          "Can you give me an example of ___?"
+        ],
+        "modelResponses": [
+          "Could you give me a recent example?",
+          "When did this happen most recently?"
+        ],
+        "acceptedIntentsTh": [
+          "ขอให้เล่าเหตุการณ์จริงที่เพิ่งเกิด",
+          "ถามว่าปัญหาเกิดเมื่อไรหรืออย่างไร"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณถามถึงประสบการณ์จริง ไม่ได้ชี้นำผู้ใช้ไปยัง solution ที่ทีมคิดไว้",
+          "naturalOption": "Could you give me a recent example?",
+          "improvementTh": "เติมคำบอกเวลา เช่น recent หรือ last time ผู้ใช้จะเล่าเหตุการณ์จริงแทนความเห็นทั่วไป"
+        },
+        "askedBy": {
+          "speakerId": "miyu",
+          "textEn": "Let's practise. How would you ask a student for a real example?",
+          "textTh": "ลองฝึกกัน จะถามนักเรียนขอตัวอย่างจริงยังไง?"
+        }
+      },
       "interaction": {
         "promptEn": "What is the best next step for the team?",
         "promptTh": "ขั้นต่อไปที่ดีที่สุดของทีมคืออะไร?",
@@ -544,6 +703,58 @@ export const ep01: Episode = {
           ]
         }
       ],
+      "listenForTh": "ฟังว่า Taku เจอปัญหาที่ไหนและเมื่อไร",
+      "listeningCheck": {
+        "id": "ep01_s4_listen",
+        "promptTh": "Taku เจอปัญหา Wi-Fi ตอนทำอะไร?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "เปิดชีทเรียนในห้อง 3B"
+          },
+          {
+            "id": "b",
+            "labelTh": "ส่งการบ้านจากบ้าน"
+          },
+          {
+            "id": "c",
+            "labelTh": "ดูประกาศชมรม"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Taku พูดว่า \"I couldn't open the class notes in Room 3B.\" เมื่อวาน ส่วนเรื่องประกาศชมรมเป็นปัญหาของ Nana"
+      },
+      "speakingPrompt": {
+        "id": "ep01_s4_speak",
+        "situationTh": "ทวนสิ่งที่ Taku เล่าให้เขายืนยันว่าเข้าใจถูก",
+        "promptEn": "Check your understanding with Taku.",
+        "goal": "summarize",
+        "phraseFrames": [
+          "Let me check if I understand. ___",
+          "So the problem happens when ___?"
+        ],
+        "modelResponses": [
+          "Let me check if I understand. The Wi-Fi failed when you opened the class notes in Room 3B.",
+          "So the problem happens in Room 3B, right?"
+        ],
+        "acceptedIntentsTh": [
+          "ทวนว่าปัญหาเกิดที่ไหน",
+          "ทวนว่าปัญหาเกิดตอนทำอะไร",
+          "ขอให้ผู้ใช้ยืนยัน"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณทวนสิ่งที่ได้ยินให้ผู้ใช้ยืนยัน ทำให้ทีมไม่สรุปผิดจากคำบ่นสั้น ๆ",
+          "naturalOption": "Let me check if I understand. The Wi-Fi failed when you opened the class notes in Room 3B.",
+          "improvementTh": "บอกทั้งสถานที่และสิ่งที่กำลังทำ (Room 3B, class notes) จะช่วยให้ Rei ตรวจข้อมูลต่อได้"
+        },
+        "askedBy": {
+          "speakerId": "taku",
+          "textEn": "Did that make sense?",
+          "textTh": "เข้าใจที่ผมเล่าไหม?",
+          "speakerLabel": "Taku"
+        }
+      },
       "interaction": {
         "promptEn": "Taku says \"The Wi-Fi is terrible.\" What should you ask next?",
         "promptTh": "Taku บอกว่า \"Wi-Fi ห่วยมาก\" คุณควรถามอะไรต่อ?",
@@ -663,6 +874,57 @@ export const ep01: Episode = {
           "textTh": "เรายังไม่รู้ ก่อนอื่นเราต้องตรวจไฟล์อย่างปลอดภัย"
         }
       ],
+      "listenForTh": "ฟังว่าไฟล์ที่ Kuro เจอมีปัญหาอะไร",
+      "listeningCheck": {
+        "id": "ep01_s5_listen",
+        "promptTh": "ทำไมทีมยังไม่ควรใช้ไฟล์นี้?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "ไฟล์ใหญ่เกินไปจนเปิดไม่ได้"
+          },
+          {
+            "id": "b",
+            "labelTh": "ไฟล์ไม่มีแหล่งที่มาและไม่รู้ว่านักเรียนยินยอมหรือไม่"
+          },
+          {
+            "id": "c",
+            "labelTh": "ไฟล์เป็นของโรงเรียนคู่แข่ง"
+          }
+        ],
+        "answerId": "b",
+        "feedbackTh": "Kuro บอกว่า \"It has no source or owner.\" และ Miyu ถามว่านักเรียนยินยอมแชร์ข้อมูลหรือไม่ ยังไม่มีใครรู้ว่าไฟล์มาจากโรงเรียนไหน"
+      },
+      "speakingPrompt": {
+        "id": "ep01_s5_speak",
+        "situationTh": "พูดรายงาน Chief ว่ารู้อะไรเกี่ยวกับไฟล์ โดยแยก fact ออกจากสิ่งที่ยังไม่รู้",
+        "promptEn": "Report what you know about the file.",
+        "goal": "report",
+        "phraseFrames": [
+          "The file has no ___. We don't know ___ yet.",
+          "We know that ___, but we don't know ___."
+        ],
+        "modelResponses": [
+          "The file has no source. We don't know who created it yet.",
+          "We know that it has no owner, but we don't know if students agreed to share it."
+        ],
+        "acceptedIntentsTh": [
+          "บอกว่าไฟล์ไม่มีแหล่งที่มาหรือเจ้าของ",
+          "บอกสิ่งที่ยังไม่รู้",
+          "ไม่กล่าวหาใคร"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณรายงานข้อเท็จจริงก่อน แล้วบอกสิ่งที่ยังไม่รู้ โดยไม่กล่าวหาใคร",
+          "naturalOption": "The file has no source. We don't know who created it yet.",
+          "improvementTh": "แยกเป็นสองประโยค ประโยคแรกคือสิ่งที่รู้ ประโยคที่สองขึ้นต้นด้วย We don't know… คนฟังจะแยก fact กับ unknown ได้ทันที"
+        },
+        "askedBy": {
+          "speakerId": "chief",
+          "textEn": "What do we know about this file?",
+          "textTh": "เรารู้อะไรเกี่ยวกับไฟล์นี้บ้าง?"
+        }
+      },
       "interaction": {
         "promptEn": "What should the team do with the file?",
         "promptTh": "ทีมควรทำอย่างไรกับไฟล์นี้?",
@@ -811,6 +1073,57 @@ export const ep01: Episode = {
           ]
         }
       ],
+      "listenForTh": "ฟังว่า Chief แบ่งงานให้ใครทำอะไร",
+      "listeningCheck": {
+        "id": "ep01_s6_listen",
+        "promptTh": "Chief ให้ Kuro ทำอะไรต่อ?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "สร้างแอปแจ้งปัญหาให้เสร็จ"
+          },
+          {
+            "id": "b",
+            "labelTh": "ไปคุยกับ IT เรื่องไฟล์ พร้อม Miyu"
+          },
+          {
+            "id": "c",
+            "labelTh": "นัดสัมภาษณ์นักเรียนห้าคน"
+          }
+        ],
+        "answerId": "b",
+        "feedbackTh": "Chief พูดว่า \"Talk to IT about the file. Take Miyu with you.\" ส่วนการนัดสัมภาษณ์เป็นงานของ Lena กับ Miyu"
+      },
+      "speakingPrompt": {
+        "id": "ep01_s6_speak",
+        "situationTh": "ก่อนจบวัน พูดสรุปให้ Chief ฟัง 1–2 ประโยคว่าเกิดอะไรขึ้นและควรทำอะไรต่อ",
+        "promptEn": "Give Chief a one-line update and the next step.",
+        "goal": "summarize",
+        "phraseFrames": [
+          "Today we learned ___. Next, we will ___.",
+          "The data shows ___, but we don't know whether ___."
+        ],
+        "modelResponses": [
+          "Today we learned the problem is not only Wi-Fi. Next, we will interview five students and ask IT about the file.",
+          "We have some reports, but we don't know whether they include every student."
+        ],
+        "acceptedIntentsTh": [
+          "สรุปสิ่งที่รู้วันนี้",
+          "บอกขั้นตอนถัดไป",
+          "บอกสิ่งที่ยังไม่รู้"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณสรุปทั้งสิ่งที่ทีมรู้และขั้นตอนถัดไป ทำให้ทุกคนเข้าใจตรงกันก่อนแยกย้าย",
+          "naturalOption": "Today we learned the problem is not only Wi-Fi. Next, we will interview students and ask IT about the file.",
+          "improvementTh": "ใช้คำเชื่อม Next, หรือ Then, นำขั้นตอนถัดไป คนฟังจะแยกสิ่งที่รู้แล้วกับสิ่งที่จะทำได้ง่ายขึ้น"
+        },
+        "askedBy": {
+          "speakerId": "chief",
+          "textEn": "Give me a quick update before we go.",
+          "textTh": "ขอสรุปสั้น ๆ ก่อนกลับหน่อย"
+        }
+      },
       "interaction": {
         "promptEn": "Chief asks you to say the team's plan in one sentence. Which is best?",
         "promptTh": "Chief ขอให้คุณสรุปแผนของทีมในประโยคเดียว ข้อไหนดีที่สุด?",
@@ -884,31 +1197,102 @@ export const ep01: Episode = {
   },
   "sentencePatterns": [
     {
-      "pattern": "We need to + verb",
-      "example": "We need to understand the problem.",
+      "pattern": "Could you tell me more about + noun/situation?",
+      "example": "Could you tell me more about the problem?",
       "substitutions": [
-        "interview students",
-        "check the source",
-        "define the goal"
+        "the current process",
+        "the last report",
+        "what happened yesterday"
       ]
     },
     {
-      "pattern": "We don't know whether + clause",
-      "example": "We don't know whether the data is correct.",
+      "pattern": "Let me check if I understand. + summary",
+      "example": "Let me check if I understand. The report is missing some students.",
       "substitutions": [
-        "the file is safe",
-        "students need this feature",
-        "the report is complete"
+        "the file is from a test system",
+        "the line is longest at lunch"
       ]
     },
     {
-      "pattern": "Before we + action, we should + action",
-      "example": "Before we use the file, we should check its source.",
+      "pattern": "The data shows + finding, but we don't know whether + limitation.",
+      "example": "The data shows more reports, but we don't know whether more students are affected.",
       "substitutions": [
-        "build the app",
-        "talk to users; share the report",
-        "ask the data owner"
+        "Wi-Fi has the most reports",
+        "the sample includes every class"
       ]
+    }
+  ],
+  "shadowItems": [
+    {
+      "id": "ep01_sh1",
+      "mode": "shadow",
+      "promptTh": "ฟังแล้วพูดตามให้ครบประโยค",
+      "modelPhrase": "Could you tell me more about the problem?",
+      "substitutions": [],
+      "hint": "เน้นคำว่า more กับ problem ให้ชัด ไม่ต้องเร็ว",
+      "examples": [
+        "Could you tell me more about the problem?"
+      ]
+    },
+    {
+      "id": "ep01_sh2",
+      "mode": "substitute",
+      "promptTh": "ฟังต้นแบบ แล้วพูดใหม่โดยเปลี่ยนเป็นเรื่องที่ Taku เล่า",
+      "modelPhrase": "Could you tell me more about the problem?",
+      "substitutions": [
+        "what happened yesterday",
+        "the class notes",
+        "Room 3B"
+      ],
+      "hint": "แทนเฉพาะส่วนท้ายประโยค ส่วนต้น Could you tell me more about คงไว้",
+      "examples": [
+        "Could you tell me more about what happened yesterday?",
+        "Could you tell me more about the class notes?"
+      ],
+      "frame": "Could you tell me more about ___?"
+    },
+    {
+      "id": "ep01_sh3",
+      "mode": "shadow",
+      "promptTh": "ฟังแล้วพูดตาม ฝึกการทวนความเข้าใจ",
+      "modelPhrase": "Let me check if I understand. The report is missing some students.",
+      "substitutions": [],
+      "hint": "หยุดสั้น ๆ หลังคำว่า understand ก่อนพูดส่วนสรุป",
+      "examples": [
+        "Let me check if I understand. The report is missing some students."
+      ]
+    },
+    {
+      "id": "ep01_sh4",
+      "mode": "substitute",
+      "promptTh": "ใช้รูปเดิม สรุปเรื่องไฟล์ลึกลับให้ Chief ฟัง",
+      "modelPhrase": "Let me check if I understand. The report is missing some students.",
+      "substitutions": [
+        "the file has no source",
+        "the note may be a warning",
+        "we should ask IT first"
+      ],
+      "hint": "ส่วนสรุปเป็นประโยคเต็มที่มีประธานและกริยา",
+      "examples": [
+        "Let me check if I understand. The file has no source.",
+        "Let me check if I understand. We should ask IT first."
+      ],
+      "frame": "Let me check if I understand. ___"
+    },
+    {
+      "id": "ep01_sh5",
+      "mode": "substitute",
+      "promptTh": "พูดสิ่งที่ข้อมูลบอก แล้วตามด้วยสิ่งที่ยังไม่รู้",
+      "modelPhrase": "The data shows more reports, but we don't know whether more students are affected.",
+      "substitutions": [
+        "Wi-Fi has the most reports",
+        "the reports include every class"
+      ],
+      "hint": "ครึ่งแรกคือ fact ครึ่งหลังคือข้อจำกัด",
+      "examples": [
+        "The data shows Wi-Fi has the most reports, but we don't know whether it is the most serious problem."
+      ],
+      "frame": "The data shows ___, but we don't know whether ___."
     }
   ],
   "drills": [
@@ -968,61 +1352,114 @@ export const ep01: Episode = {
     }
   ],
   "speakPractice": {
-    "situationTh": "ผู้จัดการมอบหมายให้ทำ dashboard แต่ยังไม่ได้อธิบายผู้ใช้หรือการตัดสินใจ",
+    "situationTh": "Stand-up กับ Chief — เธอมอบหมายให้ทำ dashboard แต่ยังไม่ได้อธิบายผู้ใช้หรือการตัดสินใจ ฟังแต่ละบรรทัดแล้วพูดตอบก่อนเปิดตัวอย่าง",
+    "turns": [
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "chief",
+          "textEn": "Please create a dashboard for student problems.",
+          "textTh": "ช่วยทำ dashboard เรื่องปัญหาของนักเรียนหน่อย"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดขอถาม requirement อย่างสุภาพ",
+        "model": "Could I ask a few questions about the requirements?"
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "chief",
+          "textEn": "Of course.",
+          "textTh": "ได้สิ"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดถามว่าใครจะใช้ dashboard",
+        "model": "Who will use the dashboard?"
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "chief",
+          "textEn": "The student committee and teachers.",
+          "textTh": "คณะกรรมการนักเรียนกับครู"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดถามว่าผู้ใช้ต้องตัดสินใจเรื่องอะไร",
+        "model": "What decisions do they need to make?"
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "chief",
+          "textEn": "They need to choose which problem to address first.",
+          "textTh": "พวกเขาต้องเลือกว่าจะแก้ปัญหาไหนก่อน"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "สรุปสิ่งที่ได้ยินกลับไปให้ Chief ยืนยัน",
+        "model": "Let me check if I understand. We need to show the impact of each problem, not only the number of reports."
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "chief",
+          "textEn": "Exactly.",
+          "textTh": "ใช่เลย"
+        }
+      }
+    ],
     "lines": [
       {
-        "speakerId": "manager",
+        "speakerId": "chief",
         "textEn": "Please create a dashboard for student problems.",
-        "textTh": "ช่วยทำ dashboard เรื่องปัญหาของนักเรียนหน่อย",
-        "speakerLabel": "Manager"
+        "textTh": "ช่วยทำ dashboard เรื่องปัญหาของนักเรียนหน่อย"
       },
       {
         "speakerId": "intern",
-        "textEn": "Could I ask a few questions about the requirements?",
-        "textTh": "ขอถามเรื่อง requirement สักสองสามข้อได้ไหมคะ/ครับ?",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "Could I ask a few questions about the requirements?"
       },
       {
-        "speakerId": "manager",
+        "speakerId": "chief",
         "textEn": "Of course.",
-        "textTh": "ได้สิ",
-        "speakerLabel": "Manager"
+        "textTh": "ได้สิ"
       },
       {
         "speakerId": "intern",
-        "textEn": "Who will use the dashboard?",
-        "textTh": "ใครจะเป็นคนใช้ dashboard?",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "Who will use the dashboard?"
       },
       {
-        "speakerId": "manager",
+        "speakerId": "chief",
         "textEn": "The student committee and teachers.",
-        "textTh": "คณะกรรมการนักเรียนกับครู",
-        "speakerLabel": "Manager"
+        "textTh": "คณะกรรมการนักเรียนกับครู"
       },
       {
         "speakerId": "intern",
-        "textEn": "What decisions do they need to make?",
-        "textTh": "พวกเขาต้องตัดสินใจเรื่องอะไร?",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "What decisions do they need to make?"
       },
       {
-        "speakerId": "manager",
+        "speakerId": "chief",
         "textEn": "They need to choose which problem to address first.",
-        "textTh": "พวกเขาต้องเลือกว่าจะแก้ปัญหาไหนก่อน",
-        "speakerLabel": "Manager"
+        "textTh": "พวกเขาต้องเลือกว่าจะแก้ปัญหาไหนก่อน"
       },
       {
         "speakerId": "intern",
-        "textEn": "Let me check if I understand. We need to show the impact of each problem, not only the number of reports.",
-        "textTh": "ขอทวนความเข้าใจนะคะ/ครับ เราต้องแสดงผลกระทบของแต่ละปัญหา ไม่ใช่แค่จำนวนรายงาน",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "Let me check if I understand. We need to show the impact of each problem, not only the number of reports."
       },
       {
-        "speakerId": "manager",
+        "speakerId": "chief",
         "textEn": "Exactly.",
-        "textTh": "ใช่เลย",
-        "speakerLabel": "Manager"
+        "textTh": "ใช่เลย"
       }
     ]
   },
@@ -1056,7 +1493,13 @@ export const ep01: Episode = {
     "numericColumns": [
       1
     ],
-    "stakeholderLabelTh": "ผู้บริหารบอกว่า",
+    "briefing": {
+      "speakerId": "teacher",
+      "textEn": "Slow Wi-Fi has the most reports, so it must be our first priority.",
+      "textTh": "Wi-Fi ช้ามีคนรายงานมากที่สุด เพราะฉะนั้นต้องแก้เป็นอันดับแรก",
+      "speakerLabel": "Teacher"
+    },
+    "stakeholderLabelTh": "Teacher พูดว่า",
     "stakeholderQuote": "Slow Wi-Fi has the most reports, so it must be our first priority.",
     "questions": [
       "What else should we ask?",
@@ -1089,10 +1532,11 @@ export const ep01: Episode = {
       "scope"
     ],
     "reviewPatterns": [
-      "We need to…",
-      "We don't know whether…",
-      "Before we…, we should…"
+      "Could you tell me more about…?",
+      "Let me check if I understand…",
+      "The data shows…, but we don't know whether…"
     ],
-    "nextTeaserTh": "นักเรียนบ่นเรื่องคิวโรงอาหาร แต่รายงานของโรงเรียนบอกว่ารอแค่สองนาที — ใครพูดถูก?"
+    "nextTeaserTh": "นักเรียนบ่นเรื่องคิวโรงอาหาร แต่รายงานของโรงเรียนบอกว่ารอแค่สองนาที — ใครพูดถูก?",
+    "voiceMissionTh": "ฟังโจทย์ให้ครบ, ถามเพื่อขอรายละเอียด, และพูดสรุป fact กับสิ่งที่ยังไม่รู้"
   }
 };

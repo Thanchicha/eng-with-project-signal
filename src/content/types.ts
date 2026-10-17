@@ -34,6 +34,41 @@ export interface DialogueLine {
   textTh?: string;
   /** `text` is the exact substring of textEn to make tappable (may differ from the vocab form, e.g. "users" → user). */
   vocabularyRefs?: { id: string; text: string }[];
+  /** Optional recorded audio; without it the AudioPlayer reads textEn with TTS. */
+  audio?: { assetUrl?: string; voiceHint?: string; rate?: number };
+}
+
+/** Gist/detail question asked in Thai after the first listen (spec 08 §11). */
+export interface ListeningCheck {
+  id: string;
+  promptTh: string;
+  type: "gist" | "detail";
+  choices: { id: string; labelTh: string }[];
+  answerId: string;
+  feedbackTh: string;
+}
+
+export type SpeakingGoal = "ask" | "clarify" | "summarize" | "report" | "suggest";
+
+/** Feedback for a spoken/typed answer (spec 05 §8): shown after the attempt, never a score. */
+export interface SpeakingFeedback {
+  communicatedTh: string;
+  naturalOption: string;
+  improvementTh: string;
+}
+
+export interface SpeakingPrompt {
+  id: string;
+  situationTh: string;
+  promptEn: string;
+  /** The character who asks the player; their line is played before the player answers. */
+  askedBy?: DialogueLine;
+  goal: SpeakingGoal;
+  phraseFrames: string[];
+  /** Examples to compare with — not the only accepted answers. */
+  modelResponses: string[];
+  acceptedIntentsTh: string[];
+  feedback: SpeakingFeedback;
 }
 
 /** FORMAT.md four-part feedback (spec 05 §8). */
@@ -64,7 +99,12 @@ export interface Scene {
   title: string;
   objective: string;
   objectiveTh: string;
+  /** What to listen for in this scene (Thai, shown before playing). */
+  listenForTh?: string;
   dialogue: DialogueLine[];
+  listeningCheck?: ListeningCheck;
+  speakingPrompt?: SpeakingPrompt;
+  /** Optional choice support shown after speaking. */
   interaction?: ChoiceInteraction;
   nextSceneId?: string;
 }
@@ -87,8 +127,27 @@ export interface Drill {
   acceptedExamples: string[];
 }
 
+/** Listen to a model phrase, then say it / swap words (spec 05 §7 "Shadow & Substitute"). */
+export interface ShadowItem {
+  id: string;
+  mode: "shadow" | "substitute";
+  promptTh: string;
+  modelPhrase: string;
+  frame?: string;
+  substitutions: string[];
+  hint: string;
+  examples: string[];
+}
+
+/** Roleplay: character lines are played; on intern turns the player speaks first, then sees the model. */
+export type RoleplayTurn =
+  | { kind: "line"; line: DialogueLine }
+  | { kind: "intern"; promptTh: string; model: string };
+
 export interface SpeakPractice {
   situationTh: string;
+  turns: RoleplayTurn[];
+  /** Every line in order (intern turns use the model text) — for plain transcript views. */
   lines: DialogueLine[];
 }
 
@@ -98,6 +157,8 @@ export interface MiniCase {
   /** Column indexes to right-align (numbers). */
   numericColumns?: number[];
   noteTh?: string;
+  /** Spoken briefing played before the player answers (EP1 v2 content). */
+  briefing?: DialogueLine;
   stakeholderQuote: string;
   stakeholderLabelTh: string;
   questions: string[];
@@ -109,6 +170,7 @@ export interface Recap {
   bulletsTh: string[];
   reviewVocabulary: string[];
   reviewPatterns: string[];
+  voiceMissionTh?: string;
   nextTeaserTh: string;
 }
 
@@ -120,13 +182,21 @@ export interface Episode {
   roles: string[];
   summaryTh: string;
   learningGoals: string[];
+  /** Content format: 2 = listening/speaking-first (FORMAT.md v2), 1 = older reading-first scripts. */
+  format: 1 | 2;
+  listeningMissionTh?: string;
+  speakingMissionTh?: string;
   contextTh: string;
   goalTh: string;
+  /** 2–3 words shown before the first listen (full vocabulary opens after). */
+  hintWords: string[];
   vocabulary: VocabularyItem[];
   scenes: Scene[];
   analystNote: string[];
   businessLesson: { title: string; bodyTh: string[] };
   sentencePatterns: SentencePattern[];
+  shadowItems: ShadowItem[];
+  /** Optional writing practice ("Write by Yourself"); older scripts call this Drills. */
   drills: Drill[];
   speakPractice: SpeakPractice;
   miniCase: MiniCase;

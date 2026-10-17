@@ -18,8 +18,10 @@ export const ep02: Episode = {
     "เขียน requirement ง่าย ๆ ที่ตรวจสอบได้",
     "ใช้รูปประโยค Could you give me an example? / What happens when…? / So the requirement is…"
   ],
+  "format": 1,
   "contextTh": "หลังจากคุยกับนักเรียนหลายคน ปัญหาคิวโรงอาหารถูกพูดถึงบ่อยมาก แต่รายงานของโรงเรียนบอกว่าเวลารอเฉลี่ยสั้นมาก Miyu อยากเห็นด้วยตาตัวเอง ส่วน Kuro ยังรอคำตอบจาก IT เรื่องไฟล์ลึกลับ",
   "goalTh": "สัมภาษณ์และสังเกตผู้ใช้จริง, หาว่าปัญหาจริงคืออะไร, และเทียบข้อมูลสังเกตกับรายงาน",
+  "hintWords": [],
   "vocabulary": [
     {
       "id": "interview",
@@ -768,6 +770,7 @@ export const ep02: Episode = {
       ]
     }
   ],
+  "shadowItems": [],
   "drills": [
     {
       "id": "ep02_d1",
@@ -816,6 +819,64 @@ export const ep02: Episode = {
   ],
   "speakPractice": {
     "situationTh": "หัวหน้าขอให้ \"ทำให้ระบบเร็วขึ้น\" แต่คุณอยากรู้ว่าผู้ใช้ติดขัดตรงไหนจริง",
+    "turns": [
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "manager",
+          "textEn": "Users say the system is slow. Please make it faster.",
+          "textTh": "ผู้ใช้บอกว่าระบบช้า ช่วยทำให้เร็วขึ้นหน่อย",
+          "speakerLabel": "Manager"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "model": "Sure. Could you give me an example of when it was slow?"
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "manager",
+          "textEn": "Yesterday, a user waited five minutes to send a form.",
+          "textTh": "เมื่อวาน ผู้ใช้คนหนึ่งรอห้านาทีกว่าจะส่งฟอร์มได้",
+          "speakerLabel": "Manager"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "model": "What happened during those five minutes?"
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "manager",
+          "textEn": "I think they couldn't find the send button.",
+          "textTh": "ผมคิดว่าเขาหาปุ่มส่งไม่เจอ",
+          "speakerLabel": "Manager"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "model": "So the problem may not be speed. It may be the design."
+      },
+      {
+        "kind": "line",
+        "line": {
+          "speakerId": "manager",
+          "textEn": "Good point. What do you need?",
+          "textTh": "ประเด็นดี ต้องการอะไรเพิ่มไหม?",
+          "speakerLabel": "Manager"
+        }
+      },
+      {
+        "kind": "intern",
+        "promptTh": "พูดประโยคของเด็กฝึกงานด้วยตัวเอง",
+        "model": "Could I watch two or three users send the form?"
+      }
+    ],
     "lines": [
       {
         "speakerId": "manager",
@@ -825,9 +886,8 @@ export const ep02: Episode = {
       },
       {
         "speakerId": "intern",
-        "textEn": "Sure. Could you give me an example of when it was slow?",
-        "textTh": "ได้ครับ/ค่ะ ช่วยยกตัวอย่างตอนที่มันช้าได้ไหม?",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "Sure. Could you give me an example of when it was slow?"
       },
       {
         "speakerId": "manager",
@@ -837,9 +897,8 @@ export const ep02: Episode = {
       },
       {
         "speakerId": "intern",
-        "textEn": "What happened during those five minutes?",
-        "textTh": "ระหว่างห้านาทีนั้นเกิดอะไรขึ้น?",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "What happened during those five minutes?"
       },
       {
         "speakerId": "manager",
@@ -849,9 +908,8 @@ export const ep02: Episode = {
       },
       {
         "speakerId": "intern",
-        "textEn": "So the problem may not be speed. It may be the design.",
-        "textTh": "แปลว่าปัญหาอาจไม่ใช่ความเร็ว อาจเป็นที่การออกแบบ",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "So the problem may not be speed. It may be the design."
       },
       {
         "speakerId": "manager",
@@ -861,9 +919,8 @@ export const ep02: Episode = {
       },
       {
         "speakerId": "intern",
-        "textEn": "Could I watch two or three users send the form?",
-        "textTh": "ขอดูผู้ใช้สองสามคนส่งฟอร์มได้ไหมครับ/คะ?",
-        "speakerLabel": "Intern"
+        "speakerLabel": "Intern",
+        "textEn": "Could I watch two or three users send the form?"
       }
     ]
   },
