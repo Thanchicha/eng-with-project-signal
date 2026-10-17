@@ -101,6 +101,8 @@ export interface Scene {
   objectiveTh: string;
   /** What to listen for in this scene (Thai, shown before playing). */
   listenForTh?: string;
+  /** Background art name (public/art/bg/<name>.webp); a night-city backdrop is drawn when the file is missing. */
+  background?: string;
   dialogue: DialogueLine[];
   listeningCheck?: ListeningCheck;
   speakingPrompt?: SpeakingPrompt;
@@ -214,5 +216,22 @@ export interface EpisodeSummary {
   /** Spec 03 §6 "Listening / Speaking Mission" table. */
   listeningMissionTh: string;
   speakingMissionTh: string;
+  /** Roles this episode practises most — used to recommend episodes for the player's chosen role. */
+  focusRoles: CareerId[];
   playable: boolean;
+}
+
+/** Roles the player can choose to focus on; each maps to the teammate who models it. */
+export type CareerId = "ba" | "data" | "pm" | "ux" | "dev" | "qa";
+
+export interface Career {
+  id: CareerId;
+  nameEn: string;
+  nameTh: string;
+  lead: CharacterId;
+  taglineEn: string;
+  taglineTh: string;
+  skillsTh: string[];
+  /** Work phrases from EP1–3 that this role uses often. */
+  keyPhrases: string[];
 }

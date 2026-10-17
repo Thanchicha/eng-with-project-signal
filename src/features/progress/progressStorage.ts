@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
+import { careers } from "../../content/careers";
 import { episodeSummaries } from "../../content/episodes";
+import type { CareerId } from "../../content/types";
 
 // Spec 08 §12 — everything stays in this browser; no names, emails, audio or real school data.
 const KEY = "project-signal:progress:v1";
@@ -19,6 +21,10 @@ export interface Progress {
   replays: Record<string, number>;
   /** Ids of speaking moments the player attempted (prompts, shadow items, roleplay turns, mini case). Ids only — never what they said. */
   spokenIds: string[];
+  /** Role the player chose to focus on ("Choose your path"); undefined until chosen or skipped. */
+  career?: CareerId;
+  /** True once the role screen was shown (chosen or skipped), so it is not forced again. */
+  careerPrompted?: boolean;
   settings: Settings;
 }
 
@@ -63,7 +69,8 @@ export function loadProgress(): Progress {
     const raw = localStorage.getItem(KEY);
     if (!raw) return defaultProgress;
     const parsed = JSON.parse(raw) as Partial<Progress>;
-    return { ...defaultProgress, ...parsed, settings: sanitizeSettings(parsed.settings) };
+    const career = careers.some((c) => c.id === parsed.career) ? parsed.career : undefined;
+    return { ...defaultProgress, ...parsed, career, settings: sanitizeSettings(parsed.settings) };
   } catch {
     return defaultProgress;
   }

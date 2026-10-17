@@ -9,7 +9,7 @@
 - **ยึด canon AU:** ทุกคนเป็นนักเรียนโรงเรียน CAGE, ไม่มีพลังพิเศษ, ไม่มีโซ่/กรงที่สื่อว่าถูกขัง, ไม่อ้างปมครอบครัว/Project Eden
   (key art ที่มีอยู่ใช้เป็น reference ด้านสไตล์และสีได้ แต่ข้อความบนภาพเป็นเรื่องสาย SS1)
 - สไตล์เดียวกันทุกภาพ: anime, โทนม่วงกลางคืน + ชมพูนีออน ตาม `docs/design/DESIGN.md` (ฉากกลางวันให้สว่างขึ้นแต่ยังมีโทนม่วง-ชมพู)
-- สิทธิ์ใช้งาน: ต้องเป็นภาพที่คุณมีสิทธิ์ใช้ในเว็บนี้ (วาดเอง, จ้าง, หรือ AI ที่เงื่อนไขอนุญาต) — แจ้งแหล่งที่มาไว้ใน `public/art/CREDITS.md`
+- สิทธิ์ใช้งาน: ต้องเป็นภาพที่คุณมีสิทธิ์ใช้ในเว็บนี้ (วาดเอง, จ้าง, หรือ AI ที่เงื่อนไขอนุญาต) — แจ้งแหล่งที่มาไว้ใน `src/assets/art/CREDITS.md`
 
 ## 2. ภาพตัวละคร (sprites)
 
@@ -54,15 +54,19 @@ Haru, Taku, Nana (EP1) · Sora (EP2) · Mei — ใช้ screen reader บน�
 
 | ไฟล์ | ใช้ในฉาก |
 | --- | --- |
-| `bg_classroom_morning` | EP1 S1 The Brief (จอในห้องเรียนขึ้นข้อความ) |
-| `bg_classroom_afterschool` | EP1 S2 Meet the Team, EP1 S3, EP3 S2 |
+| `bg_classroom_morning` | EP1 S1 The Brief, EP3 S2 ห้องเรียนปีหนึ่ง |
+| `bg_classroom_afterschool` | EP1 S2–S3, EP3 S3 |
 | `bg_library_corner` | EP1 S4 First Interviews |
-| `bg_project_room_whiteboard` | EP1 S5–S6, EP2 S1, EP2 S4, EP3 S1, EP3 S4 |
-| `bg_cafeteria_lunch` | EP2 S2–S3 (คิวหลายแถว ไม่มีป้าย) |
-| `bg_cafeteria_signs` | EP2 S5 (มีป้ายกระดาษเหนือแถว — ป้ายไม่มีตัวอักษรอ่านได้) |
-| `bg_hallway_evening` | EP3 S3 (Mei ทดสอบแบบสอบถามบนมือถือ) |
-| `bg_teacher_office` | EP3 S5 พบครู Hayashi |
-| `bg_rooftop_night` (ไม่บังคับ) | Recap / โมเมนต์ Kuro–Miyu ท้ายตอน |
+| `bg_project_room_whiteboard` | EP1 S5–S6, EP2 S1, EP2 S5, EP3 S1, EP3 S5, EP3 S7 |
+| `bg_it_office` | EP1 S7 The IT Office |
+| `bg_cafeteria_kitchen` | EP2 S2 Permission First |
+| `bg_cafeteria_lunch` | EP2 S3–S4 (คิวหลายแถว ไม่มีป้าย) |
+| `bg_cafeteria_signs` | EP2 S6 (มีป้ายกระดาษเหนือแถว — ป้ายไม่มีตัวอักษรอ่านได้) |
+| `bg_station_evening` | EP2 S7 The Walk Back |
+| `bg_hallway_evening` | EP3 S4 (Mei ทดสอบแบบสอบถามบนมือถือ) |
+| `bg_teacher_office` | EP3 S6 พบครู Hayashi |
+
+ชื่อภาพของแต่ละฉากกำหนดไว้ในบทแล้ว (`- background:` ใน `docs/story/epXX.md`) วางไฟล์ชื่อตรงกันแล้วจะแสดงเอง
 
 ## 4. ภาพเสริม (ไม่บังคับ)
 
@@ -72,7 +76,7 @@ Haru, Taku, Nana (EP1) · Sora (EP2) · Mei — ใช้ screen reader บน�
 
 ## 5. ส่งให้ Claude อย่างไร
 
-1. วางไฟล์ใน `public/art/characters/` และ `public/art/bg/` ตามชื่อด้านบน
+1. วางไฟล์ใน `src/assets/art/characters/` และ `src/assets/art/bg/` ตามชื่อด้านบน
 2. บอกว่าภาพครบแค่ไหน — ส่งทีละชุดได้ เกมจะใช้ avatar วงกลมเดิมแทนภาพที่ยังไม่มี
 3. Claude จะเพิ่ม:
    - **รูปแบบบทใหม่** เช่น `Kuro[thinking]: "..." | "..."` และ `- background: bg_cafeteria_lunch` ต่อฉาก (ใส่ให้ EP1–3 อัตโนมัติจากบริบท แล้วให้คุณตรวจ)

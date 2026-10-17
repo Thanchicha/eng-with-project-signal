@@ -185,6 +185,10 @@ function parseScene(file, sec, resolve) {
     if (p && p[0] === "objective") scene.objective = p[1];
     if (p && p[0] === "objectiveTh") scene.objectiveTh = p[1];
     if (p && p[0] === "listenFor") scene.listenForTh = p[1];
+    if (p && p[0] === "background") {
+      if (!/^bg_[a-z0-9_]+$/.test(p[1])) fail(file, `${scene.id || sec.heading} background must look like bg_place_time`);
+      scene.background = p[1];
+    }
   }
   scene.dialogue = parseDialogue(file, body, resolve);
   if (!scene.id) fail(file, `scene "${sec.heading}" has no id`);

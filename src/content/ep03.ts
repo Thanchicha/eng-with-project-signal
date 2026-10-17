@@ -184,6 +184,7 @@ export const ep03: Episode = {
         }
       ],
       "listenForTh": "ฟังว่าคำตอบมาจากนักเรียนกลุ่มไหนบ้าง",
+      "background": "bg_project_room_whiteboard",
       "listeningCheck": {
         "id": "ep03_s1_listen",
         "promptTh": "คำตอบจากนักเรียนปีหนึ่งมีกี่ชุด?",
@@ -381,6 +382,7 @@ export const ep03: Episode = {
         }
       ],
       "listenForTh": "ฟังเหตุผลที่ Ken ไม่ได้ตอบแบบสอบถาม",
+      "background": "bg_classroom_morning",
       "listeningCheck": {
         "id": "ep03_s2_listen",
         "promptTh": "ทำไม Ken คิดว่าแบบสอบถามไม่ได้มีไว้สำหรับปีหนึ่ง?",
@@ -502,6 +504,7 @@ export const ep03: Episode = {
         }
       ],
       "listenForTh": "ฟังว่า Kuro เห็นปัญหาอะไรในคำถามของ Miyu",
+      "background": "bg_classroom_afterschool",
       "listeningCheck": {
         "id": "ep03_s3_listen",
         "promptTh": "Kuro บอกว่าคำถามของ Miyu มีปัญหาอะไร?",
@@ -672,6 +675,7 @@ export const ep03: Episode = {
         }
       ],
       "listenForTh": "ฟังว่าอะไรทำให้ Mei ส่งแบบสอบถามไม่ได้",
+      "background": "bg_hallway_evening",
       "listeningCheck": {
         "id": "ep03_s4_listen",
         "promptTh": "ทำไม Mei ส่งแบบสอบถามไม่ได้?",
@@ -853,6 +857,7 @@ export const ep03: Episode = {
         }
       ],
       "listenForTh": "ฟังว่าไฟล์จาก Vesper High ขาดอะไร",
+      "background": "bg_project_room_whiteboard",
       "listeningCheck": {
         "id": "ep03_s5_listen",
         "promptTh": "ไฟล์ export จาก Vesper High ขาดอะไร?",
@@ -1049,6 +1054,7 @@ export const ep03: Episode = {
         }
       ],
       "listenForTh": "ฟังว่าครู Hayashi ชอบอะไรในการนำเสนอของทีม",
+      "background": "bg_teacher_office",
       "listeningCheck": {
         "id": "ep03_s6_listen",
         "promptTh": "ครู Hayashi ขอบคุณทีมเรื่องอะไร?",
@@ -1245,6 +1251,7 @@ export const ep03: Episode = {
         }
       ],
       "listenForTh": "ฟังว่า Rei เจออะไรเมื่อรวมข้อมูลสองโรงเรียน",
+      "background": "bg_project_room_whiteboard",
       "listeningCheck": {
         "id": "ep03_s7_listen",
         "promptTh": "Rei พบอะไรเมื่อรวมข้อมูลสองโรงเรียน?",

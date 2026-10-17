@@ -11,6 +11,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "ถามปัญหา, ขอคำชี้แจง, พูดว่ายังไม่รู้",
     listeningMissionTh: "ฟังโจทย์และบทสนทนาทีมเพื่อระบุสิ่งที่ยังไม่ชัด",
     speakingMissionTh: "ถาม Chief, ขอ example จากผู้ใช้, สรุป fact และ unknown",
+    focusRoles: ["pm","ba","dev"],
     playable: true,
   },
   {
@@ -22,6 +23,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "“Could you give me an example?”, คำถามปลายเปิด",
     listeningMissionTh: "ฟังนักเรียนบรรยายเหตุการณ์คิวล่าสุดและจับเวลา/จุดที่ติด",
     speakingMissionTh: "ถามคำถามปลายเปิดและทวนความเข้าใจให้ผู้ใช้ยืนยัน",
+    focusRoles: ["ba","dev","data"],
     playable: true,
   },
   {
@@ -33,6 +35,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "อธิบายผู้ตอบและข้อจำกัดของ survey",
     listeningMissionTh: "ฟังความเห็นจากนักเรียนหลายกลุ่มและหาเสียงที่ขาด",
     speakingMissionTh: "อธิบายว่า survey อาจไม่แทนนักเรียนทั้งหมด และขออนุญาตสัมภาษณ์",
+    focusRoles: ["ux","qa","ba"],
     playable: true,
   },
   {
@@ -44,6 +47,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "เปรียบเทียบข้อมูลและตั้งข้อสงสัย",
     listeningMissionTh: "ฟังคำอธิบายจากโรงเรียนพันธมิตรเกี่ยวกับรหัสและ export",
     speakingMissionTh: "อธิบายปัญหา join อย่างง่ายโดยไม่กล่าวหาว่าใครโกง",
+    focusRoles: ["data","dev"],
     playable: false,
   },
   {
@@ -55,6 +59,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "รายงาน bug และขั้นตอนทำซ้ำ",
     listeningMissionTh: "ฟัง bug report และจับขั้นตอนที่ทำให้ปัญหาเกิด",
     speakingMissionTh: "รายงาน bug พร้อมขั้นตอน reproduce ให้ Kuro/ทีมเข้าใจ",
+    focusRoles: ["qa","dev"],
     playable: false,
   },
   {
@@ -66,6 +71,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "“The number increased, but…”",
     listeningMissionTh: "ฟัง briefing เรื่องคะแนนและแยก clicks ออกจาก impact",
     speakingMissionTh: "อธิบายว่า metric เพิ่มขึ้นแต่ความสำเร็จยังไม่ยืนยัน",
+    focusRoles: ["data","pm"],
     playable: false,
   },
   {
@@ -77,6 +83,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "ขอให้ IT ตรวจสิทธิ์, อธิบายสิ่งที่ยังยืนยันไม่ได้",
     listeningMissionTh: "ฟังคำชี้แจงจาก IT เรื่อง log และ access",
     speakingMissionTh: "ขอให้ตรวจสิทธิ์และพูดถึงสิ่งที่ log ยืนยัน/ยืนยันไม่ได้",
+    focusRoles: ["qa","dev"],
     playable: false,
   },
   {
@@ -88,6 +95,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "ชี้แจงความเข้าใจผิดและขอหลักฐานเพิ่ม",
     listeningMissionTh: "ฟังความเข้าใจผิดของโรงเรียนคู่แข่ง",
     speakingMissionTh: "ชี้แจงเจตนาและเสนอทางตรวจสอบร่วมกันอย่างสุภาพ",
+    focusRoles: ["pm","ux"],
     playable: false,
   },
   {
@@ -99,6 +107,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "เสนอเหตุผล เปรียบเทียบทางเลือก",
     listeningMissionTh: "ฟัง trade-off ระหว่างหลายเกณฑ์จัดอันดับ",
     speakingMissionTh: "เสนอ priority criteria และอธิบายเหตุผลให้คณะกรรมการ",
+    focusRoles: ["pm","ba"],
     playable: false,
   },
   {
@@ -110,6 +119,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "ขออนุญาต เก็บข้อมูลขั้นต่ำ อธิบายความเสี่ยง",
     listeningMissionTh: "ฟังผู้ใช้บอกเหตุผลที่ไม่ต้องการเปิดเผยตัว",
     speakingMissionTh: "อธิบาย consent, privacy และทางเลือกเก็บข้อมูลขั้นต่ำ",
+    focusRoles: ["ux","qa"],
     playable: false,
   },
   {
@@ -121,6 +131,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "สรุปหลักฐาน แยก fact/assumption",
     listeningMissionTh: "ฟัง timeline จากผู้ดูแลกับอาสาสมัครแล้วประกอบหลักฐาน",
     speakingMissionTh: "เล่า incident summary โดยแยก fact, assumption และ next step",
+    focusRoles: ["data","qa"],
     playable: false,
   },
   {
@@ -132,6 +143,7 @@ export const episodeSummaries: EpisodeSummary[] = [
     languageFocusTh: "สรุป insight, ข้อเสนอ, limitation, next step",
     listeningMissionTh: "ฟังคำถามจากคณะกรรมการ/นักเรียนหลังนำเสนอ",
     speakingMissionTh: "พูด pitch, ตอบคำถาม และสรุปข้อจำกัดกับการดำเนินการต่อ",
+    focusRoles: ["pm","ba"],
     playable: false,
   },
 ];

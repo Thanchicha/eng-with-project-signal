@@ -164,6 +164,7 @@ export const ep01: Episode = {
         }
       ],
       "listenForTh": "ฟังว่าโจทย์ของโรงเรียนยังขาดอะไร",
+      "background": "bg_classroom_morning",
       "listeningCheck": {
         "id": "ep01_s1_listen",
         "promptTh": "ส่วนใดขาดไปจากโจทย์ของโรงเรียน?",
@@ -364,6 +365,7 @@ export const ep01: Episode = {
         }
       ],
       "listenForTh": "ฟังว่าใครรับหน้าที่อะไรในทีม",
+      "background": "bg_classroom_afterschool",
       "listeningCheck": {
         "id": "ep01_s2_listen",
         "promptTh": "ใครรับหน้าที่ตรวจข้อมูลเดิมของโรงเรียน?",
@@ -539,6 +541,7 @@ export const ep01: Episode = {
         }
       ],
       "listenForTh": "ฟังว่า Kuro กับ Miyu เห็นต่างกันเรื่องอะไร",
+      "background": "bg_classroom_afterschool",
       "listeningCheck": {
         "id": "ep01_s3_listen",
         "promptTh": "Miyu กังวลอะไรเกี่ยวกับการเริ่มสร้างแอปทันที?",
@@ -751,6 +754,7 @@ export const ep01: Episode = {
         }
       ],
       "listenForTh": "ฟังว่า Taku เจอปัญหาที่ไหนและเมื่อไร",
+      "background": "bg_library_corner",
       "listeningCheck": {
         "id": "ep01_s4_listen",
         "promptTh": "Taku เจอปัญหา Wi-Fi ตอนทำอะไร?",
@@ -922,6 +926,7 @@ export const ep01: Episode = {
         }
       ],
       "listenForTh": "ฟังว่าไฟล์ที่ Kuro เจอมีปัญหาอะไร",
+      "background": "bg_project_room_whiteboard",
       "listeningCheck": {
         "id": "ep01_s5_listen",
         "promptTh": "ทำไมทีมยังไม่ควรใช้ไฟล์นี้?",
@@ -1121,6 +1126,7 @@ export const ep01: Episode = {
         }
       ],
       "listenForTh": "ฟังว่า Chief แบ่งงานให้ใครทำอะไร",
+      "background": "bg_project_room_whiteboard",
       "listeningCheck": {
         "id": "ep01_s6_listen",
         "promptTh": "Chief ให้ Kuro ทำอะไรต่อ?",
@@ -1337,6 +1343,7 @@ export const ep01: Episode = {
         }
       ],
       "listenForTh": "ฟังว่า IT ขอให้ทีมทำอะไรระหว่างรอผล",
+      "background": "bg_it_office",
       "listeningCheck": {
         "id": "ep01_s7_listen",
         "promptTh": "Mr. Ono ขอให้ทีมทำอะไรระหว่างรอผลตรวจ?",

@@ -188,6 +188,7 @@ export const ep02: Episode = {
         }
       ],
       "listenForTh": "ฟังว่ารายงานกับนักเรียนพูดเรื่องเวลารอต่างกันอย่างไร",
+      "background": "bg_project_room_whiteboard",
       "listeningCheck": {
         "id": "ep02_s1_listen",
         "promptTh": "รายงานของโรงเรียนบอกว่าเวลารอเฉลี่ยกี่นาที?",
@@ -373,6 +374,7 @@ export const ep02: Episode = {
         }
       ],
       "listenForTh": "ฟังว่าเจ้าหน้าที่กังวลเรื่องอะไร และทีมสัญญาอะไร",
+      "background": "bg_cafeteria_kitchen",
       "listeningCheck": {
         "id": "ep02_s2_listen",
         "promptTh": "ทีมสัญญากับเจ้าหน้าที่โรงอาหารว่าจะไม่ทำอะไร?",
@@ -499,6 +501,7 @@ export const ep02: Episode = {
         }
       ],
       "listenForTh": "ฟังว่า Sora ติดปัญหาตรงไหนเมื่อมาถึงโรงอาหาร",
+      "background": "bg_cafeteria_lunch",
       "listeningCheck": {
         "id": "ep02_s3_listen",
         "promptTh": "ทำไม Sora ต้องไปต่อท้ายแถวใหม่?",
@@ -698,6 +701,7 @@ export const ep02: Episode = {
         }
       ],
       "listenForTh": "ฟังตัวเลขที่ Kuro อ่านจากตัวจับเวลา",
+      "background": "bg_cafeteria_lunch",
       "listeningCheck": {
         "id": "ep02_s4_listen",
         "promptTh": "ระหว่างสังเกต 20 นาที มีนักเรียนเปลี่ยนแถวกี่คน?",
@@ -884,6 +888,7 @@ export const ep02: Episode = {
         }
       ],
       "listenForTh": "ฟังว่า Rei เจออะไรแปลกในรายงาน",
+      "background": "bg_project_room_whiteboard",
       "listeningCheck": {
         "id": "ep02_s5_listen",
         "promptTh": "Rei พบอะไรแปลกในรายงานของโรงเรียน?",
@@ -1071,6 +1076,7 @@ export const ep02: Episode = {
         }
       ],
       "listenForTh": "ฟังผลการทดลองป้ายกระดาษ",
+      "background": "bg_cafeteria_signs",
       "listeningCheck": {
         "id": "ep02_s6_listen",
         "promptTh": "หลังติดป้าย มีนักเรียนเปลี่ยนแถวกี่คน?",
@@ -1246,6 +1252,7 @@ export const ep02: Episode = {
         }
       ],
       "listenForTh": "ฟังว่า Miyu รู้ได้อย่างไรว่าปัญหาจริงของ Sora คืออะไร",
+      "background": "bg_station_evening",
       "listeningCheck": {
         "id": "ep02_s7_listen",
         "promptTh": "Miyu รู้ได้อย่างไรว่าปัญหาจริงของ Sora ไม่ใช่ความเร็วของคิว?",

@@ -1,0 +1,50 @@
+.backdrop {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-hud-border);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 85% 20%, rgba(255, 122, 184, 0.35), transparent 45%),
+    linear-gradient(180deg, #2a1640 0%, #1a0f2e 60%, #140b23 100%);
+}
+
+.backdrop__img,
+.backdrop__city {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.backdrop__img {
+  object-fit: cover;
+}
+
+/* Darken art a little so the speech bubble stays readable. */
+.backdrop--art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 11, 35, 0.1), rgba(20, 11, 35, 0.55));
+}
+
+.backdrop__moon {
+  fill: #ffd9ec;
+  opacity: 0.55;
+  filter: blur(0.5px);
+}
+
+.backdrop__far {
+  fill: #3a2758;
+  opacity: 0.7;
+}
+
+.backdrop__near {
+  fill: #221539;
+}
+
+.backdrop__content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}

@@ -35,6 +35,7 @@
 - objective: Find out who will use the report.   ← Quest panel (EN)
 - objectiveTh: หาว่าใครจะใช้รายงาน
 - listenFor: ฟังว่าโจทย์ยังขาดอะไร                 ← เป้าหมายการฟังของฉาก (ไทย สั้น)
+- background: bg_classroom_morning               ← ไม่บังคับ: ชื่อภาพฉาก public/art/bg/<name>.webp (ดู docs/art/ART_BRIEF.md)
 
 Narration: "At 7:55 on Monday..." | "เวลา 7:55 วันจันทร์..."
 Kuro: "That is not a complete [brief]." | "นั่นยังไม่ใช่โจทย์ที่ครบ"
