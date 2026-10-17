@@ -32,8 +32,12 @@ export default function EpisodeCard({ episode, status, current }: Props) {
           <dd>{episode.rolesTh}</dd>
         </div>
         <div>
-          <dt>ภาษา</dt>
-          <dd>{episode.languageFocusTh}</dd>
+          <dt>ฟัง</dt>
+          <dd>{episode.listeningMissionTh}</dd>
+        </div>
+        <div>
+          <dt>พูด</dt>
+          <dd>{episode.speakingMissionTh}</dd>
         </div>
       </dl>
       <p className={`ep-card__status ep-card__status--${status}`}>

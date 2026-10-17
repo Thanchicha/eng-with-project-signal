@@ -1,25 +1,26 @@
-# Spec Index — Project SIGNAL
+# Spec Index — Project SIGNAL (ฟัง → พูด)
 
-เนื้อหาคัดลอกตรงตัวจาก `PROJECT_SIGNAL_VIBE_CODING_BRIEF.md` แยกตามหัวข้อ เปิดเฉพาะไฟล์ที่งานต้องใช้
+เนื้อหาคัดลอกตรงตัวจาก `PROJECT_SIGNAL_VIBE_CODING_BRIEF_Final.md` (ฉบับ 18 ต.ค. 2026 เน้นฟังและพูด) แยกตามหัวข้อ เปิดเฉพาะไฟล์ที่งานต้องใช้
+ฉบับเก่า (เน้นอ่าน) เก็บที่ `docs/archive/` — ไม่ใช้เป็นสเปคแล้ว
 
 | ไฟล์ | หัวข้อ brief | เปิดเมื่อ |
 | --- | --- | --- |
-| `01-concept-learners.md` | §1–2 แนวคิด, ผู้เล่น, เป้าหมายเรียน | เขียนข้อความหน้า Home / คำอธิบายเกม |
+| `01-concept-learners.md` | §1–2 แนวคิด, เสาหลัก (ฟังแล้วต้องใช้), เป้าหมายผู้เรียน | ข้อความหน้า Home / คำอธิบายเกม |
 | `02-world-characters.md` | §3–4 AU canon, ตัวละคร, stakeholder | `characters.ts`, เขียน/ตรวจบทพูด |
-| `03-plot-12-episodes.md` | §5–6 คดี, ตาราง 12 ตอน, beat sheet, เฉลยท้ายภาค | `episodes.ts` (การ์ด EP2–12 preview) |
-| `04-ep01-content.md` | เนื้อหาพร้อมเล่น EP1 (scene, choice, drill, mini case, recap) | `ep01.ts` |
-| `05-gameplay-pedagogy.md` | §7–8 วงจรเล่น, โครงตอน, feedback 4 ส่วน, ระดับภาษา | FeedbackCard, Exercise, progress indicators |
-| `06-screens-ux.md` | §9 หน้าจอ A–G, ทิศทางภาพ/สี | สร้าง/ตกแต่งหน้าจอ, `tokens.css` |
-| `07-mvp-scope-tech.md` | §10 scope, §13 stack/โครงไฟล์, §15 prompt, §16 ลำดับหลัง MVP | scaffold, ตัดสินว่าฟีเจอร์อยู่ใน scope ไหม |
-| `08-data-schema-storage.md` | §11 schema Episode/Scene/Choice, §12 localStorage | types, content, `progressStorage.ts` |
-| `14-acceptance.md` | §14 เกณฑ์รับมอบ (checklist) | ตรวจงานท้าย milestone |
+| `03-plot-12-episodes.md` | §5–6 คดี, ตาราง 12 ตอน, **Listening/Speaking Mission ทุกตอน**, beat sheet, เฉลยท้ายภาค | `episodes.ts`, เขียน EP2+ |
+| `04-ep01-content.md` | EP1 ฉบับฟัง-พูด: Before Listening, Listening Check, Speak to Continue, Stand-up with Chief, Mini Case briefing | `docs/story/ep01.md` |
+| `05-gameplay-pedagogy.md` | §7–8 วงจรฟัง→พูด 9 ขั้น, โหมดพูด, โครงตอน 13 ส่วน, ระดับการเปิด transcript, feedback การพูด | StoryScreen, SpeakResponse, LearnScreen |
+| `06-screens-ux.md` | §9 หน้าจอ A–H (รวม Voice Settings) และทิศทางภาพ | สร้าง/ตกแต่งหน้าจอ |
+| `07-mvp-scope-tech.md` | §10 scope + ข้อจำกัดเสียงบนเว็บ, §13 โครงไฟล์ (AudioScenePlayer, SpeakResponse, speech/*), §15–16 | ตัดสินว่าอยู่ใน scope ไหม, ชั้นเสียง |
+| `08-data-schema-storage.md` | §11 schema (ListeningCheck, SpeakingPrompt, audio), §12 localStorage | types, converter, progress |
+| `14-acceptance.md` | §14 เกณฑ์รับมอบ 15 ข้อ (checklist) | ตรวจงานท้ายแต่ละขั้น |
 
-## ไฟล์ที่ต้องเปิดต่อ milestone
+## ไฟล์ที่ต้องเปิดต่อขั้น (แผนฟัง-พูด)
 
-1. Scaffold → 07, 06 (เฉพาะ "ทิศทางภาพ")
-2. Types + content → 08, 02, 03, 04
-3. Home / Intro → 06 (A–B), 01
-4. Story Scene → 06 (C–D), 05, 04
-5. Exercise / Mini Case / Speak → 06 (E–F), 05, 04
-6. Recap / storage / settings → 06 (G), 08
-7. QA → 14
+1. เอกสาร/กฎ → 00, 14
+2. ชั้นเสียง (audioPlayer, speechInput) → 07 (ข้อจำกัดเสียง + หลักการ component), 08 §12
+3. เนื้อหา EP1 → 08, 04, 05, 02
+4. ฉากเรื่อง audio-first → 06 (B–C, H), 05
+5. บทเรียนหลังเรื่อง → 06 (D–F), 05, 04
+6. Recap / Settings / Progress → 06 (G–H), 08 §12, 05 (คะแนน/ความคืบหน้า)
+7. EP2–3 + QA → 03 (mission), 14

@@ -1,15 +1,18 @@
-<!-- ที่มา: brief §6 เนื้อหาพร้อมเล่น Episode 1 — ใช้คัดลงไฟล์ src/content/ep01.ts ตรงตัว -->
+<!-- ที่มา: brief Final §6 เนื้อหาพร้อมเล่น Episode 1 (ฟัง-พูด) — ใช้เป็นต้นฉบับของ docs/story/ep01.md -->
 ### เนื้อหาพร้อมเล่น: Episode 1
 
 ส่วนนี้เป็น reference content สำหรับสร้าง vertical slice; UI สามารถแสดงฉากทีละบรรทัดและแทรก interaction ตาม scene ID ได้
 
-#### Before Reading
+#### Before Listening
 
 **สถานการณ์:** CAGE School เข้าร่วมการแข่งขันนวัตกรรมระหว่างโรงเรียน ทีม 2-A ต้องใช้ข้อมูลช่วยปรับปรุงชีวิตนักเรียน แต่โจทย์ยังไม่บอกว่าควรแก้ปัญหาอะไร
 
-**เป้าหมาย:** เข้าใจโจทย์, ถามว่าใครคือผู้ใช้, และไม่รีบสร้างวิธีแก้ก่อนรู้ปัญหา
+**เป้าหมาย:** ฟังให้เข้าใจโจทย์ ถามว่าใครคือผู้ใช้ และไม่รีบสร้างวิธีแก้ก่อนรู้ปัญหา
 
-**คำศัพท์:** project (โครงการ), goal (เป้าหมาย), problem (ปัญหา), solution (วิธีแก้), requirement (ข้อกำหนด/ความต้องการ), stakeholder (ผู้เกี่ยวข้อง), user (ผู้ใช้), deadline (กำหนดส่ง), assumption (ข้อสันนิษฐาน), evidence (หลักฐาน), scope (ขอบเขต), source (แหล่งที่มา)
+**คำใบ้ก่อนฟัง:** project, problem, improve  
+คำศัพท์เต็มจะแสดงหลังผู้เล่นลองฟังรอบแรก: project (โครงการ), goal (เป้าหมาย), problem (ปัญหา), solution (วิธีแก้), requirement (ข้อกำหนด/ความต้องการ), stakeholder (ผู้เกี่ยวข้อง), user (ผู้ใช้), deadline (กำหนดส่ง), assumption (ข้อสันนิษฐาน), evidence (หลักฐาน), scope (ขอบเขต), source (แหล่งที่มา)
+
+**กติกาเสียง:** ทุกบรรทัดภาษาอังกฤษด้านล่างเป็นเสียงที่เล่นได้ก่อนแสดง transcript; ผู้เล่นฟังฉากซ้ำ ชะลอเสียง เปิดบทพูด หรือคำแปลได้ทุกเมื่อ
 
 #### Scene 1 — The Brief
 
@@ -22,7 +25,19 @@
 - Kuro: “That is not a complete brief. It does not define the users or the result.”
 - Miyu: “Then we should ask what problem the school wants us to solve.”
 
-**Interaction:** What should the team clarify first?
+**Listening Check:** ส่วนใดขาดไปจากโจทย์ของโรงเรียน?
+
+- ผู้ใช้และปัญหาที่ต้องการแก้ — คำตอบที่ได้ยินจาก Kuro
+- สีของหน้าจอ — ยังไม่มีใครพูดถึง
+- ชื่อโปรแกรมที่จะใช้ — ยังไม่มีใครตัดสินใจ
+
+**Speak to Continue:** พูดถาม Chief ให้ชี้แจงโจทย์ด้วยหนึ่งประโยค
+
+- Phrase frame: “What problem are we trying to solve?”
+- Natural options: “Could you clarify the main problem?” / “Who are the users for this project?”
+- feedback: คำถามที่ชัดช่วยให้ทีมกำหนดผู้ใช้และปัญหาก่อนเลือก solution
+
+**Optional choice support:** What should the team clarify first?
 
 - A: “Who are the users, and what problem do they have?” — feedback: ช่วยกำหนดผู้ใช้และปัญหาก่อนคิด solution; skill tag: problem-framing
 - B: “Which programming language should we use?” — feedback: เป็นคำถามเทคนิคที่อาจจำเป็นภายหลัง แต่ยังเร็วไปก่อนรู้ว่ากำลังสร้างอะไร; skill tag: solution-first
@@ -42,7 +57,15 @@
 - Miyu: “No. That’s why I need to ask them.”
 - Chief: “Good. No one owns the whole answer. We’ll share what we learn.”
 
-**Interaction:** The player chooses one useful PM question:
+**Listening Check:** ใครรับหน้าที่ตรวจข้อมูลเดิมของโรงเรียน? ฟังชื่อ role และงานที่ได้รับมอบหมาย
+
+**Speak to Continue:** พูดถาม Chief เรื่องกำหนดส่งหรือผู้อนุมัติ โดยใช้หนึ่งประโยค
+
+- Phrase frames: “What is our deadline?” / “Who will approve the final project?”
+- Natural option: “Could you confirm the deadline for our first prototype?”
+- feedback: การถามเวลาและผู้ตัดสินใจช่วย PM วางแผนงานได้
+
+**Optional choice support:** The player chooses one useful PM question:
 
 - “What is our deadline?” — reveals six-week plan; feedback about schedule
 - “Who approves the final project?” — reveals teacher and student committee; feedback about decision stakeholders
@@ -61,7 +84,15 @@
 - Kuro: “A prototype can help people react to something real.”
 - Chief: “Both points are useful. We’ll learn about the problem and test a small prototype later.”
 
-**Interaction:** Select the best next step:
+**Listening Check:** Miyu กังวลอะไรเกี่ยวกับการเริ่มสร้างแอปทันที?
+
+**Speak to Continue:** พูดขอตัวอย่างเหตุการณ์จริงจากนักเรียนก่อนเสนอวิธีแก้
+
+- Phrase frame: “Could you tell me more about \_\_\_?”
+- Natural options: “Could you give me a recent example?” / “When did this happen most recently?”
+- feedback: ผู้เล่นกำลังถามถึงประสบการณ์ ไม่ได้ชี้นำผู้ใช้ไปยัง solution ที่ทีมคิดไว้
+
+**Optional choice support:** Select the best next step:
 
 - A: Interview students about a recent problem — feedback: เก็บ evidence จากประสบการณ์จริง; preferred next scene
 - B: Build every feature Kuro can think of — feedback: เสี่ยง scope ใหญ่และยังไม่รู้ผู้ใช้
@@ -83,13 +114,23 @@
 - Kuro: “We don’t know. First, we check the file safely.”
 - Chief: “Tomorrow we bring evidence, not guesses.”
 
-**Interaction:** What should the team do with the file?
+**Listening Check:** ทำไมทีมยังไม่ควรใช้ไฟล์นี้? เลือกใจความที่ได้ยินจาก Kuro และ Miyu
+
+**Speak to Continue:** พูดรายงานสิ่งที่รู้โดยแยก fact ออกจาก assumption
+
+- Phrase frame: “The file has no **_. We don’t know _** yet.”
+- Model response: “The file has no source. We don’t know who created it yet.”
+- feedback: รายงานข้อเท็จจริงก่อน และบอกสิ่งที่ยังไม่รู้ โดยไม่กล่าวหาใคร
+
+**Optional choice support:** What should the team do with the file?
 
 - A: Record where it was found and ask IT to confirm its source — feedback: รักษา evidence และขอผู้ดูแลระบบตรวจที่มา
 - B: Publish it to the team chat so everyone can inspect it — feedback: แชร์ข้อมูลที่ไม่ทราบที่มา/สิทธิ์อาจสร้างความเสี่ยง
 - C: Delete it immediately — feedback: ป้องกันการเปิดดูโดยไม่จำเป็นได้ แต่ทำให้เสียหลักฐาน; ควรจำกัดการเข้าถึงและแจ้ง IT
 
 **Episode end:** ทีมเริ่มแผนสัมภาษณ์นักเรียนและเก็บเบาะแสเรื่อง campus ID โดยไม่มีใครถูกกล่าวหา
+
+**Speaking checkpoint:** ก่อนจบฉาก ผู้เล่นพูดสรุปให้ Chief ฟัง 1–2 ประโยคว่าเกิดอะไรขึ้นและควรทำอะไรต่อ
 
 #### Analyst Note
 
@@ -110,30 +151,36 @@
 
 #### Sentence Patterns และ Drills
 
-1. **We need to + verb** — We need to understand the problem.  
-   แทนคำ: interview students / check the source / define the goal
-2. **We don’t know whether + clause** — We don’t know whether the data is correct.  
-   แทนคำ: the file is safe / students need this feature / the report is complete
-3. **Before we + action, we should + action** — Before we use the file, we should check its source.  
-   แทนคำ: build the app / talk to users; share the report / ask the data owner
+ให้ผู้เล่นกดฟังตัวอย่างหนึ่งครั้ง แล้วพูดตามและเปลี่ยนคำด้วยตัวเอง:
 
-ให้ผู้เล่นสร้าง 3–5 ประโยคด้วย pattern เหล่านี้และมี Show Example/Hint ได้
+1. **Could you tell me more about + noun/situation?** — Could you tell me more about the problem?  
+   แทนคำ: the current process / the last report / what happened yesterday
+2. **Let me check if I understand. + summary** — Let me check if I understand. The report is missing some students.  
+   แทนคำ: the file is from a test system / the line is longest at lunch
+3. **The data shows + finding, but we don’t know whether + limitation.** — The data shows more reports, but we don’t know whether more students are affected.  
+   แทนคำ: Wi-Fi has most reports / the sample includes every class
 
-#### Speak Like an Intern
+เล่นซ้ำได้หลายครั้ง; ปุ่ม transcript/hint เปิดได้ และหลังพูดให้แสดงตัวอย่างเพื่อเทียบความหมาย ไม่ให้คะแนนสำเนียง
 
-สถานการณ์: ผู้จัดการมอบหมายให้ทำ dashboard แต่ยังไม่ได้อธิบายผู้ใช้หรือการตัดสินใจ
+#### Speak Like an Intern: Stand-up with Chief
+
+สถานการณ์: Chief มอบหมายให้ทำ dashboard แต่ยังไม่ได้อธิบายผู้ใช้หรือการตัดสินใจ แต่ละบรรทัดของ Chief เป็นเสียง ผู้เล่นต้องพูดตอบก่อนเปิดตัวอย่าง
 
 - Manager: “Please create a dashboard for student problems.”
-- Intern: “Could I ask a few questions about the requirements?”
+- Intern prompt: พูดขอถาม requirement อย่างสุภาพ
+- Model response after attempt: “Could I ask a few questions about the requirements?”
 - Manager: “Of course.”
-- Intern: “Who will use the dashboard?”
+- Intern prompt: พูดถามว่าใครจะใช้ dashboard
+- Model response after attempt: “Who will use the dashboard?”
 - Manager: “The student committee and teachers.”
-- Intern: “What decisions do they need to make?”
+- Intern prompt: พูดถามว่าผู้ใช้ต้องตัดสินใจเรื่องอะไร
+- Model response after attempt: “What decisions do they need to make?”
 - Manager: “They need to choose which problem to address first.”
-- Intern: “Let me check if I understand. We need to show the impact of each problem, not only the number of reports.”
+- Intern prompt: สรุปสิ่งที่ได้ยินกลับไปให้ Chief ยืนยัน
+- Model response after attempt: “Let me check if I understand. We need to show the impact of each problem, not only the number of reports.”
 - Manager: “Exactly.”
 
-MVP: ให้กดฟังด้วย browser speech synthesis ได้ถ้ามีเสียง หรือให้ผู้เล่นอ่านตามเอง; การไม่มีเสียงต้องไม่ขัดขวางการเล่น
+MVP: บทของ Chief เล่นด้วย browser speech synthesis หรือ audio asset ได้; ผู้เล่นใช้ไมค์ถ้ารองรับ, พูดออกเสียงแล้วกด I said it, หรือพิมพ์ตอบได้ การไม่มี microphone ไม่ขัดขวางการเล่น
 
 #### Mini Case
 
@@ -145,9 +192,9 @@ MVP: ให้กดฟังด้วย browser speech synthesis ได้ถ�
 | No wheelchair access to one classroom |           6 |
 | Other                                 |           4 |
 
-ผู้บริหารบอกว่า “Slow Wi-Fi has the most reports, so it must be our first priority.”
+มีเสียง briefing: “Slow Wi-Fi has the most reports, so it must be our first priority.”
 
-ให้ผู้เล่นตอบเป็นภาษาอังกฤษ:
+ให้ผู้เล่นฟัง briefing แล้วพูดตอบเป็นภาษาอังกฤษ:
 
 - What else should we ask?
 - Do we know how the students were selected?
@@ -160,7 +207,7 @@ MVP: ให้กดฟังด้วย browser speech synthesis ได้ถ�
 - “However, we don’t know whether ****\_\_****.”
 - “Before we decide, we should ****\_\_****.”
 
-ตัวอย่างคำตอบที่ยอมรับ: “The data shows that Wi-Fi received the most reports. However, we don’t know how many students were affected by each problem. Before we decide, we should compare both impact and severity.”
+ตัวอย่างคำตอบที่ยอมรับหลังผู้เล่นลองพูด: “The data shows that Wi-Fi received the most reports. However, we don’t know how many students were affected by each problem. Before we decide, we should compare both impact and severity.”
 
 #### Episode Recap
 
@@ -168,4 +215,5 @@ MVP: ให้กดฟังด้วย browser speech synthesis ได้ถ�
 - ยังไม่ตัดสินใจสร้างแอปจนกว่าจะรู้ความต้องการ
 - พบไฟล์ไม่มีแหล่งที่มาและเบาะแสเรื่อง wrong campus
 - คำศัพท์ทบทวน: problem, requirement, stakeholder, evidence, source, scope
-- รูปประโยคทบทวน: We need to… / We don’t know whether… / Before we…, we should…
+- ภารกิจเสียง: ฟังโจทย์ให้ครบ, ถามเพื่อขอรายละเอียด, และพูดสรุป fact กับสิ่งที่ยังไม่รู้
+- รูปประโยคทบทวน: Could you tell me more about…? / Let me check if I understand… / The data shows…, but we don’t know whether…

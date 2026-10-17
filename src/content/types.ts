@@ -141,5 +141,8 @@ export interface EpisodeSummary {
   mysteryTh: string;
   rolesTh: string;
   languageFocusTh: string;
+  /** Spec 03 §6 "Listening / Speaking Mission" table. */
+  listeningMissionTh: string;
+  speakingMissionTh: string;
   playable: boolean;
 }

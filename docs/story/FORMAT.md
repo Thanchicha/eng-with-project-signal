@@ -1,6 +1,8 @@
-# รูปแบบไฟล์เนื้อเรื่อง (`docs/story/epXX.md`)
+# รูปแบบไฟล์เนื้อเรื่อง v2 — ฟังก่อน แล้วพูด (`docs/story/epXX.md`)
 
-สัญญากลางระหว่างคนเขียนบทกับโค้ด — `src/content/epXX.ts` แปลงจากไฟล์เหล่านี้ ห้ามเปลี่ยนชื่อหัวข้อหรือ syntax โดยไม่แก้ไฟล์นี้
+สัญญากลางระหว่างคนเขียนบทกับโค้ด — `npm run content` แปลงไฟล์เหล่านี้เป็น `src/content/epXX.ts`
+ห้ามเปลี่ยนชื่อหัวข้อหรือ syntax โดยไม่แก้ไฟล์นี้และ `scripts/story-to-ts.mjs`
+อ้างอิง: `docs/spec/04-ep01-content.md`, `05-gameplay-pedagogy.md`, `08-data-schema-storage.md`
 
 ## หัวข้อตามลำดับ
 
@@ -10,34 +12,67 @@
 - title: A Problem Without a Name
 - level: A2 | B1
 - roles: PM, BA
-- summaryTh: (2–4 บรรทัด)
+- listeningMission: ฟังโจทย์และบทสนทนาทีมเพื่อระบุสิ่งที่ยังไม่ชัด
+- speakingMission: ถาม Chief, ขอ example จากผู้ใช้, สรุป fact และ unknown
+- summaryTh: |
+    (2–4 บรรทัด)
 - learningGoals:
   - ...
 ```
 
-### `## Before Reading`
-- `**สถานการณ์:**` ภาษาไทย 2–4 บรรทัด
-- `**เป้าหมาย:**` ภาษาไทย
-- ตารางคำศัพท์ 8–12 คำ:
+### `## Before Listening`
+- `**สถานการณ์:**` ไทย 2–4 บรรทัด
+- `**เป้าหมายการฟัง:**` ไทย
+- `**คำใบ้ก่อนฟัง:**` 2–3 คำ คั่นด้วย `, ` (ต้องเป็น id ในตารางศัพท์)
+- ตารางคำศัพท์ 8–12 คำ (แสดงหลังผู้เล่นลองฟังรอบแรก หรือเมื่อกดเปิดเอง):
 
 | id | en | th | example |
 | --- | --- | --- | --- |
-| requirement | requirement | ข้อกำหนด/ความต้องการ | We need to check the requirements first. |
 
 ### `## Scene N — <ชื่อฉาก>` (EP1: 5–6 ฉาก, EP อื่น: 4–5 ฉาก)
 ```
 - id: ep01_s1
-- objective: Find out who will use the report.     ← แสดงใน Quest panel (EN)
+- objective: Find out who will use the report.   ← Quest panel (EN)
 - objectiveTh: หาว่าใครจะใช้รายงาน
+- listenFor: ฟังว่าโจทย์ยังขาดอะไร                 ← เป้าหมายการฟังของฉาก (ไทย สั้น)
 
 Narration: "At 7:55 on Monday..." | "เวลา 7:55 วันจันทร์..."
 Kuro: "That is not a complete [brief]." | "นั่นยังไม่ใช่โจทย์ที่ครบ"
 ```
-- หนึ่งบรรทัดต่อหนึ่งคำพูด รูปแบบ `Speaker: "EN" | "TH"`
-- speaker ที่ใช้ได้: Narration, Screen, Kuro, Miyu, Chief, Lena, Rei, Shion, Student, Teacher, IT, (ตัวละครรองตั้งชื่อเพิ่มได้ เช่น `Student (Yuto)`)
-- ครอบคำศัพท์ด้วย `[word]` เมื่อ word ตรงกับ `id` ในตาราง หรือ `[text](vocab:id)` เมื่อรูปคำต่างกัน
+- หนึ่งบรรทัดต่อหนึ่งคำพูด `Speaker: "EN" | "TH"` — ทุกบรรทัดเป็นเสียงที่เล่นได้ จึงเขียนให้ "ฟังรู้เรื่อง": ประโยคสั้น–กลาง ไม่มีวงเล็บหรือสัญลักษณ์ที่อ่านออกเสียงไม่ได้
+- speaker: Narration, Screen, Kuro, Miyu, Chief, Lena, Rei, Shion, หรือตัวละครรอง เช่น `Student (Sora)`
+- `[word]` เมื่อตรงกับ id ในตาราง, `[text](vocab:id)` เมื่อรูปคำต่างกัน
 
-#### `### Interaction`
+#### `### Listening Check` (ทุกฉากหลัก — ถามเป็นไทย ไม่ใช้ข้อสอบอ่านยาว)
+```
+- promptTh: ส่วนใดขาดไปจากโจทย์ของโรงเรียน?
+- type: gist | detail
+- choices:
+  - a: ผู้ใช้และปัญหาที่ต้องการแก้
+  - b: สีของหน้าจอ
+  - c: ชื่อโปรแกรมที่จะใช้
+- answer: a
+- feedbackTh: Kuro บอกว่าโจทย์ "does not define the users or the result" ...
+```
+- ตอบผิดได้ ลองซ้ำได้ ไม่ล็อกเรื่อง; `feedbackTh` อธิบายว่าได้ยินคำตอบจากใคร/ประโยคไหน
+
+#### `### Speak to Continue` (EP1 ต้องมีอย่างน้อย 3 ฉาก; แนะนำทุกฉาก)
+```
+- situationTh: พูดถาม Chief ให้ชี้แจงโจทย์ด้วยหนึ่งประโยค
+- promptEn: Ask Chief to clarify the brief.
+- askedBy: Chief                       ← ตัวละครที่ถามผู้เล่น (เสียงของเขาเล่นก่อน)
+- askLine: "So, what do you want to ask first?"
+- goal: ask | clarify | summarize | report | suggest
+- phraseFrames: "What problem are we trying to solve?" ; "Who are the users for ___?"
+- modelResponses: "Could you clarify the main problem?" ; "Who are the users for this project?"
+- acceptedIntents: ถามว่าปัญหาหลักคืออะไร ; ถามว่าใครคือผู้ใช้
+- You communicated: ...       (ไทย — เจตนาที่ผู้เล่นน่าจะสื่อได้เมื่อใช้ frame นี้)
+- A natural option: "..."     (อังกฤษ)
+- One small improvement: ...  (ไทย — ปรับทีละจุด เช่น เติม Could you… ให้สุภาพขึ้น)
+```
+- model response เป็นตัวอย่าง ไม่ใช่คำตอบเดียวที่ผ่าน; feedback เปิดหลังผู้เล่นลองพูด/กด I said it/พิมพ์
+
+#### `### Interaction` (optional choice support — แสดงหลังพูด เพื่อดูผลของเจตนาแบบต่าง ๆ)
 ```
 - promptEn: What should the team clarify first?
 - promptTh: ทีมควรถามให้ชัดเรื่องอะไรก่อน?
@@ -45,46 +80,56 @@ Kuro: "That is not a complete [brief]." | "นั่นยังไม่ใช�
 #### Choice A — "Who are the users, and what problem do they have?"
 - skillTags: problem-framing
 - nextScene: ep01_s2
-- You communicated: ...      (ไทย)
-- A natural option: "..."    (อังกฤษ)
-- Why it works: ...          (ไทย)
-- Try a pattern: "..."       (อังกฤษ + คำแทนที่ได้)
+- You communicated: ...
+- A natural option: "..."
+- Why it works: ...
+- Try a pattern: "..."
 ```
-- 2–3 choices; ทุก choice ไปต่อได้ (ไม่มีทางตัน) — choice ที่ยังไม่ดีพอให้ feedback บอกว่าขาดอะไร แล้ว nextScene เดิม
-- Choice ที่ดีที่สุดไม่ต้องอยู่ตำแหน่ง A เสมอ
+- 2–3 choices; ทุก choice ไปต่อได้ ฉากที่ไม่มี Interaction ไปฉากถัดไปตามลำดับ
 
 ### `## Analyst Note`
-bullet ภาษาไทย: สิ่งที่รู้แล้ว / ยังเป็น assumption / คำถามถัดไป (ห้ามเฉลยปริศนาใหญ่)
+bullet ไทย: สิ่งที่รู้ / assumption / คำถามถัดไป (ห้ามเฉลยปริศนาใหญ่)
 
 ### `## Business & Data Lesson`
-หนึ่งแนวคิด + ตัวอย่างจากเรื่อง (ไทย มีศัพท์อังกฤษได้)
+หนึ่งแนวคิด + ตัวอย่างจากเรื่อง
 
-### `## Sentence Patterns`
-3 แบบ: `1. **Pattern** — ตัวอย่าง` + `แทนคำ: a / b / c`
+### `## Sentence Patterns` (3 แบบที่ "ได้ยิน" ในตอน — ผู้เล่นฟังตัวอย่างก่อนเห็นรูปแบบ)
+`1. **Pattern** — ตัวอย่าง` + `แทนคำ: a / b / c`
 
-### `## Drills`
-3–5 ข้อ:
+### `## Shadow & Substitute` (3–5 ข้อ — ฟังต้นแบบ แล้วพูดตาม/แทนคำ)
 ```
-1. type: substitution | reorder | fill | write
-   - promptTh: ...
-   - prompt: "Before we ___, we should ___."
+1. mode: shadow | substitute
+   - promptTh: ฟังแล้วพูดตาม จากนั้นเปลี่ยนเป็นงานของ Rei
+   - modelPhrase: "Could you tell me more about the problem?"
+   - frame: "Could you tell me more about ___?"
+   - substitutions: the last report / the current process
    - hint: ...
-   - acceptedExamples: "…" ; "…"
+   - examples: "Could you tell me more about the last report?" ; "..."
 ```
 
-### `## Speak Like an Intern`
-สถานการณ์ไทย 1 บรรทัด + บทสนทนา `Speaker: "EN" | "TH"` 6–10 บรรทัด
+### `## Speak Like an Intern` (roleplay ทีละ turn)
+```
+สถานการณ์: Chief มอบหมายให้ทำ dashboard แต่ยังไม่ได้อธิบายผู้ใช้
+
+Manager: "Please create a dashboard for student problems." | "ช่วยทำ dashboard ..."
+Intern: พูดขอถาม requirement อย่างสุภาพ => "Could I ask a few questions about the requirements?"
+Manager: "Of course." | "ได้สิ"
+```
+- บรรทัด `Intern:` = prompt ไทย `=>` model response อังกฤษ (เปิดหลังผู้เล่นพูด); บรรทัดอื่นเป็นเสียงของตัวละคร
 
 ### `## Mini Case`
-ตารางข้อมูล, คำกล่าวของ stakeholder, คำถาม EN 3–4 ข้อ, แม่แบบตอบ, คำตอบตัวอย่าง
+- ตารางข้อมูล
+- `Briefing (Speaker): "EN" | "TH"` — เสียงสรุปสถานการณ์ (ผู้เล่นกด Play Briefing)
+- `**คำถาม (พูดตอบเป็นภาษาอังกฤษ):**` bullet, `**แม่แบบช่วยตอบ:**` bullet, `**คำตอบตัวอย่าง:**` (เปิดหลังผู้เล่นลองพูด)
+
+### `## Write by Yourself` (เสริม — ไม่นับเป็นด่านหลัก)
+รูปแบบเดียวกับ Drills เดิม: `1. type: fill | write | reorder` + promptTh / prompt / hint / acceptedExamples
 
 ### `## Recap`
-bullet ไทย: เกิดอะไรขึ้น, ศัพท์ทบทวน, รูปประโยคทบทวน, ภารกิจถัดไป (teaser ตอนต่อไป)
+bullet ไทย + `**คำศัพท์ทบทวน:**`, `**ภารกิจเสียง:**`, `**รูปประโยคทบทวน:**` (คั่น ` / `), `**ตอนต่อไป:**`
 
 ## กฎเนื้อหา
-- ภาษา A2–B1: ประโยคสั้น–กลาง, คำใหม่ไม่เกิน 12 คำ/ตอน, ศัพท์สำคัญจากตอนก่อนวนกลับมา
-- บทสนทนารวม ~500–800 คำภาษาอังกฤษต่อตอน (ไม่นับ Drills/Speak/Mini Case)
-- Kuro และ Miyu มีบทที่มีผลต่อเรื่องในทุกฉาก; ความสัมพันธ์ตามตาราง §6 ของตอนนั้น ห้ามสารภาพรัก
-- Canon AU: ทุกคนเป็นนักเรียน, Airi = PM ที่ทุกคนเรียก "Chief", ห้ามอ้าง Project Eden/Subject 06/พลังพิเศษ
-- ไม่เฉลยคำตอบคดีใหญ่ (§5) ก่อน EP11–12; เบาะแสต้องตรงกับ beat sheet ของตอนนั้น
-- ไม่กล่าวหาบุคคลจาก log หรือคะแนน; ไม่ใช้ข้อมูลส่วนตัวจริง
+- A2–B1, คำใหม่ไม่เกิน 12 คำ/ตอน, ศัพท์สำคัญวนกลับมาในหลายฉากเพื่อให้จำผ่านการฟัง
+- บทพูดรวม ~500–800 คำ/ตอน; Kuro และ Miyu มีบทที่มีผลต่อเรื่องทุกฉาก; ความสัมพันธ์ตามตาราง §6 ห้ามสารภาพรัก
+- Canon AU, ไม่เฉลยคดีใหญ่ก่อน EP11–12, ไม่กล่าวหาบุคคลจาก log/คะแนน, ไม่ใช้ข้อมูลส่วนตัวจริง
+- feedback ไม่ใช่แค่ถูก/ผิด, ไม่พูดถึงสำเนียง, ยอมรับหลายคำตอบเมื่อความหมายเหมาะสม

@@ -9,6 +9,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "ทีมได้รับโจทย์กว้างและพบไฟล์ข้อมูลไม่มีแหล่งที่มา",
     rolesTh: "PM, ตั้งเป้าหมาย, กำหนดขอบเขต",
     languageFocusTh: "ถามปัญหา, ขอคำชี้แจง, พูดว่ายังไม่รู้",
+    listeningMissionTh: "ฟังโจทย์และบทสนทนาทีมเพื่อระบุสิ่งที่ยังไม่ชัด",
+    speakingMissionTh: "ถาม Chief, ขอ example จากผู้ใช้, สรุป fact และ unknown",
     playable: true,
   },
   {
@@ -18,6 +20,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "คนร้องเรียนเรื่องคิวมาก แต่เวลาเฉลี่ยในรายงานสั้นผิดปกติ",
     rolesTh: "BA, user interview, requirement",
     languageFocusTh: "“Could you give me an example?”, คำถามปลายเปิด",
+    listeningMissionTh: "ฟังนักเรียนบรรยายเหตุการณ์คิวล่าสุดและจับเวลา/จุดที่ติด",
+    speakingMissionTh: "ถามคำถามปลายเปิดและทวนความเข้าใจให้ผู้ใช้ยืนยัน",
     playable: true,
   },
   {
@@ -27,6 +31,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "แบบสอบถามมีผู้ตอบน้อยจากบางชั้น/บางกลุ่ม",
     rolesTh: "UX, sampling, accessibility",
     languageFocusTh: "อธิบายผู้ตอบและข้อจำกัดของ survey",
+    listeningMissionTh: "ฟังความเห็นจากนักเรียนหลายกลุ่มและหาเสียงที่ขาด",
+    speakingMissionTh: "อธิบายว่า survey อาจไม่แทนนักเรียนทั้งหมด และขออนุญาตสัมภาษณ์",
     playable: true,
   },
   {
@@ -36,6 +42,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "ตัวเลขจากโรงเรียนคู่แข่งชนกันเพราะรหัสนักเรียนซ้ำ",
     rolesTh: "Data, data cleaning, join key",
     languageFocusTh: "เปรียบเทียบข้อมูลและตั้งข้อสงสัย",
+    listeningMissionTh: "ฟังคำอธิบายจากโรงเรียนพันธมิตรเกี่ยวกับรหัสและ export",
+    speakingMissionTh: "อธิบายปัญหา join อย่างง่ายโดยไม่กล่าวหาว่าใครโกง",
     playable: false,
   },
   {
@@ -45,6 +53,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "รายงานเรื่องทางลาด/การเข้าถึงห้องเรียนหายจาก dashboard",
     rolesTh: "QA, testing, edge cases",
     languageFocusTh: "รายงาน bug และขั้นตอนทำซ้ำ",
+    listeningMissionTh: "ฟัง bug report และจับขั้นตอนที่ทำให้ปัญหาเกิด",
+    speakingMissionTh: "รายงาน bug พร้อมขั้นตอน reproduce ให้ Kuro/ทีมเข้าใจ",
     playable: false,
   },
   {
@@ -54,6 +64,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "ยอดสนับสนุนพุ่งหลังชมรมแชร์ลิงก์ แต่ไม่ได้แปลว่าปัญหาหนักขึ้น",
     rolesTh: "Product metrics, KPI",
     languageFocusTh: "“The number increased, but…”",
+    listeningMissionTh: "ฟัง briefing เรื่องคะแนนและแยก clicks ออกจาก impact",
+    speakingMissionTh: "อธิบายว่า metric เพิ่มขึ้นแต่ความสำเร็จยังไม่ยืนยัน",
     playable: false,
   },
   {
@@ -63,6 +75,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "log แสดงบัญชีทดสอบ แต่ยังไม่รู้ว่าเป็นระบบหรือคน",
     rolesTh: "Cybersecurity basics, access control, audit log",
     languageFocusTh: "ขอให้ IT ตรวจสิทธิ์, อธิบายสิ่งที่ยังยืนยันไม่ได้",
+    listeningMissionTh: "ฟังคำชี้แจงจาก IT เรื่อง log และ access",
+    speakingMissionTh: "ขอให้ตรวจสิทธิ์และพูดถึงสิ่งที่ log ยืนยัน/ยืนยันไม่ได้",
     playable: false,
   },
   {
@@ -72,6 +86,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "โรงเรียนพันธมิตรคิดว่าทีมกล่าวหาว่าพวกเขาปลอมข้อมูล",
     rolesTh: "Stakeholder communication, partnership",
     languageFocusTh: "ชี้แจงความเข้าใจผิดและขอหลักฐานเพิ่ม",
+    listeningMissionTh: "ฟังความเข้าใจผิดของโรงเรียนคู่แข่ง",
+    speakingMissionTh: "ชี้แจงเจตนาและเสนอทางตรวจสอบร่วมกันอย่างสุภาพ",
     playable: false,
   },
   {
@@ -81,6 +97,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "ทีมต้องออกแบบเกณฑ์ที่สมดุลระหว่างจำนวนคนและความรุนแรง",
     rolesTh: "Product management, prioritization",
     languageFocusTh: "เสนอเหตุผล เปรียบเทียบทางเลือก",
+    listeningMissionTh: "ฟัง trade-off ระหว่างหลายเกณฑ์จัดอันดับ",
+    speakingMissionTh: "เสนอ priority criteria และอธิบายเหตุผลให้คณะกรรมการ",
     playable: false,
   },
   {
@@ -90,6 +108,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "ผู้ใช้กลุ่มหนึ่งส่งแบบฟอร์มไม่ได้เพราะขั้นตอน/สิทธิ์ไม่เหมาะ",
     rolesTh: "Data quality, privacy, consent",
     languageFocusTh: "ขออนุญาต เก็บข้อมูลขั้นต่ำ อธิบายความเสี่ยง",
+    listeningMissionTh: "ฟังผู้ใช้บอกเหตุผลที่ไม่ต้องการเปิดเผยตัว",
+    speakingMissionTh: "อธิบาย consent, privacy และทางเลือกเก็บข้อมูลขั้นต่ำ",
     playable: false,
   },
   {
@@ -99,6 +119,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "หลักฐานชี้ไปยังไฟล์ทดสอบเก่าและนักเรียนอาสาสมัครผู้เตือน",
     rolesTh: "Incident response, data lineage, synthesis",
     languageFocusTh: "สรุปหลักฐาน แยก fact/assumption",
+    listeningMissionTh: "ฟัง timeline จากผู้ดูแลกับอาสาสมัครแล้วประกอบหลักฐาน",
+    speakingMissionTh: "เล่า incident summary โดยแยก fact, assumption และ next step",
     playable: false,
   },
   {
@@ -108,6 +130,8 @@ export const episodeSummaries: EpisodeSummary[] = [
     mysteryTh: "นำเสนอผล ตรวจแก้คะแนน ประกาศแนวทางใหม่ และปิดคดี",
     rolesTh: "PM, presentation, retrospective",
     languageFocusTh: "สรุป insight, ข้อเสนอ, limitation, next step",
+    listeningMissionTh: "ฟังคำถามจากคณะกรรมการ/นักเรียนหลังนำเสนอ",
+    speakingMissionTh: "พูด pitch, ตอบคำถาม และสรุปข้อจำกัดกับการดำเนินการต่อ",
     playable: false,
   },
 ];
