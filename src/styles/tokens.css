@@ -1,0 +1,73 @@
+/* Design tokens — navy/teal base, warm cream reading surface, coral/amber accents (spec 06 §ทิศทางภาพ). */
+:root {
+  /* Color */
+  --navy-900: #0f1f3a;
+  --navy-800: #16294b;
+  --navy-700: #213a63;
+  --teal-600: #11807a;
+  --teal-500: #179d94;
+  --teal-100: #d7f0ec;
+  --cream-50: #fbf7ee;
+  --cream-100: #f4ecdc;
+  --cream-200: #e8dcc4;
+  --coral-500: #e2674f;
+  --amber-500: #e3a72f;
+  --ink-900: #1c2230;
+  --ink-600: #4a5366;
+  --white: #ffffff;
+
+  /* Semantic */
+  --color-bg: var(--navy-900);
+  --color-surface: var(--navy-800);
+  --color-reading: var(--cream-50);
+  --color-reading-border: var(--cream-200);
+  --color-text-on-dark: #eef2f8;
+  --color-text-muted-on-dark: #b4c0d4;
+  --color-text: var(--ink-900);
+  --color-text-muted: var(--ink-600);
+  --color-primary: var(--teal-500);
+  --color-primary-strong: var(--teal-600);
+  --color-accent: var(--coral-500);
+  --color-highlight: var(--amber-500);
+  --color-focus: var(--amber-500);
+
+  /* Type — one family for Thai + English (docs/design/DESIGN.md) */
+  --font-body: "IBM Plex Sans Thai", "Noto Sans Thai", "Leelawadee UI", "Segoe UI", system-ui, sans-serif;
+  --font-story: var(--font-body);
+  --text-scale: 1;
+  --fs-sm: calc(0.875rem * var(--text-scale));
+  --fs-md: calc(1rem * var(--text-scale));
+  --fs-lg: calc(1.25rem * var(--text-scale));
+  --fs-xl: calc(1.75rem * var(--text-scale));
+  --fs-2xl: calc(2.25rem * var(--text-scale));
+  --lh-body: 1.6;
+  --lh-tight: 1.2;
+
+  /* Space & shape */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+  --tap-min: 44px;
+  --content-max: 46rem;
+
+  /* Motion */
+  --dur-fast: 150ms;
+  --dur-med: 250ms;
+}
+
+:root[data-text-size="large"] {
+  --text-scale: 1.15;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-med: 0ms;
+  }
+}

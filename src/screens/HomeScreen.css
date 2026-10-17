@@ -1,0 +1,99 @@
+.hero {
+  padding: var(--space-6) 0 var(--space-8);
+}
+
+.hero__series {
+  margin: 0;
+  color: var(--color-text-muted-on-dark);
+  font-size: var(--fs-md);
+  font-weight: 500;
+}
+
+.hero__title {
+  margin: 0;
+  font-size: clamp(2.5rem, 11vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.hero__wave {
+  display: block;
+  width: 100%;
+  height: 2.5rem;
+  margin: var(--space-2) 0 var(--space-4);
+  color: var(--color-primary);
+  overflow: visible;
+}
+
+.hero__wave path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: wave-draw 1.4s ease-out both;
+}
+
+@keyframes wave-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__wave path {
+    animation: none;
+  }
+}
+
+.hero__pitch {
+  max-width: 36rem;
+  font-size: var(--fs-lg);
+  line-height: 1.5;
+}
+
+.hero__level {
+  max-width: 36rem;
+  color: var(--color-text-muted-on-dark);
+}
+
+.hero__level strong {
+  color: var(--color-highlight);
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.hero__next {
+  color: var(--color-text-muted-on-dark);
+  font-size: var(--fs-sm);
+}
+
+.map__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.map__head h2 {
+  margin: 0;
+  font-size: var(--fs-xl);
+}
+
+.map__progress {
+  margin: 0;
+  color: var(--color-text-muted-on-dark);
+  font-size: var(--fs-sm);
+}
+
+.map__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

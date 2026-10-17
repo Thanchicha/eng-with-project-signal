@@ -1,0 +1,128 @@
+.dialogue {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-reading);
+  color: var(--color-text);
+  list-style: none;
+}
+
+.line {
+  display: flex;
+  gap: var(--space-3);
+  animation: line-in var(--dur-med) ease-out;
+}
+
+@keyframes line-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.line__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.line__name {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--navy-700);
+}
+
+.line__en {
+  margin: 0;
+  font-family: var(--font-story);
+  font-size: var(--fs-lg);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.line__th {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+}
+
+.line__translate {
+  min-height: 32px;
+  margin-top: var(--space-1);
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--color-primary-strong);
+  font-size: var(--fs-sm);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  position: relative;
+}
+
+
+.line__translate::after {
+  content: "";
+  position: absolute;
+  inset: -6px -8px;
+}
+
+.line--narration .line__en {
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.line--screen .line__body {
+  border: 2px solid var(--navy-700);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  background: var(--navy-800);
+  color: var(--teal-100);
+}
+
+.line--screen .line__en {
+  font-weight: 700;
+}
+
+.line--screen .line__th,
+.line--screen .line__translate {
+  color: var(--color-text-muted-on-dark);
+}
+
+.line__guest {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px dashed var(--ink-600);
+  color: var(--ink-600);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.vocab-word {
+  min-height: 0;
+  border: 0;
+  padding: 0 2px;
+  border-radius: 3px;
+  background: linear-gradient(to top, rgba(227, 167, 47, 0.35) 40%, transparent 40%);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.vocab-word:hover {
+  background: rgba(227, 167, 47, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    animation: none;
+  }
+}
+
+.line__translate + .line__listen {
+  margin-left: var(--space-4);
+}

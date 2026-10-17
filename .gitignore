@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.claude/settings.local.json
+*.log
+.venv/
+tests/e2e/output/
+__pycache__/
+*.tsbuildinfo

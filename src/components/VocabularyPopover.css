@@ -1,0 +1,66 @@
+/* Bottom sheet on phones, centered card on wider screens. */
+.vocab-pop {
+  width: 100%;
+  max-width: 28rem;
+  margin: auto auto 0;
+  border: 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  padding: 0;
+  background: var(--color-reading);
+  color: var(--color-text);
+}
+
+.vocab-pop::backdrop {
+  background: rgba(15, 31, 58, 0.6);
+}
+
+.vocab-pop[open] {
+  animation: sheet-up var(--dur-med) ease-out;
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+.vocab-pop__inner {
+  padding: var(--space-6) var(--space-4) var(--space-4);
+}
+
+.vocab-pop__word {
+  margin: 0;
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--navy-800);
+}
+
+.vocab-pop__th {
+  font-size: var(--fs-lg);
+  color: var(--color-text-muted);
+}
+
+.vocab-pop__example {
+  border-left: 3px solid var(--color-highlight);
+  padding-left: var(--space-3);
+  font-size: var(--fs-md);
+}
+
+.vocab-pop__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.vocab-pop__actions .btn--primary {
+  margin-left: auto;
+}
+
+@media (min-width: 40rem) {
+  .vocab-pop {
+    margin: auto;
+    border-radius: var(--radius-md);
+  }
+}

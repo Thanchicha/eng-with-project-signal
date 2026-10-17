@@ -1,0 +1,91 @@
+/* Shared cream "paper" surface for long reading content (docs/design/DESIGN.md principle 1). */
+.paper {
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background: var(--color-reading);
+  color: var(--color-text);
+}
+
+.paper p:last-child {
+  margin-bottom: 0;
+}
+
+.paper__lead {
+  color: var(--color-text-muted);
+}
+
+.paper__title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--navy-800);
+}
+
+.note-list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  padding-left: 1.25rem;
+}
+
+.note-list:last-child {
+  margin-bottom: 0;
+}
+
+.patterns {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pattern__frame {
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--navy-800);
+}
+
+.pattern__example {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  border-left: 3px solid var(--color-highlight);
+  padding-left: var(--space-3);
+}
+
+.pattern__subs-label {
+  margin: var(--space-3) 0 var(--space-1);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-primary-strong);
+}
+
+.pattern__subs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pattern__subs li {
+  border-radius: var(--radius-pill);
+  padding: 0 var(--space-3);
+  background: var(--teal-100);
+  color: var(--navy-900);
+  font-size: var(--fs-sm);
+}
+
+/* Small "listen" pill used on cream surfaces. */
+.listen {
+  min-height: 32px;
+  border: 1px solid var(--color-primary-strong);
+  border-radius: var(--radius-pill);
+  padding: 0 var(--space-3);
+  background: none;
+  color: var(--color-primary-strong);
+  font-size: var(--fs-sm);
+}
