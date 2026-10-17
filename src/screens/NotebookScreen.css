@@ -84,3 +84,9 @@
 .notebook__actions .listen[aria-pressed="true"] {
   background: var(--teal-100);
 }
+
+.notebook__heard {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--color-primary-strong);
+}

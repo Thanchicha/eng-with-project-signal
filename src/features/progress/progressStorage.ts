@@ -13,6 +13,12 @@ export interface Progress {
   practicedPatterns: string[];
   /** Choice ids whose feedback the player opened — the recap derives skills from their tags. */
   viewedChoices: string[];
+  /** Listening check ids the player answered (spec 08 §12). */
+  triedChecks: string[];
+  /** How many times each episode's scenes were played again after the first listen. */
+  replays: Record<string, number>;
+  /** Ids of speaking moments the player attempted (prompts, shadow items, roleplay turns, mini case). Ids only — never what they said. */
+  spokenIds: string[];
   settings: Settings;
 }
 
@@ -46,6 +52,9 @@ export const defaultProgress: Progress = {
   triedDrills: [],
   practicedPatterns: [],
   viewedChoices: [],
+  triedChecks: [],
+  replays: {},
+  spokenIds: [],
   settings: defaultSettings,
 };
 
@@ -104,4 +113,13 @@ export function resetProgress(): Progress {
 /** Episode ids the player has reached (unlocked), in order — used to decide which vocabulary they have met. */
 export function reachedEpisodeIds(progress: Progress): string[] {
   return episodeSummaries.filter((e) => isUnlocked(e.id, progress)).map((e) => e.id);
+}
+
+/** Add an id to a list field once. */
+export function addOnce<K extends "triedChecks" | "spokenIds" | "triedDrills" | "viewedChoices">(p: Progress, key: K, id: string): Progress {
+  return p[key].includes(id) ? p : { ...p, [key]: [...p[key], id] };
+}
+
+export function countReplay(p: Progress, episodeId: string): Progress {
+  return { ...p, replays: { ...p.replays, [episodeId]: (p.replays[episodeId] ?? 0) + 1 } };
 }

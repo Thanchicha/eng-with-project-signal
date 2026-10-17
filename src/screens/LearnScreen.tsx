@@ -8,7 +8,7 @@ import SpeakPanel from "../components/SpeakPanel";
 import ShadowPanel from "../components/ShadowPanel";
 import { episodeContent } from "../content";
 import type { Episode } from "../content/types";
-import { isUnlocked, type Progress } from "../features/progress/progressStorage";
+import { addOnce, isUnlocked, type Progress } from "../features/progress/progressStorage";
 import "./LearnScreen.css";
 
 // Spec 05 §7 episode structure after the story: listen and speak first, writing last and optional.
@@ -148,16 +148,25 @@ export default function LearnScreen({ episodeId, step, progress, update }: Props
         <ShadowPanel
           items={ep.shadowItems}
           settings={progress.settings}
-          triedIds={progress.triedDrills}
+          triedIds={progress.spokenIds}
           onConsent={setConsent}
-          onTried={(id) =>
-            update((p) => (p.triedDrills.includes(id) ? p : { ...p, triedDrills: [...p.triedDrills, id] }))
-          }
+          onTried={(id) => update((p) => addOnce(p, "spokenIds", id))}
         />
       )}
-      {current.id === "speak" && <SpeakPanel practice={ep.speakPractice} settings={progress.settings} onConsent={setConsent} />}
+      {current.id === "speak" && <SpeakPanel
+          practice={ep.speakPractice}
+          settings={progress.settings}
+          onConsent={setConsent}
+          onAttempt={(i) => update((p) => addOnce(p, "spokenIds", `${ep.id}_rp${i}`))}
+        />}
       {current.id === "case" && (
-        <MiniCasePanel key={ep.id} miniCase={ep.miniCase} settings={progress.settings} onConsent={setConsent} />
+        <MiniCasePanel
+          key={ep.id}
+          miniCase={ep.miniCase}
+          settings={progress.settings}
+          onConsent={setConsent}
+          onAttempt={() => update((p) => addOnce(p, "spokenIds", `${ep.id}_case`))}
+        />
       )}
       {current.id === "write" && (
         <>
@@ -165,9 +174,7 @@ export default function LearnScreen({ episodeId, step, progress, update }: Props
           <PatternExercise
             drills={ep.drills}
             triedIds={progress.triedDrills}
-            onTried={(id) =>
-              update((p) => (p.triedDrills.includes(id) ? p : { ...p, triedDrills: [...p.triedDrills, id] }))
-            }
+            onTried={(id) => update((p) => addOnce(p, "triedDrills", id))}
           />
         </>
       )}

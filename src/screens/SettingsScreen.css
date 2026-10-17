@@ -129,3 +129,12 @@
 .btn--danger:hover {
   border-color: var(--navy-900);
 }
+
+.settings__row .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.settings__row > .btn {
+  flex: none;
+}

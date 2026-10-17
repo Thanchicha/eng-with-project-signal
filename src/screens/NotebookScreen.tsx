@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { episodeContent } from "../content";
+import type { Episode } from "../content/types";
 import { reachedEpisodeIds, type Progress } from "../features/progress/progressStorage";
 import { canSpeak, speak } from "../features/speech/speak";
 import "../components/LearnSections.css";
@@ -11,6 +12,11 @@ interface Props {
 }
 
 type Filter = "all" | "saved";
+
+/** Scene numbers whose dialogue uses this word — the notebook stresses words heard in the story. */
+function heardIn(ep: Episode, vocabId: string): number[] {
+  return ep.scenes.flatMap((s, i) => (s.dialogue.some((d) => d.vocabularyRefs?.some((r) => r.id === vocabId)) ? [i + 1] : []));
+}
 
 /** Vocabulary Notebook (spec 05 §7): words met so far, with the ones saved for review. */
 export default function NotebookScreen({ progress, update }: Props) {
@@ -70,6 +76,9 @@ export default function NotebookScreen({ progress, update }: Props) {
                   <p lang="en" className="notebook__example">
                     {v.example}
                   </p>
+                  {heardIn(ep, v.id).length > 0 && (
+                    <p className="notebook__heard">ได้ยินในฉาก {heardIn(ep, v.id).join(", ")}</p>
+                  )}
                   <div className="notebook__actions">
                     {canSpeak() && (
                       <button type="button" className="listen" onClick={() => speak(`${v.en}. ${v.example}`)}>

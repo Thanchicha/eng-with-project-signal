@@ -9,7 +9,7 @@ import SpeakResponse from "../components/SpeakResponse";
 import VocabularyPopover from "../components/VocabularyPopover";
 import { episodeContent } from "../content";
 import type { Episode, Scene } from "../content/types";
-import { isUnlocked, type Progress } from "../features/progress/progressStorage";
+import { addOnce, countReplay, isUnlocked, type Progress } from "../features/progress/progressStorage";
 import "./StoryScreen.css";
 
 interface Props {
@@ -185,7 +185,7 @@ function SceneFlow({ episode, scene, isLast, progress, update, onVocab, onNext }
   const choose = (id: string) => {
     setSelectedId(id);
     setViewedIds((v) => (v.includes(id) ? v : [...v, id]));
-    update((p) => (p.viewedChoices.includes(id) ? p : { ...p, viewedChoices: [...p.viewedChoices, id] }));
+    update((p) => addOnce(p, "viewedChoices", id));
   };
 
   const next = () => onNext(selected?.nextSceneId ?? scene.nextSceneId ?? "end");
@@ -208,9 +208,17 @@ function SceneFlow({ episode, scene, isLast, progress, update, onVocab, onNext }
         showThaiAll={settings.thaiHints}
         onVocab={onVocab}
         onHeard={() => setHeard(true)}
+        onReplay={() => update((p) => countReplay(p, episode.id))}
       />
 
-      {heard && check && <ListeningCheck ref={checkRef} check={check} onAnswered={() => setChecked(true)} />}
+      {heard && check && <ListeningCheck
+          ref={checkRef}
+          check={check}
+          onAnswered={() => {
+            setChecked(true);
+            update((p) => addOnce(p, "triedChecks", check.id));
+          }}
+        />}
 
       {speakVisible && (
         <SpeakResponse
@@ -218,6 +226,7 @@ function SceneFlow({ episode, scene, isLast, progress, update, onVocab, onNext }
           prompt={speak}
           settings={settings}
           onConsent={(value) => update((p) => ({ ...p, settings: { ...p.settings, micConsent: value } }))}
+          onAttempt={() => update((p) => addOnce(p, "spokenIds", speak.id))}
           onDone={() => setSpoken(true)}
         />
       )}

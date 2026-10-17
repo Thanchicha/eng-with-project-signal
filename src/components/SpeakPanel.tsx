@@ -13,7 +13,8 @@ interface Props {
   practice: SpeakPractice;
   settings: Settings;
   onConsent: (value: "granted" | "declined") => void;
-  onAttempt?: (mode: AnswerMode) => void;
+  /** Turn index the player answered on (ids only are stored by the caller). */
+  onAttempt?: (turnIndex: number, mode: AnswerMode) => void;
 }
 
 /**
@@ -63,7 +64,7 @@ export default function SpeakPanel({ practice, settings, onConsent, onAttempt }:
             onConsent={onConsent}
             onSubmit={(mode, text) => {
               setAnswers((a) => ({ ...a, [i]: text }));
-              onAttempt?.(mode);
+              onAttempt?.(i, mode);
             }}
             onRetry={() =>
               setAnswers((a) => {
