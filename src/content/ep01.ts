@@ -336,6 +336,31 @@ export const ep01: Episode = {
           "speakerId": "kuro",
           "textEn": "Okay, Chief.",
           "textTh": "ครับ Chief"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "Can we meet every Monday and Thursday after class?",
+          "textTh": "เราประชุมกันทุกวันจันทร์กับพฤหัสหลังเลิกเรียนได้ไหม?"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "And please send notes after each interview. I will keep them in one place.",
+          "textTh": "แล้วช่วยส่งโน้ตหลังสัมภาษณ์ทุกครั้งนะ ฉันจะเก็บไว้ที่เดียวกัน"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Kuro, you can join the first interviews too.",
+          "textTh": "Kuro นายมาร่วมสัมภาษณ์รอบแรกด้วยก็ได้นะ"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Why me?",
+          "textTh": "ทำไมต้องเป็นผม?"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Because you want real examples. This is where they come from.",
+          "textTh": "เพราะนายอยากเห็นตัวอย่างจริง และมันมาจากตรงนี้แหละ"
         }
       ],
       "listenForTh": "ฟังว่าใครรับหน้าที่อะไรในทีม",
@@ -678,6 +703,28 @@ export const ep01: Episode = {
           "speakerId": "nana",
           "textEn": "A friend told me after it finished.",
           "textTh": "เพื่อนบอกหลังจากประชุมจบไปแล้ว",
+          "speakerLabel": "Nana"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Where do you usually look for club news?",
+          "textTh": "ปกติเธอดูข่าวชมรมจากที่ไหน?"
+        },
+        {
+          "speakerId": "nana",
+          "textEn": "On the school app. But it updates late.",
+          "textTh": "ในแอปของโรงเรียน แต่มันอัปเดตช้า",
+          "speakerLabel": "Nana"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "How late?",
+          "textTh": "ช้าแค่ไหน?"
+        },
+        {
+          "speakerId": "nana",
+          "textEn": "Sometimes one day. Sometimes the news never shows up.",
+          "textTh": "บางทีหนึ่งวัน บางทีข่าวก็ไม่ขึ้นเลย",
           "speakerLabel": "Nana"
         },
         {
@@ -1140,7 +1187,7 @@ export const ep01: Episode = {
             "skillTags": [
               "solution-first"
             ],
-            "nextSceneId": "end"
+            "nextSceneId": "ep01_s7"
           },
           {
             "id": "ep01_s6_b",
@@ -1155,7 +1202,7 @@ export const ep01: Episode = {
               "summarizing",
               "evidence"
             ],
-            "nextSceneId": "end"
+            "nextSceneId": "ep01_s7"
           },
           {
             "id": "ep01_s6_c",
@@ -1169,9 +1216,177 @@ export const ep01: Episode = {
             "skillTags": [
               "assumption"
             ],
-            "nextSceneId": "end"
+            "nextSceneId": "ep01_s7"
           }
         ]
+      },
+      "nextSceneId": "ep01_s7"
+    },
+    {
+      "id": "ep01_s7",
+      "title": "The IT Office",
+      "objective": "Report the file to IT and ask what happens next.",
+      "objectiveTh": "แจ้งเรื่องไฟล์กับ IT และถามว่าขั้นต่อไปคืออะไร",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "The next morning, Kuro and Miyu knocked on the door of the IT office.",
+          "textTh": "เช้าวันต่อมา Kuro กับ Miyu เคาะประตูห้อง IT"
+        },
+        {
+          "speakerId": "mr-ono",
+          "textEn": "Come in. Chief said you found a file?",
+          "textTh": "เข้ามาสิ Chief บอกว่าพวกเธอเจอไฟล์อะไรบางอย่าง?",
+          "speakerLabel": "Mr. Ono"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Yes. It was in the project folder. It has no source or owner.",
+          "textTh": "ครับ มันอยู่ในโฟลเดอร์โปรเจกต์ ไม่มีแหล่งที่มาหรือเจ้าของ",
+          "vocabularyRefs": [
+            {
+              "id": "source",
+              "text": "source"
+            }
+          ]
+        },
+        {
+          "speakerId": "mr-ono",
+          "textEn": "Did you open it?",
+          "textTh": "เปิดดูแล้วหรือยัง?",
+          "speakerLabel": "Mr. Ono"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Only once, to see the first lines. We did not copy it.",
+          "textTh": "เปิดครั้งเดียวเพื่อดูบรรทัดแรก ๆ เราไม่ได้คัดลอกครับ"
+        },
+        {
+          "speakerId": "mr-ono",
+          "textEn": "Good. Many teams share that folder. I need time to check who added it.",
+          "textTh": "ดีมาก หลายทีมใช้โฟลเดอร์นั้นร่วมกัน ผมต้องใช้เวลาตรวจว่าใครเป็นคนใส่",
+          "speakerLabel": "Mr. Ono"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Could you tell us when you will know more?",
+          "textTh": "ช่วยบอกได้ไหมคะว่าจะรู้ผลมากขึ้นเมื่อไร?"
+        },
+        {
+          "speakerId": "mr-ono",
+          "textEn": "Maybe next week. Until then, please don't use the data.",
+          "textTh": "อาจจะสัปดาห์หน้า ระหว่างนี้อย่าใช้ข้อมูลในไฟล์นะ",
+          "speakerLabel": "Mr. Ono"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "We won't. Is there anything we can do to help?",
+          "textTh": "เราจะไม่ใช้ค่ะ มีอะไรที่เราช่วยได้ไหม?"
+        },
+        {
+          "speakerId": "mr-ono",
+          "textEn": "Write down where and when you found it. That is useful evidence.",
+          "textTh": "จดไว้ว่าเจอที่ไหนและเมื่อไร นั่นเป็นหลักฐานที่มีประโยชน์",
+          "speakerLabel": "Mr. Ono",
+          "vocabularyRefs": [
+            {
+              "id": "evidence",
+              "text": "evidence"
+            }
+          ]
+        },
+        {
+          "speakerId": "narration",
+          "textEn": "Outside, the hallway was quiet.",
+          "textTh": "ข้างนอก ทางเดินเงียบสงบ"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "You were very calm in there.",
+          "textTh": "นายใจเย็นมากเลยนะตอนอยู่ข้างใน"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "You asked the question I forgot to ask.",
+          "textTh": "เธอถามคำถามที่ผมลืมถาม"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Which one?",
+          "textTh": "ข้อไหน?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "When he will know more. I only thought about the file.",
+          "textTh": "ว่าเขาจะรู้ผลเมื่อไร ผมคิดถึงแต่ตัวไฟล์"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "And I only thought about the people. Maybe that's why Chief sent us together.",
+          "textTh": "ส่วนฉันคิดถึงแต่คน บางทีนั่นอาจเป็นเหตุผลที่ Chief ส่งเรามาด้วยกัน"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Maybe.",
+          "textTh": "อาจจะนะ"
+        },
+        {
+          "speakerId": "narration",
+          "textEn": "Neither of them said it, but the six weeks suddenly felt shorter.",
+          "textTh": "ไม่มีใครพูดออกมา แต่หกสัปดาห์ดูสั้นลงขึ้นมาทันที"
+        }
+      ],
+      "listenForTh": "ฟังว่า IT ขอให้ทีมทำอะไรระหว่างรอผล",
+      "listeningCheck": {
+        "id": "ep01_s7_listen",
+        "promptTh": "Mr. Ono ขอให้ทีมทำอะไรระหว่างรอผลตรวจ?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "ไม่ใช้ข้อมูลในไฟล์ และจดว่าพบไฟล์ที่ไหนเมื่อไร"
+          },
+          {
+            "id": "b",
+            "labelTh": "ลบไฟล์ออกจากโฟลเดอร์ทันที"
+          },
+          {
+            "id": "c",
+            "labelTh": "ส่งไฟล์ให้ครูที่ปรึกษาดู"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Mr. Ono พูดว่า \"please don't use the data\" และ \"Write down where and when you found it.\""
+      },
+      "speakingPrompt": {
+        "id": "ep01_s7_speak",
+        "situationTh": "ถาม Mr. Ono อย่างสุภาพว่าจะรู้ผลเมื่อไร และมีอะไรที่ทีมช่วยได้",
+        "promptEn": "Ask Mr. Ono when he will know more and how you can help.",
+        "goal": "ask",
+        "phraseFrames": [
+          "Could you tell us when ___?",
+          "Is there anything we can do to ___?"
+        ],
+        "modelResponses": [
+          "Could you tell us when you will know more?",
+          "Is there anything we can do to help?"
+        ],
+        "acceptedIntentsTh": [
+          "ถามกำหนดเวลาอย่างสุภาพ",
+          "เสนอความช่วยเหลือ",
+          "ไม่เร่งหรือกดดันผู้ดูแลระบบ"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณถามเรื่องเวลาและเสนอช่วย ทำให้ทีมวางแผนต่อได้และผู้ดูแลระบบรู้สึกว่าทำงานร่วมกัน",
+          "naturalOption": "Could you tell us when you will know more about the file?",
+          "improvementTh": "เติม about the file ท้ายคำถาม ให้ชัดว่ากำลังถามเรื่องอะไร"
+        },
+        "askedBy": {
+          "speakerId": "mr-ono",
+          "textEn": "Anything else you need from me?",
+          "textTh": "ต้องการอะไรจากผมอีกไหม?",
+          "speakerLabel": "Mr. Ono"
+        }
       },
       "nextSceneId": "end"
     }
@@ -1519,7 +1734,8 @@ export const ep01: Episode = {
       "ทีม 2-A ได้โจทย์กว้าง ๆ และตกลงว่าจะเข้าใจปัญหาก่อนสร้างอะไร",
       "Kuro อยากสร้างต้นแบบ ส่วน Miyu อยากถามผู้ใช้ก่อน — Chief รวมสองความเห็นเป็นแผนเดียว",
       "สัมภาษณ์แรกแสดงว่าปัญหาไม่ได้มีแค่ Wi-Fi แต่หลักฐานยังไม่พอ",
-      "พบไฟล์ไม่มีแหล่งที่มาและโน้ต \"The top score came from the wrong campus.\" ทีมเก็บไว้อย่างปลอดภัยและจะแจ้ง IT"
+      "พบไฟล์ไม่มีแหล่งที่มาและโน้ต \"The top score came from the wrong campus.\" ทีมเก็บไว้อย่างปลอดภัยและจะแจ้ง IT",
+      "Kuro กับ Miyu แจ้ง IT อย่างถูกขั้นตอน และเริ่มเห็นว่าวิธีคิดของอีกฝ่ายช่วยเติมสิ่งที่ตัวเองมองข้าม"
     ],
     "reviewVocabulary": [
       "problem",

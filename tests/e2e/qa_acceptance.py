@@ -60,6 +60,9 @@ SPEECH_STUB = """
 })();
 """
 
+# Scene count of EP1, read from the story script so the QA follows content changes.
+EP1_SCENES = len(re.findall(r"^## Scene \d+", (ROOT / "docs" / "story" / "ep01.md").read_text(encoding="utf-8"), flags=re.M))
+
 results: list[dict] = []
 
 
@@ -210,13 +213,13 @@ def t_full(browser: Browser):
     data = stored(page)
     page.screenshot(path=str(OUT / "ep01_recap.png"), full_page=True)
 
-    record("2 Before Listening → Recap", scenes == 6 and "จบแล้ว" in recap and data.get("completedEpisodes") == ["ep01"],
+    record("2 Before Listening → Recap", scenes == EP1_SCENES and "จบแล้ว" in recap and data.get("completedEpisodes") == ["ep01"],
            f"{scenes} scenes → {len(steps)} lesson steps ({', '.join(steps)}) → recap; completed={data.get('completedEpisodes')}")
-    record("3 audio + Listening Check before transcript", hidden_ok == 6 and audio_ok == 6,
-           f"{audio_ok}/6 scenes played every line as audio; {hidden_ok}/6 kept the transcript hidden until the listening check was answered")
-    record("8 Kuro & Miyu in every scene", not leads_missing, "both speak in all 6 scenes" if not leads_missing else ", ".join(leads_missing))
-    record("9a Thai feedback after listening/speaking", thai_fb >= 12 and speak_points == 6,
-           f"{thai_fb} Thai feedback panels across 6 listening checks and {speak_points} speaking points")
+    record("3 audio + Listening Check before transcript", hidden_ok == EP1_SCENES and audio_ok == EP1_SCENES,
+           f"{audio_ok}/{scenes} scenes played every line as audio; {hidden_ok}/{scenes} kept the transcript hidden until the listening check was answered")
+    record("8 Kuro & Miyu in every scene", not leads_missing, f"both speak in all {scenes} scenes" if not leads_missing else ", ".join(leads_missing))
+    record("9a Thai feedback after listening/speaking", thai_fb >= 2 * EP1_SCENES and speak_points == EP1_SCENES,
+           f"{thai_fb} Thai feedback panels across {scenes} listening checks and {speak_points} speaking points")
     page.context.close()
 
 
@@ -254,7 +257,7 @@ def t_no_mic(browser: Browser):
     button(page, "ส่งคำตอบ").click()
     typed_ok = "Who are the users" in page.locator(".speak-resp__yours").inner_text()
     record("5 speak without mic", "ฉันพูดออกเสียงแล้ว (I said it)" in modes and "พิมพ์ตอบแทน" in modes and not any("ไมโครโฟน" in m for m in modes) and typed_ok,
-           f"browser without SpeechRecognition shows {modes}; typed answer accepted and feedback opened (EP1 has 6 speaking points, see item 2)")
+           f"browser without SpeechRecognition shows {modes}; typed answer accepted and feedback opened (every EP1 scene has a speaking point, see item 2)")
     page.context.close()
 
 
