@@ -97,3 +97,24 @@
   margin: 0;
   padding: 0;
 }
+
+/* Key-art lettering: serif display with a soft neon glow. */
+.hero__series {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--pink-100);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-shadow: 0 0 18px rgba(255, 122, 184, 0.55), 0 0 2px rgba(255, 198, 230, 0.9);
+}
+
+.hero__wave {
+  color: var(--pink-400);
+  filter: drop-shadow(0 0 6px var(--color-glow));
+}

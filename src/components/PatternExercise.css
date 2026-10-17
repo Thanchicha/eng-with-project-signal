@@ -19,8 +19,8 @@
 .drill__type {
   border-radius: var(--radius-pill);
   padding: 0 var(--space-2);
-  background: var(--teal-100);
-  color: var(--navy-900);
+  background: var(--pink-100);
+  color: var(--night-900);
 }
 
 .drill__tried {
@@ -35,7 +35,7 @@
 
 .drill__prompt {
   font-size: var(--fs-lg);
-  color: var(--navy-800);
+  color: var(--night-800);
 }
 
 .drill__input {
@@ -80,13 +80,13 @@
   margin: var(--space-3) 0 0;
   border-radius: var(--radius-sm);
   padding: var(--space-2) var(--space-3);
-  background: var(--cream-100);
+  background: var(--lilac-100);
 }
 
 .drill__result {
   margin: var(--space-3) 0 0;
   font-weight: 500;
-  color: var(--navy-800);
+  color: var(--night-800);
 }
 
 .drill__result--match {
@@ -120,7 +120,7 @@
   border-bottom: 2px solid var(--color-reading-border);
   padding: var(--space-2) 0;
   font-size: var(--fs-lg);
-  color: var(--navy-800);
+  color: var(--night-800);
 }
 
 .reorder__placeholder {
@@ -136,11 +136,11 @@
 }
 
 .tile {
-  border: 2px solid var(--navy-700);
+  border: 2px solid var(--night-700);
   border-radius: var(--radius-sm);
   padding: 0 var(--space-3);
   background: var(--white);
-  color: var(--navy-900);
+  color: var(--night-900);
   font-size: var(--fs-md);
 }
 

@@ -61,7 +61,7 @@
 
 .settings__radio:has(input:checked) {
   border-color: var(--color-primary-strong);
-  background: var(--teal-100);
+  background: var(--pink-100);
 }
 
 .settings__radio input {
@@ -96,7 +96,7 @@
 
 .switch[aria-checked="true"] {
   border-color: var(--color-primary-strong);
-  background: var(--teal-100);
+  background: var(--pink-100);
   padding: 0 2.25rem 0 var(--space-3);
 }
 
@@ -112,7 +112,7 @@
 .settings__confirm {
   border-radius: var(--radius-sm);
   padding: var(--space-3);
-  background: var(--cream-100);
+  background: var(--lilac-100);
 }
 
 .settings__confirm-actions {
@@ -122,12 +122,12 @@
 }
 
 .btn--danger {
-  background: var(--coral-500);
-  color: var(--navy-900);
+  background: var(--rose-500);
+  color: var(--night-900);
 }
 
 .btn--danger:hover {
-  border-color: var(--navy-900);
+  border-color: var(--night-900);
 }
 
 .settings__row .btn:disabled {

@@ -1,7 +1,7 @@
 .phrases {
   border-radius: var(--radius-sm);
   padding: var(--space-3);
-  background: var(--cream-100);
+  background: var(--lilac-100);
 }
 
 .phrases__label {
@@ -24,7 +24,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2);
-  color: var(--navy-800);
+  color: var(--night-800);
   font-weight: 500;
 }
 

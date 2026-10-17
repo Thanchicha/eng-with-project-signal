@@ -48,7 +48,7 @@
 
 .shell__navlink:hover,
 .shell__navlink[aria-current="page"] {
-  background: var(--navy-700);
+  background: var(--night-700);
   color: var(--color-text-on-dark);
 }
 

@@ -1,39 +1,46 @@
-/* Design tokens — navy/teal base, warm cream reading surface, coral/amber accents (spec 06 §ทิศทางภาพ). */
+/* Design tokens — "Cage of Data" night palette: violet night, neon pink signal, lilac reading paper
+   (docs/design/DESIGN.md). Every text pairing below meets WCAG AA. */
 :root {
   /* Color */
-  --navy-900: #0f1f3a;
-  --navy-800: #16294b;
-  --navy-700: #213a63;
-  --teal-600: #11807a;
-  --teal-500: #179d94;
-  --teal-100: #d7f0ec;
-  --cream-50: #fbf7ee;
-  --cream-100: #f4ecdc;
-  --cream-200: #e8dcc4;
-  --coral-500: #e2674f;
-  --amber-500: #e3a72f;
-  --ink-900: #1c2230;
-  --ink-600: #4a5366;
+  --night-900: #140b23; /* page background — night sky */
+  --night-800: #221539; /* panels on the night background */
+  --night-700: #3a2758; /* borders on dark; text on paper */
+  --pink-600: #b02d73; /* strong pink: buttons with white text, pink text on paper */
+  --pink-500: #f25aa3; /* signal pink on dark */
+  --pink-400: #ff7ab8; /* neon glow */
+  --pink-100: #fbe3f1; /* soft chips, active line */
+  --lilac-50: #f9f4fc; /* reading paper */
+  --lilac-100: #f0e6f7;
+  --lilac-200: #ddcbea;
+  --rose-500: #ff5c86; /* ERROR / warning accent on dark */
+  --rose-700: #a8264b; /* warning text on paper */
+  --glow-500: #ffc6e6; /* highlight + focus on dark */
+  --ink-900: #22182e;
+  --ink-600: #5a4b68;
   --white: #ffffff;
 
   /* Semantic */
-  --color-bg: var(--navy-900);
-  --color-surface: var(--navy-800);
-  --color-reading: var(--cream-50);
-  --color-reading-border: var(--cream-200);
-  --color-text-on-dark: #eef2f8;
-  --color-text-muted-on-dark: #b4c0d4;
+  --color-bg: var(--night-900);
+  --color-surface: var(--night-800);
+  --color-reading: var(--lilac-50);
+  --color-reading-border: var(--lilac-200);
+  --color-text-on-dark: #f4eefb;
+  --color-text-muted-on-dark: #c7b7dc;
   --color-text: var(--ink-900);
   --color-text-muted: var(--ink-600);
-  --color-primary: var(--teal-500);
-  --color-primary-strong: var(--teal-600);
-  --color-accent: var(--coral-500);
-  --color-highlight: var(--amber-500);
-  --color-focus: var(--amber-500);
+  --color-primary: var(--pink-500);
+  --color-primary-strong: var(--pink-600);
+  --color-accent: var(--rose-500);
+  --color-highlight: var(--glow-500);
+  --color-focus: var(--glow-500);
+  --color-glow: rgba(255, 122, 184, 0.45);
+  --color-hud-border: rgba(255, 122, 184, 0.35);
 
   /* Type — one family for Thai + English (docs/design/DESIGN.md) */
   --font-body: "IBM Plex Sans Thai", "Noto Sans Thai", "Leelawadee UI", "Segoe UI", system-ui, sans-serif;
   --font-story: var(--font-body);
+  /* Serif display for large English titles, echoing the key art lettering */
+  --font-display: "Cormorant Garamond", "Noto Serif", Georgia, serif;
   --text-scale: 1;
   --fs-sm: calc(0.875rem * var(--text-scale));
   --fs-md: calc(1rem * var(--text-scale));

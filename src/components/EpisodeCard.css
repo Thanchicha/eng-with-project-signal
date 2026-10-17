@@ -23,7 +23,7 @@
 
 .ep-node--waiting::before,
 .ep-node--soon::before {
-  background: repeating-linear-gradient(to bottom, var(--navy-700) 0 6px, transparent 6px 12px);
+  background: repeating-linear-gradient(to bottom, var(--night-700) 0 6px, transparent 6px 12px);
 }
 
 .ep-node__dot {
@@ -44,7 +44,7 @@
 
 .ep-node--waiting .ep-node__dot,
 .ep-node--soon .ep-node__dot {
-  border-color: var(--navy-700);
+  border-color: var(--night-700);
   color: var(--color-text-muted-on-dark);
 }
 
@@ -137,4 +137,22 @@
 .ep-card__status--open,
 .ep-card__status--done {
   color: var(--color-primary-strong);
+}
+
+.ep-card--locked {
+  border: 1px solid var(--color-hud-border);
+  background: linear-gradient(160deg, rgba(58, 39, 88, 0.45), rgba(34, 21, 57, 0.8));
+}
+
+.ep-card--link {
+  box-shadow: 0 0 0 1px var(--color-hud-border), 0 6px 24px rgba(255, 122, 184, 0.12);
+}
+
+.ep-node__dot {
+  box-shadow: 0 0 12px var(--color-glow);
+}
+
+.ep-node--waiting .ep-node__dot,
+.ep-node--soon .ep-node__dot {
+  box-shadow: none;
 }

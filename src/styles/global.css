@@ -11,7 +11,14 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--color-bg);
+  /* Night over the city: a pink moon glow top-right and a faint data grid, as in the key art. */
+  background:
+    radial-gradient(circle at 88% 4%, rgba(255, 122, 184, 0.28), transparent 26rem),
+    radial-gradient(ellipse at 10% 100%, rgba(109, 75, 184, 0.25), transparent 30rem),
+    linear-gradient(rgba(255, 122, 184, 0.035) 1px, transparent 1px) 0 0 / 100% 2.5rem,
+    linear-gradient(90deg, rgba(255, 122, 184, 0.035) 1px, transparent 1px) 0 0 / 2.5rem 100%,
+    var(--color-bg);
+  background-attachment: fixed;
   color: var(--color-text-on-dark);
   font-family: var(--font-body);
   font-size: var(--fs-md);
@@ -41,6 +48,19 @@ button {
   outline-offset: 2px;
 }
 
+/* On light reading paper the pale-pink ring is too faint — use strong pink there. */
+.paper,
+.dialogue,
+.speak-resp,
+.lcheck,
+.intro__paper,
+.roleplay__turns,
+.feedback,
+.vocab-pop,
+.ep-card--link {
+  --color-focus: var(--pink-600);
+}
+
 img,
 svg {
   max-width: 100%;
@@ -67,18 +87,19 @@ svg {
 }
 
 .btn--primary {
-  background: var(--color-primary-strong);
+  background: linear-gradient(135deg, var(--pink-600), #8f2a8a);
   color: var(--white);
+  box-shadow: 0 0 0 1px rgba(255, 122, 184, 0.4), 0 4px 18px var(--color-glow);
 }
 
 .btn--primary:hover {
-  background: var(--teal-500);
-  color: var(--navy-900);
+  background: var(--pink-500);
+  color: var(--night-900);
 }
 
 .btn--ghost {
   background: transparent;
-  border-color: var(--navy-700);
+  border-color: var(--night-700);
   color: var(--color-text-on-dark);
 }
 
@@ -86,11 +107,24 @@ svg {
   border-color: var(--color-primary);
 }
 
+/* HUD panel: dark glass with a thin neon edge, like the screens in the key art. */
+.hud {
+  border: 1px solid var(--color-hud-border);
+  background: linear-gradient(160deg, rgba(58, 39, 88, 0.55), rgba(34, 21, 57, 0.85));
+  box-shadow: inset 0 0 24px rgba(255, 122, 184, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 
 /* For use on cream reading surfaces. */
 .btn--soft {
-  background: var(--teal-100);
-  color: var(--navy-900);
+  background: var(--pink-100);
+  color: var(--night-900);
 }
 
 .btn--soft:hover,

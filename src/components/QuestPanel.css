@@ -32,7 +32,7 @@
 .quest__bar {
   height: 4px;
   border-radius: var(--radius-pill);
-  background: var(--navy-700);
+  background: var(--night-700);
   overflow: hidden;
 }
 

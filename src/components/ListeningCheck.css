@@ -50,12 +50,12 @@
 
 .lcheck__choice--right {
   border-color: var(--color-primary-strong);
-  background: var(--teal-100);
+  background: var(--pink-100);
   font-weight: 700;
 }
 
 .lcheck__choice--wrong {
-  border-color: var(--coral-500);
+  border-color: var(--rose-500);
 }
 
 .lcheck__feedback {
@@ -63,7 +63,7 @@
 }
 
 .lcheck__feedback strong {
-  color: #b4412b; /* coral darkened for 4.5:1 on cream */
+  color: var(--rose-700);
 }
 
 .lcheck__feedback--right strong {

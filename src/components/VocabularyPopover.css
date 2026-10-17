@@ -11,7 +11,7 @@
 }
 
 .vocab-pop::backdrop {
-  background: rgba(15, 31, 58, 0.6);
+  background: rgba(20, 11, 35, 0.75);
 }
 
 .vocab-pop[open] {
@@ -33,7 +33,7 @@
   margin: 0;
   font-size: var(--fs-xl);
   font-weight: 700;
-  color: var(--navy-800);
+  color: var(--night-800);
 }
 
 .vocab-pop__th {

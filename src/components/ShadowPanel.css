@@ -14,7 +14,7 @@
 
 .shadow__nav button {
   width: var(--tap-min);
-  border: 2px solid var(--navy-700);
+  border: 2px solid var(--night-700);
   border-radius: 50%;
   background: transparent;
   color: var(--color-text-on-dark);

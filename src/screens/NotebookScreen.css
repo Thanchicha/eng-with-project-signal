@@ -14,7 +14,7 @@
 }
 
 .notebook__filter button {
-  border: 1px solid var(--navy-700);
+  border: 1px solid var(--night-700);
   border-radius: var(--radius-pill);
   padding: 0 var(--space-4);
   background: transparent;
@@ -23,7 +23,7 @@
 
 .notebook__filter button[aria-pressed="true"] {
   border-color: var(--color-highlight);
-  background: var(--navy-700);
+  background: var(--night-700);
   color: var(--color-text-on-dark);
 }
 
@@ -64,7 +64,7 @@
 .notebook__en {
   font-size: var(--fs-lg);
   font-weight: 700;
-  color: var(--navy-800);
+  color: var(--night-800);
 }
 
 .notebook__th {
@@ -82,7 +82,7 @@
 }
 
 .notebook__actions .listen[aria-pressed="true"] {
-  background: var(--teal-100);
+  background: var(--pink-100);
 }
 
 .notebook__heard {

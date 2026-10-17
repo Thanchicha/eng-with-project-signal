@@ -48,7 +48,7 @@
 .minicase__quote-who {
   font-size: var(--fs-sm);
   font-weight: 700;
-  color: #b4412b; /* coral darkened for 4.5:1 on cream */
+  color: var(--rose-700);
 }
 
 .minicase__h {
@@ -89,7 +89,7 @@
 
 .minicase__quote-en {
   font-size: var(--fs-lg);
-  color: var(--navy-800);
+  color: var(--night-800);
 }
 
 .minicase__questions li {

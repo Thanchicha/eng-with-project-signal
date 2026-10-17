@@ -26,7 +26,7 @@
 
 .speak-resp__task {
   margin: 0;
-  color: var(--navy-800);
+  color: var(--night-800);
   font-weight: 500;
 }
 
@@ -88,8 +88,8 @@
   margin: 0;
   border-radius: var(--radius-sm);
   padding: var(--space-2) var(--space-3);
-  background: var(--cream-100);
-  color: #b4412b;
+  background: var(--lilac-100);
+  color: var(--rose-700);
   font-weight: 500;
 }
 
@@ -123,7 +123,7 @@
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 50%;
-  background: var(--coral-500);
+  background: var(--rose-500);
   animation: mic-pulse 1s ease-in-out infinite;
 }
 
@@ -153,7 +153,7 @@
   margin: 0;
   border-radius: var(--radius-sm);
   padding: var(--space-2) var(--space-3);
-  background: var(--cream-100);
+  background: var(--lilac-100);
 }
 
 .speak-resp__models {
