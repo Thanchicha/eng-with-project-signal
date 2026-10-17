@@ -34,7 +34,7 @@ export default function SpeakPanel({ practice, showThaiAll }: Props) {
           </button>
         </div>
       )}
-      <DialoguePanel lines={practice.lines} showThaiAll={showThaiAll} onListen={hasVoice ? speak : undefined} />
+      <DialoguePanel lines={practice.lines} showThaiAll={showThaiAll} onListen={hasVoice ? (l) => speak(l.textEn) : undefined} />
     </div>
   );
 }

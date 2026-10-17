@@ -8,12 +8,14 @@ interface Props {
   lines: DialogueLine[];
   showThaiAll: boolean;
   onVocab?: (vocabId: string) => void;
-  /** When set, each line gets a "listen" button (Speak Like an Intern). */
-  onListen?: (text: string) => void;
+  /** When set, each line gets a "listen" button that replays just that line. */
+  onListen?: (line: DialogueLine, index: number) => void;
+  /** Line currently being played — highlighted and marked aria-current. */
+  activeIndex?: number;
 }
 
-/** Story dialogue. New lines are announced politely; vocabulary words are buttons. */
-export default function DialoguePanel({ lines, showThaiAll, onVocab, onListen }: Props) {
+/** Transcript of a dialogue. Vocabulary words are buttons; the playing line is highlighted. */
+export default function DialoguePanel({ lines, showThaiAll, onVocab, onListen, activeIndex }: Props) {
   const [openThai, setOpenThai] = useState<Set<number>>(new Set());
   const toggle = (i: number) =>
     setOpenThai((prev) => {
@@ -24,12 +26,16 @@ export default function DialoguePanel({ lines, showThaiAll, onVocab, onListen }:
     });
 
   return (
-    <ol className="dialogue" aria-live="polite" aria-relevant="additions">
+    <ol className="dialogue">
       {lines.map((line, i) => {
         const kind = line.speakerId === "narration" ? "narration" : line.speakerId === "screen" ? "screen" : "speech";
         const thaiOpen = showThaiAll || openThai.has(i);
         return (
-          <li key={i} className={`line line--${kind}`}>
+          <li
+            key={i}
+            className={`line line--${kind}${i === activeIndex ? " line--active" : ""}`}
+            aria-current={i === activeIndex ? "true" : undefined}
+          >
             {kind === "speech" && <SpeakerBadge line={line} />}
             <div className="line__body">
               {kind === "speech" && <p className="line__name">{speakerName(line)}</p>}
@@ -48,8 +54,13 @@ export default function DialoguePanel({ lines, showThaiAll, onVocab, onListen }:
                 </>
               )}
               {onListen && (
-                <button type="button" className="line__translate line__listen" onClick={() => onListen(line.textEn)}>
-                  ฟัง
+                <button
+                  type="button"
+                  className="line__translate line__listen"
+                  aria-label={`ฟังบรรทัดนี้: ${speakerName(line)}`}
+                  onClick={() => onListen(line, i)}
+                >
+                  ฟังบรรทัดนี้
                 </button>
               )}
             </div>
@@ -60,15 +71,15 @@ export default function DialoguePanel({ lines, showThaiAll, onVocab, onListen }:
   );
 }
 
-function isCast(id: string): id is CharacterId {
+export function isCast(id: string): id is CharacterId {
   return id in characters;
 }
 
-function speakerName(line: DialogueLine) {
+export function speakerName(line: Pick<DialogueLine, "speakerId" | "speakerLabel">) {
   return isCast(line.speakerId) ? characters[line.speakerId].callName : line.speakerLabel ?? line.speakerId;
 }
 
-function SpeakerBadge({ line }: { line: DialogueLine }) {
+export function SpeakerBadge({ line }: { line: Pick<DialogueLine, "speakerId" | "speakerLabel"> }) {
   if (isCast(line.speakerId)) return <Avatar characterId={line.speakerId} size="sm" />;
   const label = line.speakerLabel ?? line.speakerId;
   const name = label.match(/\(([^)]+)\)/)?.[1] ?? label;

@@ -1,0 +1,173 @@
+.speak-resp {
+  display: grid;
+  gap: var(--space-3);
+  border-top: 4px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  background: var(--color-reading);
+  color: var(--color-text);
+}
+
+.speak-resp__label {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-primary-strong);
+}
+
+.speak-resp__title {
+  margin: 0;
+  font-size: var(--fs-lg);
+}
+
+.speak-resp__title:focus {
+  outline: none;
+}
+
+.speak-resp__task {
+  margin: 0;
+  color: var(--navy-800);
+  font-weight: 500;
+}
+
+.speak-resp__ask {
+  display: flex;
+  gap: var(--space-3);
+  border-left: 3px solid var(--color-highlight);
+  padding-left: var(--space-3);
+}
+
+.speak-resp__asker {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.speak-resp__ask-text {
+  margin: 0 0 var(--space-1);
+  font-size: var(--fs-lg);
+}
+
+.speak-resp__ask-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.speak-resp__how {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.speak-resp__modes,
+.speak-resp__review,
+.speak-resp__listening,
+.speak-resp__feedback {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.speak-resp__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.speak-resp__buttons .btn {
+  gap: var(--space-2);
+}
+
+.speak-resp__buttons .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.speak-resp__error {
+  margin: 0;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  background: var(--cream-100);
+  color: #b4412b;
+  font-weight: 500;
+}
+
+.speak-resp__consent {
+  border: 2px solid var(--color-highlight);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  background: var(--white);
+}
+
+.speak-resp__consent-title {
+  margin: 0 0 var(--space-2);
+  font-weight: 700;
+}
+
+.speak-resp__consent ul {
+  margin: 0 0 var(--space-3);
+  padding-left: 1.25rem;
+  font-size: var(--fs-sm);
+}
+
+.speak-resp__mic-state {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  font-weight: 700;
+}
+
+.speak-resp__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--coral-500);
+  animation: mic-pulse 1s ease-in-out infinite;
+}
+
+@keyframes mic-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speak-resp__dot {
+    animation: none;
+  }
+}
+
+.speak-resp__interim {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.speak-resp__review-label {
+  font-weight: 700;
+}
+
+.speak-resp__yours {
+  margin: 0;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  background: var(--cream-100);
+}
+
+.speak-resp__models {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.speak-resp__models .listen {
+  margin-left: var(--space-2);
+}
+
+.speak-resp__selfcheck {
+  margin: var(--space-2) 0 0;
+  font-weight: 700;
+}

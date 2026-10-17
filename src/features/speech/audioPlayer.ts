@@ -45,8 +45,12 @@ export interface AudioPlayer {
 /** Distinct sound per speaker: which English voice (by preference order) and pitch. */
 const SPEAKER_PROFILES: Record<string, { voiceSlot: number; pitch: number }> = {
   narrator: { voiceSlot: 0, pitch: 1 },
+  narration: { voiceSlot: 0, pitch: 1 },
+  screen: { voiceSlot: 0, pitch: 0.95 },
   kuro: { voiceSlot: 1, pitch: 0.85 },
   miyu: { voiceSlot: 2, pitch: 1.2 },
+  // Content uses "chief" for Airi (src/content/characters.ts).
+  chief: { voiceSlot: 3, pitch: 1.05 },
   airi: { voiceSlot: 3, pitch: 1.05 },
 };
 

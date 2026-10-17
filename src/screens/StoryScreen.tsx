@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { navigate } from "../app/router";
+import AudioScenePlayer from "../components/AudioScenePlayer";
 import ChoiceList from "../components/ChoiceList";
-import DialoguePanel from "../components/DialoguePanel";
 import FeedbackCard from "../components/FeedbackCard";
+import ListeningCheck from "../components/ListeningCheck";
 import QuestPanel from "../components/QuestPanel";
+import SpeakResponse from "../components/SpeakResponse";
 import VocabularyPopover from "../components/VocabularyPopover";
 import { episodeContent } from "../content";
+import type { Episode, Scene } from "../content/types";
 import { isUnlocked, type Progress } from "../features/progress/progressStorage";
 import "./StoryScreen.css";
 
@@ -22,19 +25,10 @@ export default function StoryScreen({ episodeId, progress, update }: Props) {
     ep && progress.lastEpisodeId === episodeId ? ep.scenes.findIndex((s) => s.id === progress.lastSceneId) : 0,
   );
   const [sceneIndex, setSceneIndex] = useState(startIndex);
-  const [revealed, setRevealed] = useState(1);
-  const [selectedId, setSelectedId] = useState<string>();
-  const [viewedIds, setViewedIds] = useState<string[]>([]);
   const [vocabId, setVocabId] = useState<string | null>(null);
-
   const sceneHeading = useRef<HTMLHeadingElement>(null);
-  const choicesHeading = useRef<HTMLHeadingElement>(null);
-  const feedbackHeading = useRef<HTMLHeadingElement>(null);
   const firstRender = useRef(true);
-
   const scene = ep?.scenes[sceneIndex];
-  const allShown = !!scene && revealed >= scene.dialogue.length;
-  const selected = scene?.interaction?.choices.find((c) => c.id === selectedId);
 
   // Remember where the player is, so refresh and "Continue" resume this scene.
   useEffect(() => {
@@ -52,14 +46,6 @@ export default function StoryScreen({ episodeId, progress, update }: Props) {
     sceneHeading.current?.focus();
   }, [sceneIndex]);
 
-  useEffect(() => {
-    if (allShown && !selectedId) choicesHeading.current?.focus();
-  }, [allShown, selectedId]);
-
-  useEffect(() => {
-    if (selectedId) feedbackHeading.current?.focus();
-  }, [selectedId]);
-
   if (!ep || !scene || !isUnlocked(episodeId, progress)) {
     return (
       <section className="story-missing">
@@ -71,30 +57,19 @@ export default function StoryScreen({ episodeId, progress, update }: Props) {
     );
   }
 
-  const isLast = sceneIndex === ep.scenes.length - 1;
-  const vocabItem = ep.vocabulary.find((v) => v.id === vocabId) ?? null;
-  const thaiAll = progress.settings.thaiHints;
-
-  const choose = (id: string) => {
-    setSelectedId(id);
-    setViewedIds((v) => (v.includes(id) ? v : [...v, id]));
-    update((p) => (p.viewedChoices.includes(id) ? p : { ...p, viewedChoices: [...p.viewedChoices, id] }));
-  };
-
-  const goNext = () => {
-    const next = selected?.nextSceneId ?? scene.nextSceneId ?? "end";
-    const idx = ep.scenes.findIndex((s) => s.id === next);
-    if (next === "end" || idx < 0) {
+  const goTo = (nextId: string) => {
+    const idx = ep.scenes.findIndex((s) => s.id === nextId);
+    if (nextId === "end" || idx < 0) {
       update((p) => ({ ...p, lastSceneId: "learn" }));
       navigate({ name: "learn", episodeId });
       return;
     }
     setSceneIndex(idx);
-    setRevealed(1);
-    setSelectedId(undefined);
-    setViewedIds([]);
     window.scrollTo(0, 0);
   };
+
+  const vocabItem = ep.vocabulary.find((v) => v.id === vocabId) ?? null;
+  const { settings } = progress;
 
   return (
     <article className="story">
@@ -105,10 +80,10 @@ export default function StoryScreen({ episodeId, progress, update }: Props) {
         <button
           type="button"
           className="story__toggle"
-          aria-pressed={thaiAll}
+          aria-pressed={settings.thaiHints}
           onClick={() => update((p) => ({ ...p, settings: { ...p.settings, thaiHints: !p.settings.thaiHints } }))}
         >
-          คำแปลไทยทุกบรรทัด: {thaiAll ? "เปิด" : "ปิด"}
+          คำแปลไทยทุกบรรทัด: {settings.thaiHints ? "เปิด" : "ปิด"}
         </button>
       </div>
 
@@ -124,60 +99,16 @@ export default function StoryScreen({ episodeId, progress, update }: Props) {
         sceneCount={ep.scenes.length}
       />
 
-      <p className="story__tip">แตะคำที่ขีดเส้นสีเหลืองเพื่อดูความหมาย</p>
-
-      <DialoguePanel
+      <SceneFlow
         key={scene.id}
-        lines={scene.dialogue.slice(0, revealed)}
-        showThaiAll={thaiAll}
+        episode={ep}
+        scene={scene}
+        isLast={sceneIndex === ep.scenes.length - 1}
+        progress={progress}
+        update={update}
         onVocab={setVocabId}
+        onNext={goTo}
       />
-
-      {!allShown && (
-        <div className="story__advance">
-          <button type="button" className="btn btn--primary" onClick={() => setRevealed((n) => n + 1)}>
-            ต่อไป
-          </button>
-          <button type="button" className="btn btn--ghost" onClick={() => setRevealed(scene.dialogue.length)}>
-            แสดงทั้งฉาก
-          </button>
-          <span className="story__count" aria-live="off">
-            {revealed}/{scene.dialogue.length}
-          </span>
-        </div>
-      )}
-
-      {allShown && scene.interaction && (
-        <>
-          <ChoiceList
-            ref={choicesHeading}
-            interaction={scene.interaction}
-            selectedId={selectedId}
-            viewedIds={viewedIds}
-            onSelect={choose}
-          />
-          {selected && (
-            <FeedbackCard
-              ref={feedbackHeading}
-              choice={selected}
-              isLastScene={isLast}
-              onTryAgain={() => {
-                setSelectedId(undefined);
-                choicesHeading.current?.focus();
-              }}
-              onContinue={goNext}
-            />
-          )}
-        </>
-      )}
-
-      {allShown && !scene.interaction && (
-        <div className="story__advance">
-          <button type="button" className="btn btn--primary" onClick={goNext}>
-            {isLast ? "จบเรื่อง ไปบทเรียนต่อ" : "ไปฉากต่อไป"}
-          </button>
-        </div>
-      )}
 
       <VocabularyPopover
         item={vocabItem}
@@ -193,5 +124,146 @@ export default function StoryScreen({ episodeId, progress, update }: Props) {
         onClose={() => setVocabId(null)}
       />
     </article>
+  );
+}
+
+interface FlowProps {
+  episode: Episode;
+  scene: Scene;
+  isLast: boolean;
+  progress: Progress;
+  update: (fn: (p: Progress) => Progress) => void;
+  onVocab: (id: string) => void;
+  onNext: (sceneId: string) => void;
+}
+
+/**
+ * One scene, in the order of spec 05 §7: listen → listening check → transcript opens →
+ * speak to continue → (optional) see other choices → next scene. Keyed by scene id, so
+ * every scene starts fresh.
+ */
+function SceneFlow({ episode, scene, isLast, progress, update, onVocab, onNext }: FlowProps) {
+  const { settings } = progress;
+  const check = scene.listeningCheck;
+  const speak = scene.speakingPrompt;
+  const interaction = scene.interaction;
+  // v2 episodes speak first and offer choices as optional support; v1 episodes still need a choice.
+  const choicesOptional = episode.format === 2 && !!speak;
+
+  const [heard, setHeard] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [spoken, setSpoken] = useState(false);
+  const [showChoices, setShowChoices] = useState(!choicesOptional);
+  const [selectedId, setSelectedId] = useState<string>();
+  const [viewedIds, setViewedIds] = useState<string[]>([]);
+
+  const checkRef = useRef<HTMLHeadingElement>(null);
+  const speakRef = useRef<HTMLHeadingElement>(null);
+  const choicesRef = useRef<HTMLHeadingElement>(null);
+  const feedbackRef = useRef<HTMLHeadingElement>(null);
+
+  const listenDone = heard && (!check || checked);
+  const speakVisible = listenDone && !!speak;
+  const afterSpeak = listenDone && (!speak || spoken);
+  const choicesVisible = afterSpeak && !!interaction && showChoices;
+  const selected = interaction?.choices.find((c) => c.id === selectedId);
+  const canContinue = afterSpeak && (choicesOptional || !interaction || !!selected);
+
+  useEffect(() => {
+    if (heard && check) checkRef.current?.focus();
+  }, [heard, check]);
+  useEffect(() => {
+    if (speakVisible) speakRef.current?.focus();
+  }, [speakVisible]);
+  useEffect(() => {
+    if (choicesVisible && !selectedId) choicesRef.current?.focus();
+  }, [choicesVisible, selectedId]);
+  useEffect(() => {
+    if (selectedId) feedbackRef.current?.focus();
+  }, [selectedId]);
+
+  const choose = (id: string) => {
+    setSelectedId(id);
+    setViewedIds((v) => (v.includes(id) ? v : [...v, id]));
+    update((p) => (p.viewedChoices.includes(id) ? p : { ...p, viewedChoices: [...p.viewedChoices, id] }));
+  };
+
+  const next = () => onNext(selected?.nextSceneId ?? scene.nextSceneId ?? "end");
+  const nextLabel = isLast ? "จบเรื่อง ไปบทเรียนต่อ" : "ไปฉากต่อไป";
+
+  return (
+    <div className="scene-flow">
+      {scene.listenForTh && (
+        <p className="scene-flow__listen-for">
+          <strong>ฟังเพื่อ:</strong> {scene.listenForTh}
+        </p>
+      )}
+
+      <AudioScenePlayer
+        lines={scene.dialogue}
+        rate={settings.audioRate}
+        onRateChange={(rate) => update((p) => ({ ...p, settings: { ...p.settings, audioRate: rate } }))}
+        revealTranscript={settings.alwaysShowTranscript || (check ? checked : heard)}
+        textOnly={settings.textOnly}
+        showThaiAll={settings.thaiHints}
+        onVocab={onVocab}
+        onHeard={() => setHeard(true)}
+      />
+
+      {heard && check && <ListeningCheck ref={checkRef} check={check} onAnswered={() => setChecked(true)} />}
+
+      {speakVisible && (
+        <SpeakResponse
+          ref={speakRef}
+          prompt={speak}
+          settings={settings}
+          onConsent={(value) => update((p) => ({ ...p, settings: { ...p.settings, micConsent: value } }))}
+          onDone={() => setSpoken(true)}
+        />
+      )}
+
+      {afterSpeak && interaction && choicesOptional && (
+        <button
+          type="button"
+          className="scene-flow__more"
+          aria-expanded={showChoices}
+          onClick={() => setShowChoices((v) => !v)}
+        >
+          {showChoices ? "ซ่อนทางเลือกอื่น" : "ดูผลของการพูดแบบอื่น (ไม่บังคับ)"}
+        </button>
+      )}
+
+      {choicesVisible && (
+        <>
+          <ChoiceList
+            ref={choicesRef}
+            interaction={interaction}
+            selectedId={selectedId}
+            viewedIds={viewedIds}
+            onSelect={choose}
+          />
+          {selected && (
+            <FeedbackCard
+              ref={feedbackRef}
+              choice={selected}
+              isLastScene={isLast}
+              onTryAgain={() => {
+                setSelectedId(undefined);
+                choicesRef.current?.focus();
+              }}
+              onContinue={next}
+            />
+          )}
+        </>
+      )}
+
+      {canContinue && !selected && (
+        <div className="scene-flow__next">
+          <button type="button" className="btn btn--primary" onClick={next}>
+            {nextLabel}
+          </button>
+        </div>
+      )}
+    </div>
   );
 }

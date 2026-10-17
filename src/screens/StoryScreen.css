@@ -49,25 +49,32 @@
   color: var(--color-text-muted-on-dark);
 }
 
-.story__tip {
-  font-size: var(--fs-sm);
-  color: var(--color-text-muted-on-dark);
-}
-
-.story__advance {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-2);
-  margin-top: var(--space-4);
-}
-
-.story__count {
-  margin-left: auto;
-  font-size: var(--fs-sm);
-  color: var(--color-text-muted-on-dark);
-}
-
 .story-missing {
   padding: var(--space-8) 0;
+}
+
+.scene-flow {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.scene-flow__listen-for {
+  margin: 0;
+  border-left: 3px solid var(--color-highlight);
+  padding-left: var(--space-3);
+}
+
+.scene-flow__more {
+  justify-self: start;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--teal-100);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.scene-flow__next {
+  display: flex;
+  justify-content: flex-end;
 }
