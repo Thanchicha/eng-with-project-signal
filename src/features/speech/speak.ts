@@ -1,38 +1,23 @@
-// Browser speech synthesis is optional (spec 04 Speak Like an Intern): missing voices must never block play.
+// Legacy helpers kept for existing screens — they now go through the shared AudioPlayer.
+// Browser speech is optional: missing voices must never block play.
+import { audioPlayer } from "./audioPlayer";
+import { hasTts } from "./speechCapabilities";
 
-export function canSpeak(): boolean {
-  return typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
-}
+export const canSpeak = hasTts;
 
 export function speak(text: string) {
-  if (!canSpeak()) return;
-  try {
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "en-US";
-    u.rate = 0.9;
-    window.speechSynthesis.speak(u);
-  } catch {
-    // Ignore — reading aloud is a convenience only.
-  }
+  speakAll([text]);
 }
 
 /** Reads lines one after another (for shadowing a whole dialogue). */
 export function speakAll(texts: string[]) {
   if (!canSpeak()) return;
-  try {
-    window.speechSynthesis.cancel();
-    for (const t of texts) {
-      const u = new SpeechSynthesisUtterance(t);
-      u.lang = "en-US";
-      u.rate = 0.9;
-      window.speechSynthesis.speak(u);
-    }
-  } catch {
-    // Ignore — reading aloud is a convenience only.
-  }
+  audioPlayer.playLines(
+    texts.map((textEn) => ({ speakerId: "narrator", textEn })),
+    { rate: 0.9 },
+  );
 }
 
 export function stopSpeaking() {
-  if (canSpeak()) window.speechSynthesis.cancel();
+  audioPlayer.stop();
 }

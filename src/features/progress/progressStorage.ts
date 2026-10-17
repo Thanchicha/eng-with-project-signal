@@ -13,8 +13,32 @@ export interface Progress {
   practicedPatterns: string[];
   /** Choice ids whose feedback the player opened — the recap derives skills from their tags. */
   viewedChoices: string[];
-  settings: { thaiHints: boolean; textSize: "normal" | "large" };
+  settings: Settings;
 }
+
+export interface Settings {
+  thaiHints: boolean;
+  textSize: "normal" | "large";
+  /** Show the English transcript before/while listening instead of after the listening check. */
+  alwaysShowTranscript: boolean;
+  /** Playback speed for character voices. */
+  audioRate: 1 | 0.75;
+  /** No audio at all — read every line (no-sound situations or missing voices). */
+  textOnly: boolean;
+  /** Mic answers need explicit consent after the privacy notice; "unset" = not asked yet. */
+  micConsent: "unset" | "granted" | "declined";
+}
+
+export const defaultSettings: Settings = {
+  // thaiHints = show the Thai translation under every line. Off by default: spec 05 §8 says
+  // translations help but should be opened by the player, not shown for everything automatically.
+  thaiHints: false,
+  textSize: "normal",
+  alwaysShowTranscript: false,
+  audioRate: 1,
+  textOnly: false,
+  micConsent: "unset",
+};
 
 export const defaultProgress: Progress = {
   completedEpisodes: [],
@@ -22,9 +46,7 @@ export const defaultProgress: Progress = {
   triedDrills: [],
   practicedPatterns: [],
   viewedChoices: [],
-  // thaiHints = show the Thai translation under every line. Off by default: spec 05 §8 says
-  // translations help but should be opened by the player, not shown for everything automatically.
-  settings: { thaiHints: false, textSize: "normal" },
+  settings: defaultSettings,
 };
 
 export function loadProgress(): Progress {
@@ -32,10 +54,18 @@ export function loadProgress(): Progress {
     const raw = localStorage.getItem(KEY);
     if (!raw) return defaultProgress;
     const parsed = JSON.parse(raw) as Partial<Progress>;
-    return { ...defaultProgress, ...parsed, settings: { ...defaultProgress.settings, ...parsed.settings } };
+    return { ...defaultProgress, ...parsed, settings: sanitizeSettings(parsed.settings) };
   } catch {
     return defaultProgress;
   }
+}
+
+/** Merge stored settings over defaults, dropping values an older or edited save can't use. */
+function sanitizeSettings(raw: Partial<Settings> | undefined): Settings {
+  const s = { ...defaultSettings, ...raw };
+  if (s.audioRate !== 1 && s.audioRate !== 0.75) s.audioRate = defaultSettings.audioRate;
+  if (!["unset", "granted", "declined"].includes(s.micConsent)) s.micConsent = defaultSettings.micConsent;
+  return s;
 }
 
 function saveProgress(progress: Progress) {
