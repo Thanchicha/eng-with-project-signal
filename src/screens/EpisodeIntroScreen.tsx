@@ -127,7 +127,7 @@ export default function EpisodeIntroScreen({ episodeId, progress, onBegin }: Pro
                         บทที่ {c.number}: <span lang="en">{c.title}</span>
                       </span>
                       <span className="intro__chapter-meta">
-                        {c.sceneIds.length} ฉาก, {CHAPTER_STATUS[status]}
+                        {c.sceneIds.length} ฉาก, คุณรับบท {characters[c.leadId].callName}, {CHAPTER_STATUS[status]}
                       </span>
                     </span>
                     {status !== "locked" && (

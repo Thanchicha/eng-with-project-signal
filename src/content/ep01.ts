@@ -2323,6 +2323,7 @@ export const ep01: Episode = {
       "id": "ep01_c1",
       "number": 1,
       "title": "The Brief",
+      "leadId": "miyu",
       "summaryTh": "ทีม 2-A ได้โจทย์แค่ประโยคเดียว ทุกคนแนะนำตัวและรับหน้าที่ Kuro กับ Miyu เห็นต่างกันตั้งแต่วันแรก แต่ทีมตกลงว่าจะถามให้ชัดก่อนเริ่มงาน",
       "keyPhrase": {
         "speakerId": "miyu",
@@ -2340,6 +2341,7 @@ export const ep01: Episode = {
       "id": "ep01_c2",
       "number": 2,
       "title": "Problem or Solution?",
+      "leadId": "kuro",
       "summaryTh": "Kuro เสนอสร้างแอปแจ้งปัญหา Miyu ถามว่าแอปจะแก้ปัญหาอะไร Chief รวมสองความเห็นเป็นแผนเดียว แล้วทั้งคู่ซ้อมตั้งคำถามสัมภาษณ์ที่ไม่ชี้นำผู้ใช้",
       "keyPhrase": {
         "speakerId": "miyu",
@@ -2357,6 +2359,7 @@ export const ep01: Episode = {
       "id": "ep01_c3",
       "number": 3,
       "title": "Voices in the Library",
+      "leadId": "miyu",
       "summaryTh": "สัมภาษณ์แรกได้ตัวอย่างจริงสองเรื่อง คือ Wi-Fi ในห้อง 3B และข่าวชมรมที่มาช้า Kuro ยอมรับว่ารีบสรุปเร็วไป และ Shion ชี้ว่าทีมยังไม่ได้ฟังนักเรียนอีกหลายกลุ่ม",
       "keyPhrase": {
         "speakerId": "miyu",
@@ -2374,6 +2377,7 @@ export const ep01: Episode = {
       "id": "ep01_c4",
       "number": 4,
       "title": "The File With No Name",
+      "leadId": "kuro",
       "summaryTh": "Rei เทียบรายงานเก่ากับสิ่งที่นักเรียนเล่า Kuro เจอไฟล์ไม่มีแหล่งที่มาพร้อมโน้ตแปลก ๆ ทีมตกลงว่าจะไม่ใช้ไฟล์ และแยกสิ่งที่รู้ออกจากข้อสันนิษฐาน",
       "keyPhrase": {
         "speakerId": "kuro",
@@ -2391,6 +2395,7 @@ export const ep01: Episode = {
       "id": "ep01_c5",
       "number": 5,
       "title": "The IT Office",
+      "leadId": "miyu",
       "summaryTh": "Kuro กับ Miyu แจ้งเรื่องไฟล์กับ IT อย่างถูกขั้นตอน ระหว่างรอผลทีมจะไม่ใช้ข้อมูลและจดหลักฐานไว้ แล้วข้อความจาก Lena ก็เปิดปริศนาใหม่เรื่องคิวโรงอาหาร",
       "keyPhrase": {
         "speakerId": "miyu",

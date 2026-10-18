@@ -10,6 +10,7 @@ The player joins a team of students on a data project. Each scene follows the sa
 - **3 playable episodes** (5 chapters of 3 scenes each, about 1,900 words of dialogue per episode) that unlock in order, and chapters unlock in order within an episode, plus 9 locked previews (EP4–12) that show each episode's listening and speaking mission.
 - **Chapter clear cards.** Each chapter ends with a short summary and one phrase to hear and say again (optional), and you can stop after any chapter.
 - **Visual-novel scenes.** You play the audio line by line or on auto-play. The English text stays hidden until you answer the Listening Check, though you can open the transcript at any time.
+- **You play the chapter lead.** In every scene, after the Listening Check, you take the lead character's seat (Miyu or Kuro, depending on the chapter): the other characters' lines play on request, and you hear and then say each of the lead's lines. Mic, "I said it" and typing all count, and nothing is scored.
 - **Speaking points everywhere.** You can use the microphone (optional, only after a privacy notice and your consent), tap "I said it", or type your answer. You never need a microphone to move on.
 - **Lessons after each story:** sentence patterns, Shadow & Substitute, a stand-up roleplay, a Mini Case and an optional writing task.
 - **Recap, vocabulary notebook and settings** (speed, transcript, Thai hints, text-only mode).

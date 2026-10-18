@@ -277,12 +277,13 @@ function convert(id) {
   for (const sec of secs) {
     if (sec.heading.startsWith("Chapter ")) {
       const [, title] = sec.heading.split(" — ");
-      const ch = { id: "", number: chapters.length + 1, title: title ?? sec.heading, summaryTh: "", keyPhrase: null, sceneIds: [] };
+      const ch = { id: "", number: chapters.length + 1, title: title ?? sec.heading, leadId: "", summaryTh: "", keyPhrase: null, sceneIds: [] };
       for (const l of sec.lines) {
         const kvp = kv(l);
         if (!kvp) continue;
         const [k, v] = kvp;
         if (k === "id") ch.id = v;
+        else if (k === "lead") ch.leadId = MAIN_CAST[v.trim().toLowerCase()] ?? "";
         else if (k === "summaryTh") ch.summaryTh = v;
         else if (k === "keyPhraseNote") ch.keyPhraseNoteTh = v;
         else if (k === "keyPhrase") {
@@ -292,6 +293,7 @@ function convert(id) {
         }
       }
       if (!ch.id) fail(file, `chapter "${sec.heading}" has no id`);
+      if (!ch.leadId) fail(file, `${ch.id || sec.heading} needs "- lead: <Kuro|Miyu|Chief|Rei|Lena|Shion>"`);
       if (!ch.summaryTh || !ch.keyPhrase) fail(file, `${ch.id} needs summaryTh and keyPhrase`);
       chapters.push(ch);
     } else if (sec.heading.startsWith("Scene ") && chapters.length) {
@@ -302,6 +304,12 @@ function convert(id) {
   if (chapters.length) {
     const grouped = new Set(chapters.flatMap((c) => c.sceneIds));
     for (const sc of scenes) if (!grouped.has(sc.id)) fail(file, `${sc.id} is not inside a "## Chapter"`);
+    // The player says every line of the chapter lead, so each scene needs at least one (and a name to recognise).
+    for (const c of chapters)
+      for (const sid of c.sceneIds) {
+        const sc = scenes.find((x) => x.id === sid);
+        if (sc && !sc.dialogue.some((l) => l.speakerId === c.leadId)) fail(file, `${sid} has no line for the chapter lead (${c.leadId})`);
+      }
     for (const c of chapters) if (c.sceneIds.length < 2 || c.sceneIds.length > 4) fail(file, `${c.id} needs 2–4 scenes (has ${c.sceneIds.length})`);
   }
   for (const s of scenes)

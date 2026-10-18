@@ -6,11 +6,13 @@ import ChoiceList from "../components/ChoiceList";
 import FeedbackCard from "../components/FeedbackCard";
 import ListeningCheck from "../components/ListeningCheck";
 import QuestPanel from "../components/QuestPanel";
+import RoleTurns from "../components/RoleTurns";
 import SpeakResponse from "../components/SpeakResponse";
 import VocabularyPopover from "../components/VocabularyPopover";
 import { episodeContent } from "../content";
 import { careerById } from "../content/careers";
-import type { Chapter, Episode, Scene } from "../content/types";
+import { characters } from "../content/characters";
+import type { Chapter, CharacterId, Episode, Scene } from "../content/types";
 import {
   chapterOfScene,
   isChapterUnlocked,
@@ -46,7 +48,9 @@ export default function StoryScreen({
           (s) =>
             // Resume inside this chapter after a refresh; otherwise start at its first scene.
             s.id ===
-            (progress.lastEpisodeId === episodeId && progress.lastSceneId && startChapter.sceneIds.includes(progress.lastSceneId)
+            (progress.lastEpisodeId === episodeId &&
+            progress.lastSceneId &&
+            startChapter.sceneIds.includes(progress.lastSceneId)
               ? progress.lastSceneId
               : startChapter.sceneIds[0]),
         )
@@ -169,7 +173,7 @@ export default function StoryScreen({
         </span>
         {chapter && !cleared && (
           <span className="story__chapter" lang="en">
-            Chapter {chapter.number}: {chapter.title}
+            Chapter {chapter.number}: {chapter.title} · คุณรับบท {characters[chapter.leadId].callName}
           </span>
         )}
         <span lang="en">{cleared ? cleared.chapter.title : scene.title}</span>
@@ -196,7 +200,8 @@ export default function StoryScreen({
           onNext={() => {
             const next = chapterOfScene(ep, cleared.nextId);
             // A new chapter gets its own URL, so refresh and back keep the player in it.
-            if (next && chapterId !== undefined) navigate({ name: "play", episodeId, chapterId: next.id });
+            if (next && chapterId !== undefined)
+              navigate({ name: "play", episodeId, chapterId: next.id });
             else goTo(cleared.nextId, true);
           }}
           onPause={() => navigate({ name: "intro", episodeId })}
@@ -216,9 +221,12 @@ export default function StoryScreen({
             key={scene.id}
             episode={ep}
             scene={scene}
+            leadId={chapter?.leadId}
             nextLabel={
               sceneIndex === ep.scenes.length - 1
-                ? chapter ? `จบบทที่ ${chapter.number}` : "จบเรื่อง ไปบทเรียนต่อ"
+                ? chapter
+                  ? `จบบทที่ ${chapter.number}`
+                  : "จบเรื่อง ไปบทเรียนต่อ"
                 : chapter && chapter.sceneIds.at(-1) === scene.id
                   ? `จบบทที่ ${chapter.number}`
                   : "ไปฉากต่อไป"
@@ -251,6 +259,8 @@ export default function StoryScreen({
 interface FlowProps {
   episode: Episode;
   scene: Scene;
+  /** Character the player plays in this chapter (undefined for episodes without chapters). */
+  leadId?: CharacterId;
   /** Label of the button that leaves the scene. */
   nextLabel: string;
   progress: Progress;
@@ -267,6 +277,7 @@ interface FlowProps {
 function SceneFlow({
   episode,
   scene,
+  leadId,
   nextLabel,
   progress,
   update,
@@ -283,18 +294,25 @@ function SceneFlow({
   const [heard, setHeard] = useState(false);
   const [checked, setChecked] = useState(false);
   const [spoken, setSpoken] = useState(false);
+  const [roleDone, setRoleDone] = useState(false);
   const [showChoices, setShowChoices] = useState(!choicesOptional);
   const [selectedId, setSelectedId] = useState<string>();
   const [viewedIds, setViewedIds] = useState<string[]>([]);
 
   const checkRef = useRef<HTMLHeadingElement>(null);
   const speakRef = useRef<HTMLHeadingElement>(null);
+  const roleRef = useRef<HTMLDivElement>(null);
   const choicesRef = useRef<HTMLHeadingElement>(null);
   const feedbackRef = useRef<HTMLHeadingElement>(null);
 
   const listenDone = heard && (!check || checked);
-  const speakVisible = listenDone && !!speak;
-  const afterSpeak = listenDone && (!speak || spoken);
+  // After the first listen and check, the player takes the lead's seat and says that character's lines.
+  const hasRole =
+    !!leadId && scene.dialogue.some((l) => l.speakerId === leadId);
+  const roleVisible = listenDone && hasRole && !roleDone;
+  const afterRole = listenDone && (!hasRole || roleDone);
+  const speakVisible = afterRole && !!speak;
+  const afterSpeak = afterRole && (!speak || spoken);
   const choicesVisible = afterSpeak && !!interaction && showChoices;
   const selected = interaction?.choices.find((c) => c.id === selectedId);
   const canContinue =
@@ -303,6 +321,9 @@ function SceneFlow({
   useEffect(() => {
     if (heard && check) checkRef.current?.focus();
   }, [heard, check]);
+  useEffect(() => {
+    if (roleVisible) roleRef.current?.scrollIntoView({ block: "start" });
+  }, [roleVisible]);
   useEffect(() => {
     if (speakVisible) speakRef.current?.focus();
   }, [speakVisible]);
@@ -360,6 +381,26 @@ function SceneFlow({
             update((p) => addOnce(p, "triedChecks", check.id));
           }}
         />
+      )}
+
+      {roleVisible && leadId && (
+        <div ref={roleRef}>
+          <RoleTurns
+            lines={scene.dialogue}
+            leadId={leadId}
+            settings={settings}
+            onConsent={(value) =>
+              update((p) => ({
+                ...p,
+                settings: { ...p.settings, micConsent: value },
+              }))
+            }
+            onDone={() => {
+              update((p) => addOnce(p, "spokenIds", `${scene.id}_role`));
+              setRoleDone(true);
+            }}
+          />
+        </div>
       )}
 
       {speakVisible && (

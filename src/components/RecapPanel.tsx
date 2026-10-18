@@ -20,6 +20,8 @@ interface Props {
 function speakingIds(ep: Episode): string[] {
   return [
     ...ep.scenes.flatMap((s) => (s.speakingPrompt ? [s.speakingPrompt.id] : [])),
+    // Role-play turns: one id per scene in a chapter (the player said the lead's lines).
+    ...ep.scenes.filter((s) => ep.chapters?.some((c) => c.sceneIds.includes(s.id))).map((s) => `${s.id}_role`),
     ...ep.shadowItems.map((i) => i.id),
     ...ep.speakPractice.turns.flatMap((t, i) => (t.kind === "intern" ? [`${ep.id}_rp${i}`] : [])),
     `${ep.id}_case`,

@@ -2205,6 +2205,7 @@ export const ep02: Episode = {
       "id": "ep02_c1",
       "number": 1,
       "title": "Two Minutes?",
+      "leadId": "miyu",
       "summaryTh": "รายงานบอกว่ารอคิวสองนาที แต่นักเรียนบอกว่าสิบห้านาที ทีมไม่รีบตัดสินว่าใครผิด วางแผนไปสังเกตเอง และขออนุญาตเจ้าหน้าที่โรงอาหารก่อน",
       "keyPhrase": {
         "speakerId": "miyu",
@@ -2222,6 +2223,7 @@ export const ep02: Episode = {
       "id": "ep02_c2",
       "number": 2,
       "title": "Lunch Time",
+      "leadId": "kuro",
       "summaryTh": "ทีมสัมภาษณ์นักเรียนในโรงอาหาร Sora ต่อผิดแถวเพราะไม่มีป้าย ส่วน Yuto นักเรียนปีหนึ่งเลิกต่อแถวไปเลย Kuro ทำตัวจับเวลาที่ไม่เก็บชื่อ และ Shion เพิ่มปุ่ม \"เปลี่ยนแถว\"",
       "keyPhrase": {
         "speakerId": "miyu",
@@ -2239,6 +2241,7 @@ export const ep02: Episode = {
       "id": "ep02_c3",
       "number": 3,
       "title": "What the Numbers Say",
+      "leadId": "miyu",
       "summaryTh": "ตัวเลขจากการสังเกตยืนยันว่าความต้องการจริงคือรู้ว่าต้องต่อแถวไหน Rei พบรายการเวลาแปลก ๆ ตอนโรงอาหารปิด และทีมตกลงว่าจะรายงานโดยไม่กล่าวหาใคร",
       "keyPhrase": {
         "speakerId": "miyu",
@@ -2256,6 +2259,7 @@ export const ep02: Episode = {
       "id": "ep02_c4",
       "number": 4,
       "title": "Paper Signs",
+      "leadId": "kuro",
       "summaryTh": "Kuro อยากสร้างจอแสดงเมนู แต่ Miyu เสนอป้ายกระดาษเป็นการทดลองราคาถูก ป้ายลดการเปลี่ยนแถวจากสิบเอ็ดคนเหลือสองคน ทีมรายงานผลพร้อมข้อจำกัดว่าเป็นแค่วันเดียว",
       "keyPhrase": {
         "speakerId": "kuro",
@@ -2273,6 +2277,7 @@ export const ep02: Episode = {
       "id": "ep02_c5",
       "number": 5,
       "title": "The Walk Back",
+      "leadId": "miyu",
       "summaryTh": "ทีมแชร์ผลกับคุณ Tanaka ตามที่สัญญา Rei ยังตามรอยรายการเวลา 6:40 น. และ Kuro กับ Miyu เดินกลับด้วยกัน พร้อมคำถามเปิดเรื่องไฟล์ลึกลับที่ยังไม่มีคำตอบ",
       "keyPhrase": {
         "speakerId": "kuro",

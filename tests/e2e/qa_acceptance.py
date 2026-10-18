@@ -65,6 +65,21 @@ EP1_TEXT = (ROOT / "docs" / "story" / "ep01.md").read_text(encoding="utf-8")
 EP1_SCENES = len(re.findall(r"^## Scene \d+", EP1_TEXT, flags=re.M))
 EP1_CHAPTERS = len(re.findall(r"^## Chapter \d+", EP1_TEXT, flags=re.M))
 
+
+def lead_lines_per_scene(text: str) -> list[int]:
+    """Number of lines the player must say in each scene = lines of that chapter's lead, read from the script."""
+    counts, lead = [], ""
+    for block in re.split(r"^## (?=Chapter|Scene)", text, flags=re.M)[1:]:
+        if block.startswith("Chapter"):
+            lead = re.search(r"^- lead: (\w+)", block, flags=re.M).group(1)
+        elif block.startswith("Scene"):
+            body = block.split("\n### ")[0]
+            counts.append(len(re.findall(rf'^{lead}: "', body, flags=re.M)))
+    return counts
+
+
+EP1_LEAD_LINES = lead_lines_per_scene(EP1_TEXT)
+
 results: list[dict] = []
 
 
@@ -155,6 +170,35 @@ def next_scene(page: Page):
     page.wait_for_timeout(120)
 
 
+def do_role(page: Page) -> tuple[int, bool]:
+    """Play "Your turn": hear the others, hear each of the player's lines, say it ("I said it").
+    Returns (lines said, True if the player's line text was hidden before it was heard)."""
+    if not page.locator(".roleturns").count():
+        return 0, False
+    said, hidden_first = 0, False
+    for _ in range(80):
+        done = page.locator(".roleturns").get_by_role("button", name="ไปต่อ", exact=True)
+        if done.count():
+            done.click()
+            page.wait_for_timeout(100)
+            break
+        others = page.locator(".roleturns").get_by_role("button", name=re.compile("ฟังบทต่อไป"))
+        if others.count():
+            others.click()
+            page.wait_for_timeout(120)
+            continue
+        listen_mine = page.locator(".roleturns").get_by_role("button", name=re.compile("ฟังประโยคของคุณ"))
+        if listen_mine.count():
+            if said == 0:
+                hidden_first = page.locator(".roleturns__hidden").count() == 1 and page.locator(".roleturns__line").count() == 0
+            listen_mine.click()
+            page.wait_for_timeout(120)
+        speak_said_it(page)
+        said += 1
+        page.wait_for_timeout(60)
+    return said, hidden_first
+
+
 def clear_chapter(page: Page) -> bool:
     """On a Chapter clear card: say the key phrase ("I said it") and start the next chapter. Returns True if shown."""
     if not page.locator(".chapter-clear").count():
@@ -189,6 +233,7 @@ def t_full(browser: Browser):
     page = new_page(browser)
     fresh(page, "#/ep/ep01/play")
     scenes, hidden_ok, audio_ok, speak_points, leads_missing, thai_fb, chapters = 0, 0, 0, 0, [], 0, 0
+    role_said, role_hidden, role_expected = [], 0, 0
     while "/play" in page.url and scenes < 30:
         scenes += 1
         transcript_before = page.locator(".dialogue").count()
@@ -206,6 +251,9 @@ def t_full(browser: Browser):
             audio_ok += 1
         if THAI.search(page.locator(".lcheck__feedback").inner_text()):
             thai_fb += 1
+        said, hid = do_role(page)
+        role_said.append(said)
+        role_hidden += 1 if hid else 0
         if page.locator(".speak-resp").count():
             speak_points += 1
             speak_said_it(page)
@@ -234,6 +282,9 @@ def t_full(browser: Browser):
            f"{chapters} chapters, {scenes} scenes (each chapter ends with a Chapter clear card) → {len(steps)} lesson steps ({', '.join(steps)}) → recap; completed={data.get('completedEpisodes')}")
     record("3 audio + Listening Check before transcript", hidden_ok == EP1_SCENES and audio_ok == EP1_SCENES,
            f"{audio_ok}/{scenes} scenes played every line as audio; {hidden_ok}/{scenes} kept the transcript hidden until the listening check was answered")
+    record("extra role-play: say every line of your character",
+           role_said == EP1_LEAD_LINES and role_hidden == EP1_SCENES,
+           f"each scene replays with the player as the chapter lead; lines said per scene {role_said} = lead lines in the script {EP1_LEAD_LINES}; the player's line text stayed hidden until heard in {role_hidden}/{scenes} scenes")
     record("8 Kuro & Miyu in every scene", not leads_missing, f"both speak in all {scenes} scenes" if not leads_missing else ", ".join(leads_missing))
     record("9a Thai feedback after listening/speaking", thai_fb >= EP1_SCENES + speak_points and speak_points >= 3,
            f"{thai_fb} Thai feedback panels across {scenes} listening checks and {speak_points} speaking points")
@@ -268,6 +319,7 @@ def t_no_mic(browser: Browser):
     fresh(page, "#/ep/ep01/play")
     listen(page)
     answer_check(page)
+    do_role(page)
     modes = page.locator(".speak-resp__modes button").all_inner_texts()
     button(page, "พิมพ์ตอบแทน").click()
     page.locator(".speak-resp textarea").fill("Who are the users for this project?")
@@ -286,6 +338,7 @@ def t_mic(browser: Browser):
     starts_on_load = page.evaluate("window.__recStarts + window.__gum")
     listen(page)
     answer_check(page)
+    do_role(page)
     page.get_by_role("button", name=re.compile("พูดผ่านไมโครโฟน")).click()
     notice = page.locator(".speak-resp__consent").inner_text()
     starts_before_consent = page.evaluate("window.__recStarts")
@@ -398,6 +451,7 @@ def t_refresh(browser: Browser):
     fresh(page, "#/ep/ep01/play")
     listen(page)
     answer_check(page)
+    do_role(page)
     page.locator(".vn__word").first.click()
     button(page, "บันทึกลงสมุดคำศัพท์").click()
     button(page, "ปิด").click()

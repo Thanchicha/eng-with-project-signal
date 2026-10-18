@@ -116,6 +116,8 @@ export interface Chapter {
   id: string;
   number: number;
   title: string;
+  /** The character the player plays in this chapter: after each scene they say every line this character speaks. */
+  leadId: CharacterId;
   /** What happened in the chapter (Thai), shown on the Chapter clear card. */
   summaryTh: string;
   /** One phrase from the chapter to hear and say again. */

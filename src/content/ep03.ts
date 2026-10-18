@@ -2122,6 +2122,7 @@ export const ep03: Episode = {
       "id": "ep03_c1",
       "number": 1,
       "title": "The Missing Voices",
+      "leadId": "miyu",
       "summaryTh": "แบบสอบถามได้ 192 คำตอบ แต่มีเพียงเก้าคนที่เป็นนักเรียนปีหนึ่ง Lena พา Miyu กับ Kuro ไปฟัง Ken ซึ่งบอกว่าคำถามแรกทำให้เขาคิดว่าแบบสอบถามไม่ได้มีไว้สำหรับปีหนึ่ง",
       "keyPhrase": {
         "speakerId": "miyu",
@@ -2139,6 +2140,7 @@ export const ep03: Episode = {
       "id": "ep03_c2",
       "number": 2,
       "title": "Asking Without Pushing",
+      "leadId": "kuro",
       "summaryTh": "Kuro เห็นเองว่าปุ่มหลุดออกนอกจอบนมือถือเครื่องเก่า Miyu เขียนคำถามใหม่ที่ไม่ชี้นำ และทีมตกลงขออนุญาต Mei อย่างสุภาพก่อนดูเธอใช้งานฟอร์ม",
       "keyPhrase": {
         "speakerId": "lena",
@@ -2156,6 +2158,7 @@ export const ep03: Episode = {
       "id": "ep03_c3",
       "number": 3,
       "title": "The Question You Can't Skip",
+      "leadId": "miyu",
       "summaryTh": "Mei แสดงให้ทีมเห็นว่าข้อเจ็ดอ่านด้วยโปรแกรมอ่านหน้าจอไม่ได้และข้ามไม่ได้ Kuro แก้ฟอร์มภายในหนึ่งชั่วโมง Miyu ทดสอบกับ Mei และ Ken ซึ่งยืนยันว่าใช้งานได้จริงแล้ว",
       "keyPhrase": {
         "speakerId": "kuro",
@@ -2173,6 +2176,7 @@ export const ep03: Episode = {
       "id": "ep03_c4",
       "number": 4,
       "title": "The Missing School Code",
+      "leadId": "kuro",
       "summaryTh": "ฟอร์มใหม่ได้คำตอบจากปีหนึ่งเพิ่มและเปลี่ยนผลสำรวจ แต่ไฟล์จาก Vesper High ไม่มีรหัสโรงเรียน ทีมบอกข้อจำกัดต่อครู Hayashi อย่างตรงไปตรงมา และครูขอบคุณที่ไม่โชว์แต่ส่วนดี",
       "keyPhrase": {
         "speakerId": "rei",
@@ -2190,6 +2194,7 @@ export const ep03: Episode = {
       "id": "ep03_c5",
       "number": 5,
       "title": "Same ID, Different School",
+      "leadId": "miyu",
       "summaryTh": "Rei ทดลองรวมข้อมูลสองโรงเรียนและเจอ ID นักเรียนซ้ำ ทีมไม่กล่าวหาใคร Kuro ทดสอบการรวมไฟล์ด้วยข้อมูลตัวอย่าง และทีมเตรียมอีเมลสุภาพถึง Vesper High",
       "keyPhrase": {
         "speakerId": "chief",
