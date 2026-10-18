@@ -127,3 +127,85 @@
 .recap__scenes .btn {
   gap: var(--space-1);
 }
+
+/* HUD cards (mockup dashboard style) */
+.recap__xp,
+.recap__card {
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  color: var(--color-text-on-dark);
+}
+
+.recap__xp {
+  display: grid;
+  gap: var(--space-1);
+  text-align: center;
+}
+
+.recap__xp-eyebrow {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-style: italic;
+  color: var(--pink-100);
+}
+
+.recap__xp-num {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  color: var(--pink-400);
+  text-shadow: 0 0 14px var(--color-glow);
+}
+
+.recap__xp-sub {
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  color: var(--color-text-on-dark);
+  text-shadow: none;
+}
+
+.recap__xp-level {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 0;
+  font-weight: 700;
+}
+
+.recap__xp-bar {
+  width: min(14rem, 60%);
+  height: 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--night-700);
+  overflow: hidden;
+}
+
+.recap__xp-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink-600), var(--pink-400));
+}
+
+.recap__xp-note,
+.recap__note {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted-on-dark);
+}
+
+.recap__card .recap__h {
+  margin-top: 0;
+  color: var(--pink-100);
+}
+
+.recap__card .recap__stats li {
+  border: 1px solid var(--color-hud-border);
+  background: rgba(20, 11, 35, 0.6);
+}
+
+.recap__card .recap__stat-num {
+  color: var(--pink-400);
+}

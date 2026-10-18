@@ -29,3 +29,18 @@
 3. motion น้อย: เส้นคลื่นวาดครั้งเดียว, ปิดเมื่อ prefers-reduced-motion
 4. ปุ่มสูง ≥ 44px, ไม่มี scroll แนวนอนที่ 320px
 5. ภาพประกอบในอนาคตต้องไม่มีข้อความฝังในภาพ (ข้อความให้ UI แสดง) — ดู `docs/art/ART_BRIEF.md`
+
+## Layouts จาก mockup (ใช้เฉพาะดีไซน์ เนื้อหาเดิม)
+| หน้าจอ | ไฟล์ | หมายเหตุ |
+| --- | --- | --- |
+| Choose Your Path | `CareerScreen` | 6 บทบาทจากทีม เลือกบทบาทที่อยากฝึก ไม่เปลี่ยนเนื้อเรื่อง; ข้ามได้ |
+| Home dashboard | `HomeScreen` | แถว Mission Map เลื่อนในกล่อง, การ์ด Career/XP, คำศัพท์, ทักษะ (นับจากการฝึก), วลีของบทบาท |
+| ฉากเรื่องแบบ VN | `VNStage` | ฉากหลัง + ตัวละคร 2 ตัว (คนพูดสว่าง), กล่องคำพูดซ่อนข้อความจนตอบ Listening Check, แผง Key Vocabulary |
+| Your words shape the story | `ChoiceList`, `ListeningCheck`, `FeedbackCard` | ตัวเลือกเลขวงกลม, ✓ เมื่อเลือก, feedback มี portrait ผู้ตอบสนอง |
+| Speaking Practice | `SpeakResponse` + `AnswerControls` + `PracticeMeter` | portrait + bubble ผู้ถาม, วงกลมไมค์ (คลื่นขยับเฉพาะตอนฟัง), ปุ่มใหญ่ Speak Now, แผง Sentence Tips |
+| Recap / Notebook | `RecapPanel`, `NotebookScreen` | การ์ด HUD สรุป XP ของตอนและจำนวนคำ; ข้อความยาวยังอยู่บนกระดาษ |
+
+## ข้อห้ามเรื่องคะแนน (brief Final)
+- mockup มีแถบ Pronunciation / Fluency / Accuracy — **ห้ามใช้** แทนด้วย `PracticeMeter` 3 ขั้น: ฟังต้นแบบ / พูดครั้งแรก / พูดด้วยคำตัวเอง (เติมเมื่อทำ ไม่เก็บลง storage)
+- XP/Level มาจากการลงมือทำเท่านั้น (`src/features/progress/xp.ts`) ตอบผิดไม่เสีย XP และไม่มีอันดับ
+- ไม่มีตัวเลขหรือสีที่สื่อว่า "ถูก/ผิด" กับการพูด; feedback ใช้หัวข้อเชิงบวก

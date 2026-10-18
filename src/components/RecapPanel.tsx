@@ -4,6 +4,7 @@ import { episodeSummaries } from "../content/episodes";
 import type { Episode } from "../content/types";
 import { isUnlocked, type Progress } from "../features/progress/progressStorage";
 import { skillCounts } from "../features/progress/skills";
+import { episodeXp, xpSummary } from "../features/progress/xp";
 import { audioPlayer } from "../features/speech/audioPlayer";
 import { canSpeak } from "../features/speech/speak";
 import "./LearnSections.css";
@@ -41,6 +42,8 @@ export default function RecapPanel({ episode, progress, onReplay }: Props) {
   const spoken = speaking.filter((id) => progress.spokenIds.includes(id)).length;
   const replays = progress.replays[episode.id] ?? 0;
   const skills = skillCounts(episode, progress.viewedChoices);
+  const earned = episodeXp(progress, episode.id);
+  const xp = xpSummary(progress);
   const next = episodeSummaries.find((e) => e.number === episode.number + 1);
   const nextOpen = next && isUnlocked(next.id, progress);
 
@@ -60,6 +63,25 @@ export default function RecapPanel({ episode, progress, onReplay }: Props) {
 
   return (
     <div className="recap">
+      <section className="hud recap__xp" aria-labelledby="recap-xp">
+        <p className="recap__xp-eyebrow" lang="en">
+          Mission Complete
+        </p>
+        <h2 id="recap-xp" className="recap__xp-num">
+          +{earned} XP <span className="recap__xp-sub">จากตอนนี้</span>
+        </h2>
+        <p className="recap__xp-level">
+          Level {xp.level}
+          <span className="recap__xp-bar" aria-hidden="true">
+            <span style={{ width: `${(xp.intoLevel / xp.perLevel) * 100}%` }} />
+          </span>
+          <span>
+            {xp.intoLevel} / {xp.perLevel} XP
+          </span>
+        </p>
+        <p className="recap__xp-note">XP มาจากการลงมือฟัง พูด และลองทำ ตอบผิดก็ไม่เสีย XP</p>
+      </section>
+
       <section className="paper" aria-labelledby="recap-story">
         <h2 id="recap-story" className="recap__h">ทีมค้นพบอะไร</h2>
         <ul className="note-list">
@@ -69,9 +91,9 @@ export default function RecapPanel({ episode, progress, onReplay }: Props) {
         </ul>
       </section>
 
-      <section className="paper" aria-labelledby="recap-practice">
+      <section className="hud recap__card" aria-labelledby="recap-practice">
         <h2 id="recap-practice" className="recap__h">สิ่งที่คุณได้ลองฟังและพูด</h2>
-        {episode.recap.voiceMissionTh && <p className="paper__lead">ภารกิจเสียง: {episode.recap.voiceMissionTh}</p>}
+        {episode.recap.voiceMissionTh && <p className="recap__note">ภารกิจเสียง: {episode.recap.voiceMissionTh}</p>}
         <ul className="recap__stats">
           {checks.length > 0 && (
             <li>
@@ -92,7 +114,7 @@ export default function RecapPanel({ episode, progress, onReplay }: Props) {
             <span>จุดที่ได้ลองพูดออกเสียง</span>
           </li>
         </ul>
-        <p className="paper__lead">ตัวเลขนี้บอกสิ่งที่คุณได้ลองทำ ไม่ใช่คะแนนความเก่ง และไม่มีการวัดสำเนียง</p>
+        <p className="recap__note">ตัวเลขนี้บอกสิ่งที่คุณได้ลองทำ ไม่ใช่คะแนนความเก่ง และไม่มีการวัดสำเนียง</p>
       </section>
 
       <section className="paper" aria-labelledby="recap-phrases">

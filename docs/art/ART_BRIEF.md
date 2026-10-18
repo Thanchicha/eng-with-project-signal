@@ -74,6 +74,14 @@ Haru, Taku, Nana (EP1) · Sora (EP2) · Mei — ใช้ screen reader บน�
 - **CG ฉากสำคัญ** 1–2 ภาพ/ตอน เช่น Kuro กับ Miyu พบไฟล์ไม่มี source (EP1 S5)
 - **โลโก้** "Project SIGNAL" แบบ SVG หรือ PNG โปร่งใส
 
+### ช่องภาพที่ UI ใช้อยู่แล้ว (ถ้าไม่มีไฟล์จะใช้ภาพแทนอัตโนมัติ)
+| ช่อง | ที่ใช้ | ไฟล์ที่ใช้ | ภาพแทน |
+| --- | --- | --- | --- |
+| Stage sprite | VN stage | `characters/<id>_<expression>.webp` | เงาตัวละครสีตาม avatar |
+| Portrait | การ์ดบทบาท, ผู้ถามในหน้าฝึกพูด, Feedback, โปรไฟล์บนแถบหัว | ไฟล์ sprite เดียวกัน (ครอปช่วงอก-ศีรษะอัตโนมัติ) ดังนั้นให้ใบหน้าอยู่ ~25% จากขอบบน | เงาตัวละคร |
+| Episode thumbnail | แถว Mission Map หน้าแรก | `bg/<background ของฉากแรก>.webp` | ฉากเมืองกลางคืน CSS |
+| Scene background | VN stage | `bg/<name>.webp` ตาม `- background:` ในบท | ฉากเมืองกลางคืน CSS |
+
 ## 5. ส่งให้ Claude อย่างไร
 
 1. วางไฟล์ใน `src/assets/art/characters/` และ `src/assets/art/bg/` ตามชื่อด้านบน

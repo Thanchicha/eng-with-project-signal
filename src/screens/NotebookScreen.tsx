@@ -37,9 +37,17 @@ export default function NotebookScreen({ progress, update }: Props) {
   return (
     <article className="notebook">
       <h1>สมุดคำศัพท์</h1>
-      <p className="notebook__lead">
-        คำที่พบในตอนที่เปิดเล่นแล้ว {total} คำ บันทึกไว้ทบทวน {saved.size} คำ แตะคำที่ขีดเส้นในเนื้อเรื่องเพื่อบันทึกเพิ่ม
-      </p>
+      <div className="hud notebook__summary">
+        <p className="notebook__stat">
+          <span className="notebook__stat-num">{total}</span>
+          <span>คำที่พบในตอนที่เปิดเล่นแล้ว</span>
+        </p>
+        <p className="notebook__stat">
+          <span className="notebook__stat-num">{saved.size}</span>
+          <span>คำที่บันทึกไว้ทบทวน</span>
+        </p>
+        <p className="notebook__lead">แตะคำที่ขีดเส้นในเนื้อเรื่องหรือในแผงคำศัพท์สำคัญเพื่อบันทึกเพิ่ม</p>
+      </div>
 
       <div className="notebook__filter" role="group" aria-label="ตัวกรองคำศัพท์">
         <button type="button" aria-pressed={filter === "all"} onClick={() => setFilter("all")}>
@@ -52,7 +60,7 @@ export default function NotebookScreen({ progress, update }: Props) {
 
       {filter === "saved" && saved.size === 0 && (
         <p className="paper notebook__empty">
-          ยังไม่มีคำที่บันทึกไว้ ระหว่างอ่านเรื่อง แตะคำที่ขีดเส้นสีเหลือง แล้วกด "บันทึกลงสมุดคำศัพท์"
+          ยังไม่มีคำที่บันทึกไว้ ระหว่างอ่านเรื่อง แตะคำที่ขีดเส้น แล้วกด "บันทึกลงสมุดคำศัพท์"
         </p>
       )}
 
