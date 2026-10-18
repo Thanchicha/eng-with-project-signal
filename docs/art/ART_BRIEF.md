@@ -54,18 +54,18 @@ Haru, Taku, Nana (EP1) · Sora (EP2) · Mei — ใช้ screen reader บน�
 
 | ไฟล์ | ใช้ในฉาก |
 | --- | --- |
-| `bg_classroom_morning` | EP1 S1 The Message, EP3 S2 ห้องเรียนปีหนึ่ง |
-| `bg_classroom_afterschool` | EP1 S2–S5, EP3 S3 |
+| `bg_classroom_morning` | EP1 S1; EP3 S3–S4 (ห้องเรียนปีหนึ่ง) |
+| `bg_classroom_afterschool` | EP1 S2–S5; EP3 S5, S8–S9 |
 | `bg_library_corner` | EP1 S7–S8 (สัมภาษณ์ Taku กับ Nana) |
-| `bg_school_hallway` | EP1 S9 และ S15 (ทางเดินตอนกลางวัน) |
-| `bg_project_room_whiteboard` | EP1 S6, S10–S12, EP2 S1, EP2 S5, EP3 S1, EP3 S5, EP3 S7 |
+| `bg_school_hallway` | EP1 S9, S15; EP2 S14; EP3 S12 (ทางเดินกลางวัน) |
+| `bg_project_room_whiteboard` | EP1 S6, S10–S12; EP2 S1–S2, S8–S10; EP3 S1–S2, S10, S13–S15 |
 | `bg_it_office` | EP1 S13–S14 (ห้อง IT) |
-| `bg_cafeteria_kitchen` | EP2 S2 Permission First |
-| `bg_cafeteria_lunch` | EP2 S3–S4 (คิวหลายแถว ไม่มีป้าย) |
-| `bg_cafeteria_signs` | EP2 S6 (มีป้ายกระดาษเหนือแถว — ป้ายไม่มีตัวอักษรอ่านได้) |
-| `bg_station_evening` | EP2 S7 The Walk Back |
-| `bg_hallway_evening` | EP3 S4 (Mei ทดสอบแบบสอบถามบนมือถือ) |
-| `bg_teacher_office` | EP3 S6 พบครู Hayashi |
+| `bg_cafeteria_kitchen` | EP2 S3, S13 |
+| `bg_cafeteria_lunch` | EP2 S4–S7 (คิวหลายแถว ไม่มีป้าย) |
+| `bg_cafeteria_signs` | EP2 S11–S12 (มีป้ายกระดาษเหนือแถว — ป้ายไม่มีตัวอักษรอ่านได้) |
+| `bg_station_evening` | EP2 S15 The Walk Back |
+| `bg_hallway_evening` | EP3 S6–S7 (Mei ทดสอบแบบสอบถามบนมือถือ) |
+| `bg_teacher_office` | EP3 S11 พบครู Hayashi |
 
 ชื่อภาพของแต่ละฉากกำหนดไว้ในบทแล้ว (`- background:` ใน `docs/story/epXX.md`) วางไฟล์ชื่อตรงกันแล้วจะแสดงเอง
 

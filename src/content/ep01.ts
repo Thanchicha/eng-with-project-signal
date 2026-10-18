@@ -2244,13 +2244,13 @@ export const ep01: Episode = {
         },
         {
           "speakerId": "screen",
-          "textEn": "Lena: The cafeteria report says students wait two minutes. Everyone I asked says twenty.",
-          "textTh": "Lena: รายงานโรงอาหารบอกว่านักเรียนรอสองนาที แต่ทุกคนที่ฉันถามบอกว่ายี่สิบนาที"
+          "textEn": "Lena: The cafeteria report says students wait two minutes. Everyone I asked says fifteen.",
+          "textTh": "Lena: รายงานโรงอาหารบอกว่านักเรียนรอสองนาที แต่ทุกคนที่ฉันถามบอกว่าสิบห้านาที"
         },
         {
           "speakerId": "kuro",
-          "textEn": "Two minutes or twenty. Someone is measuring the wrong thing.",
-          "textTh": "สองนาทีหรือยี่สิบนาที ต้องมีใครวัดผิดอะไรสักอย่าง"
+          "textEn": "Two minutes or fifteen. Someone is measuring the wrong thing.",
+          "textTh": "สองนาทีหรือสิบห้านาที ต้องมีใครวัดผิดอะไรสักอย่าง"
         },
         {
           "speakerId": "miyu",
@@ -2272,7 +2272,7 @@ export const ep01: Episode = {
         "choices": [
           {
             "id": "a",
-            "labelTh": "รายงานบอกว่ารอคิวโรงอาหารสองนาที แต่นักเรียนบอกว่ายี่สิบนาที"
+            "labelTh": "รายงานบอกว่ารอคิวโรงอาหารสองนาที แต่นักเรียนบอกว่าสิบห้านาที"
           },
           {
             "id": "b",
@@ -2284,7 +2284,7 @@ export const ep01: Episode = {
           }
         ],
         "answerId": "a",
-        "feedbackTh": "ข้อความของ Lena คือ \"The cafeteria report says students wait two minutes. Everyone I asked says twenty.\" Miyu จึงบอกว่าอาจกำลังวัดคนละอย่างกัน"
+        "feedbackTh": "ข้อความของ Lena คือ \"The cafeteria report says students wait two minutes. Everyone I asked says fifteen.\" Miyu จึงบอกว่าอาจกำลังวัดคนละอย่างกัน"
       },
       "speakingPrompt": {
         "id": "ep01_s15_speak",
@@ -2311,8 +2311,8 @@ export const ep01: Episode = {
         },
         "askedBy": {
           "speakerId": "kuro",
-          "textEn": "Two minutes or twenty. What should we check first?",
-          "textTh": "สองนาทีหรือยี่สิบนาที เราควรตรวจอะไรก่อน?"
+          "textEn": "Two minutes or fifteen. What should we check first?",
+          "textTh": "สองนาทีหรือสิบห้านาที เราควรตรวจอะไรก่อน?"
         }
       },
       "nextSceneId": "end"

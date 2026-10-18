@@ -290,6 +290,109 @@ export const ep03: Episode = {
     },
     {
       "id": "ep03_s2",
+      "title": "The Quiet Classes",
+      "objective": "Look for the groups that did not answer.",
+      "objectiveTh": "มองหากลุ่มนักเรียนที่ไม่ได้ตอบ",
+      "dialogue": [
+        {
+          "speakerId": "rei",
+          "textEn": "I made a table. Each row is a class, each number is how many answered.",
+          "textTh": "ฉันทำตาราง แต่ละแถวคือหนึ่งห้อง ตัวเลขคือจำนวนคนที่ตอบ"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "That's a lot of numbers. What do you see?",
+          "textTh": "ตัวเลขเยอะเลย เห็นอะไรบ้าง?"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "Class 3-A answered forty-one times. Class 1-C answered once.",
+          "textTh": "ห้อง 3-A ตอบสี่สิบเอ็ดครั้ง ห้อง 1-C ตอบครั้งเดียว"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "One out of how many students?",
+          "textTh": "หนึ่งจากนักเรียนกี่คน?"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "Thirty-four.",
+          "textTh": "สามสิบสี่คน"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "That is a very small sample for one class.",
+          "textTh": "นั่นเป็นกลุ่มตัวอย่างที่เล็กมากสำหรับหนึ่งห้อง",
+          "vocabularyRefs": [
+            {
+              "id": "sample",
+              "text": "sample"
+            }
+          ]
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "So if we write 'students say Wi-Fi is the problem,' who are we really talking about?",
+          "textTh": "ถ้าเราเขียนว่า 'นักเรียนบอกว่า Wi-Fi คือปัญหา' เราพูดถึงใครกันแน่?"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "The loud classes. The ones who answer everything.",
+          "textTh": "ห้องที่เสียงดัง ห้องที่ตอบทุกเรื่อง"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "I don't want to wait. But I don't want a wrong summary either.",
+          "textTh": "ฉันไม่อยากรอ แต่ก็ไม่อยากได้สรุปที่ผิดเหมือนกัน"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "Two more days. Maybe three if the first-years answer slowly.",
+          "textTh": "อีกสองวัน หรืออาจสามวัน ถ้าเด็กปีหนึ่งตอบช้า"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "A wrong summary is worse than a late one.",
+          "textTh": "สรุปที่ผิดแย่กว่าสรุปที่ช้า"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "I'll visit class 1-C at break. I know someone there.",
+          "textTh": "ฉันจะไปห้อง 1-C ตอนพัก ฉันรู้จักคนที่นั่น"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I'll come. I want to see what the form looks like on their phones.",
+          "textTh": "ผมไปด้วย ผมอยากดูว่าฟอร์มหน้าตาเป็นยังไงบนมือถือของพวกเขา"
+        }
+      ],
+      "listenForTh": "ฟังว่า Rei เจอห้องไหนที่แทบไม่มีคำตอบ",
+      "background": "bg_project_room_whiteboard",
+      "listeningCheck": {
+        "id": "ep03_s2_listen",
+        "promptTh": "Rei พบอะไรในตารางจำนวนคำตอบของแต่ละห้อง?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "ห้อง 3-A ตอบสี่สิบเอ็ดครั้ง ส่วนห้อง 1-C ตอบครั้งเดียว"
+          },
+          {
+            "id": "b",
+            "labelTh": "ทุกห้องตอบเท่ากัน"
+          },
+          {
+            "id": "c",
+            "labelTh": "ห้อง 1-C ตอบมากที่สุด"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Rei พูดว่า \"Class 3-A answered forty-one times. Class 1-C answered once.\" และ Miyu ถามว่าถ้าเขียนว่า \"นักเรียนบอกว่า\" เราหมายถึงใครกันแน่"
+      },
+      "nextSceneId": "ep03_s3"
+    },
+    {
+      "id": "ep03_s3",
       "title": "Where Are the First-Years?",
       "objective": "Find out why first-years did not answer.",
       "objectiveTh": "หาว่าทำไมเด็กปีหนึ่งไม่ตอบแบบสอบถาม",
@@ -384,7 +487,7 @@ export const ep03: Episode = {
       "listenForTh": "ฟังเหตุผลที่ Ken ไม่ได้ตอบแบบสอบถาม",
       "background": "bg_classroom_morning",
       "listeningCheck": {
-        "id": "ep03_s2_listen",
+        "id": "ep03_s3_listen",
         "promptTh": "ทำไม Ken คิดว่าแบบสอบถามไม่ได้มีไว้สำหรับปีหนึ่ง?",
         "type": "gist",
         "choices": [
@@ -405,7 +508,7 @@ export const ep03: Episode = {
         "feedbackTh": "Ken พูดว่า \"The first question asked about last year's festival. We weren't here last year.\""
       },
       "speakingPrompt": {
-        "id": "ep03_s2_speak",
+        "id": "ep03_s3_speak",
         "situationTh": "สรุปให้ Lena ฟังว่าได้เรียนรู้อะไรจากการคุยกับ Ken",
         "promptEn": "Summarize what you learned from Ken.",
         "goal": "summarize",
@@ -433,10 +536,111 @@ export const ep03: Episode = {
           "textTh": "แล้วเราได้อะไรจากการคุยกับ Ken บ้าง?"
         }
       },
-      "nextSceneId": "ep03_s3"
+      "nextSceneId": "ep03_s4"
     },
     {
-      "id": "ep03_s3",
+      "id": "ep03_s4",
+      "title": "The Old Phone",
+      "objective": "See the form the way first-years see it.",
+      "objectiveTh": "ดูฟอร์มด้วยสายตาแบบที่นักเรียนปีหนึ่งเห็น",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "Ken lent Kuro his brother's old phone. The screen was small and a little scratched.",
+          "textTh": "Ken ยืมมือถือเครื่องเก่าของพี่ชายให้ Kuro หน้าจอเล็กและมีรอยขีดข่วน"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I opened our survey. The first question loads fine.",
+          "textTh": "ผมเปิดแบบสอบถามของเรา คำถามแรกโหลดได้ปกติ"
+        },
+        {
+          "speakerId": "ken",
+          "textEn": "Now scroll down.",
+          "textTh": "ลองเลื่อนลงดู",
+          "speakerLabel": "Ken"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Question seven. A big map. The map is wider than the screen.",
+          "textTh": "ข้อเจ็ด แผนที่ขนาดใหญ่ แผนที่กว้างกว่าหน้าจอ"
+        },
+        {
+          "speakerId": "ken",
+          "textEn": "And the 'Next' button is under the map.",
+          "textTh": "แล้วปุ่ม 'ถัดไป' อยู่ใต้แผนที่",
+          "speakerLabel": "Ken"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I can't reach it. I have to move the map with my finger, and it moves back.",
+          "textTh": "ผมกดไม่ถึง ต้องเลื่อนแผนที่ด้วยนิ้ว แล้วมันเลื่อนกลับ"
+        },
+        {
+          "speakerId": "ken",
+          "textEn": "That's why people stop.",
+          "textTh": "นั่นแหละทำไมคนถึงเลิก",
+          "speakerLabel": "Ken"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Kuro, how does it feel?",
+          "textTh": "Kuro รู้สึกยังไง?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Annoying. On my laptop it looked perfect.",
+          "textTh": "น่ารำคาญ บนแล็ปท็อปผมมันดูสมบูรณ์แบบ"
+        },
+        {
+          "speakerId": "ken",
+          "textEn": "Do you want me to try the other buttons too?",
+          "textTh": "อยากให้ผมลองปุ่มอื่นด้วยไหม?",
+          "speakerLabel": "Ken"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Yes, please. Tell me every time something feels wrong.",
+          "textTh": "ครับ ช่วยบอกทุกครั้งที่รู้สึกว่ามีอะไรแปลก"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Perfect for you. Not for everyone.",
+          "textTh": "สมบูรณ์แบบสำหรับนาย ไม่ใช่สำหรับทุกคน"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I should test on more than one device. I'll write that down.",
+          "textTh": "ผมควรทดสอบกับอุปกรณ์มากกว่าหนึ่งเครื่อง ผมจะจดไว้"
+        }
+      ],
+      "listenForTh": "ฟังว่าปุ่มส่งฟอร์มอยู่ตรงไหนบนมือถือเครื่องเก่า",
+      "background": "bg_classroom_morning",
+      "listeningCheck": {
+        "id": "ep03_s4_listen",
+        "promptTh": "ทำไม Kuro กดปุ่มถัดไปบนมือถือของ Ken ไม่ได้?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "แผนที่กว้างกว่าหน้าจอ และปุ่มอยู่ใต้แผนที่"
+          },
+          {
+            "id": "b",
+            "labelTh": "มือถือแบตหมด"
+          },
+          {
+            "id": "c",
+            "labelTh": "ปุ่มหายไปจากหน้าเว็บ"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Kuro พูดว่า \"The map is wider than the screen.\" และ Ken บอกว่าปุ่ม \"Next\" อยู่ใต้แผนที่ ทำให้กดไม่ถึง"
+      },
+      "nextSceneId": "ep03_s5"
+    },
+    {
+      "id": "ep03_s5",
       "title": "Asking Without Pushing",
       "objective": "Prepare questions that do not lead the answer.",
       "objectiveTh": "เตรียมคำถามที่ไม่ชี้นำคำตอบ",
@@ -506,7 +710,7 @@ export const ep03: Episode = {
       "listenForTh": "ฟังว่า Kuro เห็นปัญหาอะไรในคำถามของ Miyu",
       "background": "bg_classroom_afterschool",
       "listeningCheck": {
-        "id": "ep03_s3_listen",
+        "id": "ep03_s5_listen",
         "promptTh": "Kuro บอกว่าคำถามของ Miyu มีปัญหาอะไร?",
         "type": "gist",
         "choices": [
@@ -527,7 +731,7 @@ export const ep03: Episode = {
         "feedbackTh": "Kuro พูดว่า \"That sounds like you already know the answer.\" และ Miyu ยอมรับว่าเป็น leading question"
       },
       "speakingPrompt": {
-        "id": "ep03_s3_speak",
+        "id": "ep03_s5_speak",
         "situationTh": "Lena ถามว่าจะขอ Mei อย่างไร พูดขออนุญาตดูเธอใช้แบบฟอร์มอย่างสุภาพ",
         "promptEn": "Ask Mei for permission to watch her use the form.",
         "goal": "ask",
@@ -560,7 +764,7 @@ export const ep03: Episode = {
         "promptTh": "Lena จะไปพบ Mei คำถามแรกที่ดีที่สุดคืออะไร?",
         "choices": [
           {
-            "id": "ep03_s3_a",
+            "id": "ep03_s5_a",
             "textEn": "Was the survey hard because of your screen reader?",
             "feedback": {
               "communicatedTh": "คุณพยายามเข้าใจปัญหาของ Mei",
@@ -572,10 +776,10 @@ export const ep03: Episode = {
               "leading-question",
               "tone"
             ],
-            "nextSceneId": "ep03_s4"
+            "nextSceneId": "ep03_s6"
           },
           {
-            "id": "ep03_s3_b",
+            "id": "ep03_s5_b",
             "textEn": "Would you mind showing me how you usually fill in a form?",
             "feedback": {
               "communicatedTh": "คุณขออนุญาตอย่างสุภาพ และขอดูการใช้งานจริงแทนการเดา",
@@ -587,10 +791,10 @@ export const ep03: Episode = {
               "user-research",
               "consent"
             ],
-            "nextSceneId": "ep03_s4"
+            "nextSceneId": "ep03_s6"
           },
           {
-            "id": "ep03_s3_c",
+            "id": "ep03_s5_c",
             "textEn": "Why didn't you finish the survey?",
             "feedback": {
               "communicatedTh": "คุณถามตรงประเด็นเรื่องที่ทีมอยากรู้",
@@ -602,14 +806,126 @@ export const ep03: Episode = {
               "tone",
               "clarification"
             ],
-            "nextSceneId": "ep03_s4"
+            "nextSceneId": "ep03_s6"
           }
         ]
       },
-      "nextSceneId": "ep03_s4"
+      "nextSceneId": "ep03_s6"
     },
     {
-      "id": "ep03_s4",
+      "id": "ep03_s6",
+      "title": "Mei Says Yes",
+      "objective": "Ask Mei for permission and explain why.",
+      "objectiveTh": "ขออนุญาต Mei และอธิบายเหตุผล",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "After school, Lena and Miyu found Mei near the library.",
+          "textTh": "หลังเลิกเรียน Lena กับ Miyu เจอ Mei ใกล้ห้องสมุด"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "Hi, Mei. Do you have a few minutes?",
+          "textTh": "สวัสดี Mei มีเวลาสักสองสามนาทีไหม?"
+        },
+        {
+          "speakerId": "mei",
+          "textEn": "Is this about the survey? I gave up on it.",
+          "textTh": "เรื่องแบบสอบถามใช่ไหม? ฉันเลิกทำไปแล้ว",
+          "speakerLabel": "Mei"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Yes. We think the form was the problem, not you.",
+          "textTh": "ใช่ เราคิดว่าปัญหาอยู่ที่ฟอร์ม ไม่ใช่เธอ"
+        },
+        {
+          "speakerId": "mei",
+          "textEn": "Thank you for saying that. Most people think I did something wrong.",
+          "textTh": "ขอบคุณที่พูดแบบนั้น คนส่วนใหญ่คิดว่าฉันทำอะไรผิด",
+          "speakerLabel": "Mei"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "Would you mind showing us how you usually use online forms?",
+          "textTh": "ช่วยแสดงให้ดูได้ไหมว่าปกติเธอใช้ฟอร์มออนไลน์อย่างไร?"
+        },
+        {
+          "speakerId": "mei",
+          "textEn": "I can. But please don't record my voice or my screen.",
+          "textTh": "ได้ แต่ขออย่าอัดเสียงหรือหน้าจอของฉัน",
+          "speakerLabel": "Mei"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "We won't. We'll only take notes, and you can stop any time.",
+          "textTh": "เราจะไม่อัด เราจะจดโน้ตเท่านั้น และเธอหยุดเมื่อไรก็ได้"
+        },
+        {
+          "speakerId": "mei",
+          "textEn": "And can I read your notes afterward?",
+          "textTh": "แล้วฉันอ่านโน้ตของพวกเธอทีหลังได้ไหม?",
+          "speakerLabel": "Mei"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "Of course. They're about you, so you should see them.",
+          "textTh": "ได้แน่นอน มันเป็นเรื่องของเธอ เธอควรได้เห็น"
+        },
+        {
+          "speakerId": "mei",
+          "textEn": "Okay. Tomorrow after lunch?",
+          "textTh": "โอเค พรุ่งนี้หลังพักเที่ยงนะ",
+          "speakerLabel": "Mei"
+        },
+        {
+          "speakerId": "narration",
+          "textEn": "Kuro ran down the hallway, a little out of breath.",
+          "textTh": "Kuro วิ่งมาตามทางเดิน หอบเล็กน้อย"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Sorry I'm late. Did I miss it?",
+          "textTh": "ขอโทษที่มาช้า ฉันพลาดไปหรือเปล่า?"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "No. Mei said yes. Tomorrow after lunch.",
+          "textTh": "เปล่า Mei ตอบตกลงแล้ว พรุ่งนี้หลังพักเที่ยง"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Thank you, Mei. I'll bring a test version, not the real one.",
+          "textTh": "ขอบคุณ Mei ฉันจะเอาเวอร์ชันทดสอบมา ไม่ใช่ของจริง"
+        }
+      ],
+      "listenForTh": "ฟังว่า Mei ขอเงื่อนไขอะไรก่อนให้ทีมดูเธอใช้งาน",
+      "background": "bg_hallway_evening",
+      "listeningCheck": {
+        "id": "ep03_s6_listen",
+        "promptTh": "Mei ขอเงื่อนไขอะไรก่อนให้ทีมดูเธอใช้งาน?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "อย่าอัดเสียงหรือหน้าจอ และขออ่านโน้ตทีหลัง"
+          },
+          {
+            "id": "b",
+            "labelTh": "ให้จ่ายค่าตอบแทน"
+          },
+          {
+            "id": "c",
+            "labelTh": "ให้ครูอยู่ด้วยตลอดเวลา"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Mei พูดว่า \"please don't record my voice or my screen\" และขอ \"read your notes afterward\" ทีมรับปากทั้งสองข้อ"
+      },
+      "nextSceneId": "ep03_s7"
+    },
+    {
+      "id": "ep03_s7",
       "title": "The Question You Can't Skip",
       "objective": "Find what stops some students from sending the form.",
       "objectiveTh": "หาว่าอะไรทำให้นักเรียนบางคนส่งฟอร์มไม่ได้",
@@ -677,7 +993,7 @@ export const ep03: Episode = {
       "listenForTh": "ฟังว่าอะไรทำให้ Mei ส่งแบบสอบถามไม่ได้",
       "background": "bg_hallway_evening",
       "listeningCheck": {
-        "id": "ep03_s4_listen",
+        "id": "ep03_s7_listen",
         "promptTh": "ทำไม Mei ส่งแบบสอบถามไม่ได้?",
         "type": "gist",
         "choices": [
@@ -698,7 +1014,7 @@ export const ep03: Episode = {
         "feedbackTh": "Mei บอกว่าโปรแกรมอ่านแค่ว่า \"image\" และ \"I can't skip it. It's required.\""
       },
       "speakingPrompt": {
-        "id": "ep03_s4_speak",
+        "id": "ep03_s7_speak",
         "situationTh": "Kuro ถามว่าปัญหาคืออะไรกันแน่ พูดรายงานบั๊กให้เขาทำซ้ำได้",
         "promptEn": "Report the bug so Kuro can reproduce it.",
         "goal": "report",
@@ -731,7 +1047,7 @@ export const ep03: Episode = {
         "promptTh": "Shion ควรรายงานปัญหานี้ให้ทีมอย่างไร?",
         "choices": [
           {
-            "id": "ep03_s4_a",
+            "id": "ep03_s7_a",
             "textEn": "The survey is broken.",
             "feedback": {
               "communicatedTh": "คุณบอกว่ามีปัญหาจริง",
@@ -742,10 +1058,10 @@ export const ep03: Episode = {
             "skillTags": [
               "bug-report"
             ],
-            "nextSceneId": "ep03_s5"
+            "nextSceneId": "ep03_s8"
           },
           {
-            "id": "ep03_s4_b",
+            "id": "ep03_s7_b",
             "textEn": "Mei used it wrong.",
             "feedback": {
               "communicatedTh": "คุณพยายามหาสาเหตุ",
@@ -757,10 +1073,10 @@ export const ep03: Episode = {
               "tone",
               "accessibility"
             ],
-            "nextSceneId": "ep03_s5"
+            "nextSceneId": "ep03_s8"
           },
           {
-            "id": "ep03_s4_c",
+            "id": "ep03_s7_c",
             "textEn": "Steps: open the survey on a small phone or with a screen reader, go to question seven. Result: you can't answer or skip it.",
             "feedback": {
               "communicatedTh": "คุณให้ขั้นตอนทำซ้ำและผลลัพธ์ที่ชัดเจน ซึ่งเป็นรูปแบบ bug report ที่ทีมพัฒนาใช้จริง",
@@ -772,14 +1088,204 @@ export const ep03: Episode = {
               "bug-report",
               "accessibility"
             ],
-            "nextSceneId": "ep03_s5"
+            "nextSceneId": "ep03_s8"
           }
         ]
       },
-      "nextSceneId": "ep03_s5"
+      "nextSceneId": "ep03_s8"
     },
     {
-      "id": "ep03_s5",
+      "id": "ep03_s8",
+      "title": "One Hour",
+      "objective": "Fix the form and say what changed.",
+      "objectiveTh": "แก้ฟอร์มและบอกว่าเปลี่ยนอะไรบ้าง",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "Kuro worked for an hour. Miyu sat beside him and read the questions out loud.",
+          "textTh": "Kuro ทำงานหนึ่งชั่วโมง Miyu นั่งข้าง ๆ แล้วอ่านคำถามออกเสียง"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Done. Question seven is a simple list now. Choose your building, choose your floor.",
+          "textTh": "เสร็จแล้ว ข้อเจ็ดเป็นรายการธรรมดา เลือกตึก เลือกชั้น"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "And it's optional?",
+          "textTh": "แล้วไม่บังคับใช่ไหม?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Yes. The map is still there, but only as extra help.",
+          "textTh": "ใช่ แผนที่ยังอยู่ แต่เป็นตัวช่วยเสริมเท่านั้น"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "I'm reading it as a screen reader would. 'Choose your building. List. Building A. Building B.' That works.",
+          "textTh": "ฉันอ่านแบบที่โปรแกรมอ่านหน้าจออ่าน 'เลือกตึกของคุณ รายการ ตึก A ตึก B' แบบนี้ใช้ได้"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I also made the buttons bigger. Thumbs are not small.",
+          "textTh": "ผมทำปุ่มใหญ่ขึ้นด้วย นิ้วโป้งไม่ได้เล็ก"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "And the first question? The one about last year's festival?",
+          "textTh": "แล้วข้อแรกล่ะ ข้อที่ถามเรื่องเทศกาลปีที่แล้ว?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I changed it to 'What is one thing that makes your school day hard?'",
+          "textTh": "ผมเปลี่ยนเป็น 'อะไรคือสิ่งหนึ่งที่ทำให้วันเรียนของคุณยาก?'"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "That's an open question. Good.",
+          "textTh": "นั่นเป็นคำถามปลายเปิด ดีมาก"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I'm still not sure it works for everyone.",
+          "textTh": "ผมยังไม่แน่ใจว่าใช้ได้กับทุกคน"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "That's why we test with real people tomorrow.",
+          "textTh": "นั่นแหละทำไมพรุ่งนี้เราทดสอบกับคนจริง"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "And if it fails again?",
+          "textTh": "แล้วถ้ามันพังอีกล่ะ?"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Then we fix it again. That's the job.",
+          "textTh": "ก็แก้อีก นั่นคืองาน"
+        }
+      ],
+      "listenForTh": "ฟังว่า Kuro เปลี่ยนอะไรในข้อเจ็ด",
+      "background": "bg_classroom_afterschool",
+      "listeningCheck": {
+        "id": "ep03_s8_listen",
+        "promptTh": "Kuro เปลี่ยนข้อเจ็ดเป็นอย่างไร?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "เป็นรายการธรรมดาให้เลือกตึกและชั้น และไม่บังคับตอบ"
+          },
+          {
+            "id": "b",
+            "labelTh": "ลบข้อเจ็ดทิ้งทั้งหมด"
+          },
+          {
+            "id": "c",
+            "labelTh": "ทำแผนที่ให้ใหญ่ขึ้น"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Kuro พูดว่า \"Question seven is a simple list now. Choose your building, choose your floor.\" และบอกว่าไม่บังคับตอบ แผนที่เหลือไว้เป็นตัวช่วยเสริม"
+      },
+      "nextSceneId": "ep03_s9"
+    },
+    {
+      "id": "ep03_s9",
+      "title": "The Real Test",
+      "objective": "Test the new form with the people who were blocked.",
+      "objectiveTh": "ทดสอบฟอร์มใหม่กับคนที่เคยติดปัญหา",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "The next day, Mei and Ken tried the new form. Miyu took notes. Kuro stayed quiet.",
+          "textTh": "วันต่อมา Mei กับ Ken ลองฟอร์มใหม่ Miyu จดโน้ต Kuro เงียบ"
+        },
+        {
+          "speakerId": "mei",
+          "textEn": "Question one. 'What is one thing that makes your school day hard?' I can answer that.",
+          "textTh": "ข้อหนึ่ง 'อะไรคือสิ่งหนึ่งที่ทำให้วันเรียนของคุณยาก?' ตอบได้",
+          "speakerLabel": "Mei"
+        },
+        {
+          "speakerId": "mei",
+          "textEn": "Question seven. The reader says 'list.' I choose Building A. Good.",
+          "textTh": "ข้อเจ็ด โปรแกรมอ่านบอกว่า 'รายการ' ฉันเลือกตึก A ดีเลย",
+          "speakerLabel": "Mei"
+        },
+        {
+          "speakerId": "ken",
+          "textEn": "On my phone, the button is right there. I don't have to search for it.",
+          "textTh": "ในมือถือผม ปุ่มอยู่ตรงนั้นเลย ไม่ต้องหา",
+          "speakerLabel": "Ken"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Mei, is there anything that still feels strange?",
+          "textTh": "Mei มีอะไรที่ยังรู้สึกแปลกอยู่ไหม?"
+        },
+        {
+          "speakerId": "mei",
+          "textEn": "The last page says 'Thank you!' but the reader says it twice.",
+          "textTh": "หน้าสุดท้ายเขียนว่า 'ขอบคุณ!' แต่โปรแกรมอ่านพูดสองรอบ",
+          "speakerLabel": "Mei"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "A bug. Two labels with the same text.",
+          "textTh": "บั๊ก ป้ายสองอันข้อความเหมือนกัน"
+        },
+        {
+          "speakerId": "mei",
+          "textEn": "It's a small thing. But now I know it was not my fault before.",
+          "textTh": "เรื่องเล็ก แต่ตอนนี้ฉันรู้แล้วว่าก่อนหน้านี้ไม่ใช่ความผิดฉัน",
+          "speakerLabel": "Mei"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "You can read our notes now, as we promised.",
+          "textTh": "เธออ่านโน้ตของเราได้เลย ตามที่สัญญาไว้"
+        },
+        {
+          "speakerId": "mei",
+          "textEn": "Thank you. You listened. That's rare.",
+          "textTh": "ขอบคุณ พวกเธอตั้งใจฟัง นั่นหายากนะ",
+          "speakerLabel": "Mei"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I'll fix the second 'Thank you' tonight.",
+          "textTh": "คืนนี้ผมจะแก้คำว่า 'ขอบคุณ' อันที่สอง"
+        }
+      ],
+      "listenForTh": "ฟังว่า Mei กับ Ken พูดอะไรหลังลองฟอร์มใหม่",
+      "background": "bg_classroom_afterschool",
+      "listeningCheck": {
+        "id": "ep03_s9_listen",
+        "promptTh": "Mei เจอบั๊กอะไรเพิ่มในหน้าสุดท้าย?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "โปรแกรมอ่านพูดคำว่า \"ขอบคุณ\" สองรอบ"
+          },
+          {
+            "id": "b",
+            "labelTh": "หน้าสุดท้ายไม่โหลด"
+          },
+          {
+            "id": "c",
+            "labelTh": "ปุ่มส่งหายไป"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Mei พูดว่า \"the reader says it twice.\" Kuro จึงบอกว่าเป็นบั๊ก เพราะมีป้ายสองอันที่ข้อความเหมือนกัน"
+      },
+      "nextSceneId": "ep03_s10"
+    },
+    {
+      "id": "ep03_s10",
       "title": "The Missing School Code",
       "objective": "Describe what the survey can and cannot show.",
       "objectiveTh": "อธิบายว่าแบบสอบถามบอกอะไรได้และบอกอะไรไม่ได้",
@@ -859,7 +1365,7 @@ export const ep03: Episode = {
       "listenForTh": "ฟังว่าไฟล์จาก Vesper High ขาดอะไร",
       "background": "bg_project_room_whiteboard",
       "listeningCheck": {
-        "id": "ep03_s5_listen",
+        "id": "ep03_s10_listen",
         "promptTh": "ไฟล์ export จาก Vesper High ขาดอะไร?",
         "type": "detail",
         "choices": [
@@ -880,7 +1386,7 @@ export const ep03: Episode = {
         "feedbackTh": "Rei พูดว่า \"the export has no school code. I can't tell which answers are theirs.\""
       },
       "speakingPrompt": {
-        "id": "ep03_s5_speak",
+        "id": "ep03_s10_speak",
         "situationTh": "Chief ถามว่าควรเขียนอะไรในสรุป พูดบอกข้อจำกัดของแบบสอบถาม",
         "promptEn": "Say the survey's limitations.",
         "goal": "summarize",
@@ -913,7 +1419,7 @@ export const ep03: Episode = {
         "promptTh": "ประโยคไหนควรอยู่ในสรุปผลแบบสอบถาม?",
         "choices": [
           {
-            "id": "ep03_s5_a",
+            "id": "ep03_s10_a",
             "textEn": "All students think Wi-Fi is the biggest problem.",
             "feedback": {
               "communicatedTh": "คุณสรุปผลที่เด่นที่สุดจากแบบสอบถาม",
@@ -925,10 +1431,10 @@ export const ep03: Episode = {
               "limitation",
               "assumption"
             ],
-            "nextSceneId": "ep03_s6"
+            "nextSceneId": "ep03_s11"
           },
           {
-            "id": "ep03_s5_b",
+            "id": "ep03_s10_b",
             "textEn": "We can't use the survey because some answers are from Vesper High.",
             "feedback": {
               "communicatedTh": "คุณระวังเรื่องข้อมูลปนกัน",
@@ -939,10 +1445,10 @@ export const ep03: Episode = {
             "skillTags": [
               "data-quality"
             ],
-            "nextSceneId": "ep03_s6"
+            "nextSceneId": "ep03_s11"
           },
           {
-            "id": "ep03_s5_c",
+            "id": "ep03_s10_c",
             "textEn": "This survey does not represent every student. Some groups answered less, and the export has no school code.",
             "feedback": {
               "communicatedTh": "คุณบอกข้อจำกัดสองข้อของข้อมูลอย่างชัดเจน",
@@ -954,14 +1460,14 @@ export const ep03: Episode = {
               "limitation",
               "summarizing"
             ],
-            "nextSceneId": "ep03_s6"
+            "nextSceneId": "ep03_s11"
           }
         ]
       },
-      "nextSceneId": "ep03_s6"
+      "nextSceneId": "ep03_s11"
     },
     {
-      "id": "ep03_s6",
+      "id": "ep03_s11",
       "title": "What the Survey Can't Say",
       "objective": "Present the survey results with their limitations.",
       "objectiveTh": "นำเสนอผลแบบสอบถามพร้อมข้อจำกัด",
@@ -1056,7 +1562,7 @@ export const ep03: Episode = {
       "listenForTh": "ฟังว่าครู Hayashi ชอบอะไรในการนำเสนอของทีม",
       "background": "bg_teacher_office",
       "listeningCheck": {
-        "id": "ep03_s6_listen",
+        "id": "ep03_s11_listen",
         "promptTh": "ครู Hayashi ขอบคุณทีมเรื่องอะไร?",
         "type": "gist",
         "choices": [
@@ -1077,7 +1583,7 @@ export const ep03: Episode = {
         "feedbackTh": "ครูพูดว่า \"Thank you for telling me the limitations. Many teams only show the good parts.\""
       },
       "speakingPrompt": {
-        "id": "ep03_s6_speak",
+        "id": "ep03_s11_speak",
         "situationTh": "ครู Hayashi ถามว่าควรทำอะไรต่อ พูดเสนอขั้นต่อไปหนึ่งถึงสองประโยค",
         "promptEn": "Suggest the next step to Ms. Hayashi.",
         "goal": "suggest",
@@ -1111,7 +1617,7 @@ export const ep03: Episode = {
         "promptTh": "ครู Hayashi ถามว่า \"แล้วเราควรทำอะไรต่อ?\" คำตอบไหนดีที่สุด?",
         "choices": [
           {
-            "id": "ep03_s6_a",
+            "id": "ep03_s11_a",
             "textEn": "We should fix the Wi-Fi first because most students chose it.",
             "feedback": {
               "communicatedTh": "คุณใช้ผลที่มีคนเลือกมากที่สุดเป็นฐาน",
@@ -1123,10 +1629,10 @@ export const ep03: Episode = {
               "sampling",
               "assumption"
             ],
-            "nextSceneId": "ep03_s7"
+            "nextSceneId": "ep03_s12"
           },
           {
-            "id": "ep03_s6_b",
+            "id": "ep03_s11_b",
             "textEn": "We should ask Vesper High to add a school code, and keep collecting answers from the groups we missed.",
             "feedback": {
               "communicatedTh": "คุณเสนอขั้นต่อไปที่แก้ข้อจำกัดทั้งสองข้อ โดยไม่กล่าวหาโรงเรียนพันธมิตร",
@@ -1138,10 +1644,10 @@ export const ep03: Episode = {
               "data-quality",
               "planning"
             ],
-            "nextSceneId": "ep03_s7"
+            "nextSceneId": "ep03_s12"
           },
           {
-            "id": "ep03_s6_c",
+            "id": "ep03_s11_c",
             "textEn": "We don't know anything yet.",
             "feedback": {
               "communicatedTh": "คุณซื่อตรงเรื่องความไม่แน่นอน",
@@ -1152,14 +1658,116 @@ export const ep03: Episode = {
             "skillTags": [
               "summarizing"
             ],
-            "nextSceneId": "ep03_s7"
+            "nextSceneId": "ep03_s12"
           }
         ]
       },
-      "nextSceneId": "ep03_s7"
+      "nextSceneId": "ep03_s12"
     },
     {
-      "id": "ep03_s7",
+      "id": "ep03_s12",
+      "title": "After the Meeting",
+      "objective": "Decide what to do with what you just learned.",
+      "objectiveTh": "ตัดสินใจว่าจะทำอะไรต่อจากสิ่งที่เพิ่งได้รู้",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "Outside Ms. Hayashi's office, the team stopped in the hallway.",
+          "textTh": "นอกห้องครู Hayashi ทีมหยุดยืนในทางเดิน"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "That went well. She liked how honest we were.",
+          "textTh": "ไปได้ดี ครูชอบที่เราซื่อตรง"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "The first-years chose 'finding rooms.' That's a new finding.",
+          "textTh": "เด็กปีหนึ่งเลือก 'หาห้องไม่เจอ' นั่นเป็นข้อค้นพบใหม่"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "It's interesting, but let's not get too excited yet. Thirty-nine answers is still small.",
+          "textTh": "น่าสนใจ แต่อย่าเพิ่งตื่นเต้นเกินไป สามสิบเก้าคำตอบยังน้อยอยู่"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "You always do this.",
+          "textTh": "เธอทำแบบนี้ตลอดเลย"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Do what?",
+          "textTh": "ทำอะไร?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Give good news and a warning in the same sentence.",
+          "textTh": "ให้ข่าวดีกับคำเตือนในประโยคเดียวกัน"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "That's what a good report does.",
+          "textTh": "รายงานที่ดีก็เป็นแบบนั้นแหละ"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "A map of the school with room numbers could help first-years. That's a small solution.",
+          "textTh": "แผนที่โรงเรียนพร้อมเลขห้องอาจช่วยเด็กปีหนึ่งได้ เป็นวิธีแก้เล็ก ๆ"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "Remember what Miyu said last time. Evidence first, then solution.",
+          "textTh": "จำที่ Miyu เคยพูดไว้ หลักฐานก่อน แล้วค่อยวิธีแก้"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Fine. Evidence first. But I'm drawing the map in my notebook anyway.",
+          "textTh": "ก็ได้ หลักฐานก่อน แต่ผมจะวาดแผนที่ไว้ในสมุดอยู่ดี"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Show me when you're done.",
+          "textTh": "เอามาให้ดูเมื่อทำเสร็จนะ"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "You'll find mistakes.",
+          "textTh": "เธอต้องเจอข้อผิดพลาดแน่"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "That's the plan.",
+          "textTh": "นั่นคือแผนอยู่แล้ว"
+        }
+      ],
+      "listenForTh": "ฟังว่าทำไม Miyu บอกว่าอย่าเพิ่งตื่นเต้นเรื่องผลของปีหนึ่ง",
+      "background": "bg_school_hallway",
+      "listeningCheck": {
+        "id": "ep03_s12_listen",
+        "promptTh": "ทำไม Miyu บอกว่าอย่าเพิ่งตื่นเต้นเกินไปกับผลของนักเรียนปีหนึ่ง?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "เพราะสามสิบเก้าคำตอบยังน้อยอยู่"
+          },
+          {
+            "id": "b",
+            "labelTh": "เพราะนักเรียนปีหนึ่งตอบไม่จริงจัง"
+          },
+          {
+            "id": "c",
+            "labelTh": "เพราะครูไม่ชอบผลนี้"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Miyu พูดว่า \"Thirty-nine answers is still small.\" และ Kuro สังเกตว่าเธอมักให้ข่าวดีกับคำเตือนในประโยคเดียวกัน"
+      },
+      "nextSceneId": "ep03_s13"
+    },
+    {
+      "id": "ep03_s13",
       "title": "Same ID, Different School",
       "objective": "Plan how to raise a data problem without blaming anyone.",
       "objectiveTh": "วางแผนแจ้งปัญหาข้อมูลโดยไม่กล่าวหาใคร",
@@ -1245,6 +1853,16 @@ export const ep03: Episode = {
           "textTh": "ขอบคุณ โน้ตของเธอดีกว่าคอมเมนต์ในโค้ดของผมอีก"
         },
         {
+          "speakerId": "chief",
+          "textEn": "Kuro, you said you'd test with fake data. Tell us about the plan.",
+          "textTh": "Kuro นายบอกว่าจะทดสอบด้วยข้อมูลปลอม เล่าแผนให้ฟังหน่อย"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Tomorrow. I'll make two tiny files and join them.",
+          "textTh": "พรุ่งนี้ ผมจะทำไฟล์เล็ก ๆ สองไฟล์แล้วรวมกัน"
+        },
+        {
           "speakerId": "miyu",
           "textEn": "That's a low bar, Developer.",
           "textTh": "มาตรฐานนั้นต่ำไปหน่อยนะ คุณ Developer"
@@ -1253,7 +1871,7 @@ export const ep03: Episode = {
       "listenForTh": "ฟังว่า Rei เจออะไรเมื่อรวมข้อมูลสองโรงเรียน",
       "background": "bg_project_room_whiteboard",
       "listeningCheck": {
-        "id": "ep03_s7_listen",
+        "id": "ep03_s13_listen",
         "promptTh": "Rei พบอะไรเมื่อรวมข้อมูลสองโรงเรียน?",
         "type": "gist",
         "choices": [
@@ -1274,7 +1892,7 @@ export const ep03: Episode = {
         "feedbackTh": "Rei พูดว่า \"Same student ID: 2047\" และ \"the system counted them as one student.\" ทีมยังไม่รู้สาเหตุ"
       },
       "speakingPrompt": {
-        "id": "ep03_s7_speak",
+        "id": "ep03_s13_speak",
         "situationTh": "Chief ถามว่าจะพูดกับ Vesper High ว่าอย่างไร พูดบอกสิ่งที่พบและขอความช่วยเหลือโดยไม่กล่าวหา",
         "promptEn": "Explain the finding to Vesper High and ask for help.",
         "goal": "suggest",
@@ -1302,7 +1920,288 @@ export const ep03: Episode = {
           "textTh": "แล้วเราจะพูดกับ Vesper High ว่ายังไง?"
         }
       },
+      "nextSceneId": "ep03_s14"
+    },
+    {
+      "id": "ep03_s14",
+      "title": "Joining the Files",
+      "objective": "Test how two files are joined.",
+      "objectiveTh": "ทดสอบว่าไฟล์สองไฟล์ถูกรวมกันอย่างไร",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "Kuro stayed late. He made two small files with fake students and fake IDs.",
+          "textTh": "Kuro อยู่ดึก เขาทำไฟล์เล็ก ๆ สองไฟล์ ใส่นักเรียนปลอมและ ID ปลอม"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "File A is CAGE. File B is Vesper High. Both have a student with ID 1.",
+          "textTh": "ไฟล์ A คือ CAGE ไฟล์ B คือ Vesper High ทั้งสองมีนักเรียน ID 1"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Different students, same number?",
+          "textTh": "คนละคน แต่เลขเดียวกันเหรอ?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Yes. Now I join the files using only the ID.",
+          "textTh": "ใช่ ตอนนี้ผมรวมไฟล์โดยใช้แค่ ID"
+        },
+        {
+          "speakerId": "narration",
+          "textEn": "Kuro pressed a key. Two rows became one.",
+          "textTh": "Kuro กดปุ่ม สองแถวกลายเป็นแถวเดียว"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "There it is. The system thinks they are the same student.",
+          "textTh": "นี่ไง ระบบคิดว่าเป็นนักเรียนคนเดียวกัน"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "So nobody changed the data. The join created the mistake.",
+          "textTh": "แปลว่าไม่มีใครแก้ข้อมูล การรวมไฟล์ทำให้เกิดความผิดพลาดเอง"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Maybe. We still can't say the real file had the same problem.",
+          "textTh": "อาจจะ แต่เรายังบอกไม่ได้ว่าไฟล์จริงเกิดแบบเดียวกัน"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Right. But now we know where to look. We need the school code in the join.",
+          "textTh": "ใช่ แต่ตอนนี้เรารู้แล้วว่าจะดูตรงไหน เราต้องใส่รหัสโรงเรียนในการรวมไฟล์"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "That's why the missing school code matters.",
+          "textTh": "นั่นคือเหตุผลที่รหัสโรงเรียนที่หายไปสำคัญ"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Good test, Kuro. You didn't touch any real student's data.",
+          "textTh": "ทดสอบได้ดี Kuro นายไม่ได้แตะข้อมูลนักเรียนจริงเลย"
+        }
+      ],
+      "listenForTh": "ฟังว่า Kuro พบอะไรเมื่อทดสอบด้วยข้อมูลตัวอย่าง",
+      "background": "bg_project_room_whiteboard",
+      "listeningCheck": {
+        "id": "ep03_s14_listen",
+        "promptTh": "Kuro พบอะไรเมื่อรวมไฟล์ตัวอย่างโดยใช้แค่ ID?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "นักเรียนสองคนจากสองโรงเรียนถูกนับเป็นคนเดียว"
+          },
+          {
+            "id": "b",
+            "labelTh": "ไฟล์ทั้งสองลบกันเอง"
+          },
+          {
+            "id": "c",
+            "labelTh": "ระบบแสดงชื่อจริงของนักเรียน"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Kuro พูดว่า \"The system thinks they are the same student.\" เมื่อรวมโดยใช้แค่ ID Rei จึงสรุปว่าการรวมไฟล์เป็นต้นเหตุที่เป็นไปได้ แต่ Miyu เตือนว่ายังบอกไม่ได้ว่าไฟล์จริงเกิดแบบเดียวกัน"
+      },
+      "nextSceneId": "ep03_s15"
+    },
+    {
+      "id": "ep03_s15",
+      "title": "The Careful Email",
+      "objective": "Write a polite message that asks for help.",
+      "objectiveTh": "เขียนข้อความสุภาพที่ขอความช่วยเหลือ",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "On Monday, the team gathered to write to Vesper High.",
+          "textTh": "วันจันทร์ ทีมรวมตัวกันเขียนถึง Vesper High"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "Kuro, you write first.",
+          "textTh": "Kuro นายเขียนก่อน"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "'Your data is wrong. Please fix it.'",
+          "textTh": "'ข้อมูลของพวกคุณผิด ช่วยแก้ด้วย'"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Kuro. No.",
+          "textTh": "Kuro ไม่ได้"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "What? It's short and clear.",
+          "textTh": "อะไร? มันสั้นและชัดเจน"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "It says they made a mistake. We don't know that.",
+          "textTh": "มันบอกว่าพวกเขาทำผิด เรายังไม่รู้เรื่องนั้น"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "We found something strange. We should say what we found.",
+          "textTh": "เราเจอสิ่งที่แปลก เราควรบอกว่าเราเจออะไร"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "And ask for help. People like to help when they are asked, not blamed.",
+          "textTh": "แล้วขอให้ช่วย คนชอบช่วยเมื่อถูกขอ ไม่ใช่ถูกโทษ"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Okay. 'We found two records with the same student ID. Could you help us check how your IDs are created?'",
+          "textTh": "โอเค 'เราพบสองรายการที่มี ID นักเรียนเดียวกัน ช่วยตรวจกับเราได้ไหมว่า ID ของคุณสร้างอย่างไร?'"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "That's much better.",
+          "textTh": "แบบนี้ดีกว่ามาก"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "Send it. Then we wait.",
+          "textTh": "ส่งเลย แล้วเราก็รอ"
+        },
+        {
+          "speakerId": "narration",
+          "textEn": "Kuro pressed send. Nobody said anything.",
+          "textTh": "Kuro กดส่ง ไม่มีใครพูดอะไร"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "Six weeks. Four left.",
+          "textTh": "หกสัปดาห์ เหลือสี่"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "It feels like we've done less than that.",
+          "textTh": "รู้สึกเหมือนเราทำไปน้อยกว่านั้น"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "We've done more. We just haven't finished the answer.",
+          "textTh": "เราทำไปมากกว่านั้น แค่ยังหาคำตอบไม่จบ"
+        }
+      ],
+      "listenForTh": "ฟังว่าทำไม Miyu ไม่ให้เขียนว่า \"ข้อมูลของคุณผิด\"",
+      "background": "bg_project_room_whiteboard",
+      "listeningCheck": {
+        "id": "ep03_s15_listen",
+        "promptTh": "ทำไม Miyu ไม่ให้ส่งข้อความว่า \"ข้อมูลของพวกคุณผิด\"?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "เพราะยังไม่รู้ว่าพวกเขาทำผิดจริง และอยากให้เขาช่วยตรวจด้วยความเต็มใจ"
+          },
+          {
+            "id": "b",
+            "labelTh": "เพราะข้อความสั้นเกินไป"
+          },
+          {
+            "id": "c",
+            "labelTh": "เพราะ Vesper High ไม่ใช้อีเมล"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Miyu พูดว่า \"It says they made a mistake. We don't know that.\" Lena เสริมว่าคนชอบช่วยเมื่อถูกขอ ไม่ใช่ถูกโทษ ทีมจึงเขียนว่า \"We found…\" แล้วขอให้ช่วยตรวจ"
+      },
       "nextSceneId": "end"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "ep03_c1",
+      "number": 1,
+      "title": "The Missing Voices",
+      "summaryTh": "แบบสอบถามได้ 192 คำตอบ แต่มีเพียงเก้าคนที่เป็นนักเรียนปีหนึ่ง Lena พา Miyu กับ Kuro ไปฟัง Ken ซึ่งบอกว่าคำถามแรกทำให้เขาคิดว่าแบบสอบถามไม่ได้มีไว้สำหรับปีหนึ่ง",
+      "keyPhrase": {
+        "speakerId": "miyu",
+        "textEn": "Most of the responses came from older students.",
+        "textTh": "คำตอบส่วนใหญ่มาจากนักเรียนรุ่นพี่"
+      },
+      "sceneIds": [
+        "ep03_s1",
+        "ep03_s2",
+        "ep03_s3"
+      ],
+      "keyPhraseNoteTh": "บอกว่าข้อมูลส่วนใหญ่มาจากกลุ่มไหน เพื่อเตือนว่ายังไม่ครอบคลุมทุกคน"
+    },
+    {
+      "id": "ep03_c2",
+      "number": 2,
+      "title": "Asking Without Pushing",
+      "summaryTh": "Kuro เห็นเองว่าปุ่มหลุดออกนอกจอบนมือถือเครื่องเก่า Miyu เขียนคำถามใหม่ที่ไม่ชี้นำ และทีมตกลงขออนุญาต Mei อย่างสุภาพก่อนดูเธอใช้งานฟอร์ม",
+      "keyPhrase": {
+        "speakerId": "lena",
+        "textEn": "Would you mind showing me how you usually fill in a form?",
+        "textTh": "ช่วยแสดงให้ดูได้ไหมว่าปกติเธอกรอกฟอร์มอย่างไร?"
+      },
+      "sceneIds": [
+        "ep03_s4",
+        "ep03_s5",
+        "ep03_s6"
+      ],
+      "keyPhraseNoteTh": "ขอให้ผู้ใช้แสดงวิธีทำงานจริงของเขา โดยให้สิทธิ์เขาปฏิเสธได้"
+    },
+    {
+      "id": "ep03_c3",
+      "number": 3,
+      "title": "The Question You Can't Skip",
+      "summaryTh": "Mei แสดงให้ทีมเห็นว่าข้อเจ็ดอ่านด้วยโปรแกรมอ่านหน้าจอไม่ได้และข้ามไม่ได้ Kuro แก้ฟอร์มภายในหนึ่งชั่วโมง Miyu ทดสอบกับ Mei และ Ken ซึ่งยืนยันว่าใช้งานได้จริงแล้ว",
+      "keyPhrase": {
+        "speakerId": "kuro",
+        "textEn": "Steps, expected result, actual result.",
+        "textTh": "ขั้นตอน ผลที่คาดไว้ ผลที่เกิดจริง"
+      },
+      "sceneIds": [
+        "ep03_s7",
+        "ep03_s8",
+        "ep03_s9"
+      ],
+      "keyPhraseNoteTh": "รายงานบั๊กให้คนแก้ทำซ้ำและทดสอบได้ง่าย"
+    },
+    {
+      "id": "ep03_c4",
+      "number": 4,
+      "title": "The Missing School Code",
+      "summaryTh": "ฟอร์มใหม่ได้คำตอบจากปีหนึ่งเพิ่มและเปลี่ยนผลสำรวจ แต่ไฟล์จาก Vesper High ไม่มีรหัสโรงเรียน ทีมบอกข้อจำกัดต่อครู Hayashi อย่างตรงไปตรงมา และครูขอบคุณที่ไม่โชว์แต่ส่วนดี",
+      "keyPhrase": {
+        "speakerId": "rei",
+        "textEn": "This survey does not show which school each answer came from.",
+        "textTh": "แบบสอบถามนี้ไม่ได้บอกว่าแต่ละคำตอบมาจากโรงเรียนไหน"
+      },
+      "sceneIds": [
+        "ep03_s10",
+        "ep03_s11",
+        "ep03_s12"
+      ],
+      "keyPhraseNoteTh": "บอกสิ่งที่ข้อมูลยังบอกไม่ได้ เพื่อไม่ให้คนอ่านเข้าใจเกินจริง"
+    },
+    {
+      "id": "ep03_c5",
+      "number": 5,
+      "title": "Same ID, Different School",
+      "summaryTh": "Rei ทดลองรวมข้อมูลสองโรงเรียนและเจอ ID นักเรียนซ้ำ ทีมไม่กล่าวหาใคร Kuro ทดสอบการรวมไฟล์ด้วยข้อมูลตัวอย่าง และทีมเตรียมอีเมลสุภาพถึง Vesper High",
+      "keyPhrase": {
+        "speakerId": "chief",
+        "textEn": "We found two records with the same student ID.",
+        "textTh": "เราพบสองรายการที่มี ID นักเรียนเดียวกัน"
+      },
+      "sceneIds": [
+        "ep03_s13",
+        "ep03_s14",
+        "ep03_s15"
+      ],
+      "keyPhraseNoteTh": "บอกสิ่งที่พบเป็นข้อเท็จจริง ก่อนขอให้ผู้เกี่ยวข้องช่วยตรวจ"
     }
   ],
   "analystNote": [

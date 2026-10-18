@@ -185,6 +185,16 @@ export const ep02: Episode = {
           "speakerId": "chief",
           "textEn": "Good. Then we focus on the cafeteria.",
           "textTh": "ดี งั้นเราโฟกัสที่โรงอาหาร"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "Why the cafeteria? There are so many other problems.",
+          "textTh": "ทำไมต้องโรงอาหาร? ยังมีปัญหาอื่นอีกเยอะ"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "Because two sources disagree, and that is a good place to learn.",
+          "textTh": "เพราะข้อมูลสองแหล่งขัดกัน และนั่นเป็นที่ที่ดีสำหรับการเรียนรู้"
         }
       ],
       "listenForTh": "ฟังว่ารายงานกับนักเรียนพูดเรื่องเวลารอต่างกันอย่างไร",
@@ -293,6 +303,109 @@ export const ep02: Episode = {
     },
     {
       "id": "ep02_s2",
+      "title": "What Do We Measure?",
+      "objective": "Plan what to measure before you observe.",
+      "objectiveTh": "วางแผนว่าจะวัดอะไรก่อนไปสังเกต",
+      "dialogue": [
+        {
+          "speakerId": "chief",
+          "textEn": "Before lunch, let's agree on one thing. What exactly do we measure?",
+          "textTh": "ก่อนพักเที่ยง ตกลงกันเรื่องหนึ่งก่อน เราจะวัดอะไรกันแน่?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Waiting time. That's easy.",
+          "textTh": "เวลารอไง ง่ายจะตาย"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Waiting from when? When a student walks in, or when they join a line?",
+          "textTh": "รอตั้งแต่ตอนไหน? ตอนนักเรียนเดินเข้ามา หรือตอนเริ่มต่อแถว?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Hmm. From joining a line to getting food.",
+          "textTh": "อืม ตั้งแต่ต่อแถวจนได้อาหาร"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "Then we can compare it with the report. If the report measures something else, we will see a gap.",
+          "textTh": "งั้นเราเทียบกับรายงานได้ ถ้ารายงานวัดอย่างอื่น เราจะเห็นช่องว่าง"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "We shouldn't write down names. Some students won't like being watched.",
+          "textTh": "เราไม่ควรจดชื่อ นักเรียนบางคนไม่ชอบถูกจ้องดู"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "And let's interview a few students after they eat, not while they wait.",
+          "textTh": "แล้วเราสัมภาษณ์นักเรียนสักสองสามคนหลังกินเสร็จ ไม่ใช่ตอนกำลังรอ",
+          "vocabularyRefs": [
+            {
+              "id": "interview",
+              "text": "interview"
+            }
+          ]
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Good. Hungry people give short answers.",
+          "textTh": "ดี คนหิวตอบสั้น"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Hungry people give angry answers.",
+          "textTh": "คนหิวตอบแบบหงุดหงิดต่างหาก"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "One more thing. The cafeteria is not our room. We ask the staff first.",
+          "textTh": "อีกเรื่องหนึ่ง โรงอาหารไม่ใช่ห้องของเรา เราต้องขอเจ้าหน้าที่ก่อน"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "I'll ask. Kuro, you're coming too.",
+          "textTh": "ฉันไปขอเอง Kuro นายมาด้วย"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "Take a pen. Phones die at lunch.",
+          "textTh": "เอาปากกาไปด้วยนะ มือถือแบตหมดตอนพักเที่ยงบ่อย"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I had a feeling you'd say that.",
+          "textTh": "ผมรู้สึกอยู่แล้วว่าเธอจะพูดแบบนี้"
+        }
+      ],
+      "listenForTh": "ฟังว่าทีมตกลงจะจับเวลาจากตอนไหนถึงตอนไหน",
+      "background": "bg_project_room_whiteboard",
+      "listeningCheck": {
+        "id": "ep02_s2_listen",
+        "promptTh": "ทีมตกลงจะจับเวลาจากตอนไหนถึงตอนไหน?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "ตั้งแต่เดินเข้าโรงอาหารจนกินเสร็จ"
+          },
+          {
+            "id": "b",
+            "labelTh": "ตั้งแต่เริ่มต่อแถวจนได้อาหาร"
+          },
+          {
+            "id": "c",
+            "labelTh": "ตั้งแต่สั่งอาหารจนจ่ายเงิน"
+          }
+        ],
+        "answerId": "b",
+        "feedbackTh": "Kuro พูดว่า \"From joining a line to getting food.\" และ Rei บอกว่าจะได้เทียบกับรายงาน ถ้ารายงานวัดคนละอย่างจะเห็นช่องว่าง"
+      },
+      "nextSceneId": "ep02_s3"
+    },
+    {
+      "id": "ep02_s3",
       "title": "Permission First",
       "objective": "Get permission before you observe.",
       "objectiveTh": "ขออนุญาตก่อนไปสังเกตการณ์",
@@ -371,12 +484,22 @@ export const ep02: Episode = {
           "speakerId": "miyu",
           "textEn": "People help more when they know why you are watching.",
           "textTh": "คนจะช่วยมากขึ้นถ้าเขารู้ว่าเรามาดูเพราะอะไร"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Does that work on everyone?",
+          "textTh": "ใช้ได้กับทุกคนเหรอ?"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Not everyone. But it works more often than not.",
+          "textTh": "ไม่ทุกคน แต่ได้ผลบ่อยกว่าไม่ได้ผล"
         }
       ],
       "listenForTh": "ฟังว่าเจ้าหน้าที่กังวลเรื่องอะไร และทีมสัญญาอะไร",
       "background": "bg_cafeteria_kitchen",
       "listeningCheck": {
-        "id": "ep02_s2_listen",
+        "id": "ep02_s3_listen",
         "promptTh": "ทีมสัญญากับเจ้าหน้าที่โรงอาหารว่าจะไม่ทำอะไร?",
         "type": "detail",
         "choices": [
@@ -397,7 +520,7 @@ export const ep02: Episode = {
         "feedbackTh": "Miyu พูดว่า \"No photos and no names. We only count the time.\" และยังเสนอแชร์ผลให้เจ้าหน้าที่ดูด้วย"
       },
       "speakingPrompt": {
-        "id": "ep02_s2_speak",
+        "id": "ep02_s3_speak",
         "situationTh": "ขออนุญาตเจ้าหน้าที่โรงอาหารอย่างสุภาพ พร้อมบอกเหตุผลที่จะมาสังเกต",
         "promptEn": "Ask the staff for permission and explain why.",
         "goal": "ask",
@@ -426,10 +549,10 @@ export const ep02: Episode = {
           "speakerLabel": "Mrs. Tanaka"
         }
       },
-      "nextSceneId": "ep02_s3"
+      "nextSceneId": "ep02_s4"
     },
     {
-      "id": "ep02_s3",
+      "id": "ep02_s4",
       "title": "Lunch Time Interviews",
       "objective": "Find out what students experience in the cafeteria.",
       "objectiveTh": "หาว่านักเรียนเจออะไรในโรงอาหาร",
@@ -498,12 +621,34 @@ export const ep02: Episode = {
           "textEn": "I didn't. There are no signs. Everyone just guesses.",
           "textTh": "ไม่รู้เลย ไม่มีป้ายบอก ทุกคนเดากันเอา",
           "speakerLabel": "Sora"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Thank you, Sora. That really helps.",
+          "textTh": "ขอบคุณนะ Sora ช่วยได้มากเลย"
+        },
+        {
+          "speakerId": "sora",
+          "textEn": "Are you going to fix the lines?",
+          "textTh": "พวกเธอจะแก้เรื่องแถวเหรอ?",
+          "speakerLabel": "Sora"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "We want to understand first. Then we try something small.",
+          "textTh": "เราอยากเข้าใจก่อน แล้วค่อยลองอะไรเล็ก ๆ"
+        },
+        {
+          "speakerId": "sora",
+          "textEn": "Please try something. Everyone is hungry.",
+          "textTh": "ลองอะไรสักอย่างเถอะ ทุกคนหิวกันหมด",
+          "speakerLabel": "Sora"
         }
       ],
       "listenForTh": "ฟังว่า Sora ติดปัญหาตรงไหนเมื่อมาถึงโรงอาหาร",
       "background": "bg_cafeteria_lunch",
       "listeningCheck": {
-        "id": "ep02_s3_listen",
+        "id": "ep02_s4_listen",
         "promptTh": "ทำไม Sora ต้องไปต่อท้ายแถวใหม่?",
         "type": "gist",
         "choices": [
@@ -524,7 +669,7 @@ export const ep02: Episode = {
         "feedbackTh": "Sora เล่าว่า \"Then I found out it was the teachers' line.\" และบอกว่าไม่มีป้ายบอก ทุกคนเดาเอา"
       },
       "speakingPrompt": {
-        "id": "ep02_s3_speak",
+        "id": "ep02_s4_speak",
         "situationTh": "ทวนสิ่งที่ Sora เล่าให้เธอยืนยันว่าเข้าใจถูก",
         "promptEn": "Check your understanding with Sora.",
         "goal": "clarify",
@@ -558,7 +703,7 @@ export const ep02: Episode = {
         "promptTh": "Sora บอกว่า \"คิวช้ามาก\" Miyu ควรถามอะไรต่อ?",
         "choices": [
           {
-            "id": "ep02_s3_a",
+            "id": "ep02_s4_a",
             "textEn": "What happens when you arrive at the cafeteria?",
             "feedback": {
               "communicatedTh": "คุณถามคำถามปลายเปิดที่ให้ผู้ใช้เล่าขั้นตอนตั้งแต่ต้น",
@@ -570,10 +715,10 @@ export const ep02: Episode = {
               "open-question",
               "user-research"
             ],
-            "nextSceneId": "ep02_s4"
+            "nextSceneId": "ep02_s5"
           },
           {
-            "id": "ep02_s3_b",
+            "id": "ep02_s4_b",
             "textEn": "So you want a faster line, right?",
             "feedback": {
               "communicatedTh": "คุณพยายามสรุปความต้องการของผู้ใช้",
@@ -585,10 +730,10 @@ export const ep02: Episode = {
               "leading-question",
               "solution-first"
             ],
-            "nextSceneId": "ep02_s4"
+            "nextSceneId": "ep02_s5"
           },
           {
-            "id": "ep02_s3_c",
+            "id": "ep02_s4_c",
             "textEn": "How long did you wait today?",
             "feedback": {
               "communicatedTh": "คุณขอข้อมูลที่เป็นตัวเลขและเกิดขึ้นจริงวันนี้",
@@ -600,14 +745,166 @@ export const ep02: Episode = {
               "clarification",
               "evidence"
             ],
-            "nextSceneId": "ep02_s4"
+            "nextSceneId": "ep02_s5"
           }
         ]
       },
-      "nextSceneId": "ep02_s4"
+      "nextSceneId": "ep02_s5"
     },
     {
-      "id": "ep02_s4",
+      "id": "ep02_s5",
+      "title": "The Student Who Gave Up",
+      "objective": "Hear from a student who does not use the lines.",
+      "objectiveTh": "ฟังนักเรียนที่ไม่ต่อแถวเลย",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "Near the door, Lena found a first-year eating bread alone.",
+          "textTh": "ใกล้ประตู Lena เจอนักเรียนปีหนึ่งนั่งกินขนมปังคนเดียว"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "This is Yuto. He's in his first month here.",
+          "textTh": "นี่ Yuto เขาเพิ่งเข้าเรียนได้เดือนแรก"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Hi, Yuto. What happens when you arrive at the cafeteria?",
+          "textTh": "สวัสดี Yuto พอมาถึงโรงอาหารแล้วเกิดอะไรขึ้นบ้าง?"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Kuro, that was a good open question.",
+          "textTh": "Kuro นั่นเป็นคำถามปลายเปิดที่ดีนะ",
+          "vocabularyRefs": [
+            {
+              "id": "open-question",
+              "text": "open question"
+            }
+          ]
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I practised.",
+          "textTh": "ผมซ้อมมา"
+        },
+        {
+          "speakerId": "student-yuto",
+          "textEn": "I look at the lines, but I don't know which one has rice.",
+          "textTh": "ผมดูแถว แต่ไม่รู้ว่าแถวไหนมีข้าว",
+          "speakerLabel": "Student (Yuto)"
+        },
+        {
+          "speakerId": "yuto",
+          "textEn": "On my first day, I waited fifteen minutes and got the wrong food.",
+          "textTh": "วันแรกผมรอสิบห้านาทีแล้วได้อาหารผิดอย่าง",
+          "speakerLabel": "Yuto"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "What do you do now?",
+          "textTh": "ตอนนี้เธอทำยังไง?"
+        },
+        {
+          "speakerId": "yuto",
+          "textEn": "I buy bread from the shop. It's fast, and nobody looks at me.",
+          "textTh": "ผมซื้อขนมปังจากร้านค้า เร็ว แล้วก็ไม่มีใครมอง",
+          "speakerLabel": "Yuto"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "So he doesn't appear in the report at all.",
+          "textTh": "แปลว่าเขาไม่อยู่ในรายงานเลย"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Right. The report only counts people who stay in a line.",
+          "textTh": "ใช่ รายงานนับแค่คนที่อยู่ในแถว"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "There may be more students like Yuto.",
+          "textTh": "อาจมีนักเรียนแบบ Yuto อีกหลายคน"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "How many? Ten? A hundred?",
+          "textTh": "กี่คน? สิบ? ร้อย?"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "I don't know. That is exactly the point.",
+          "textTh": "ฉันไม่รู้ นั่นแหละประเด็น"
+        },
+        {
+          "speakerId": "yuto",
+          "textEn": "Are you going to put me in a report?",
+          "textTh": "พวกพี่จะเอาผมไปใส่ในรายงานไหม?",
+          "speakerLabel": "Yuto"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "No name, no photo. Just what you told us.",
+          "textTh": "ไม่มีชื่อ ไม่มีรูป มีแค่สิ่งที่เธอเล่า"
+        }
+      ],
+      "listenForTh": "ฟังว่าทำไม Yuto ถึงซื้อขนมปังแทนการต่อแถว",
+      "background": "bg_cafeteria_lunch",
+      "listeningCheck": {
+        "id": "ep02_s5_listen",
+        "promptTh": "ทำไม Yuto ถึงซื้อขนมปังแทนการต่อแถว?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "เขาไม่ชอบอาหารในโรงอาหาร"
+          },
+          {
+            "id": "b",
+            "labelTh": "เขาไม่รู้ว่าแถวไหนมีอาหารอะไร และเคยรอนานแล้วได้อาหารผิด"
+          },
+          {
+            "id": "c",
+            "labelTh": "เขาไม่มีเงินพอ"
+          }
+        ],
+        "answerId": "b",
+        "feedbackTh": "Yuto พูดว่า \"I don't know which one has rice.\" และ \"I waited fifteen minutes and got the wrong food.\" Kuro จึงสังเกตว่านักเรียนแบบ Yuto ไม่อยู่ในรายงานเลย"
+      },
+      "speakingPrompt": {
+        "id": "ep02_s5_speak",
+        "situationTh": "ถาม Yuto ด้วยคำถามปลายเปิดหนึ่งข้อ เพื่อให้เขาเล่าประสบการณ์เพิ่ม",
+        "promptEn": "Ask Yuto one open question about his lunch.",
+        "goal": "ask",
+        "phraseFrames": [
+          "What happens when you ___?",
+          "How do you decide ___?"
+        ],
+        "modelResponses": [
+          "What happens when you buy bread from the shop?",
+          "How do you decide what to eat for lunch?"
+        ],
+        "acceptedIntentsTh": [
+          "ถามคำถามปลายเปิดที่ตอบด้วยใช่หรือไม่ใช่ไม่ได้",
+          "ให้ผู้ใช้เล่าขั้นตอนหรือเหตุผล",
+          "ไม่เสนอวิธีแก้ในคำถาม"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณเปิดโอกาสให้ผู้ใช้เล่าด้วยคำของตัวเอง ทีมจะได้ข้อมูลที่ไม่ได้คาดไว้",
+          "naturalOption": "How do you decide what to eat for lunch?",
+          "improvementTh": "เลี่ยงคำถามที่ตอบได้แค่ yes/no เช่น Do you like bread? ให้ขึ้นต้นด้วย What หรือ How แทน"
+        },
+        "askedBy": {
+          "speakerId": "yuto",
+          "textEn": "Is there anything else you want to know?",
+          "textTh": "อยากรู้อะไรอีกไหมครับ?",
+          "speakerLabel": "Yuto"
+        }
+      },
+      "nextSceneId": "ep02_s6"
+    },
+    {
+      "id": "ep02_s6",
       "title": "The Timer",
       "objective": "Collect waiting times without collecting names.",
       "objectiveTh": "เก็บเวลารอโดยไม่เก็บชื่อ",
@@ -660,6 +957,16 @@ export const ep02: Episode = {
         },
         {
           "speakerId": "miyu",
+          "textEn": "And one for students who leave the line and give up, like Yuto.",
+          "textTh": "แล้วเพิ่มอีกปุ่มสำหรับคนที่ออกจากแถวแล้วเลิกรอ แบบ Yuto ด้วย"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Three buttons. Still simple.",
+          "textTh": "สามปุ่ม ยังง่ายอยู่"
+        },
+        {
+          "speakerId": "miyu",
           "textEn": "Shion, can you watch the left side? We'll take the right.",
           "textTh": "Shion ช่วยดูฝั่งซ้ายได้ไหม เราดูฝั่งขวาเอง"
         },
@@ -669,6 +976,48 @@ export const ep02: Episode = {
           "textTh": "ได้ ผมจะนับเงียบ ๆ"
         },
         {
+          "speakerId": "kuro",
+          "textEn": "Left side starts now.",
+          "textTh": "ฝั่งซ้ายเริ่มเดี๋ยวนี้"
+        },
+        {
+          "speakerId": "narration",
+          "textEn": "The noise grew louder. Students pushed past with trays.",
+          "textTh": "เสียงดังขึ้น นักเรียนเบียดผ่านพร้อมถาดอาหาร"
+        }
+      ],
+      "listenForTh": "ฟังว่าตัวจับเวลาของ Kuro เก็บอะไร และไม่เก็บอะไร",
+      "background": "bg_cafeteria_lunch",
+      "listeningCheck": {
+        "id": "ep02_s6_listen",
+        "promptTh": "ตัวจับเวลาของ Kuro เก็บข้อมูลอะไร?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "ชื่อนักเรียนและเวลา"
+          },
+          {
+            "id": "b",
+            "labelTh": "รูปถ่ายของแถว"
+          },
+          {
+            "id": "c",
+            "labelTh": "หมายเลขแถวกับเวลาเท่านั้น"
+          }
+        ],
+        "answerId": "c",
+        "feedbackTh": "Kuro พูดว่า \"It's anonymous. Only line number and time.\" แล้วทีมเพิ่มปุ่มเปลี่ยนแถวและปุ่มเลิกรอ โดยยังไม่เก็บชื่อ"
+      },
+      "nextSceneId": "ep02_s7"
+    },
+    {
+      "id": "ep02_s7",
+      "title": "Twenty Minutes of Watching",
+      "objective": "Turn what you saw into a clear requirement.",
+      "objectiveTh": "เปลี่ยนสิ่งที่เห็นให้เป็น requirement ที่ชัดเจน",
+      "dialogue": [
+        {
           "speakerId": "narration",
           "textEn": "They watched for twenty minutes. Kuro tapped. Miyu wrote notes.",
           "textTh": "พวกเขาสังเกตอยู่ยี่สิบนาที Kuro แตะจับเวลา Miyu จดโน้ต"
@@ -677,6 +1026,16 @@ export const ep02: Episode = {
           "speakerId": "kuro",
           "textEn": "Average in line: four minutes. But eleven students changed lines.",
           "textTh": "เวลาเฉลี่ยในแถว: สี่นาที แต่นักเรียนสิบเอ็ดคนเปลี่ยนแถว"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "And three students left without food.",
+          "textTh": "แล้วมีสามคนที่ออกไปโดยไม่ได้อาหาร"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "If you add the time before they changed lines, some waited over twelve minutes.",
+          "textTh": "ถ้ารวมเวลาก่อนเปลี่ยนแถวด้วย บางคนรอเกินสิบสองนาที"
         },
         {
           "speakerId": "miyu",
@@ -698,12 +1057,27 @@ export const ep02: Episode = {
           "speakerId": "miyu",
           "textEn": "And your numbers showed it was true.",
           "textTh": "และตัวเลขของนายก็ยืนยันว่ามันจริง"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "Twenty minutes on one day is a small sample, though.",
+          "textTh": "แต่ยี่สิบนาทีในวันเดียวเป็นกลุ่มตัวอย่างที่เล็กนะ"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "True. It's a good start, not the final answer.",
+          "textTh": "จริง มันเป็นจุดเริ่มต้นที่ดี ยังไม่ใช่คำตอบสุดท้าย"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "Write that sentence in the report. It sounds honest.",
+          "textTh": "เขียนประโยคนั้นลงในรายงาน ฟังดูซื่อสัตย์ดี"
         }
       ],
       "listenForTh": "ฟังตัวเลขที่ Kuro อ่านจากตัวจับเวลา",
       "background": "bg_cafeteria_lunch",
       "listeningCheck": {
-        "id": "ep02_s4_listen",
+        "id": "ep02_s7_listen",
         "promptTh": "ระหว่างสังเกต 20 นาที มีนักเรียนเปลี่ยนแถวกี่คน?",
         "type": "detail",
         "choices": [
@@ -721,10 +1095,10 @@ export const ep02: Episode = {
           }
         ],
         "answerId": "a",
-        "feedbackTh": "Kuro พูดว่า \"eleven students changed lines.\" ส่วน \"four minutes\" คือเวลาเฉลี่ยในแถว"
+        "feedbackTh": "Kuro พูดว่า \"eleven students changed lines.\" ส่วน \"four minutes\" คือเวลาเฉลี่ยในแถว และมีอีกสามคนที่ออกไปโดยไม่ได้อาหาร"
       },
       "speakingPrompt": {
-        "id": "ep02_s4_speak",
+        "id": "ep02_s7_speak",
         "situationTh": "Miyu ถามว่าความต้องการจริงคืออะไร พูดสรุปเป็น requirement หนึ่งประโยค",
         "promptEn": "Say the requirement in one sentence.",
         "goal": "summarize",
@@ -757,7 +1131,7 @@ export const ep02: Episode = {
         "promptTh": "ทีมควรเขียน requirement อย่างไร?",
         "choices": [
           {
-            "id": "ep02_s4_a",
+            "id": "ep02_s7_a",
             "textEn": "Make the cafeteria better.",
             "feedback": {
               "communicatedTh": "คุณเห็นว่าทีมอยากปรับปรุงโรงอาหาร",
@@ -768,10 +1142,10 @@ export const ep02: Episode = {
             "skillTags": [
               "requirement"
             ],
-            "nextSceneId": "ep02_s5"
+            "nextSceneId": "ep02_s8"
           },
           {
-            "id": "ep02_s4_b",
+            "id": "ep02_s7_b",
             "textEn": "Students can see which line serves which food before they join.",
             "feedback": {
               "communicatedTh": "คุณเขียน requirement จากมุมของผู้ใช้ และตรวจสอบได้ว่าสำเร็จหรือไม่",
@@ -783,10 +1157,10 @@ export const ep02: Episode = {
               "requirement",
               "user-research"
             ],
-            "nextSceneId": "ep02_s5"
+            "nextSceneId": "ep02_s8"
           },
           {
-            "id": "ep02_s4_c",
+            "id": "ep02_s7_c",
             "textEn": "Build an app that shows the queue.",
             "feedback": {
               "communicatedTh": "คุณมีไอเดียวิธีแก้ที่ชัดเจน",
@@ -797,14 +1171,14 @@ export const ep02: Episode = {
             "skillTags": [
               "solution-first"
             ],
-            "nextSceneId": "ep02_s5"
+            "nextSceneId": "ep02_s8"
           }
         ]
       },
-      "nextSceneId": "ep02_s5"
+      "nextSceneId": "ep02_s8"
     },
     {
-      "id": "ep02_s5",
+      "id": "ep02_s8",
       "title": "The Closed Hours",
       "objective": "Compare our notes with the school report.",
       "objectiveTh": "เทียบโน้ตของเรากับรายงานของโรงเรียน",
@@ -862,35 +1236,35 @@ export const ep02: Episode = {
           "textTh": "นั่นคือเหตุผลที่ค่าเฉลี่ยเป็นสองนาที"
         },
         {
-          "speakerId": "chief",
-          "textEn": "Who made those records?",
-          "textTh": "ใครเป็นคนสร้างรายการพวกนั้น?"
-        },
-        {
           "speakerId": "rei",
-          "textEn": "We don't know. They have no user name.",
-          "textTh": "เรายังไม่รู้ ไม่มีชื่อผู้ใช้"
-        },
-        {
-          "speakerId": "shion",
-          "textEn": "It could be a system test. It could be a mistake. We can't say yet.",
-          "textTh": "อาจเป็นการทดสอบระบบ อาจเป็นความผิดพลาด เรายังพูดไม่ได้"
-        },
-        {
-          "speakerId": "kuro",
-          "textEn": "The file we found had times like this too.",
-          "textTh": "ไฟล์ที่เราเจอก็มีเวลาแบบนี้เหมือนกัน"
+          "textEn": "I checked. Without those records, the average is about five minutes.",
+          "textTh": "ฉันลองแล้ว ถ้าตัดรายการพวกนั้นออก ค่าเฉลี่ยจะประมาณห้านาที"
         },
         {
           "speakerId": "miyu",
-          "textEn": "Then we have a second question. But let's report what we know first.",
-          "textTh": "งั้นเรามีคำถามที่สองแล้ว แต่รายงานสิ่งที่เรารู้ก่อน"
+          "textEn": "Closer to what we saw. Still not fifteen.",
+          "textTh": "ใกล้กับที่เราเห็นมากขึ้น แต่ก็ยังไม่ถึงสิบห้า"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Because the report doesn't see students who changed lines or gave up.",
+          "textTh": "เพราะรายงานไม่เห็นนักเรียนที่เปลี่ยนแถวหรือเลิกรอ"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "So both numbers can be true. Two minutes for some, fifteen for others.",
+          "textTh": "แปลว่าตัวเลขทั้งสองอาจจริงทั้งคู่ สองนาทีสำหรับบางคน สิบห้านาทีสำหรับบางคน"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Yes. Averages hide people.",
+          "textTh": "ใช่ ค่าเฉลี่ยซ่อนคนไว้"
         }
       ],
       "listenForTh": "ฟังว่า Rei เจออะไรแปลกในรายงาน",
       "background": "bg_project_room_whiteboard",
       "listeningCheck": {
-        "id": "ep02_s5_listen",
+        "id": "ep02_s8_listen",
         "promptTh": "Rei พบอะไรแปลกในรายงานของโรงเรียน?",
         "type": "gist",
         "choices": [
@@ -908,10 +1282,97 @@ export const ep02: Episode = {
           }
         ],
         "answerId": "a",
-        "feedbackTh": "Rei ชี้ timestamp 6:40 a.m. และบอกว่ามี \"two hundred records from closed hours.\" ทั้งที่โรงอาหารเปิด 11:30"
+        "feedbackTh": "Rei ชี้ timestamp 6:40 a.m. และบอกว่ามี \"two hundred records from closed hours.\" ทั้งที่โรงอาหารเปิด 11:30 ถ้าตัดออก ค่าเฉลี่ยจะประมาณห้านาที"
+      },
+      "nextSceneId": "ep02_s9"
+    },
+    {
+      "id": "ep02_s9",
+      "title": "Not a Blame Game",
+      "objective": "Report the problem without blaming anyone.",
+      "objectiveTh": "รายงานปัญหาโดยไม่กล่าวหาใคร",
+      "dialogue": [
+        {
+          "speakerId": "chief",
+          "textEn": "Who made those records?",
+          "textTh": "ใครเป็นคนสร้างรายการพวกนั้น?"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "We don't know. They have no user name.",
+          "textTh": "เรายังไม่รู้ ไม่มีชื่อผู้ใช้"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "Someone made the cafeteria look good. That's not fair.",
+          "textTh": "มีคนทำให้โรงอาหารดูดี แบบนี้ไม่ยุติธรรม"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "It could be a system test. It could be a mistake. We can't say yet.",
+          "textTh": "อาจเป็นการทดสอบระบบ อาจเป็นความผิดพลาด เรายังพูดไม่ได้"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "If we blame the staff and we're wrong, nobody will help us again.",
+          "textTh": "ถ้าเราโทษเจ้าหน้าที่แล้วเราผิด จะไม่มีใครช่วยเราอีกเลย"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "And Mrs. Tanaka was kind to us. She wants to know too.",
+          "textTh": "แล้วคุณ Tanaka ก็ใจดีกับเรา เขาก็อยากรู้เหมือนกัน"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "The file we found had times like this too.",
+          "textTh": "ไฟล์ที่เราเจอก็มีเวลาแบบนี้เหมือนกัน"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "Interesting. But one question at a time.",
+          "textTh": "น่าสนใจ แต่ทีละคำถาม"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Then we have a second question. But let's report what we know first.",
+          "textTh": "งั้นเรามีคำถามที่สองแล้ว แต่รายงานสิ่งที่เรารู้ก่อน"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Facts first, guesses later. I'm starting to like that rule.",
+          "textTh": "ข้อเท็จจริงก่อน การเดาทีหลัง ผมเริ่มชอบกฎนี้แล้ว"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "Write it on the whiteboard. It's the rule for the whole project.",
+          "textTh": "เขียนไว้บนไวท์บอร์ดเลย เป็นกฎของทั้งโปรเจกต์"
+        }
+      ],
+      "listenForTh": "ฟังว่าทำไม Shion ไม่อยากให้ทีมสรุปว่ามีคนปลอมข้อมูล",
+      "background": "bg_project_room_whiteboard",
+      "listeningCheck": {
+        "id": "ep02_s9_listen",
+        "promptTh": "ทำไม Shion ไม่อยากให้ทีมสรุปว่ามีคนปลอมข้อมูล?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "เพราะถ้ากล่าวหาผิด จะไม่มีใครอยากช่วยทีมอีก และยังไม่มีหลักฐาน"
+          },
+          {
+            "id": "b",
+            "labelTh": "เพราะ Shion รู้แล้วว่าใครทำ"
+          },
+          {
+            "id": "c",
+            "labelTh": "เพราะรายงานไม่สำคัญต่อโครงการ"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Shion พูดว่า \"It could be a system test. It could be a mistake. We can't say yet.\" และ \"If we blame the staff and we're wrong, nobody will help us again.\""
       },
       "speakingPrompt": {
-        "id": "ep02_s5_speak",
+        "id": "ep02_s9_speak",
         "situationTh": "Chief ถามว่าจะอธิบายให้ครูฟังยังไง พูดรายงานโดยไม่กล่าวหาใคร",
         "promptEn": "Report the finding to the teacher without blaming anyone.",
         "goal": "report",
@@ -944,7 +1405,7 @@ export const ep02: Episode = {
         "promptTh": "ทีมควรอธิบายเรื่องนี้ให้ครูฟังอย่างไร?",
         "choices": [
           {
-            "id": "ep02_s5_a",
+            "id": "ep02_s9_a",
             "textEn": "Someone faked the cafeteria data.",
             "feedback": {
               "communicatedTh": "คุณเห็นว่าข้อมูลผิดปกติจริง",
@@ -956,10 +1417,10 @@ export const ep02: Episode = {
               "assumption",
               "tone"
             ],
-            "nextSceneId": "ep02_s6"
+            "nextSceneId": "ep02_s10"
           },
           {
-            "id": "ep02_s5_b",
+            "id": "ep02_s9_b",
             "textEn": "The report includes 200 records from when the cafeteria was closed, so the average may be too low.",
             "feedback": {
               "communicatedTh": "คุณบอกข้อเท็จจริงพร้อมตัวเลข และบอกผลกระทบอย่างระมัดระวังด้วยคำว่า \"may\"",
@@ -971,10 +1432,10 @@ export const ep02: Episode = {
               "evidence",
               "summarizing"
             ],
-            "nextSceneId": "ep02_s6"
+            "nextSceneId": "ep02_s10"
           },
           {
-            "id": "ep02_s5_c",
+            "id": "ep02_s9_c",
             "textEn": "The report is useless. We should use only our notes.",
             "feedback": {
               "communicatedTh": "คุณเชื่อมั่นในข้อมูลที่ทีมเก็บเอง",
@@ -985,17 +1446,17 @@ export const ep02: Episode = {
             "skillTags": [
               "evidence"
             ],
-            "nextSceneId": "ep02_s6"
+            "nextSceneId": "ep02_s10"
           }
         ]
       },
-      "nextSceneId": "ep02_s6"
+      "nextSceneId": "ep02_s10"
     },
     {
-      "id": "ep02_s6",
-      "title": "Paper Signs",
-      "objective": "Test a small solution and measure the result.",
-      "objectiveTh": "ทดลองวิธีแก้เล็ก ๆ และวัดผล",
+      "id": "ep02_s10",
+      "title": "Screen or Paper?",
+      "objective": "Choose a cheap way to test the idea.",
+      "objectiveTh": "เลือกวิธีทดลองที่ถูกและเร็ว",
       "dialogue": [
         {
           "speakerId": "chief",
@@ -1023,10 +1484,77 @@ export const ep02: Episode = {
           "textTh": "มันเป็นการทดลองที่ถูก ถ้าป้ายไม่ช่วย จอก็คงไม่ช่วยเหมือนกัน"
         },
         {
+          "speakerId": "shion",
+          "textEn": "And if the screen breaks during lunch, we have nothing.",
+          "textTh": "แล้วถ้าจอเสียตอนพักเที่ยง เราก็ไม่เหลืออะไรเลย"
+        },
+        {
           "speakerId": "kuro",
           "textEn": "...Okay. That's actually smart.",
           "textTh": "...ก็ได้ อันนี้ฉลาดจริง"
         },
+        {
+          "speakerId": "lena",
+          "textEn": "I can draw the signs. Five lines, five colors.",
+          "textTh": "ฉันวาดป้ายให้ได้ ห้าแถว ห้าสี"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "Please keep the words short. Students read them while they walk.",
+          "textTh": "ช่วยเขียนให้สั้นด้วยนะ นักเรียนอ่านตอนกำลังเดิน"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "Good. Who measures tomorrow?",
+          "textTh": "ดี พรุ่งนี้ใครเป็นคนวัด?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I will. Same timer, same buttons, so we can compare.",
+          "textTh": "ผมเอง ตัวจับเวลาเดิม ปุ่มเดิม จะได้เทียบกันได้"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "And same time of day, if you can.",
+          "textTh": "แล้วก็เวลาเดียวกันของวันด้วย ถ้าทำได้"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Twelve o'clock sharp. I'll bring a sandwich.",
+          "textTh": "เที่ยงตรง ผมจะเอาแซนด์วิชไปด้วย"
+        }
+      ],
+      "listenForTh": "ฟังว่า Miyu ให้เหตุผลอะไรที่เลือกป้ายกระดาษ",
+      "background": "bg_project_room_whiteboard",
+      "listeningCheck": {
+        "id": "ep02_s10_listen",
+        "promptTh": "ทำไม Miyu เสนอป้ายกระดาษก่อนสร้างจอ?",
+        "type": "gist",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "เพราะป้ายสวยกว่าจอ"
+          },
+          {
+            "id": "b",
+            "labelTh": "เพราะเป็นการทดลองที่ถูกและเร็ว ถ้าป้ายไม่ช่วย จอก็คงไม่ช่วย"
+          },
+          {
+            "id": "c",
+            "labelTh": "เพราะ Kuro ไม่มีเวลาสร้างจอ"
+          }
+        ],
+        "answerId": "b",
+        "feedbackTh": "Miyu พูดว่า \"It's a cheap test. If signs don't help, a screen won't help either.\" ส่วน Shion เสริมว่าถ้าจอเสียตอนพักเที่ยง ทีมจะไม่เหลืออะไรเลย"
+      },
+      "nextSceneId": "ep02_s11"
+    },
+    {
+      "id": "ep02_s11",
+      "title": "Paper Signs",
+      "objective": "Test a small solution and measure the result.",
+      "objectiveTh": "ทดลองวิธีแก้เล็ก ๆ และวัดผล",
+      "dialogue": [
         {
           "speakerId": "narration",
           "textEn": "The next day, five paper signs hung above the lines. Kuro ran the timer again.",
@@ -1070,6 +1598,26 @@ export const ep02: Episode = {
           "textTh": "อย่าชินล่ะ"
         },
         {
+          "speakerId": "shion",
+          "textEn": "Nobody left without food today.",
+          "textTh": "วันนี้ไม่มีใครออกไปโดยไม่ได้อาหารเลย"
+        },
+        {
+          "speakerId": "lena",
+          "textEn": "Yuto bought rice. He was smiling.",
+          "textTh": "Yuto ซื้อข้าว เขายิ้มด้วย"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Small thing. Big difference.",
+          "textTh": "เรื่องเล็ก แต่ต่างกันมาก"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "I'm still surprised paper worked.",
+          "textTh": "ผมยังแปลกใจที่กระดาษใช้ได้"
+        },
+        {
           "speakerId": "narration",
           "textEn": "Behind them, Rei was still looking at the 6:40 a.m. records.",
           "textTh": "ข้างหลังพวกเขา Rei ยังคงจ้องรายการเวลา 6:40 น. อยู่"
@@ -1078,7 +1626,7 @@ export const ep02: Episode = {
       "listenForTh": "ฟังผลการทดลองป้ายกระดาษ",
       "background": "bg_cafeteria_signs",
       "listeningCheck": {
-        "id": "ep02_s6_listen",
+        "id": "ep02_s11_listen",
         "promptTh": "หลังติดป้าย มีนักเรียนเปลี่ยนแถวกี่คน?",
         "type": "detail",
         "choices": [
@@ -1096,10 +1644,10 @@ export const ep02: Episode = {
           }
         ],
         "answerId": "a",
-        "feedbackTh": "Kuro พูดว่า \"Changed lines: two students. Yesterday it was eleven.\""
+        "feedbackTh": "Kuro พูดว่า \"Changed lines: two students. Yesterday it was eleven.\" และ Shion บอกว่าวันนี้ไม่มีใครออกไปโดยไม่ได้อาหาร"
       },
       "speakingPrompt": {
-        "id": "ep02_s6_speak",
+        "id": "ep02_s11_speak",
         "situationTh": "Chief ถามว่าการทดลองเป็นยังไง พูดรายงานผลพร้อมข้อจำกัด",
         "promptEn": "Report the test result and its limitation.",
         "goal": "report",
@@ -1132,7 +1680,7 @@ export const ep02: Episode = {
         "promptTh": "Kuro ควรรายงานผลการทดลองให้ทีมอย่างไร?",
         "choices": [
           {
-            "id": "ep02_s6_a",
+            "id": "ep02_s11_a",
             "textEn": "The signs solved the problem.",
             "feedback": {
               "communicatedTh": "คุณเห็นว่าผลการทดลองออกมาดี",
@@ -1144,10 +1692,10 @@ export const ep02: Episode = {
               "assumption",
               "summarizing"
             ],
-            "nextSceneId": "ep02_s7"
+            "nextSceneId": "ep02_s12"
           },
           {
-            "id": "ep02_s6_b",
+            "id": "ep02_s11_b",
             "textEn": "After we added signs, changed lines dropped from eleven to two. It's only one day, so we will test for a week.",
             "feedback": {
               "communicatedTh": "คุณให้ตัวเลขก่อน–หลัง และบอกข้อจำกัดของการทดลองในประโยคเดียว",
@@ -1159,10 +1707,10 @@ export const ep02: Episode = {
               "evidence",
               "limitation"
             ],
-            "nextSceneId": "ep02_s7"
+            "nextSceneId": "ep02_s12"
           },
           {
-            "id": "ep02_s6_c",
+            "id": "ep02_s11_c",
             "textEn": "Paper signs are boring. Let's build the screen now.",
             "feedback": {
               "communicatedTh": "คุณอยากพัฒนาวิธีแก้ให้ดีขึ้น",
@@ -1173,14 +1721,345 @@ export const ep02: Episode = {
             "skillTags": [
               "solution-first"
             ],
-            "nextSceneId": "ep02_s7"
+            "nextSceneId": "ep02_s12"
           }
         ]
       },
-      "nextSceneId": "ep02_s7"
+      "nextSceneId": "ep02_s12"
     },
     {
-      "id": "ep02_s7",
+      "id": "ep02_s12",
+      "title": "One Week Later",
+      "objective": "Decide what to do after a good first test.",
+      "objectiveTh": "ตัดสินใจว่าจะทำอะไรต่อหลังการทดลองแรกได้ผลดี",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "The team kept the signs for one more week. Kuro kept the timer running.",
+          "textTh": "ทีมติดป้ายไว้อีกหนึ่งสัปดาห์ Kuro เปิดตัวจับเวลาไว้ตลอด"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Five days of data. Changed lines: three on Monday, two on Tuesday, then six on Thursday.",
+          "textTh": "ข้อมูลห้าวัน เปลี่ยนแถว: วันจันทร์สามคน วันอังคารสองคน แล้ววันพฤหัสหกคน"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Six? What happened on Thursday?",
+          "textTh": "หกเหรอ? วันพฤหัสเกิดอะไรขึ้น?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "A sign fell down. For about twenty minutes, one line had no sign.",
+          "textTh": "ป้ายแผ่นหนึ่งหล่น ประมาณยี่สิบนาทีที่แถวหนึ่งไม่มีป้าย"
+        },
+        {
+          "speakerId": "shion",
+          "textEn": "So the signs really matter. That's good evidence.",
+          "textTh": "แปลว่าป้ายสำคัญจริง นี่เป็นหลักฐานที่ดี",
+          "vocabularyRefs": [
+            {
+              "id": "evidence",
+              "text": "evidence"
+            }
+          ]
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "It's a strange way to prove something.",
+          "textTh": "เป็นวิธีพิสูจน์ที่แปลกดีนะ"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "Mrs. Tanaka wants to keep the signs. She asks if we can make them permanent.",
+          "textTh": "คุณ Tanaka อยากเก็บป้ายไว้ เขาถามว่าเราทำให้ถาวรได้ไหม"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "I'll prepare a one-page summary with the numbers.",
+          "textTh": "ฉันจะทำสรุปหนึ่งหน้าพร้อมตัวเลข"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Please put the limits on the page too. One school, one cafeteria, one week.",
+          "textTh": "ช่วยใส่ข้อจำกัดลงในหน้านั้นด้วยนะ โรงเรียนเดียว โรงอาหารเดียว หนึ่งสัปดาห์"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "And what about the screen?",
+          "textTh": "แล้วจอล่ะ?"
+        },
+        {
+          "speakerId": "chief",
+          "textEn": "Maybe later. First, let's see if paper keeps working.",
+          "textTh": "บางทีทีหลัง ก่อนอื่นมาดูกันว่ากระดาษใช้ได้ต่อไปไหม"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Then I'll make the screen as a backup, just in case.",
+          "textTh": "งั้นผมจะทำจอไว้เป็นตัวสำรอง เผื่อไว้"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "A backup is fine. A first solution is not.",
+          "textTh": "ตัวสำรองไม่มีปัญหา แต่ตัวแรกไม่ควรเป็นจอ"
+        }
+      ],
+      "listenForTh": "ฟังว่าการทดลองหนึ่งสัปดาห์ให้ผลต่างจากวันแรกอย่างไร",
+      "background": "bg_cafeteria_signs",
+      "listeningCheck": {
+        "id": "ep02_s12_listen",
+        "promptTh": "ทำไมวันพฤหัสมีคนเปลี่ยนแถวถึงหกคน?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "โรงอาหารเปิดช้ากว่าปกติ"
+          },
+          {
+            "id": "b",
+            "labelTh": "ป้ายแผ่นหนึ่งหล่น แถวนั้นไม่มีป้ายประมาณยี่สิบนาที"
+          },
+          {
+            "id": "c",
+            "labelTh": "มีนักเรียนใหม่เข้ามาเรียน"
+          }
+        ],
+        "answerId": "b",
+        "feedbackTh": "Kuro พูดว่า \"A sign fell down. For about twenty minutes, one line had no sign.\" Shion จึงบอกว่านี่เป็นหลักฐานที่ดีว่าป้ายสำคัญจริง"
+      },
+      "nextSceneId": "ep02_s13"
+    },
+    {
+      "id": "ep02_s13",
+      "title": "Sharing the Results",
+      "objective": "Keep your promise and share the results.",
+      "objectiveTh": "รักษาสัญญาด้วยการแชร์ผลให้เจ้าหน้าที่",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "On Friday, Miyu and Kuro brought a one-page summary to the kitchen.",
+          "textTh": "วันศุกร์ Miyu กับ Kuro เอาสรุปหนึ่งหน้าไปที่ครัว"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "As we promised, here are the results. No names, only numbers.",
+          "textTh": "ตามที่สัญญาไว้ นี่คือผลค่ะ ไม่มีชื่อ มีแต่ตัวเลข"
+        },
+        {
+          "speakerId": "mrs-tanaka",
+          "textEn": "Eleven students changed lines, and some gave up? I didn't know.",
+          "textTh": "นักเรียนสิบเอ็ดคนเปลี่ยนแถว แล้วบางคนเลิกรอเลยเหรอ? ฉันไม่รู้เลย",
+          "speakerLabel": "Mrs. Tanaka"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "The old report didn't count them.",
+          "textTh": "รายงานเก่าไม่ได้นับคนพวกนั้นครับ"
+        },
+        {
+          "speakerId": "mrs-tanaka",
+          "textEn": "We were too busy to see it. Thank you for asking first, and for not blaming us.",
+          "textTh": "พวกเรายุ่งเกินกว่าจะเห็น ขอบคุณที่ขออนุญาตก่อน และไม่โทษพวกเรา",
+          "speakerLabel": "Mrs. Tanaka"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "The report was not the staff's fault. The system did not measure that.",
+          "textTh": "รายงานไม่ใช่ความผิดของเจ้าหน้าที่ค่ะ ระบบไม่ได้วัดเรื่องนั้น"
+        },
+        {
+          "speakerId": "mrs-tanaka",
+          "textEn": "Could you check the timer in our system too? Someone said it records strange times.",
+          "textTh": "ช่วยตรวจตัวจับเวลาในระบบของเราด้วยได้ไหม? มีคนบอกว่ามันบันทึกเวลาแปลก ๆ",
+          "speakerLabel": "Mrs. Tanaka"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "We would like to, but we need permission from IT first.",
+          "textTh": "เรายินดีครับ แต่ต้องขออนุญาต IT ก่อน"
+        },
+        {
+          "speakerId": "mrs-tanaka",
+          "textEn": "Of course. I'll write to Mr. Ono.",
+          "textTh": "แน่นอน เดี๋ยวฉันเขียนถึงคุณ Ono",
+          "speakerLabel": "Mrs. Tanaka"
+        },
+        {
+          "speakerId": "mrs-tanaka",
+          "textEn": "And please eat something. You look thin.",
+          "textTh": "แล้วกินอะไรหน่อยนะ ดูพวกเธอผอมไป",
+          "speakerLabel": "Mrs. Tanaka"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Thank you. We had bread.",
+          "textTh": "ขอบคุณครับ พวกเรากินขนมปังแล้ว"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Thank you. We'll tell you what we find.",
+          "textTh": "ขอบคุณค่ะ เราจะบอกให้ทราบว่าเจออะไร"
+        }
+      ],
+      "listenForTh": "ฟังว่าคุณ Tanaka อยากให้ทีมช่วยอะไรต่อ",
+      "background": "bg_cafeteria_kitchen",
+      "listeningCheck": {
+        "id": "ep02_s13_listen",
+        "promptTh": "คุณ Tanaka ขอให้ทีมช่วยอะไรเพิ่ม?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "ตรวจตัวจับเวลาในระบบของโรงอาหาร"
+          },
+          {
+            "id": "b",
+            "labelTh": "วาดป้ายใหม่ทุกแถว"
+          },
+          {
+            "id": "c",
+            "labelTh": "สัมภาษณ์เจ้าหน้าที่ครัวทุกคน"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "คุณ Tanaka พูดว่า \"Could you check the timer in our system too?\" และ Kuro ตอบว่าต้องขออนุญาต IT ก่อน"
+      },
+      "nextSceneId": "ep02_s14"
+    },
+    {
+      "id": "ep02_s14",
+      "title": "Rei at the Window",
+      "objective": "Listen to what Rei found, and what she is not sure about.",
+      "objectiveTh": "ฟังสิ่งที่ Rei พบ และสิ่งที่เธอยังไม่แน่ใจ",
+      "dialogue": [
+        {
+          "speakerId": "narration",
+          "textEn": "After school, Rei was alone in the hallway with her laptop.",
+          "textTh": "หลังเลิกเรียน Rei ยืนอยู่คนเดียวในทางเดินกับแล็ปท็อป"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "You're still working on the records?",
+          "textTh": "เธอยังทำเรื่องรายการข้อมูลอยู่เหรอ?"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "I found a pattern. The closed-hour records always start at 6:40.",
+          "textTh": "ฉันเจอรูปแบบหนึ่ง รายการช่วงที่ปิดเริ่มที่ 6:40 ทุกครั้ง"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Every day?",
+          "textTh": "ทุกวันเลยเหรอ?"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "Every school day. Never on weekends.",
+          "textTh": "ทุกวันที่มีเรียน ไม่เคยมีวันหยุด"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "That sounds like something automatic. A script, maybe.",
+          "textTh": "ฟังเหมือนอะไรที่ทำงานอัตโนมัติ อาจเป็นสคริปต์"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "Maybe. I don't know who started it, or why.",
+          "textTh": "อาจจะ ฉันไม่รู้ว่าใครเริ่ม หรือทำไม"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Rei, you're allowed to say you're not sure.",
+          "textTh": "Rei เธอพูดได้นะว่าเธอยังไม่แน่ใจ"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "I'm not sure. But I'm worried.",
+          "textTh": "ฉันไม่แน่ใจ แต่ฉันกังวล"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "About what?",
+          "textTh": "กังวลเรื่องอะไร?"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "If someone made these records on purpose, the school's reports may not be telling the truth.",
+          "textTh": "ถ้ามีคนตั้งใจสร้างรายการพวกนี้ รายงานของโรงเรียนอาจไม่ได้บอกความจริง"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "That's a big if. Let's keep it as a question for now.",
+          "textTh": "นั่นเป็น ถ้า ที่ใหญ่มาก เก็บไว้เป็นคำถามก่อนนะ"
+        },
+        {
+          "speakerId": "rei",
+          "textEn": "Thank you. I didn't want to say it out loud.",
+          "textTh": "ขอบคุณ ฉันไม่อยากพูดออกมาดัง ๆ"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "You said it. Now it's a question we can check.",
+          "textTh": "เธอพูดแล้ว ตอนนี้มันเป็นคำถามที่เราตรวจได้"
+        }
+      ],
+      "listenForTh": "ฟังว่า Rei แยกสิ่งที่รู้กับสิ่งที่ยังไม่รู้อย่างไร",
+      "background": "bg_school_hallway",
+      "listeningCheck": {
+        "id": "ep02_s14_listen",
+        "promptTh": "Rei พบรูปแบบอะไรในรายการช่วงที่โรงอาหารปิด?",
+        "type": "detail",
+        "choices": [
+          {
+            "id": "a",
+            "labelTh": "เริ่มที่ 6:40 ทุกวันที่มีเรียน และไม่มีในวันหยุด"
+          },
+          {
+            "id": "b",
+            "labelTh": "เกิดเฉพาะวันศุกร์"
+          },
+          {
+            "id": "c",
+            "labelTh": "มีชื่อผู้ใช้เดียวกันทุกรายการ"
+          }
+        ],
+        "answerId": "a",
+        "feedbackTh": "Rei พูดว่า \"The closed-hour records always start at 6:40.\" และ \"Every school day. Never on weekends.\" ส่วนเรื่องว่าใครเริ่มและทำไม เธอยังไม่รู้"
+      },
+      "speakingPrompt": {
+        "id": "ep02_s14_speak",
+        "situationTh": "Rei บอกว่าเธอกังวล พูดให้กำลังใจและบอกว่าทีมจะตรวจต่ออย่างไร โดยไม่สรุปเกินหลักฐาน",
+        "promptEn": "Tell Rei what the team will check next.",
+        "goal": "suggest",
+        "phraseFrames": [
+          "Let's ___ before we ___.",
+          "We can ask ___ to check ___."
+        ],
+        "modelResponses": [
+          "Let's ask IT to check the old logs before we decide anything.",
+          "We can ask Mr. Ono to check who started the timer."
+        ],
+        "acceptedIntentsTh": [
+          "เสนอให้ถามผู้รับผิดชอบ",
+          "เสนอให้เก็บข้อมูลเพิ่ม",
+          "ไม่ตัดสินว่าใครทำ"
+        ],
+        "feedback": {
+          "communicatedTh": "คุณเสนอขั้นตอนที่ตรวจสอบได้ และส่งต่อให้คนที่มีสิทธิ์ตรวจ แทนการเดาเอง",
+          "naturalOption": "Let's ask IT to check the old logs before we decide anything.",
+          "improvementTh": "ระบุสิ่งที่ให้ตรวจให้เจาะจง เช่น the old logs หรือ the timer แทนคำกว้าง ๆ อย่าง it"
+        },
+        "askedBy": {
+          "speakerId": "rei",
+          "textEn": "What should we do about it?",
+          "textTh": "เราควรทำอะไรกับเรื่องนี้?"
+        }
+      },
+      "nextSceneId": "ep02_s15"
+    },
+    {
+      "id": "ep02_s15",
       "title": "The Walk Back",
       "objective": "Talk about the pattern without jumping to a conclusion.",
       "objectiveTh": "คุยเรื่องรูปแบบที่พบโดยไม่รีบสรุป",
@@ -1246,6 +2125,21 @@ export const ep02: Episode = {
           "textTh": "งั้นเก็บไว้เป็นคำถาม ไม่ใช่คำตอบ"
         },
         {
+          "speakerId": "kuro",
+          "textEn": "Six weeks used to feel long.",
+          "textTh": "หกสัปดาห์เคยรู้สึกว่ายาว"
+        },
+        {
+          "speakerId": "miyu",
+          "textEn": "Now it feels short?",
+          "textTh": "ตอนนี้รู้สึกว่าสั้นเหรอ?"
+        },
+        {
+          "speakerId": "kuro",
+          "textEn": "Now it feels like we're just getting started.",
+          "textTh": "ตอนนี้รู้สึกเหมือนเพิ่งเริ่มต้นเอง"
+        },
+        {
           "speakerId": "narration",
           "textEn": "At the station, Miyu waved. Kuro waved back a second too late.",
           "textTh": "ที่สถานี Miyu โบกมือ Kuro โบกตอบช้าไปหนึ่งวินาที"
@@ -1254,7 +2148,7 @@ export const ep02: Episode = {
       "listenForTh": "ฟังว่า Miyu รู้ได้อย่างไรว่าปัญหาจริงของ Sora คืออะไร",
       "background": "bg_station_evening",
       "listeningCheck": {
-        "id": "ep02_s7_listen",
+        "id": "ep02_s15_listen",
         "promptTh": "Miyu รู้ได้อย่างไรว่าปัญหาจริงของ Sora ไม่ใช่ความเร็วของคิว?",
         "type": "gist",
         "choices": [
@@ -1275,7 +2169,7 @@ export const ep02: Episode = {
         "feedbackTh": "Miyu บอกว่า \"I watched her face... She looked embarrassed, not tired.\" เธอฟังทั้งคำพูดและท่าทาง"
       },
       "speakingPrompt": {
-        "id": "ep02_s7_speak",
+        "id": "ep02_s15_speak",
         "situationTh": "Kuro ถามว่าจะบอกทีมเรื่องเวลา 6:40 กับไฟล์ลึกลับว่าอะไร พูดโดยไม่สรุปเกินหลักฐาน",
         "promptEn": "Tell the team about the pattern without overclaiming.",
         "goal": "report",
@@ -1304,6 +2198,93 @@ export const ep02: Episode = {
         }
       },
       "nextSceneId": "end"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "ep02_c1",
+      "number": 1,
+      "title": "Two Minutes?",
+      "summaryTh": "รายงานบอกว่ารอคิวสองนาที แต่นักเรียนบอกว่าสิบห้านาที ทีมไม่รีบตัดสินว่าใครผิด วางแผนไปสังเกตเอง และขออนุญาตเจ้าหน้าที่โรงอาหารก่อน",
+      "keyPhrase": {
+        "speakerId": "miyu",
+        "textEn": "Could we watch the lines at lunch today?",
+        "textTh": "ขอดูแถวตอนพักเที่ยงวันนี้ได้ไหม?"
+      },
+      "sceneIds": [
+        "ep02_s1",
+        "ep02_s2",
+        "ep02_s3"
+      ],
+      "keyPhraseNoteTh": "ขออนุญาตอย่างสุภาพก่อนเข้าไปสังเกตหรือเก็บข้อมูลในพื้นที่ของคนอื่น"
+    },
+    {
+      "id": "ep02_c2",
+      "number": 2,
+      "title": "Lunch Time",
+      "summaryTh": "ทีมสัมภาษณ์นักเรียนในโรงอาหาร Sora ต่อผิดแถวเพราะไม่มีป้าย ส่วน Yuto นักเรียนปีหนึ่งเลิกต่อแถวไปเลย Kuro ทำตัวจับเวลาที่ไม่เก็บชื่อ และ Shion เพิ่มปุ่ม \"เปลี่ยนแถว\"",
+      "keyPhrase": {
+        "speakerId": "miyu",
+        "textEn": "What happens when you arrive at the cafeteria?",
+        "textTh": "พอมาถึงโรงอาหารแล้วเกิดอะไรขึ้นบ้าง?"
+      },
+      "sceneIds": [
+        "ep02_s4",
+        "ep02_s5",
+        "ep02_s6"
+      ],
+      "keyPhraseNoteTh": "ถามคำถามปลายเปิด ให้ผู้ใช้เล่าขั้นตอนจริงตั้งแต่ต้น"
+    },
+    {
+      "id": "ep02_c3",
+      "number": 3,
+      "title": "What the Numbers Say",
+      "summaryTh": "ตัวเลขจากการสังเกตยืนยันว่าความต้องการจริงคือรู้ว่าต้องต่อแถวไหน Rei พบรายการเวลาแปลก ๆ ตอนโรงอาหารปิด และทีมตกลงว่าจะรายงานโดยไม่กล่าวหาใคร",
+      "keyPhrase": {
+        "speakerId": "miyu",
+        "textEn": "Some records are from closed hours. We don't know why yet.",
+        "textTh": "บางรายการมาจากช่วงที่ปิด เรายังไม่รู้ว่าทำไม"
+      },
+      "sceneIds": [
+        "ep02_s7",
+        "ep02_s8",
+        "ep02_s9"
+      ],
+      "keyPhraseNoteTh": "รายงานสิ่งผิดปกติที่เจอ โดยยังไม่ชี้ว่าใครผิด"
+    },
+    {
+      "id": "ep02_c4",
+      "number": 4,
+      "title": "Paper Signs",
+      "summaryTh": "Kuro อยากสร้างจอแสดงเมนู แต่ Miyu เสนอป้ายกระดาษเป็นการทดลองราคาถูก ป้ายลดการเปลี่ยนแถวจากสิบเอ็ดคนเหลือสองคน ทีมรายงานผลพร้อมข้อจำกัดว่าเป็นแค่วันเดียว",
+      "keyPhrase": {
+        "speakerId": "kuro",
+        "textEn": "It's only one day, so we need more evidence.",
+        "textTh": "นี่แค่วันเดียว เราเลยต้องการหลักฐานเพิ่ม"
+      },
+      "sceneIds": [
+        "ep02_s10",
+        "ep02_s11",
+        "ep02_s12"
+      ],
+      "keyPhraseNoteTh": "รายงานผลการทดลองพร้อมบอกข้อจำกัดของข้อมูล"
+    },
+    {
+      "id": "ep02_c5",
+      "number": 5,
+      "title": "The Walk Back",
+      "summaryTh": "ทีมแชร์ผลกับคุณ Tanaka ตามที่สัญญา Rei ยังตามรอยรายการเวลา 6:40 น. และ Kuro กับ Miyu เดินกลับด้วยกัน พร้อมคำถามเปิดเรื่องไฟล์ลึกลับที่ยังไม่มีคำตอบ",
+      "keyPhrase": {
+        "speakerId": "kuro",
+        "textEn": "There is a pattern, but we need more evidence.",
+        "textTh": "มีรูปแบบอยู่ แต่เราต้องการหลักฐานเพิ่ม"
+      },
+      "sceneIds": [
+        "ep02_s13",
+        "ep02_s14",
+        "ep02_s15"
+      ],
+      "keyPhraseNoteTh": "บอกสิ่งที่สังเกตเห็นโดยไม่สรุปเกินหลักฐาน"
     }
   ],
   "analystNote": [

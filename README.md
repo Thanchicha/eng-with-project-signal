@@ -7,7 +7,8 @@ The player joins a team of students on a data project. Each scene follows the sa
 
 ## What's in it
 
-- **3 playable episodes** (7 scenes each) that unlock in order, plus 9 locked previews (EP4–12) that show each episode's listening and speaking mission.
+- **3 playable episodes** (5 chapters of 3 scenes each, about 1,900 words of dialogue per episode) that unlock in order, and chapters unlock in order within an episode, plus 9 locked previews (EP4–12) that show each episode's listening and speaking mission.
+- **Chapter clear cards.** Each chapter ends with a short summary and one phrase to hear and say again (optional), and you can stop after any chapter.
 - **Visual-novel scenes.** You play the audio line by line or on auto-play. The English text stays hidden until you answer the Listening Check, though you can open the transcript at any time.
 - **Speaking points everywhere.** You can use the microphone (optional, only after a privacy notice and your consent), tap "I said it", or type your answer. You never need a microphone to move on.
 - **Lessons after each story:** sentence patterns, Shadow & Substitute, a stand-up roleplay, a Mini Case and an optional writing task.
