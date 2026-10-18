@@ -6,6 +6,7 @@ import Avatar from "../components/Avatar";
 import { characters } from "../content/characters";
 import { episodeContent } from "../content";
 import type { CharacterId } from "../content/types";
+import { chapterOfScene, chapterStatus, type ChapterStatus } from "../features/progress/chapters";
 import { isUnlocked, type Progress } from "../features/progress/progressStorage";
 import "./EpisodeIntroScreen.css";
 
@@ -14,6 +15,13 @@ interface Props {
   progress: Progress;
   onBegin: (episodeId: string) => void;
 }
+
+const CHAPTER_STATUS: Record<ChapterStatus, string> = {
+  done: "จบแล้ว",
+  current: "เล่นค้างไว้",
+  open: "เล่นได้",
+  locked: "ล็อก จบบทก่อนหน้าก่อน",
+};
 
 export default function EpisodeIntroScreen({ episodeId, progress, onBegin }: Props) {
   const ep = episodeContent[episodeId];
@@ -37,6 +45,8 @@ export default function EpisodeIntroScreen({ episodeId, progress, onBegin }: Pro
   const listenFirst = ep.format === 2;
   const resuming =
     progress.lastEpisodeId === ep.id && !!progress.lastSceneId && progress.lastSceneId !== "learn" && !progress.completedEpisodes.includes(ep.id);
+  const resumeChapter = resuming && progress.lastSceneId ? chapterOfScene(ep, progress.lastSceneId) : undefined;
+  const playChapter = (chapterId: string) => navigate({ name: "play", episodeId: ep.id, chapterId });
 
   return (
     <article className="intro" aria-labelledby="intro-title">
@@ -97,6 +107,43 @@ export default function EpisodeIntroScreen({ episodeId, progress, onBegin }: Pro
               )}
             </dl>
             <SoundCheck rate={progress.settings.audioRate} textOnly={progress.settings.textOnly} />
+          </section>
+        )}
+
+        {ep.chapters && ep.chapters.length > 0 && (
+          <section aria-labelledby="chapters-title">
+            <h2 id="chapters-title">บทในตอนนี้ ({ep.chapters.length} บท)</h2>
+            <p className="intro__hint">เล่นทีละบท พักได้หลังจบแต่ละบท บทถัดไปจะปลดล็อกเมื่อจบบทก่อนหน้า</p>
+            <ol className="intro__chapters">
+              {ep.chapters.map((c) => {
+                const status = chapterStatus(ep, c, progress);
+                return (
+                  <li key={c.id} className={`intro__chapter intro__chapter--${status}`}>
+                    <span className="intro__chapter-num" aria-hidden="true">
+                      {status === "done" ? "✓" : c.number}
+                    </span>
+                    <span className="intro__chapter-main">
+                      <span className="intro__chapter-title">
+                        บทที่ {c.number}: <span lang="en">{c.title}</span>
+                      </span>
+                      <span className="intro__chapter-meta">
+                        {c.sceneIds.length} ฉาก, {CHAPTER_STATUS[status]}
+                      </span>
+                    </span>
+                    {status !== "locked" && (
+                      <button
+                        type="button"
+                        className="btn btn--soft intro__chapter-play"
+                        aria-label={`${status === "done" ? "เล่นซ้ำ" : "เล่น"}บทที่ ${c.number}: ${c.title}`}
+                        onClick={() => playChapter(c.id)}
+                      >
+                        {status === "done" ? "เล่นซ้ำ" : "เล่น"}
+                      </button>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
           </section>
         )}
 
@@ -168,7 +215,7 @@ export default function EpisodeIntroScreen({ episodeId, progress, onBegin }: Pro
 
       <div className="intro__cta">
         <button type="button" className="btn btn--primary intro__begin" onClick={() => onBegin(ep.id)}>
-          {resuming ? "เล่นต่อจากฉากล่าสุด" : "เริ่มตอนนี้"}
+          {resumeChapter ? `เล่นต่อ บทที่ ${resumeChapter.number}` : resuming ? "เล่นต่อจากฉากล่าสุด" : "เริ่มตอนนี้"}
         </button>
       </div>
     </article>

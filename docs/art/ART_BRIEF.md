@@ -54,11 +54,12 @@ Haru, Taku, Nana (EP1) · Sora (EP2) · Mei — ใช้ screen reader บน�
 
 | ไฟล์ | ใช้ในฉาก |
 | --- | --- |
-| `bg_classroom_morning` | EP1 S1 The Brief, EP3 S2 ห้องเรียนปีหนึ่ง |
-| `bg_classroom_afterschool` | EP1 S2–S3, EP3 S3 |
-| `bg_library_corner` | EP1 S4 First Interviews |
-| `bg_project_room_whiteboard` | EP1 S5–S6, EP2 S1, EP2 S5, EP3 S1, EP3 S5, EP3 S7 |
-| `bg_it_office` | EP1 S7 The IT Office |
+| `bg_classroom_morning` | EP1 S1 The Message, EP3 S2 ห้องเรียนปีหนึ่ง |
+| `bg_classroom_afterschool` | EP1 S2–S5, EP3 S3 |
+| `bg_library_corner` | EP1 S7–S8 (สัมภาษณ์ Taku กับ Nana) |
+| `bg_school_hallway` | EP1 S9 และ S15 (ทางเดินตอนกลางวัน) |
+| `bg_project_room_whiteboard` | EP1 S6, S10–S12, EP2 S1, EP2 S5, EP3 S1, EP3 S5, EP3 S7 |
+| `bg_it_office` | EP1 S13–S14 (ห้อง IT) |
 | `bg_cafeteria_kitchen` | EP2 S2 Permission First |
 | `bg_cafeteria_lunch` | EP2 S3–S4 (คิวหลายแถว ไม่มีป้าย) |
 | `bg_cafeteria_signs` | EP2 S6 (มีป้ายกระดาษเหนือแถว — ป้ายไม่มีตัวอักษรอ่านได้) |

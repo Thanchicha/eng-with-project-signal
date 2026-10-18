@@ -61,7 +61,9 @@ SPEECH_STUB = """
 """
 
 # Scene count of EP1, read from the story script so the QA follows content changes.
-EP1_SCENES = len(re.findall(r"^## Scene \d+", (ROOT / "docs" / "story" / "ep01.md").read_text(encoding="utf-8"), flags=re.M))
+EP1_TEXT = (ROOT / "docs" / "story" / "ep01.md").read_text(encoding="utf-8")
+EP1_SCENES = len(re.findall(r"^## Scene \d+", EP1_TEXT, flags=re.M))
+EP1_CHAPTERS = len(re.findall(r"^## Chapter \d+", EP1_TEXT, flags=re.M))
 
 results: list[dict] = []
 
@@ -146,8 +148,21 @@ def speak_said_it(page: Page):
 
 
 def next_scene(page: Page):
+    # Scenes without a speaking point need a choice before the story moves on.
+    if not page.locator(".scene-flow__next").count() and page.locator(".choice").count():
+        page.locator(".choice").first.click()
     page.locator(".scene-flow__next .btn--primary, .feedback__actions .btn--primary").first.click()
     page.wait_for_timeout(120)
+
+
+def clear_chapter(page: Page) -> bool:
+    """On a Chapter clear card: say the key phrase ("I said it") and start the next chapter. Returns True if shown."""
+    if not page.locator(".chapter-clear").count():
+        return False
+    speak_said_it(page)
+    page.locator(".chapter-clear__actions .btn--primary").click()
+    page.wait_for_timeout(150)
+    return True
 
 
 # 1 ─ start EP1 with no account / API key
@@ -173,8 +188,8 @@ def t_start(browser: Browser):
 def t_full(browser: Browser):
     page = new_page(browser)
     fresh(page, "#/ep/ep01/play")
-    scenes, hidden_ok, audio_ok, speak_points, leads_missing, thai_fb = 0, 0, 0, 0, [], 0
-    while "/play" in page.url and scenes < 10:
+    scenes, hidden_ok, audio_ok, speak_points, leads_missing, thai_fb, chapters = 0, 0, 0, 0, [], 0, 0
+    while "/play" in page.url and scenes < 30:
         scenes += 1
         transcript_before = page.locator(".dialogue").count()
         lines = page.evaluate("window.__utterances.length")
@@ -199,6 +214,8 @@ def t_full(browser: Browser):
             button(page, "ใช้คำของตัวเอง (I tried my own words)").click()
         page.screenshot(path=str(OUT / f"ep01_scene{scenes}.png"), full_page=True)
         next_scene(page)
+        if clear_chapter(page):
+            chapters += 1
     steps = []
     while "/recap" not in page.url and len(steps) < 10:
         steps.append(page.locator(".learn__title span").first.inner_text())
@@ -213,12 +230,12 @@ def t_full(browser: Browser):
     data = stored(page)
     page.screenshot(path=str(OUT / "ep01_recap.png"), full_page=True)
 
-    record("2 Before Listening → Recap", scenes == EP1_SCENES and "จบแล้ว" in recap and data.get("completedEpisodes") == ["ep01"],
-           f"{scenes} scenes → {len(steps)} lesson steps ({', '.join(steps)}) → recap; completed={data.get('completedEpisodes')}")
+    record("2 Before Listening → Recap", scenes == EP1_SCENES and chapters == EP1_CHAPTERS and "จบแล้ว" in recap and data.get("completedEpisodes") == ["ep01"],
+           f"{chapters} chapters, {scenes} scenes (each chapter ends with a Chapter clear card) → {len(steps)} lesson steps ({', '.join(steps)}) → recap; completed={data.get('completedEpisodes')}")
     record("3 audio + Listening Check before transcript", hidden_ok == EP1_SCENES and audio_ok == EP1_SCENES,
            f"{audio_ok}/{scenes} scenes played every line as audio; {hidden_ok}/{scenes} kept the transcript hidden until the listening check was answered")
     record("8 Kuro & Miyu in every scene", not leads_missing, f"both speak in all {scenes} scenes" if not leads_missing else ", ".join(leads_missing))
-    record("9a Thai feedback after listening/speaking", thai_fb >= 2 * EP1_SCENES and speak_points == EP1_SCENES,
+    record("9a Thai feedback after listening/speaking", thai_fb >= EP1_SCENES + speak_points and speak_points >= 3,
            f"{thai_fb} Thai feedback panels across {scenes} listening checks and {speak_points} speaking points")
     page.context.close()
 
@@ -257,7 +274,7 @@ def t_no_mic(browser: Browser):
     button(page, "ส่งคำตอบ").click()
     typed_ok = "Who are the users" in page.locator(".speak-resp__yours").inner_text()
     record("5 speak without mic", "ฉันพูดออกเสียงแล้ว (I said it)" in modes and "พิมพ์ตอบแทน" in modes and not any("ไมโครโฟน" in m for m in modes) and typed_ok,
-           f"browser without SpeechRecognition shows {modes}; typed answer accepted and feedback opened (every EP1 scene has a speaking point, see item 2)")
+           f"browser without SpeechRecognition shows {modes}; typed answer accepted and feedback opened (speaking points per scene are counted in item 9a)")
     page.context.close()
 
 

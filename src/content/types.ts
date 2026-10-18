@@ -111,6 +111,20 @@ export interface Scene {
   nextSceneId?: string;
 }
 
+/** A chapter groups 2–4 scenes; it ends with a "Chapter clear" card and one phrase to say. */
+export interface Chapter {
+  id: string;
+  number: number;
+  title: string;
+  /** What happened in the chapter (Thai), shown on the Chapter clear card. */
+  summaryTh: string;
+  /** One phrase from the chapter to hear and say again. */
+  keyPhrase: DialogueLine;
+  /** When to use the phrase (Thai). */
+  keyPhraseNoteTh?: string;
+  sceneIds: string[];
+}
+
 export interface SentencePattern {
   pattern: string;
   example: string;
@@ -194,6 +208,8 @@ export interface Episode {
   hintWords: string[];
   vocabulary: VocabularyItem[];
   scenes: Scene[];
+  /** Chapters in order (episodes written before chapters have none — they play straight through). */
+  chapters?: Chapter[];
   analystNote: string[];
   businessLesson: { title: string; bodyTh: string[] };
   sentencePatterns: SentencePattern[];

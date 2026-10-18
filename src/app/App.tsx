@@ -32,7 +32,7 @@ export default function App() {
       screen = <EpisodeIntroScreen episodeId={route.episodeId} progress={progress} onBegin={beginEpisode} />;
       break;
     case "play":
-      screen = <StoryScreen key={route.episodeId} episodeId={route.episodeId} progress={progress} update={update} />;
+      screen = <StoryScreen key={`${route.episodeId}/${route.chapterId ?? ""}`} episodeId={route.episodeId} chapterId={route.chapterId} progress={progress} update={update} />;
       break;
     case "learn":
       screen = <LearnScreen episodeId={route.episodeId} step={route.step} progress={progress} update={update} />;

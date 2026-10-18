@@ -7,7 +7,7 @@ import "./FeedbackCard.css";
 
 interface Props {
   choice: Choice;
-  isLastScene: boolean;
+  continueLabel: string;
   onTryAgain: () => void;
   onContinue: () => void;
   /** Teammate who reacts to the choice (shown as a portrait). */
@@ -16,7 +16,7 @@ interface Props {
 
 /** Four-part feedback (spec 05 §8) — explains, never just "correct/incorrect". */
 const FeedbackCard = forwardRef<HTMLHeadingElement, Props>(function FeedbackCard(
-  { choice, isLastScene, onTryAgain, onContinue, reactor },
+  { choice, continueLabel, onTryAgain, onContinue, reactor },
   headingRef,
 ) {
   const f = choice.feedback;
@@ -64,7 +64,7 @@ const FeedbackCard = forwardRef<HTMLHeadingElement, Props>(function FeedbackCard
             ลองตัวเลือกอื่น
           </button>
           <button type="button" className="btn btn--primary" onClick={onContinue}>
-            {isLastScene ? "จบเรื่อง ไปบทเรียนต่อ" : "ไปฉากต่อไป"}
+            {continueLabel}
           </button>
         </div>
       </div>

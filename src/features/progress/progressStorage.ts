@@ -21,6 +21,8 @@ export interface Progress {
   replays: Record<string, number>;
   /** Ids of speaking moments the player attempted (prompts, shadow items, roleplay turns, mini case). Ids only — never what they said. */
   spokenIds: string[];
+  /** Chapter ids the player reached the end of — the next chapter unlocks. */
+  completedChapters: string[];
   /** Role the player chose to focus on ("Choose your path"); undefined until chosen or skipped. */
   career?: CareerId;
   /** True once the role screen was shown (chosen or skipped), so it is not forced again. */
@@ -61,6 +63,7 @@ export const defaultProgress: Progress = {
   triedChecks: [],
   replays: {},
   spokenIds: [],
+  completedChapters: [],
   settings: defaultSettings,
 };
 
@@ -123,7 +126,7 @@ export function reachedEpisodeIds(progress: Progress): string[] {
 }
 
 /** Add an id to a list field once. */
-export function addOnce<K extends "triedChecks" | "spokenIds" | "triedDrills" | "viewedChoices">(p: Progress, key: K, id: string): Progress {
+export function addOnce<K extends "triedChecks" | "spokenIds" | "triedDrills" | "viewedChoices" | "completedChapters">(p: Progress, key: K, id: string): Progress {
   return p[key].includes(id) ? p : { ...p, [key]: [...p[key], id] };
 }
 

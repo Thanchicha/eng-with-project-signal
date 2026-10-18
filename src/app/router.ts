@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export type Route =
   | { name: "home" }
   | { name: "intro"; episodeId: string }
-  | { name: "play"; episodeId: string }
+  | { name: "play"; episodeId: string; chapterId?: string }
   | { name: "learn"; episodeId: string; step?: string }
   | { name: "notebook" }
   | { name: "career" }
@@ -14,7 +14,7 @@ export type Route =
 export function parseHash(hash: string): Route {
   const parts = hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   if (parts[0] === "ep" && parts[1]) {
-    if (parts[2] === "play") return { name: "play", episodeId: parts[1] };
+    if (parts[2] === "play") return { name: "play", episodeId: parts[1], chapterId: parts[3] };
     if (parts[2] === "learn") return { name: "learn", episodeId: parts[1], step: parts[3] };
     return { name: "intro", episodeId: parts[1] };
   }
@@ -30,7 +30,7 @@ export function routeToHash(route: Route): string {
     case "intro":
       return `#/ep/${route.episodeId}`;
     case "play":
-      return `#/ep/${route.episodeId}/play`;
+      return `#/ep/${route.episodeId}/play${route.chapterId ? `/${route.chapterId}` : ""}`;
     case "learn":
       return `#/ep/${route.episodeId}/learn${route.step ? `/${route.step}` : ""}`;
     case "notebook":

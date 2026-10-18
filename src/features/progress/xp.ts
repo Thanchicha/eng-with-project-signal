@@ -11,6 +11,7 @@ export const XP_RULES = {
   wordSaved: 3,
   replay: 2,
   replayCapPerEpisode: 10, // at most 10 replays (20 XP) count per episode
+  chapterCompleted: 20,
   episodeCompleted: 50,
 } as const;
 
@@ -32,6 +33,7 @@ export function xpTotal(p: Progress): number {
     p.triedDrills.length * XP_RULES.writingTried +
     p.savedVocabulary.length * XP_RULES.wordSaved +
     replays * XP_RULES.replay +
+    p.completedChapters.length * XP_RULES.chapterCompleted +
     p.completedEpisodes.length * XP_RULES.episodeCompleted
   );
 }
@@ -50,6 +52,7 @@ export function episodeXp(p: Progress, episodeId: string): number {
     mine(p.viewedChoices) * XP_RULES.choiceViewed +
     mine(p.triedDrills) * XP_RULES.writingTried +
     Math.min(p.replays[episodeId] ?? 0, XP_RULES.replayCapPerEpisode) * XP_RULES.replay +
+    mine(p.completedChapters) * XP_RULES.chapterCompleted +
     (p.completedEpisodes.includes(episodeId) ? XP_RULES.episodeCompleted : 0)
   );
 }

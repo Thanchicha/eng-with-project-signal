@@ -271,6 +271,39 @@ function convert(id) {
   const scenes = secs.filter((s) => s.heading.startsWith("Scene ")).map((s) => parseScene(file, s, resolve));
   scenes.forEach((s, i) => (s.nextSceneId = scenes[i + 1]?.id ?? "end"));
   const sceneIds = new Set(scenes.map((s) => s.id));
+
+  // Chapters: "## Chapter N — Title" groups the scenes that follow it (optional; older scripts have none).
+  const chapters = [];
+  for (const sec of secs) {
+    if (sec.heading.startsWith("Chapter ")) {
+      const [, title] = sec.heading.split(" — ");
+      const ch = { id: "", number: chapters.length + 1, title: title ?? sec.heading, summaryTh: "", keyPhrase: null, sceneIds: [] };
+      for (const l of sec.lines) {
+        const kvp = kv(l);
+        if (!kvp) continue;
+        const [k, v] = kvp;
+        if (k === "id") ch.id = v;
+        else if (k === "summaryTh") ch.summaryTh = v;
+        else if (k === "keyPhraseNote") ch.keyPhraseNoteTh = v;
+        else if (k === "keyPhrase") {
+          const m = v.match(/^(\w[^:"]*):\s*(".*)$/);
+          ch.keyPhrase = m ? parseLine(`${m[1]}: ${m[2]}`, resolve) : parseLine(`Narration: ${v}`, resolve);
+          if (!ch.keyPhrase) fail(file, `chapter ${ch.number} keyPhrase must be Speaker: "EN" | "TH"`);
+        }
+      }
+      if (!ch.id) fail(file, `chapter "${sec.heading}" has no id`);
+      if (!ch.summaryTh || !ch.keyPhrase) fail(file, `${ch.id} needs summaryTh and keyPhrase`);
+      chapters.push(ch);
+    } else if (sec.heading.startsWith("Scene ") && chapters.length) {
+      const sid = sec.lines.map(kv).find((x) => x && x[0] === "id")?.[1];
+      if (sid) chapters.at(-1).sceneIds.push(sid);
+    }
+  }
+  if (chapters.length) {
+    const grouped = new Set(chapters.flatMap((c) => c.sceneIds));
+    for (const sc of scenes) if (!grouped.has(sc.id)) fail(file, `${sc.id} is not inside a "## Chapter"`);
+    for (const c of chapters) if (c.sceneIds.length < 2 || c.sceneIds.length > 4) fail(file, `${c.id} needs 2–4 scenes (has ${c.sceneIds.length})`);
+  }
   for (const s of scenes)
     for (const c of s.interaction?.choices ?? [])
       if (c.nextSceneId !== "end" && !sceneIds.has(c.nextSceneId)) fail(file, `${c.id} → unknown scene "${c.nextSceneId}"`);
@@ -416,6 +449,7 @@ function convert(id) {
     hintWords,
     vocabulary,
     scenes,
+    ...(chapters.length ? { chapters } : {}),
     analystNote: bullets(need("Analyst Note").lines),
     businessLesson,
     sentencePatterns,
@@ -448,6 +482,7 @@ function convert(id) {
     ts,
     format,
     scenes: scenes.length,
+    chapters: chapters.length,
     choices: scenes.reduce((n, s) => n + (s.interaction?.choices.length ?? 0), 0),
     checks: scenes.filter((s) => s.listeningCheck).length,
     speaking: scenes.filter((s) => s.speakingPrompt).length,
@@ -465,7 +500,7 @@ if (errors.length) {
 for (const r of results) {
   fs.writeFileSync(path.join(outDir, `${r.id}.ts`), r.ts);
   console.log(
-    `✓ ${r.id} (format v${r.format}): ${r.scenes} scenes, ${r.checks} listening checks, ${r.speaking} speaking prompts, ${r.choices} choices → src/content/${r.id}.ts`,
+    `✓ ${r.id} (format v${r.format}): ${r.chapters ? `${r.chapters} chapters, ` : ""}${r.scenes} scenes, ${r.checks} listening checks, ${r.speaking} speaking prompts, ${r.choices} choices → src/content/${r.id}.ts`,
   );
 }
 
