@@ -66,3 +66,69 @@
 .choice[aria-pressed="true"] {
   box-shadow: 0 0 16px var(--color-glow);
 }
+
+/* ---- Mockup screen 3: numbered choices with a check mark ---- */
+.choices__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-2);
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--pink-400);
+  text-shadow: 0 0 10px var(--color-glow);
+}
+
+.choices__eyebrow span:last-child {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  color: var(--color-text-muted-on-dark);
+  text-shadow: none;
+  align-self: center;
+}
+
+.choice {
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.choice__num {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color-hud-border);
+  border-radius: 50%;
+  background: var(--night-700);
+  font-weight: 700;
+}
+
+.choice__main {
+  display: grid;
+  gap: 2px;
+}
+
+.choice__mark {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid var(--night-700);
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.choice__mark--on {
+  border-color: var(--pink-400);
+  background: var(--pink-500);
+  color: var(--night-900);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+.choice[aria-pressed="true"] .choice__num {
+  border-color: var(--pink-400);
+  background: var(--pink-600);
+}

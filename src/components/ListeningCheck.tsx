@@ -27,7 +27,7 @@ const ListeningCheck = forwardRef<HTMLHeadingElement, Props>(function ListeningC
         {check.promptTh}
       </h2>
       <ul className="lcheck__choices">
-        {check.choices.map((c) => {
+        {check.choices.map((c, i) => {
           const state = picked === c.id ? (correct ? "right" : "wrong") : undefined;
           return (
             <li key={c.id}>
@@ -38,9 +38,13 @@ const ListeningCheck = forwardRef<HTMLHeadingElement, Props>(function ListeningC
                 onClick={() => pick(c.id)}
                 disabled={correct && picked !== c.id}
               >
-                {state === "right" && <span aria-hidden="true">✓ </span>}
-                {state === "wrong" && <span aria-hidden="true">✗ </span>}
-                {c.labelTh}
+                <span className="lcheck__num" aria-hidden="true">
+                  {i + 1}
+                </span>
+                <span className="lcheck__label-text">{c.labelTh}</span>
+                <span className={`lcheck__mark${state ? ` lcheck__mark--${state}` : ""}`} aria-hidden="true">
+                  {state === "right" ? "✓" : state === "wrong" ? "✗" : ""}
+                </span>
               </button>
             </li>
           );

@@ -52,10 +52,8 @@ button {
 .paper,
 .dialogue,
 .speak-resp,
-.lcheck,
 .intro__paper,
 .roleplay__turns,
-.feedback,
 .vocab-pop,
 .ep-card--link {
   --color-focus: var(--pink-600);

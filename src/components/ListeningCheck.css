@@ -1,15 +1,17 @@
+/* Listening check — dark glass panel with numbered options (mockup screen 3). */
 .lcheck {
+  border: 1px solid var(--color-hud-border);
   border-radius: var(--radius-md);
   padding: var(--space-4);
-  background: var(--color-reading);
-  color: var(--color-text);
+  background: linear-gradient(160deg, rgba(58, 39, 88, 0.55), rgba(34, 21, 57, 0.85));
+  color: var(--color-text-on-dark);
 }
 
 .lcheck__label {
   margin: 0;
   font-size: var(--fs-sm);
   font-weight: 700;
-  color: var(--color-primary-strong);
+  color: var(--pink-400);
 }
 
 .lcheck__q {
@@ -30,42 +32,82 @@
 }
 
 .lcheck__choice {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
   width: 100%;
-  border: 2px solid var(--color-reading-border);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-hud-border);
+  border-radius: var(--radius-md);
   padding: var(--space-2) var(--space-3);
-  background: var(--white);
-  color: var(--color-text);
+  background: rgba(20, 11, 35, 0.6);
+  color: var(--color-text-on-dark);
   text-align: left;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
 }
 
 .lcheck__choice:hover:not(:disabled) {
-  border-color: var(--color-primary-strong);
+  border-color: var(--pink-400);
 }
 
 .lcheck__choice:disabled {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: default;
 }
 
-.lcheck__choice--right {
-  border-color: var(--color-primary-strong);
-  background: var(--pink-100);
+.lcheck__num {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color-hud-border);
+  border-radius: 50%;
+  background: var(--night-700);
   font-weight: 700;
+}
+
+.lcheck__mark {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid var(--night-700);
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.lcheck__choice--right {
+  border-color: var(--pink-400);
+  box-shadow: 0 0 0 1px var(--pink-400), 0 0 18px var(--color-glow);
+  font-weight: 700;
+}
+
+.lcheck__mark--right {
+  border-color: var(--pink-400);
+  background: var(--pink-500);
+  color: var(--night-900);
 }
 
 .lcheck__choice--wrong {
   border-color: var(--rose-500);
 }
 
+.lcheck__mark--wrong {
+  border-color: var(--rose-500);
+  color: var(--rose-500);
+}
+
 .lcheck__feedback {
   margin: var(--space-3) 0 0;
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  background: rgba(20, 11, 35, 0.55);
 }
 
 .lcheck__feedback strong {
-  color: var(--rose-700);
+  color: var(--rose-500);
 }
 
 .lcheck__feedback--right strong {
-  color: var(--color-primary-strong);
+  color: var(--pink-400);
 }

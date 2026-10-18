@@ -261,6 +261,7 @@ function SceneFlow({ episode, scene, isLast, progress, update, onVocab, onNext }
               ref={feedbackRef}
               choice={selected}
               isLastScene={isLast}
+              reactor={speak?.askedBy ?? [...scene.dialogue].reverse().find((l) => l.speakerId !== "narration" && l.speakerId !== "screen")}
               onTryAgain={() => {
                 setSelectedId(undefined);
                 choicesRef.current?.focus();

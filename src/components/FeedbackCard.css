@@ -76,3 +76,77 @@
   gap: var(--space-2);
   margin-top: var(--space-4);
 }
+
+/* ---- Mockup screen 3: dark feedback panel with the reacting teammate ---- */
+.feedback {
+  border: 1px solid var(--color-hud-border);
+  border-top: 3px solid var(--pink-400);
+  background: linear-gradient(160deg, rgba(58, 39, 88, 0.7), rgba(34, 21, 57, 0.95));
+  color: var(--color-text-on-dark);
+  box-shadow: 0 0 24px rgba(255, 122, 184, 0.12);
+}
+
+.feedback--with-portrait {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+}
+
+.feedback__portrait {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: var(--space-1);
+}
+
+.feedback__portrait .sprite--portrait {
+  width: 5rem;
+}
+
+.feedback__who {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--pink-100);
+}
+
+.feedback__body {
+  min-width: 0;
+}
+
+.feedback .feedback__title {
+  color: var(--pink-400);
+  text-shadow: 0 0 10px var(--color-glow);
+}
+
+.feedback .feedback__parts dt {
+  color: var(--pink-100);
+}
+
+.feedback .feedback__parts dd {
+  color: var(--color-text-on-dark);
+}
+
+.feedback .feedback__natural {
+  color: var(--glow-500);
+}
+
+.feedback .feedback__listen {
+  border-color: var(--pink-400);
+  color: var(--pink-100);
+}
+
+@media (max-width: 30rem) {
+  .feedback--with-portrait {
+    grid-template-columns: 1fr;
+  }
+
+  .feedback__portrait {
+    grid-auto-flow: column;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .feedback__portrait .sprite--portrait {
+    width: 3rem;
+  }
+}
