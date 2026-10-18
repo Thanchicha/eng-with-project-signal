@@ -8,14 +8,24 @@ interface Props {
   intentsTh: string[];
   rate: AudioRate;
   canPlay: boolean;
+  /** Show the speaking tips panel (mockup "Sentence Tips"). */
+  tips?: boolean;
 }
 
+const TIPS = [
+  "พูดด้วยน้ำเสียงธรรมชาติ เหมือนคุยกับเพื่อนร่วมทีม",
+  "เน้นเสียงคำสำคัญ เช่น คำถาม ชื่อ หรือตัวเลข",
+  "ไม่ต้องกังวลเรื่องสำเนียง สื่อความหมายได้คือสำเร็จ",
+];
+
 /** Sentence frames the player can hear and borrow before speaking (spec 05 §7 step 6). */
-export default function PhraseBank({ frames, intentsTh, rate, canPlay }: Props) {
+export default function PhraseBank({ frames, intentsTh, rate, canPlay, tips }: Props) {
   const [hint, setHint] = useState(false);
   return (
     <div className="phrases">
-      <p className="phrases__label">รูปประโยคช่วยพูด</p>
+      <p className="phrases__label">
+        {tips && <span lang="en">Sentence Tips</span> }รูปประโยคช่วยพูด
+      </p>
       <ul className="phrases__list">
         {frames.map((f) => (
           <li key={f}>
@@ -42,6 +52,16 @@ export default function PhraseBank({ frames, intentsTh, rate, canPlay }: Props) 
             <li key={i}>{i}</li>
           ))}
         </ul>
+      )}
+      {tips && (
+        <>
+          <p className="phrases__label phrases__label--tips">เคล็ดลับการพูด</p>
+          <ul className="phrases__tips">
+            {TIPS.map((t) => (
+              <li key={t}>{t}</li>
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );

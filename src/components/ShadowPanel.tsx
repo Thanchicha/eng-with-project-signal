@@ -4,6 +4,7 @@ import type { Settings } from "../features/progress/progressStorage";
 import { audioPlayer } from "../features/speech/audioPlayer";
 import { canSpeak } from "../features/speech/speak";
 import AnswerControls, { type AnswerMode } from "./AnswerControls";
+import PracticeMeter from "./PracticeMeter";
 import "./LearnSections.css";
 import "./PhraseBank.css";
 import "./ShadowPanel.css";
@@ -77,7 +78,12 @@ function ShadowCard({ item, number, total, settings, headingRef, onConsent, onTr
   const canPlay = canSpeak() && !settings.textOnly;
   const [heard, setHeard] = useState(!canPlay);
   const [answer, setAnswer] = useState<{ text?: string }>();
-  const play = (text: string) => audioPlayer.playLines([{ speakerId: "narrator", textEn: text }], { rate: settings.audioRate });
+  const [listened, setListened] = useState(false);
+  const [attempts, setAttempts] = useState(0);
+  const play = (text: string) => {
+    setListened(true);
+    return audioPlayer.playLines([{ speakerId: "narrator", textEn: text }], { rate: settings.audioRate });
+  };
 
   return (
     <article className="paper shadow__card" aria-labelledby={`${item.id}-title`}>
@@ -129,6 +135,12 @@ function ShadowCard({ item, number, total, settings, headingRef, onConsent, onTr
         </div>
       )}
 
+      <PracticeMeter
+        listened={listened}
+        attempts={attempts}
+        lastLabel={item.mode === "shadow" ? "พูดตามอีกรอบ" : "พูดด้วยคำตัวเอง"}
+      />
+
       {!answer ? (
         <AnswerControls
           settings={settings}
@@ -137,6 +149,7 @@ function ShadowCard({ item, number, total, settings, headingRef, onConsent, onTr
           onSubmit={(mode, text) => {
             setAnswer({ text });
             setHeard(true);
+            setAttempts((n) => n + 1);
             onTried(mode);
           }}
         />

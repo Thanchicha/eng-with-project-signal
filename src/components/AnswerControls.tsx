@@ -15,9 +15,36 @@ interface Props {
   onSubmit: (mode: AnswerMode, text?: string) => void;
   /** Short instruction above the buttons. */
   howTh?: string;
+  /** Smaller mic visual for lists of turns (roleplay). */
+  compact?: boolean;
 }
 
 type Step = "answer" | "consent" | "listening" | "review" | "typing";
+
+/** Mic circle with a sound wave (mockup Speaking Practice). The wave moves only while listening. */
+function MicVisual({ on, compact }: { on: boolean; compact?: boolean }) {
+  return (
+    <div className={`mic-stage${on ? " mic-stage--on" : ""}${compact ? " mic-stage--compact" : ""}`} aria-hidden="true">
+      <span className="mic-stage__wave">
+        <i />
+        <i />
+        <i />
+        <i />
+      </span>
+      <span className="mic-stage__circle">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 3a3 3 0 00-3 3v6a3 3 0 006 0V6a3 3 0 00-3-3zM6 11a6 6 0 0012 0M12 17v4M9 21h6" />
+        </svg>
+      </span>
+      <span className="mic-stage__wave mic-stage__wave--r">
+        <i />
+        <i />
+        <i />
+        <i />
+      </span>
+    </div>
+  );
+}
 
 const MIC_ERRORS: Record<SpeechInputErrorCode, string> = {
   "not-allowed": "เบราว์เซอร์ไม่อนุญาตให้ใช้ไมโครโฟน กด \"ฉันพูดออกเสียงแล้ว\" หรือพิมพ์ตอบแทนได้",
@@ -31,7 +58,7 @@ const MIC_ERRORS: Record<SpeechInputErrorCode, string> = {
  * The three ways to answer aloud (spec 05 §7 "โหมดการพูด"): optional mic after consent,
  * "I said it", or typing. Passing never depends on the mic, the browser or accent.
  */
-export default function AnswerControls({ settings, onConsent, onSubmit, howTh }: Props) {
+export default function AnswerControls({ settings, onConsent, onSubmit, howTh, compact }: Props) {
   const uid = useId();
   const micAvailable = getSpeechCapabilities().recognition && settings.micConsent !== "declined";
   const input = useRef(createSpeechInput());
@@ -105,6 +132,7 @@ export default function AnswerControls({ settings, onConsent, onSubmit, howTh }:
   if (step === "listening") {
     return (
       <div className="speak-resp__listening" role="status">
+        <MicVisual on compact={compact} />
         <p className="speak-resp__mic-state">
           <span className="speak-resp__dot" aria-hidden="true" /> กำลังฟัง… พูดเป็นภาษาอังกฤษได้เลย
         </p>
@@ -178,6 +206,8 @@ export default function AnswerControls({ settings, onConsent, onSubmit, howTh }:
 
   return (
     <div className="speak-resp__modes">
+      <MicVisual on={false} compact={compact} />
+      <p className="mic-stage__caption">พูดประโยคออกเสียง</p>
       <p className="speak-resp__how">
         {howTh ?? "พูดคำตอบเป็นภาษาอังกฤษออกเสียง แล้วเลือกวิธีบันทึกว่าได้ลองพูดแล้ว ไม่มีการให้คะแนนสำเนียง"}
       </p>
@@ -186,17 +216,21 @@ export default function AnswerControls({ settings, onConsent, onSubmit, howTh }:
           {micError}
         </p>
       )}
-      <div className="speak-resp__buttons">
+      <div className="speak-resp__buttons speak-resp__buttons--answer">
         {micAvailable && (
           <button
             type="button"
-            className="btn btn--primary"
+            className="btn btn--primary btn--speak"
             onClick={() => (settings.micConsent === "granted" ? startMic() : setStep("consent"))}
           >
-            <span aria-hidden="true">🎙</span> พูดผ่านไมโครโฟน
+            <span aria-hidden="true">🎙</span> พูดผ่านไมโครโฟน (Speak Now)
           </button>
         )}
-        <button type="button" className="btn btn--soft" onClick={() => onSubmit("said")}>
+        <button
+          type="button"
+          className={micAvailable ? "btn btn--soft" : "btn btn--primary btn--speak"}
+          onClick={() => onSubmit("said")}
+        >
           ฉันพูดออกเสียงแล้ว (I said it)
         </button>
         <button type="button" className="btn btn--soft" onClick={() => setStep("typing")}>

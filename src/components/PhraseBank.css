@@ -44,3 +44,19 @@
   padding-left: 1.25rem;
   font-size: var(--fs-sm);
 }
+
+.phrases__label--tips {
+  margin-top: var(--space-3);
+}
+
+.phrases__tips {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: var(--fs-sm);
+}
+
+.phrases__tips li::marker {
+  color: var(--pink-400);
+}

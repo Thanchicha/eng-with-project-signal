@@ -172,7 +172,7 @@ function Turn({ turn, isCurrent, refProp, canPlay, settings, answered, answerTex
         <p className="line__name">ตาคุณพูด</p>
         <p className="roleplay__prompt">{turn.promptTh}</p>
         {!answered ? (
-          isCurrent && <AnswerControls settings={settings} onConsent={onConsent} onSubmit={onSubmit} howTh="พูดคำตอบออกเสียงเป็นภาษาอังกฤษ" />
+          isCurrent && <AnswerControls compact settings={settings} onConsent={onConsent} onSubmit={onSubmit} howTh="พูดคำตอบออกเสียงเป็นภาษาอังกฤษ" />
         ) : (
           <>
             {answerText && (

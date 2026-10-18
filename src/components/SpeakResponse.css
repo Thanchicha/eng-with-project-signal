@@ -171,3 +171,282 @@
   margin: var(--space-2) 0 0;
   font-weight: 700;
 }
+
+/* ---- Mic visual (mockup Speaking Practice) ---- */
+.mic-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+}
+
+.mic-stage__circle {
+  display: grid;
+  place-items: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 2px solid var(--pink-400);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--night-700), var(--night-900));
+  box-shadow: 0 0 0 6px rgba(242, 90, 163, 0.15), 0 0 28px var(--color-glow);
+}
+
+.mic-stage__circle svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: none;
+  stroke: var(--pink-100);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.mic-stage__wave {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 2.5rem;
+}
+
+.mic-stage__wave i {
+  width: 4px;
+  height: 30%;
+  border-radius: 2px;
+  background: var(--pink-400);
+  opacity: 0.45;
+}
+
+.mic-stage__wave i:nth-child(2) {
+  height: 60%;
+}
+
+.mic-stage__wave i:nth-child(3) {
+  height: 90%;
+}
+
+.mic-stage__wave i:nth-child(4) {
+  height: 50%;
+}
+
+.mic-stage__wave--r {
+  flex-direction: row-reverse;
+}
+
+.mic-stage--on .mic-stage__circle {
+  border-color: var(--rose-500);
+  animation: mic-glow 1.4s ease-in-out infinite;
+}
+
+.mic-stage--on .mic-stage__wave i {
+  opacity: 1;
+  animation: mic-wave 0.9s ease-in-out infinite;
+}
+
+.mic-stage--on .mic-stage__wave i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.mic-stage--on .mic-stage__wave i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.mic-stage--on .mic-stage__wave i:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+@keyframes mic-wave {
+  50% {
+    transform: scaleY(0.4);
+  }
+}
+
+@keyframes mic-glow {
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 92, 134, 0.2), 0 0 36px var(--color-glow);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mic-stage--on .mic-stage__circle,
+  .mic-stage--on .mic-stage__wave i {
+    animation: none;
+  }
+}
+
+.mic-stage--compact .mic-stage__circle {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.mic-stage--compact .mic-stage__circle svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.mic-stage--compact .mic-stage__wave {
+  height: 1.75rem;
+}
+
+.mic-stage__caption {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-primary-strong);
+}
+
+.speak-resp__buttons--answer {
+  justify-content: center;
+}
+
+.btn--speak {
+  flex: 1 1 100%;
+  min-height: 3.25rem;
+  font-size: var(--fs-md);
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--pink-600), #a43fb7, var(--pink-500));
+}
+
+/* ---- Dark speaking-practice stage (Speak to Continue) ---- */
+.speak-resp--stage {
+  container-type: inline-size;
+  border: 1px solid var(--color-hud-border);
+  border-top: 1px solid var(--color-hud-border);
+  background: linear-gradient(160deg, rgba(58, 39, 88, 0.6), rgba(20, 11, 35, 0.92));
+  color: var(--color-text-on-dark);
+  --color-focus: var(--glow-500);
+}
+
+.speak-resp--stage .speak-resp__label,
+.speak-resp--stage .mic-stage__caption {
+  color: var(--pink-400);
+}
+
+.speak-resp--stage .speak-resp__task {
+  color: var(--glow-500);
+}
+
+.speak-resp--stage .speak-resp__how,
+.speak-resp--stage .speak-resp__interim {
+  color: var(--color-text-muted-on-dark);
+}
+
+.speak-resp--stage .listen,
+.speak-resp--stage .phrases__hint-toggle {
+  border-color: var(--pink-400);
+  color: var(--pink-100);
+}
+
+.speak-resp--stage .speak-resp__consent {
+  border-color: var(--pink-400);
+  background: var(--night-800);
+}
+
+.speak-resp--stage .speak-resp__error,
+.speak-resp--stage .speak-resp__yours {
+  background: rgba(20, 11, 35, 0.7);
+  color: var(--color-text-on-dark);
+}
+
+.speak-resp--stage .speak-resp__error {
+  color: #ffb3c6;
+}
+
+.speak-resp--stage .drill__input {
+  border-color: var(--color-hud-border);
+  background: var(--night-900);
+  color: var(--color-text-on-dark);
+}
+
+.speak-resp--stage .feedback__parts dt {
+  color: var(--pink-100);
+}
+
+.speak-resp--stage .feedback__parts dd {
+  color: var(--color-text-on-dark);
+}
+
+.speak-resp--stage .feedback__natural {
+  color: var(--glow-500);
+}
+
+.speak-resp__layout {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.speak-resp__main,
+.speak-resp__aside {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+@container (min-width: 40rem) {
+  .speak-resp__layout {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  }
+}
+
+/* Asker: portrait + speech bubble */
+.speak-resp__ask--stage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: end;
+  gap: var(--space-3);
+  border: 0;
+  padding: 0;
+}
+
+.speak-resp__ask--stage .sprite--portrait {
+  width: 4.5rem;
+}
+
+.speak-resp__bubble {
+  position: relative;
+  border: 1px solid var(--color-hud-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  background: rgba(251, 227, 241, 0.96);
+  color: var(--night-900);
+  --color-focus: var(--pink-600);
+}
+
+.speak-resp__bubble::before {
+  content: "";
+  position: absolute;
+  bottom: 1rem;
+  left: -8px;
+  width: 14px;
+  height: 14px;
+  background: inherit;
+  border-left: 1px solid var(--color-hud-border);
+  border-bottom: 1px solid var(--color-hud-border);
+  transform: rotate(45deg);
+}
+
+.speak-resp--stage .speak-resp__bubble .listen,
+.speak-resp--stage .speak-resp__bubble .phrases__hint-toggle {
+  border-color: var(--pink-600);
+  color: var(--pink-600);
+}
+
+.speak-resp__bubble .speak-resp__asker {
+  color: var(--pink-600);
+}
+
+/* Sentence Tips panel */
+.speak-resp--stage .phrases {
+  border: 1px solid var(--color-hud-border);
+  background: rgba(20, 11, 35, 0.55);
+}
+
+.speak-resp--stage .phrases__label {
+  color: var(--pink-400);
+}
+
+.speak-resp--stage .phrases__list li {
+  color: var(--color-text-on-dark);
+}
